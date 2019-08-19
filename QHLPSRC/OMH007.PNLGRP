@@ -1,0 +1,487 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: OMH007                                      :   *.
+.*   : Help for ...: Asking Questions                            :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   : This panelgroup contains the U.I.M. help texts for        :   *.
+.*   : Asking Questions                                          :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:PNLGRP.
+:IMPORT PNLGRP=OMSREFHD      NAME='*'.
+
+.*   *************************************************************   *.
+.*   * Asking Questions                                          *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH007.Asking Questions - Help
+
+:IMHELP NAME=OMH007GEN.
+
+:P.
+Select one of the following:
+
+:P.
+:LINK PERFORM='DSPHELP OMH00702IX'.
+Display 1 - Answer Questions
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP OMH00704IX'.
+Display 2 - Display Question and Answer
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP OMH00706IX'.
+Display 3 - History of Questions and Answers
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP OMH00709IX'.
+Display 4 - End of Question List
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP OMH00710IX'.
+Display 5 - Error in Question List
+:ELINK.
+
+:EHELP.
+
+:HELP NAME=OMH00702IX.General Help For Display 1
+:IMHELP NAME=OMH00702.
+:IMHELP NAME='OMH00701/FMOPT1'.
+:IMHELP NAME='OMH00702/KEYS'.
+:EHELP.
+
+:HELP NAME=OMH00704IX.General Help For Display 2
+:IMHELP NAME=OMH00704.
+:IMHELP NAME='OMH00704/KEYS'.
+:EHELP.
+
+:HELP NAME=OMH00706IX.General Help For Display 3
+:IMHELP NAME=OMH00706.
+:IMHELP NAME='OMH00705/FMOPT2'.
+:IMHELP NAME='OMH00706/KEYS'.
+:EHELP.
+
+:HELP NAME=OMH00709IX.General Help For Display 4
+:IMHELP NAME=OMH00709.
+:IMHELP NAME='OMH00709/KEYS'.
+:EHELP.
+
+:HELP NAME=OMH00710IX.General Help For Display 5
+:IMHELP NAME=OMH00710.
+:IMHELP NAME='OMH00710/KEYS'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : General help for Asking Questions                         :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=OMH007GEN.Asking Questions - Help
+:XH3.Asking Questions
+:ISCH ROOTS='asking questions'.
+Asking Questions
+
+:P.
+This function activates a question list and allows the user to answer
+any of the connected pre-defined answers. This function can be called
+in any of the three following modes.
+
+:P.
+:PARML.
+:PT.Test mode
+:PD.
+The test mode enables you to select a question list and test if
+all references are set correctly. Each answer to a question list
+can jump to any other question in any other question list, including
+to itself. This means that you can create loops in the question list
+from which no escape is possible.
+
+:PT.Classification mode
+:PD.
+After an incident is registered in the question list, you can start
+an unlimmited number of classification question lists. These
+question lists are used to group the incident with the use
+of the question and answer logic.
+
+:PT.Entry mode
+:PD.
+During customer call registration, the question list with the lowest
+sequence number is started. This question list is not only used to
+collect the answers but also allows the setting of the incident
+attributes. Each answer can be connected to an action, the action
+consists of two parts; which question to ask next and which attributes
+of the incident to set. If the attribute is not filled it is not used.
+If the attribute is filled, it replaces previous selected attributes
+:EPARML.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 1                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH00702.General Help For Display 1
+
+:XH3.Display 1 - Answer Questions
+
+:P.
+:LINK PERFORM='DSPHELP OMH007'.
+General Information.
+:ELINK.
+
+:P.
+This display enables you to select an answer to the question which is
+is in the upper half of the display. You can only select on of the
+questions displayed.
+
+:P.
+You can use one of the allowed function keys to navigate through
+the question lists.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMOPT1 (Option field)                          :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 14 003  20 003                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00701/FMOPT1'.Option - Help
+
+:XH3.Option field
+:P.
+These are the list options. The options all act on a
+specific list entry. The following options are available;
+
+:PARML.
+:PT.1=Select
+:PD.
+Use option 1 to indicate that this is the correct answer
+to the question.
+:EPARML.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00702/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F3=Exit
+:PD.
+Press F3 to end the current task and return to the display
+where you began the task. Any options or changes that you
+keyed on input prompts
+:CIT.since the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F5=Refresh
+:PD.
+Press F5 to refresh the display you are currently working
+on with the (new) values from the OMS database. This is
+sometimes necessary if fields have been changed but the
+changes are not directly reflected on the display.
+
+:PT.F12=Previous
+:PD.
+Press F12 to go to the previous question.
+
+:PT.F15=History
+:PD.
+Press F15 to see all the answers you have answered so far. You
+can choose to restart at a specific question.
+
+:PT.Roll Keys
+:PD.
+Use the rollkeys to display the next or previous page of the display
+you are currently viewing. If more data is available is indicated
+by a :HP2.+:EHP2. charachter or the text :HP2.'More...':EHP2. in the
+bottom rigth corner of the display or list.
+
+:EPARML.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 2                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH00704.General Help For Display 2
+
+:XH3.Display 2 - Display Question and Answer
+
+:P.
+:LINK PERFORM='DSPHELP OMH007'.
+General Information.
+:ELINK.
+
+:P.
+This display is used to view the complete 256 positions of the
+questions and the answers.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00704/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F3=Exit
+:PD.
+Press F3 to end the current task and return to the display
+where you began the task. Any options or changes that you
+keyed on input prompts
+:CIT.since the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+:EPARML.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 3                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH00706.General Help For Display 3
+
+:XH3.Display 3 - History of Questions and Answers
+
+:P.
+:LINK PERFORM='DSPHELP OMH007'.
+General Information.
+:ELINK.
+
+:P.
+This display shows the path you have taken trough the question list.
+You can view the individual questions and answers and you can choose
+to start again at a specific point.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 3  FMOPT2 (Option field)                          :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 11 003  20 003                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00705/FMOPT2'.Option - Help
+
+:XH3.Option field
+:P.
+These are the list options. The options all act on a
+specific list entry. The following options are available;
+
+:PARML.
+:PT.5=View
+:PD.
+Use option 5 to view the complete 256 positions of the answer and
+the question.
+:PT.8=Restart from here
+:PD.
+Use option 8 to start the question and answer from this question.
+:EPARML.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 3 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00706/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F3=Exit
+:PD.
+Press F3 to end the current task and return to the display
+where you began the task. Any options or changes that you
+keyed on input prompts
+:CIT.since the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F5=Refresh
+:PD.
+Press F5 to refresh the display you are currently working
+on with the (new) values from the OMS database. This is
+sometimes necessary if fields have been changed but the
+changes are not directly reflected on the display.
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+
+:PT.Roll Keys
+:PD.
+Use the rollkeys to display the next or previous page of the display
+you are currently viewing. If more data is available is indicated
+by a :HP2.+:EHP2. charachter or the text :HP2.'More...':EHP2. in the
+bottom rigth corner of the display or list.
+
+:EPARML.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 4                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH00709.General Help For Display 4
+
+:XH3.Display 4 - End of Question List
+
+:P.
+:LINK PERFORM='DSPHELP OMH007'.
+General Information.
+:ELINK.
+
+:P.
+You have reached the end of the question list. This display shows
+the final options possible before continuing with the creation of
+the incident or the update of the Q&A history for this incident.
+
+:P.
+If this is a question list test than no incident will be created
+or updated.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 4 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00709/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F3=Exit
+:PD.
+Press F3 to end the current task and return to the display
+where you began the task. Any options or changes that you
+keyed on input prompts
+:CIT.since the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+
+:EPARML.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 5                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH00710.General Help For Display 5
+
+:XH3.Display 5 - Error in Question List
+
+:P.
+:LINK PERFORM='DSPHELP OMH007'.
+General Information.
+:ELINK.
+
+:P.
+There was an error in the question list. The answer you chose
+pointed to a question list which does not exist or to a
+question in a question list which does not exist. You should not see
+this display. Please contact the HelpDesk managers.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 5 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00710/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F3=Exit
+:PD.
+Press F3 to end the current task and return to the display
+where you began the task. Any options or changes that you
+keyed on input prompts
+:CIT.since the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+
+:EPARML.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 1 - no records                   *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH00711.General Help For Display 1
+:IMHELP NAME=OMH00702.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00711/KEYS'.Function Keys - Help
+:IMHELP NAME='OMH00702/KEYS'.
+:EHELP.
+:EPNLGRP.

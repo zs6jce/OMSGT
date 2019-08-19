@@ -1,0 +1,208 @@
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /*  Program ....: OMQCHGCCCP                                        */
+ /*  Description : CPP FOR COMMAND OMQCHGCC - Customer call   API.   */
+ /*  Author .....: Remain Software                                    */
+ /*  Date .......: 28 04 1997                                        */
+ /*                                                                  */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+
+ /* ---------------------------------------------------------------- */
+ /* Program                                                          */
+ /* ---------------------------------------------------------------- */
+             PGM        PARM(&ACTC &HEDC &CTN# &CUSC &CCTC &INDT +
+                          &INTM &RCTM &USID &CSRC &USF1 &USF2 &USF3 +
+                          &EOPI)
+
+          /* ------------------------------------------------------- */
+          /* Declare parameter-variables                             */
+          /* ------------------------------------------------------- */
+             DCL        VAR(&ACTC) TYPE(*CHAR) LEN(002)
+             DCL        VAR(&HEDC) TYPE(*CHAR) LEN(005)
+             DCL        VAR(&CTN#) TYPE(*CHAR) LEN(010)
+             DCL        VAR(&CUSC) TYPE(*CHAR) LEN(010)
+             DCL        VAR(&CCTC) TYPE(*CHAR) LEN(010)
+             DCL        VAR(&INDT) TYPE(*CHAR) LEN(007)
+             DCL        VAR(&INTM) TYPE(*CHAR) LEN(006)
+             DCL        VAR(&RCTM) TYPE(*CHAR) LEN(006)
+             DCL        VAR(&USID) TYPE(*CHAR) LEN(010)
+             DCL        VAR(&CSRC) TYPE(*CHAR) LEN(001)
+             DCL        VAR(&USF1) TYPE(*CHAR) LEN(010)
+             DCL        VAR(&USF2) TYPE(*CHAR) LEN(025)
+             DCL        VAR(&USF3) TYPE(*CHAR) LEN(015)
+             DCL        VAR(&EOPI) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&UPDI) TYPE(*CHAR) LEN(1) VALUE('1')
+             DCL        VAR(&UPBI) TYPE(*CHAR) LEN(1) VALUE('1')
+
+          /* ------------------------------------------------------- */
+          /* Declare program variables                               */
+          /* ------------------------------------------------------- */
+             DCL        VAR(&DAY) TYPE(*CHAR) LEN(2)
+             DCL        VAR(&MONTH) TYPE(*CHAR) LEN(2)
+             DCL        VAR(&YEAR) TYPE(*CHAR) LEN(2)
+             DCL        VAR(&TIME) TYPE(*CHAR) LEN(7)
+             DCL        VAR(&RCMI) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&CCMI) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&PCMI) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&RES#) TYPE(*CHAR) LEN(002)
+             DCL        VAR(&INTL) TYPE(*CHAR) LEN(8)
+             DCL        VAR(&BUF)  TYPE(*CHAR) LEN(300)
+             DCL        VAR(&PRC)  TYPE(*CHAR) LEN(40)
+             DCL        VAR(&ERR)  TYPE(*CHAR) LEN(136)
+             DCL        VAR(&FLD)  TYPE(*CHAR) LEN(130)
+             DCL        VAR(&RES#1) TYPE(*CHAR) LEN(2) VALUE(X'001D')
+             DCL        VAR(&RES#2) TYPE(*CHAR) LEN(2) VALUE(X'002D')
+             DCL        VAR(&RES#3) TYPE(*CHAR) LEN(2) VALUE(X'003D')
+
+             DCL        VAR(&USF31) TYPE(*CHAR) LEN(8) +
+                          VALUE(X'000000000000001D')
+
+          /* ------------------------------------------------------- */
+          /* Monitor                                                 */
+          /* ------------------------------------------------------- */
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ERROR))
+
+ /* ---------------------------------------------------------------- */
+ /* Processing starts here                                           */
+ /* ---------------------------------------------------------------- */
+
+          /* ------------------------------------------------------- */
+          /* Close program when ACTC = 99                            */
+          /* ------------------------------------------------------- */
+             IF         COND(&ACTC *EQ '99') THEN(DO)
+             CALL       PGM(OMQCHGCC)
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+          /* ------------------------------------------------------- */
+          /* Change input buffer for special values                  */
+          /* ------------------------------------------------------- */
+             IF         COND(&RES# *EQ &RES#1) THEN(CHGVAR +
+                          VAR(&RES#) VALUE('*S'))
+             IF         COND(&RES# *EQ &RES#2) THEN(CHGVAR +
+                          VAR(&RES#) VALUE('*F'))
+             IF         COND(&RES# *EQ &RES#3) THEN(CHGVAR +
+                          VAR(&RES#) VALUE('*N'))
+
+             IF         COND(&USF3 *EQ &USF31) THEN(CHGVAR +
+                          VAR(&USF3) VALUE('*SAME   '))
+
+/* ----------------------------------------------------------------- */
+/* Initialize buffer                                                 */
+/* ----------------------------------------------------------------- */
+             CHGVAR     VAR(&INTL) VALUE('V3R0M0  ')
+             CHGVAR     VAR(&BUF)  VALUE(' ')
+             CHGVAR     VAR(&PRC)  VALUE(' ')
+             CHGVAR     VAR(&ERR)  VALUE(' ')
+             CHGVAR     VAR(&FLD)  VALUE(' ')
+
+/* ----------------------------------------------------------------- */
+/* Fill Processing indicators                                        */
+/* ----------------------------------------------------------------- */
+             CHGVAR     VAR(%SST(&PRC 1 1))   VALUE(&EOPI)
+             CHGVAR     VAR(%SST(&PRC 2 1))   VALUE(&UPDI)
+             CHGVAR     VAR(%SST(&PRC 3 1))   VALUE(&UPBI)
+             CHGVAR     VAR(%SST(&PRC 4 1))   VALUE(&PCMI)
+             CHGVAR     VAR(%SST(&PRC 5 1))   VALUE(&CCMI)
+             CHGVAR     VAR(%SST(&PRC 6 1))   VALUE(&RCMI)
+
+/* ----------------------------------------------------------------- */
+/* Adjust date and time data, when needed                            */
+/* ----------------------------------------------------------------- */
+             IF         COND((&INDT *EQ '0555555') *OR (&INDT *EQ +
+                          '5555555')) THEN(DO)
+             RTVSYSVAL  SYSVAL(QDAY) RTNVAR(&DAY)
+             RTVSYSVAL  SYSVAL(QMONTH) RTNVAR(&MONTH)
+             RTVSYSVAL  SYSVAL(QYEAR) RTNVAR(&YEAR)
+
+             IF         COND((&YEAR) *GT '39') THEN(DO)
+             CHGVAR     VAR(&INDT) VALUE('0' *CAT &YEAR *CAT &MONTH +
+                          *CAT &DAY)
+             ENDDO
+             ELSE       CMD(DO)
+             CHGVAR     VAR(&INDT) VALUE('1' *CAT &YEAR *CAT &MONTH +
+                          *CAT &DAY)
+             ENDDO
+
+             ENDDO
+             IF         COND(&INTM *EQ '555555') THEN(DO)
+             RTVSYSVAL  SYSVAL(QTIME) RTNVAR(&TIME)
+             CHGVAR     VAR(&INTM) VALUE(&TIME)
+             ENDDO
+
+/* ----------------------------------------------------------------- */
+/* Fill Buffer data                                                  */
+/* ----------------------------------------------------------------- */
+             CHGVAR     VAR(%SST(&BUF   1  5)) VALUE(&HEDC)
+             CHGVAR     VAR(%SST(&BUF   6 10)) VALUE(&CTN#)
+             CHGVAR     VAR(%SST(&BUF  16 10)) VALUE(&CUSC)
+             CHGVAR     VAR(%SST(&BUF  26 10)) VALUE(&CCTC)
+             CHGVAR     VAR(%SST(&BUF  36  7)) VALUE(&INDT)
+             CHGVAR     VAR(%SST(&BUF  43  6)) VALUE(&INTM)
+             CHGVAR     VAR(%SST(&BUF  49  6)) VALUE(&RCTM)
+             CHGVAR     VAR(%SST(&BUF  55 10)) VALUE(&USID)
+             CHGVAR     VAR(%SST(&BUF  65  1)) VALUE(&CSRC)
+             CHGVAR     VAR(%SST(&BUF  66 10)) VALUE(&USF1)
+             CHGVAR     VAR(%SST(&BUF  76 25)) VALUE(&USF2)
+             CHGVAR     VAR(%SST(&BUF 101 15)) VALUE(&USF3)
+             CHGVAR     VAR(%SST(&BUF 116 185)) VALUE(' ')
+
+/* ----------------------------------------------------------------- */
+/* Call OMS API OMQCHGCC - Change Customer Call                      */
+/* ----------------------------------------------------------------- */
+             CALL       PGM(OMQCHGCC) PARM(&INTL &ACTC &BUF &PRC +
+                          &ERR &FLD)
+
+/* ----------------------------------------------------------------- */
+/* Send completion message when no errors                            */
+/* ----------------------------------------------------------------- */
+             IF         COND(%SST(&ERR 8 1) *EQ ' ') THEN(DO)
+             SNDPGMMSG  MSGID(OMQB705) MSGF(OMSAPI) MSGDTA(%SST(&BUF +
+                          1 15)) MSGTYPE(*COMP)
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+/* ----------------------------------------------------------------- */
+/* When messages have been send, send them to the caller             */
+/* ----------------------------------------------------------------- */
+             IF         COND(%SST(&ERR 1 7) *EQ ' ') THEN(DO)
+
+             CALL       PGM(QMHMOVPM) PARM('    ' '*COMP     +
+                          *DIAG     *ESCAPE   *INFO     ' +
+                          X'00000004' 'OMQCHGCCCP' X'00000001' +
+                          X'00000000')
+             MONMSG     MSGID(CPF0000)
+
+             ENDDO
+
+/* ----------------------------------------------------------------- */
+/* Send message when error or warning                                */
+/* ----------------------------------------------------------------- */
+             IF         COND(%SST(&ERR 1 7) *EQ ' ') THEN(SNDPGMMSG +
+                          MSGID(OMQ5020) MSGF(OMSAPI) +
+                          MSGDTA(OMQCHGCC) MSGTYPE(*ESCAPE))
+             ELSE       CMD(SNDPGMMSG MSGID(%SST(&ERR 1 7)) +
+                          MSGF(OMSAPI) MSGDTA(%SST(&ERR 9 128)) +
+                          MSGTYPE(*ESCAPE))
+
+/* ----------------------------------------------------------------- */
+/* Go to end of program                                              */
+/* ----------------------------------------------------------------- */
+             GOTO       CMDLBL(ENDPGM)
+
+/* ----------------------------------------------------------------- */
+/* An error occured                                                  */
+/* ----------------------------------------------------------------- */
+ ERROR:
+             SNDPGMMSG  MSGID(OMQ5012) MSGF(OMSAPI) +
+                          MSGDTA('OMQCHGCC') MSGTYPE(*ESCAPE)
+             MONMSG     MSGID(CPF0000)
+             RETURN
+
+/* ----------------------------------------------------------------- */
+/* End of Program                                                    */
+/* ----------------------------------------------------------------- */
+ ENDPGM:
+             RETURN
+             ENDPGM

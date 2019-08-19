@@ -1,0 +1,1717 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: OMH001D                                     :   *.
+.*   : Module .....: Request management                          :   *.
+.*   : Function ...: Help desk definition                        :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   : This panelgroup is used by program OMH001 which is the    :   *.
+.*   : helpdesk definition program.                              :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+.*   ·····························································
+.*   Panel group
+.*   ·····························································
+
+:PNLGRP   SCHIDX=REMAIN
+          DFTMSGF=OMHDSP
+          SUBMSGF=OMHDSP.
+
+.*   ·····························································
+.*   Import definitions
+.*   ·····························································
+
+.*        ··················································
+.*        Help for this panelgroup.
+.*        ··················································
+:IMPORT   NAME='*'
+          PNLGRP=OMH001.
+
+.*   ·····························································
+.*   Class definitions
+.*   ·····························································
+
+.*        ··················································
+.*        Date
+.*        ··················································
+:CLASS    NAME=DATE
+          BASETYPE='DATE'.
+:ECLASS.
+
+.*        ··················································
+.*        Dialog
+.*        ··················································
+:CLASS    NAME=DIALOG
+          BASETYPE='BIN 15'.
+:ECLASS.
+
+.*        ··················································
+.*        Helpdesk code
+.*        ··················································
+:CLASS    NAME=HEDC
+          BASETYPE='OBJNAME 5'.
+:ECLASS.
+
+.*        ··················································
+.*        Helpdesk code position to
+.*        ··················································
+:CLASS    NAME=HEDCPT
+          BASETYPE='OBJNAME 5 POSTO'.
+:ECLASS.
+
+.*        ··················································
+.*        Increment
+.*        ··················································
+:CLASS    NAME=INCN
+          BASETYPE='ZONED 2 0'
+          WIDTH=2.
+:ECLASS.
+
+.*        ··················································
+.*        Indicator
+.*        ··················································
+:CLASS    NAME=INDI
+          BASETYPE='CHAR 1'.
+:ECLASS.
+
+.*        ··················································
+.*        Number
+.*        ··················································
+:CLASS    NAME=NBRN
+          CASE=UPPER
+          BASETYPE='CHAR 10'.
+:ECLASS.
+
+.*        ··················································
+.*        Subfile option
+.*        ··················································
+:CLASS    NAME=OPTI
+          WIDTH=1
+          BASETYPE=ACTION.
+:ECLASS.
+
+.*        ··················································
+.*        Object code
+.*        ··················································
+:CLASS    NAME=OBJC
+          BASETYPE='OBJNAME 10'.
+:ECLASS.
+
+.*        ··················································
+.*        Program description
+.*        ··················································
+:CLASS    NAME=PGMD
+          BASETYPE='CHAR 50'.
+:ECLASS.
+
+.*        ··················································
+.*        User description
+.*        ··················································
+:CLASS    NAME=USDC
+          BASETYPE='CHAR 50'.
+:ECLASS.
+
+.*        ··················································
+.*        Text description
+.*        ··················································
+:CLASS    NAME=TXTD
+          BASETYPE='CHAR 30'.
+:ECLASS.
+
+.*        ··················································
+.*        Time
+.*        ··················································
+:CLASS    NAME=TIME
+          BASETYPE='TIME'.
+:ECLASS.
+
+.*        ··················································
+.*        User id
+.*        ··················································
+:CLASS    NAME=USID
+          BASETYPE='OBJNAME 10'.
+
+:TL.
+:TI       VALUE='"          "'.
+:TI       VALUE='"*USER     "'.*USER
+:TI       VALUE='"*PGMR     "'.*PGMR
+:TI       VALUE='"*SECOFR   "'.*SECOFR
+:TI       VALUE='"*SECADM   "'.*SECADM
+:TI       VALUE='"*SYSOPR   "'.*SYSOPR
+:ETL.
+:ECLASS.
+
+.*   ·····························································
+.*   Variable definition
+.*   ·····························································
+
+.*        ··················································
+.*        Action field (add, change, display, copy)
+.*        ··················································
+:VAR      NAME=FMACTC
+          ERRVAR=FMACTCE
+          CLASS=OBJC.
+
+.*        ··················································
+.*        Accumulated request number
+.*        ··················································
+:VAR      NAME=FMARQN
+          ERRVAR=FMARQNE
+          CLASS=NBRN.
+
+.*        ··················································
+.*        Accumulated request increment
+.*        ··················································
+:VAR      NAME=FMAINC
+          ERRVAR=FMAINCE
+          CLASS=INCN.
+
+.*        ··················································
+.*        Copy attributes indicator
+.*        ··················································
+:VAR      NAME=FMCPYA
+          ERRVAR=FMCPYAE
+          CLASS=INDI.
+
+.*        ··················································
+.*        Date or time code (0=Display time 1=Display date)
+.*        ··················································
+:VAR      NAME=FMDOTC
+          CLASS=INDI.
+
+.*        ··················································
+.*        Todays date
+.*        ··················································
+:VAR      NAME=FMDATE
+          CLASS=DATE.
+
+.*        ··················································
+.*        Helpdesk code
+.*        ··················································
+:VAR      NAME=FMHEDC
+          ERRVAR=FMHEDCE
+          CLASS=HEDC.
+
+.*        ··················································
+.*        Position to helpdesk code
+.*        ··················································
+:VAR      NAME=FMHEDCPT
+          CLASS=HEDCPT.
+
+.*        ··················································
+.*        Helpdesk description
+.*        ··················································
+:VAR      NAME=FMHEDD
+          ERRVAR=FMHEDDE
+          CLASS=TXTD.
+
+.*        ··················································
+.*        Add, change and display indicators
+.*        ··················································
+:VAR      NAME=FMIADD
+          CLASS=INDI.
+
+:VAR      NAME=FMICHG
+          CLASS=INDI.
+
+:VAR      NAME=FMIDSP
+          CLASS=INDI.
+
+:VAR      NAME=FMICPY
+          CLASS=INDI.
+
+.*        ··················································
+.*        Option
+.*        ··················································
+:VAR      NAME=FMOPTI
+          ERRVAR=FMOPTIE
+          CLASS=OPTI.
+
+.*        ··················································
+.*        Panel code
+.*        ··················································
+:VAR      NAME=FMPA1C
+          CLASS=OBJC.
+
+:VAR      NAME=FMPA2C
+          CLASS=OBJC.
+
+:VAR      NAME=FMPA3C
+          CLASS=OBJC.
+
+:VAR      NAME=FMPA4C
+          CLASS=OBJC.
+
+:VAR      NAME=FMPA5C
+          CLASS=OBJC.
+
+.*        ··················································
+.*        Sub title
+.*        ··················································
+:VAR      NAME=FMPG1D
+          CLASS=PGMD.
+
+:VAR      NAME=FMPG2D
+          CLASS=PGMD.
+
+:VAR      NAME=FMPG3D
+          CLASS=PGMD.
+
+:VAR      NAME=FMPG4D
+          CLASS=PGMD.
+
+:VAR      NAME=FMPG5D
+          CLASS=PGMD.
+
+.*        ··················································
+.*        Todays time
+.*        ··················································
+:VAR      NAME=FMTIME
+          CLASS=TIME.
+
+.*        ··················································
+.*        User request number
+.*        ··················································
+:VAR      NAME=FMURQN
+          ERRVAR=FMURQNE
+          CLASS=NBRN.
+
+.*        ··················································
+.*        Customer registration number
+.*        ··················································
+:VAR      NAME=FMCCRE
+          ERRVAR=FMCCREE
+          CLASS=NBRN.
+
+.*        ··················································
+.*        Customer registration increment
+.*        ··················································
+:VAR      NAME=FMUCRE
+          ERRVAR=FMUCREE
+          CLASS=INCN.
+
+.*        ··················································
+.*        User
+.*        ··················································
+:VAR      NAME=FMUSID
+          ERRVAR=FMUSIDE
+          CLASS=USID.
+
+.*        ··················································
+.*        User description
+.*        ··················································
+:VAR      NAME=FMUSDC
+          CLASS=USDC.
+
+.*        ··················································
+.*        User request increment
+.*        ··················································
+:VAR      NAME=FMUINC
+          ERRVAR=FMUINCE
+          CLASS=INCN.
+
+.*        ··················································
+.*        View number
+.*        ··················································
+:VAR      NAME=ZVIEW
+          CLASS=DIALOG.
+
+.*   ·····························································
+.*   Records with variables.
+.*   ·····························································
+
+.*        ···················································
+.*        Screen 0. Variable record 1.
+.*        ···················································
+:VARRCD   NAME=VR0001
+          VARS='FMPA1C FMPG1D'
+          VARS='FMPA2C FMPG2D'
+          VARS='FMPA3C FMPG3D'
+          VARS='FMPA4C FMPG4D'
+          VARS='FMPA5C FMPG5D'.
+
+.*        ···················································
+.*        Screen 0. Variable record 2.
+.*        ···················································
+:VARRCD   NAME=VR0002
+          VARS='FMDATE FMTIME FMDOTC'.
+
+.*        ···················································
+.*        Screen 1. Variable record 1.
+.*        ···················································
+:VARRCD   NAME=VR0101
+          VARS='FMOPTI FMOPTIE FMHEDC FMHEDD FMURQN FMARQN'.
+
+.*        ···················································
+.*        Screen 1. Variable record 2.
+.*        Used for searching the list.
+.*        ···················································
+:VARRCD   NAME=VR0102
+          VARS='FMHEDCPT FMHEDC FMOPTI'.
+
+.*        ···················································
+.*        Screen 3. Variable record 1.
+.*        ···················································
+:VARRCD   NAME=VR0301
+          VARS='FMACTC FMACTCE'
+          VARS='FMHEDC FMHEDCE'
+          VARS='FMHEDD FMHEDDE'
+          VARS='FMURQN FMURQNE'
+          VARS='FMUINC FMUINCE'
+          VARS='FMARQN FMARQNE'
+          VARS='FMAINC FMAINCE'
+          VARS='FMIADD FMICHG FMIDSP FMICPY'
+          VARS='FMCPYA FMCPYAE'
+          VARS='FMCCRE FMCCREE'
+          VARS='FMUCRE FMUCREE'.
+
+.*        ···················································
+.*        Screen 4. Variable record 1.
+.*        ···················································
+:VARRCD   NAME=VR0401
+          VARS='FMOPTI FMOPTIE FMUSID FMUSIDE FMUSDC'.
+
+.*   ·····························································
+.*   List definitions
+.*   ·····························································
+
+.*        ···················································
+.*        Screen 1 list definition 1
+.*        ···················································
+:LISTDEF  NAME=LD0101
+          VARS='FMOPTI FMHEDC FMHEDD FMURQN FMARQN'.
+
+.*        ···················································
+.*        Screen 2, delete confirm list.
+.*        ···················································
+:LISTDEF  NAME=LD0201
+          VARS='FMOPTI FMHEDC FMHEDD FMURQN FMARQN'.
+
+.*        ···················································
+.*        Screen 4, Authorized users list.
+.*        ···················································
+:LISTDEF  NAME=LD0401
+          VARS='FMOPTI FMUSID FMUSDC'.
+
+.*        ···················································
+.*        Screen 5, Authorized users list confirm delete.
+.*        ···················································
+:LISTDEF  NAME=LD0501
+          VARS='FMOPTI FMUSID FMUSDC'.
+
+.*   ·····························································
+.*   Conditions
+.*   ·····························································
+
+.*        ···················································
+.*        Condition for F11=Change view
+.*        ···················································
+:COND     NAME=COVIEW1
+          EXPR='ZVIEW=0'
+          EVAL=ALWAYS.
+
+:COND     NAME=COVIEW2
+          EXPR='ZVIEW=1'
+          EVAL=ALWAYS.
+
+.*        ···················································
+.*        Condition for date or time display
+.*        ···················································
+:COND     NAME=CODATE
+          EXPR='FMDOTC="1"'
+          EVAL=ALWAYS.
+
+:COND     NAME=COTIME
+          EXPR='FMDOTC="0"'
+          EVAL=ALWAYS.
+
+.*        ···················································
+.*        Conditions for add, change or display.
+.*        ···················································
+:COND     NAME=COADD
+          EXPR='FMIADD = "1"'
+          EVAL=ALWAYS.
+
+:COND     NAME=COCHG
+          EXPR='FMICHG = "1"'
+          EVAL=ALWAYS.
+
+:COND     NAME=CODSP
+          EXPR='FMIDSP = "1"'
+          EVAL=ALWAYS.
+
+:COND     NAME=COCPY
+          EXPR='FMICPY = "1"'
+          EVAL=ALWAYS.
+
+.*   ·····························································
+.*   Truth tables for the compiler
+.*   ·····························································
+
+.*        ···················································
+.*        Add, change and display are mutually exclusive
+.*        ···················································
+:TT       CONDS='COADD CODSP COCHG CODATE COTIME COVIEW1 COVIEW2'
+          NAME=TT001.
+
+:TTROW    VALUES='1 0 0 0 1 0 1'.
+:TTROW    VALUES='0 1 0 1 0 1 0'.
+:TTROW    VALUES='0 0 1 0 0 0 0'.
+
+:ETT.
+
+.*   ·····························································
+.*   Keylists
+.*   ·····························································
+
+.*        ···················································
+.*        Display 1 keylist.
+.*        ···················································
+:KEYL     NAME=KL0101
+          HELP=KL0101H.
+
+:KEYI     KEY=F1
+          HELP='F1H'
+          VARUPD=NO
+          ACTION='HELP'.
+
+:KEYI     KEY=F3
+          HELP='F3H'
+          VARUPD=NO
+          ACTION='EXIT SET'
+          .&MSG(KEYF301).
+
+:KEYI     KEY=F5
+          HELP='F5H'
+          VARUPD=NO
+          ACTION='RETURN 05'
+          .&MSG(KEYF501).
+
+:KEYI     KEY=F6
+          HELP='F6H'
+          VARUPD=NO
+          ACTION='RETURN 06'
+          .&MSG(KEYF601).
+
+:KEYI     KEY=F11
+          HELP='F11H'
+          COND=COVIEW1
+          ACTION='CHGVIEW'
+          .&MSG(KEYF116).
+
+:KEYI     KEY=F11
+          HELP='F11H'
+          COND=COVIEW2
+          ACTION='CHGVIEW'
+          .&MSG(KEYF115).
+
+:KEYI     KEY=F12
+          HELP='F12H'
+          VARUPD=NO
+          ACTION='CANCEL SET'
+          .&MSG(KEYF121).
+
+:KEYI     KEY=ENTER
+          HELP='ENTERH'
+          VARUPD=YES
+          ACTION='ENTER'.
+
+:KEYI     KEY=HELP
+          HELP='HELPH'
+          ACTION='HELP'.
+
+:KEYI     KEY=PAGEUP
+          HELP='PAGEH'
+          ACTION='PAGEUP'.
+
+:KEYI     KEY=PAGEDOWN
+          HELP='PAGEH'
+          ACTION='PAGEDOWN'.
+
+:KEYI     KEY=PRINT
+          HELP='PRINTH'
+          ACTION='PRINT'.
+:EKEYL.
+
+.*        ···················································
+.*        Display 2 keylist.
+.*        ···················································
+:KEYL     NAME=KL0201
+          HELP=KL0201H.
+
+:KEYI     KEY=F1
+          HELP='F1H'
+          VARUPD=NO
+          ACTION='HELP'.
+
+:KEYI     KEY=F11
+          HELP='F11H'
+          COND=COVIEW1
+          ACTION='CHGVIEW'
+          .&MSG(KEYF116).
+
+:KEYI     KEY=F11
+          HELP='F11H'
+          COND=COVIEW2
+          ACTION='CHGVIEW'
+          .&MSG(KEYF115).
+
+:KEYI     KEY=F12
+          HELP='F12H'
+          VARUPD=NO
+          ACTION='CANCEL SET'
+          .&MSG(KEYF121).
+
+:KEYI     KEY=ENTER
+          HELP='ENTERH'
+          VARUPD=YES
+          ACTION='ENTER'.
+
+:KEYI     KEY=HELP
+          HELP='HELPH'
+          ACTION='HELP'.
+
+:KEYI     KEY=PAGEUP
+          HELP='PAGEH'
+          ACTION='PAGEUP'.
+
+:KEYI     KEY=PAGEDOWN
+          HELP='PAGEH'
+          ACTION='PAGEDOWN'.
+
+:KEYI     KEY=PRINT
+          HELP='PRINTH'
+          ACTION='PRINT'.
+:EKEYL.
+
+.*        ···················································
+.*        Display 3 keylist.
+.*        ···················································
+:KEYL     NAME=KL0301
+          HELP=KL0301H.
+
+:KEYI     KEY=F1
+          HELP='F1H'
+          VARUPD=NO
+          ACTION='HELP'.
+
+:KEYI     KEY=F3
+          HELP='F3H'
+          VARUPD=NO
+          ACTION='EXIT SET'
+          .&MSG(KEYF301).
+
+:KEYI     KEY=F5
+          HELP='F5H'
+          VARUPD=NO
+          ACTION='RETURN 05'
+          .&MSG(KEYF501).
+
+:KEYI     KEY=F12
+          HELP='F12H'
+          VARUPD=NO
+          ACTION='CANCEL SET'
+          .&MSG(KEYF121).
+
+:KEYI     KEY=ENTER
+          HELP='ENTERH'
+          VARUPD=YES
+          ACTION='ENTER'.
+
+:KEYI     KEY=HELP
+          HELP='HELPH'
+          ACTION='HELP'.
+
+:KEYI     KEY=PAGEUP
+          HELP='PAGEH'
+          ACTION='PAGEUP'.
+
+:KEYI     KEY=PAGEDOWN
+          HELP='PAGEH'
+          ACTION='PAGEDOWN'.
+
+:KEYI     KEY=PRINT
+          HELP='PRINTH'
+          ACTION='PRINT'.
+:EKEYL.
+
+.*        ···················································
+.*        Display 4 keylist.
+.*        ···················································
+:KEYL     NAME=KL0401
+          HELP=KL0401H.
+
+:KEYI     KEY=F1
+          HELP='F1H'
+          VARUPD=NO
+          ACTION='HELP'.
+
+:KEYI     KEY=F3
+          HELP='F3H'
+          VARUPD=NO
+          ACTION='EXIT SET'
+          .&MSG(KEYF301).
+
+:KEYI     KEY=F5
+          HELP='F5H'
+          VARUPD=NO
+          ACTION='RETURN 05'
+          .&MSG(KEYF501).
+
+:KEYI     KEY=F11
+          HELP='F11H'
+          COND=COVIEW1
+          ACTION='CHGVIEW'
+          .&MSG(KEYF115).
+
+:KEYI     KEY=F11
+          HELP='F11H'
+          COND=COVIEW2
+          ACTION='CHGVIEW'
+          .&MSG(KEYF116).
+
+:KEYI     KEY=F12
+          HELP='F12H'
+          VARUPD=NO
+          ACTION='CANCEL SET'
+          .&MSG(KEYF121).
+
+:KEYI     KEY=ENTER
+          HELP='ENTERH'
+          VARUPD=YES
+          ACTION='ENTER'.
+
+:KEYI     KEY=HELP
+          HELP='HELPH'
+          ACTION='HELP'.
+
+:KEYI     KEY=PAGEUP
+          HELP='PAGEH'
+          ACTION='PAGEUP'.
+
+:KEYI     KEY=PAGEDOWN
+          HELP='PAGEH'
+          ACTION='PAGEDOWN'.
+
+:KEYI     KEY=PRINT
+          HELP='PRINTH'
+          ACTION='PRINT'.
+:EKEYL.
+
+.*        ···················································
+.*        Display 5 keylist.
+.*        ···················································
+:KEYL     NAME=KL0501
+          HELP=KL0501H.
+
+:KEYI     KEY=F1
+          HELP='F1H'
+          VARUPD=NO
+          ACTION='HELP'.
+
+:KEYI     KEY=F5
+          HELP='F5H'
+          VARUPD=NO
+          ACTION='RETURN 05'
+          .&MSG(KEYF501).
+
+:KEYI     KEY=F11
+          HELP='F11H'
+          COND=COVIEW1
+          ACTION='CHGVIEW'
+          .&MSG(KEYF115).
+
+:KEYI     KEY=F11
+          HELP='F11H'
+          COND=COVIEW2
+          ACTION='CHGVIEW'
+          .&MSG(KEYF116).
+
+:KEYI     KEY=F12
+          HELP='F12H'
+          VARUPD=NO
+          ACTION='CANCEL SET'
+          .&MSG(KEYF121).
+
+:KEYI     KEY=ENTER
+          HELP='ENTERH'
+          VARUPD=YES
+          ACTION='ENTER'.
+
+:KEYI     KEY=HELP
+          HELP='HELPH'
+          ACTION='HELP'.
+
+:KEYI     KEY=PAGEUP
+          HELP='PAGEH'
+          ACTION='PAGEUP'.
+
+:KEYI     KEY=PAGEDOWN
+          HELP='PAGEH'
+          ACTION='PAGEDOWN'.
+
+:KEYI     KEY=PRINT
+          HELP='PRINTH'
+          ACTION='PRINT'.
+:EKEYL.
+
+.*   ·····························································
+.*   Panel 1.
+.*
+.*   This panel displays a list with the helpdesk definitions.
+.*   ·····························································
+:PANEL    NAME=PA01
+          HELP=PA01H
+          KEYL=KL0101
+          TT=TT001
+          ENTER='RETURN'
+          TOPSEP=NONE
+          .&MSG(MH00101).
+
+.*   ·····························································
+.*   Second display line
+.*   ·····························································
+:DATA     DEPTH=2
+          BOTSEP=RULE
+          BODYSEP=SPACE
+          MAXHEAD=0
+          LAYOUT=HORIZ.
+
+.*        ···················································
+.*        Panel code
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=PANCH
+          VAR=FMPA1C
+          .
+
+.*        ···················································
+.*        Program subtitle
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=PGMDH
+          VAR=FMPG1D
+          .
+
+.*        ···················································
+.*        Time.
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=TIMEH
+          COND=COTIME
+          VAR=FMTIME
+          .
+
+.*        ···················································
+.*        Date.
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=DATEH
+          COND=CODATE
+          VAR=FMDATE
+          .
+:EDATA.
+
+.*   ·····························································
+.*   Fourth display line is blanks.
+.*   ·····························································
+:DATA     DEPTH=1
+          MAXHEAD=0
+          BOTSEP=NONE
+          BODYSEP=NONE
+          COMPACT
+          LAYOUT=HORIZ.
+:EDATA.
+
+.*   ·····························································
+.*   Data with position to.
+.*   ·····························································
+:DATA     DEPTH=2
+          LAYOUT=1.
+
+.*        ···················································
+.*        Data columns
+.*        ···················································
+:DATACOL  WIDTH=25.
+:DATACOL  WIDTH=10.
+
+.*        ···················································
+.*        Position to.
+.*        ···················································
+:DATAI    USAGE=INOUT
+          HELP=HEDCPTH
+          VAR=FMHEDCPT
+          CSRLOC=NO
+          .&MSG(POS0004).
+:EDATA.
+
+.*   ·····························································
+.*   The list with the helpdesk definitions.
+.*   ·····························································
+:LIST     DEPTH='*'
+          LISTDEF=LD0101
+          BODYSEP=SPACE
+          BOTSEP=RULE
+          ACTOR=CALLER
+          SCROLL=YES
+          MAXHEAD=1
+          VIEW=ZVIEW.
+
+.*        ···················································
+.*        Top instruction
+.*        ···················································
+:TOPINST.&MSG(TIN0002,OMHDSP).
+
+.*        ···················································
+.*        List actions
+.*        ···················································
+:LISTACT  HELP=O2H
+          OPTION=2.&MSG(OPT0042).
+
+:LISTACT  HELP=O3H
+          OPTION=3.&MSG(OPT0011).
+
+:LISTACT  HELP=O4H
+          OPTION=4.&MSG(OPT0038).
+
+:LISTACT  HELP=O5H
+          OPTION=5.&MSG(OPT0008).
+
+:LISTACT  HELP=O8H
+          OPTION=8.&MSG(OPT0048).
+
+.*        ···················································
+.*        List columns
+.*        ···················································
+:LISTCOL  VAR=FMOPTI
+          USAGE=INOUT
+          MAXWIDTH=3
+          HELP=OPTIH.&MSG(COL0001).
+
+:LISTCOL  VAR=FMHEDC
+          MAXWIDTH=10
+          USAGE=OUT
+          HELP=HEDCH.&MSG(HLP0001).
+
+:LISTCOL  VAR=FMHEDD
+          MAXWIDTH=30
+          USAGE=OUT
+          HELP=HEDDH.&MSG(DSC0001).
+
+:LISTCOL  VAR=FMURQN
+          MAXWIDTH=10
+          USAGE=OUT
+          HELP=URQNH.&MSG(USR0006).
+
+:LISTCOL  VAR=FMARQN
+          MAXWIDTH=12
+          USAGE=OUT
+          HELP=ARQNH.&MSG(ACC0001).
+
+.*        ···················································
+.*        List views
+.*        ···················································
+:LISTVIEW  LAYOUT=1
+           COLS='FMOPTI FMHEDC FMHEDD FMURQN FMARQN'.
+
+:LISTVIEW  LAYOUT=3
+           COLS='FMOPTI FMHEDC'.
+
+:ELIST.
+:EPANEL.
+
+.*   ·····························································
+.*   Panel 2.
+.*
+.*   This is the delete confirmation panel.
+.*   ·····························································
+:PANEL    NAME=PA02
+          HELP=PA02H
+          KEYL=KL0201
+          TT=TT001
+          ENTER='RETURN'
+          TOPSEP=NONE
+          .&MSG(MH00101).
+
+.*   ·····························································
+.*   Second display line
+.*   ·····························································
+:DATA     DEPTH=2
+          BOTSEP=RULE
+          BODYSEP=SPACE
+          MAXHEAD=0
+          LAYOUT=HORIZ.
+
+.*        ···················································
+.*        Panel code
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=PANCH
+          VAR=FMPA2C
+          .
+
+.*        ···················································
+.*        Program subtitle
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=PGMDH
+          VAR=FMPG2D
+          .
+
+.*        ···················································
+.*        Time.
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=TIMEH
+          COND=COTIME
+          VAR=FMTIME
+          .
+
+.*        ···················································
+.*        Date.
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=DATEH
+          COND=CODATE
+          VAR=FMDATE
+          .
+:EDATA.
+
+.*   ·····························································
+.*   Fourth display line is blanks.
+.*   ·····························································
+:DATA     DEPTH=1
+          MAXHEAD=0
+          BOTSEP=NONE
+          BODYSEP=NONE
+          COMPACT
+          LAYOUT=HORIZ.
+:EDATA.
+
+.*   ·····························································
+.*   The list with the helpdesk definitions.
+.*   ·····························································
+:LIST     DEPTH='*'
+          LISTDEF=LD0201
+          BOTSEP=RULE
+          SCROLL=YES
+          MAXHEAD=1
+          VIEW=ZVIEW.
+
+.*        ···················································
+.*        Top instructions
+.*        ···················································
+:TOPINST.&MSG(TIN0003,OMHDSP).
+:TOPINST.&MSG(TIN0004,OMHDSP).
+
+.*        ···················································
+.*        List columns
+.*        ···················································
+:LISTCOL  VAR=FMOPTI
+          USAGE=OUT
+          MAXWIDTH=3
+          HELP=OPTIH.&MSG(COL0001).
+
+:LISTCOL  VAR=FMHEDC
+          MAXWIDTH=10
+          USAGE=OUT
+          HELP=HEDCH.&MSG(HLP0001).
+
+:LISTCOL  VAR=FMHEDD
+          MAXWIDTH=30
+          USAGE=OUT
+          HELP=HEDDH.&MSG(DSC0001).
+
+:LISTCOL  VAR=FMURQN
+          MAXWIDTH=10
+          USAGE=OUT
+          HELP=URQNH.&MSG(USR0006).
+
+:LISTCOL  VAR=FMARQN
+          MAXWIDTH=12
+          USAGE=OUT
+          HELP=ARQNH.&MSG(ACC0001).
+
+.*        ···················································
+.*        List views
+.*        ···················································
+:LISTVIEW  LAYOUT=1
+           COLS='FMOPTI FMHEDC FMHEDD FMURQN FMARQN'.
+
+:LISTVIEW  LAYOUT=3
+           COLS='FMOPTI FMHEDC'.
+
+:ELIST.
+:EPANEL.
+
+.*   ·····························································
+.*   Panel 3.
+.*
+.*   Add, change, display or copy the helpdesk definition.
+.*   ·····························································
+:PANEL    NAME=PA03
+          HELP=PA03H
+          KEYL=KL0301
+          TT=TT001
+          ENTER='RETURN'
+          TOPSEP=NONE
+          .&MSG(MH00101).
+
+.*   ·····························································
+.*   Second display line
+.*   ·····························································
+:DATA     DEPTH=2
+          BOTSEP=RULE
+          BODYSEP=SPACE
+          MAXHEAD=0
+          LAYOUT=HORIZ.
+
+.*        ···················································
+.*        Panel code
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=PANCH
+          VAR=FMPA3C
+          .
+
+.*        ···················································
+.*        Program subtitle
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=PGMDH
+          VAR=FMPG3D
+          .
+
+.*        ···················································
+.*        Time.
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=TIMEH
+          COND=COTIME
+          VAR=FMTIME
+          .
+
+.*        ···················································
+.*        date
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=DATEH
+          COND=CODATE
+          VAR=FMDATE
+          .
+:EDATA.
+
+.*   ·····························································
+.*   Fourth display line contains the action code
+.*   ·····························································
+:DATA     DEPTH=2
+          MAXHEAD=0
+          LAYOUT=HORIZ.
+
+.*        ···················································
+.*        Action code
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=ACTCH
+          VAR=FMACTC
+          .
+:EDATA.
+
+.*   ·····························································
+.*   Datarecord with the input fields.
+.*
+.*   The display is divided in three datagroups, one for every mode
+.*   of display. The display mode can be one of three, all fields
+.*   protected (display), keyfields protected (change) and all fields
+.*   allowed (add).
+.*
+.*   ·····························································
+:DATA     DEPTH='*'
+          BOTSEP=RULE
+          LAYOUT=1.
+
+.*        ···················································
+.*        Data columns
+.*        ···················································
+:DATACOL  WIDTH=25.
+:DATACOL  WIDTH=10.
+:DATACOL  WIDTH='*'.
+
+.*        ···················································
+.*        The ADD datagroup.
+.*        ···················································
+:DATAGRP  GRPSEP=NONE
+          COND=COADD
+          .
+
+.*        ···················································
+.*        Helpdesk code and description
+.*        ···················································
+
+:DATAGRP  COMPACT
+          GRPSEP=NONE
+          .
+
+:DATAI    USAGE=INOUT
+          HELP=HEDCH
+          VAR=FMHEDC
+          .&MSG(HLP0001).
+
+:DATAI    USAGE=INOUT
+          CSRLOC=NO
+          HELP=HEDDH
+          VAR=FMHEDD
+          .&MSG(HLP0002).
+:EDATAGRP.
+
+.*        ···················································
+.*        User request
+.*        ···················································
+:DATAGRP  COMPACT
+          GRPSEP=NONE
+          .
+
+:DATAI    USAGE=INOUT
+          CSRLOC=NO
+          HELP=URQNH
+          VAR=FMURQN
+          .&MSG(ERR0008).
+
+:DATAI    USAGE=INOUT
+          CSRLOC=NO
+          HELP=UINCH
+          VAR=FMUINC
+          .&MSG(INC0001).
+:EDATAGRP.
+
+.*        ···················································
+.*        Accumulated request + increment
+.*        ···················································
+:DATAGRP  COMPACT
+          GRPSEP=NONE
+          .
+
+:DATAI    USAGE=INOUT
+          CSRLOC=NO
+          HELP=ARQNH
+          VAR=FMARQN
+          .&MSG(ERR0007).
+
+:DATAI    USAGE=INOUT
+          CSRLOC=NO
+          HELP=AINCH
+          VAR=FMAINC
+          .&MSG(INC0001).
+:EDATAGRP.
+
+.*        ···················································
+.*        Customer registration number
+.*        ···················································
+:DATAGRP  COMPACT
+          GRPSEP=NONE
+          .
+
+:DATAI    USAGE=INOUT
+          CSRLOC=NO
+          HELP=CCREH
+          VAR=FMCCRE
+          .&MSG(CRE0001).
+
+:DATAI    USAGE=INOUT
+          CSRLOC=NO
+          HELP=UCREH
+          VAR=FMUCRE
+          .&MSG(INC0001).
+:EDATAGRP.
+
+.*        ···················································
+.*        Copy attributes (only if copy).
+.*        ···················································
+:DATAGRP  COMPACT
+          COND=COCPY
+          GRPSEP=NONE
+          .
+
+:DATAI    USAGE=INOUT
+          CSRLOC=NO
+          HELP=CPYAH
+          VAR=FMCPYA
+          .&MSG(CPY0002).
+
+:DATAC    .&MSG(CON0002).
+
+:EDATAGRP.
+:EDATAGRP.
+
+.*        ···················································
+.*        The CHG datagroup.
+.*        ···················································
+:DATAGRP  GRPSEP=NONE
+          COND=COCHG
+          .
+
+.*        ···················································
+.*        Helpdesk code and description
+.*        ···················································
+
+:DATAGRP  COMPACT
+          GRPSEP=NONE
+          .
+
+:DATAI    USAGE=OUT
+          HELP=HEDCH
+          VAR=FMHEDC
+          .&MSG(HLP0001).
+
+:DATAI    USAGE=INOUT
+          HELP=HEDDH
+          VAR=FMHEDD
+          .&MSG(HLP0002).
+:EDATAGRP.
+
+.*        ···················································
+.*        User request
+.*        ···················································
+:DATAGRP  COMPACT
+          GRPSEP=NONE
+          .
+
+:DATAI    USAGE=INOUT
+          HELP=URQNH
+          CSRLOC=NO
+          VAR=FMURQN
+          .&MSG(ERR0008).
+
+:DATAI    USAGE=INOUT
+          CSRLOC=NO
+          HELP=UINCH
+          VAR=FMUINC
+          .&MSG(INC0001).
+:EDATAGRP.
+
+.*        ···················································
+.*        Accumulated request + increment
+.*        ···················································
+:DATAGRP  COMPACT
+          GRPSEP=NONE
+          .
+
+:DATAI    USAGE=INOUT
+          CSRLOC=NO
+          HELP=ARQNH
+          VAR=FMARQN
+          .&MSG(ERR0007).
+
+:DATAI    USAGE=INOUT
+          CSRLOC=NO
+          HELP=AINCH
+          VAR=FMAINC
+          .&MSG(INC0001).
+:EDATAGRP.
+
+.*        ···················································
+.*        Customer registration number
+.*        ···················································
+:DATAGRP  COMPACT
+          GRPSEP=NONE
+          .
+
+:DATAI    USAGE=INOUT
+          CSRLOC=NO
+          HELP=CCREH
+          VAR=FMCCRE
+          .&MSG(CRE0001).
+
+:DATAI    USAGE=INOUT
+          CSRLOC=NO
+          HELP=UCREH
+          VAR=FMUCRE
+          .&MSG(INC0001).
+:EDATAGRP.
+:EDATAGRP.
+
+.*        ···················································
+.*        The Display datagroup.
+.*        ···················································
+:DATAGRP  GRPSEP=NONE
+          COND=CODSP
+          .
+
+.*        ···················································
+.*        Helpdesk code and description
+.*        ···················································
+
+:DATAGRP  COMPACT
+          GRPSEP=NONE
+          .
+
+:DATAI    USAGE=OUT
+          HELP=HEDCH
+          VAR=FMHEDC
+          .&MSG(HLP0001).
+
+:DATAI    USAGE=OUT
+          HELP=HEDDH
+          VAR=FMHEDD
+          .&MSG(HLP0002).
+:EDATAGRP.
+
+.*        ···················································
+.*        User request
+.*        ···················································
+:DATAGRP  COMPACT
+          GRPSEP=NONE
+          .
+
+:DATAI    USAGE=OUT
+          HELP=URQNH
+          VAR=FMURQN
+          .&MSG(ERR0008).
+
+:DATAI    USAGE=OUT
+          HELP=UINCH
+          VAR=FMUINC
+          .&MSG(INC0001).
+:EDATAGRP.
+
+.*        ···················································
+.*        Accumulated request + increment
+.*        ···················································
+:DATAGRP  COMPACT
+          GRPSEP=NONE
+          .
+
+:DATAI    USAGE=OUT
+          HELP=ARQNH
+          VAR=FMARQN
+          .&MSG(ERR0007).
+
+:DATAI    USAGE=OUT
+          HELP=AINCH
+          VAR=FMAINC
+          .&MSG(INC0001).
+:EDATAGRP.
+
+.*        ···················································
+.*        Customer registration number
+.*        ···················································
+:DATAGRP  COMPACT
+          GRPSEP=NONE
+          .
+
+:DATAI    USAGE=OUT
+          CSRLOC=NO
+          HELP=CCREH
+          VAR=FMCCRE
+          .&MSG(CRE0001).
+
+:DATAI    USAGE=OUT
+          CSRLOC=NO
+          HELP=UCREH
+          VAR=FMUCRE
+          .&MSG(INC0001).
+:EDATAGRP.
+:EDATAGRP.
+
+:EDATA.
+:EPANEL.
+
+.*   ·····························································
+.*   Panel 4.
+.*
+.*   This panel displays a list with the users for this helpdesk.
+.*   ·····························································
+:PANEL    NAME=PA04
+          HELP=PA04H
+          KEYL=KL0401
+          TT=TT001
+          ENTER='RETURN'
+          TOPSEP=NONE
+          .&MSG(MH00101).
+
+.*   ·····························································
+.*   Second and third display line
+.*   ·····························································
+:DATA     DEPTH=2
+          BOTSEP=RULE
+          BODYSEP=SPACE
+          MAXHEAD=0
+          LAYOUT=HORIZ.
+
+.*        ···················································
+.*        Panel code
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=PANCH
+          VAR=FMPA4C
+          .
+
+.*        ···················································
+.*        Program subtitle
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=PGMDH
+          VAR=FMPG4D
+          .
+
+.*        ···················································
+.*        Time.
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=TIMEH
+          COND=COTIME
+          VAR=FMTIME
+          .
+
+.*        ···················································
+.*        Date.
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=DATEH
+          COND=CODATE
+          VAR=FMDATE
+          .
+:EDATA.
+
+.*   ·····························································
+.*   Fourth display line is blanks.
+.*   ·····························································
+:DATA     DEPTH=1
+          MAXHEAD=0
+          BOTSEP=NONE
+          BODYSEP=NONE
+          COMPACT
+          LAYOUT=HORIZ.
+:EDATA.
+
+.*   ·····························································
+.*   Data with the helpdesk code
+.*   ·····························································
+:DATA     DEPTH=2
+          LAYOUT=1.
+
+.*        ···················································
+.*        Data columns
+.*        ···················································
+:DATACOL  WIDTH=25.
+:DATACOL  WIDTH='*'.
+
+.*        ···················································
+.*        Helpdesk code
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=HEDCH
+          VAR=FMHEDC
+          .&MSG(HLP0001).
+
+:DATAIX   USAGE=OUT
+          VAR=FMHEDD
+          .
+
+:EDATA.
+
+.*   ·····························································
+.*   The list with the valid users.
+.*   ·····························································
+:LIST     DEPTH='*'
+          LISTDEF=LD0401
+          BODYSEP=SPACE
+          BOTSEP=RULE
+          ACTOR=CALLER
+          EXTACT=YES
+          SCROLL=YES
+          MAXHEAD=1
+          VIEW=ZVIEW.
+
+.*        ···················································
+.*        Top instruction
+.*        ···················································
+:TOPINST.&MSG(TIN0002,OMHDSP).
+
+.*        ···················································
+.*        List actions
+.*        ···················································
+:LISTACT  HELP=O1H
+          ACTFOR=EXTACTE
+          OPTION=1.&MSG(OPT0047).
+
+:LISTACT  HELP=O42H
+          ACTFOR=LISTE
+          OPTION=4.&MSG(OPT0038).
+
+.*        ···················································
+.*        List columns
+.*        ···················································
+:LISTCOL  VAR=FMOPTI
+          USAGE=INOUT
+          MAXWIDTH=3
+          EXTACT=YES
+          HELP=OPTIH.&MSG(COL0001).
+
+:LISTCOL  VAR=FMUSID
+          MAXWIDTH=10
+          USAGE=OUT
+          EXTACT=YES
+          HELP=USIDH.&MSG(USR0007).
+
+:LISTCOL  VAR=FMUSDC
+          MAXWIDTH=50
+          USAGE=OUT
+          HELP=USDCH.&MSG(DSC0001).
+
+.*        ···················································
+.*        List views
+.*        ···················································
+:LISTVIEW  LAYOUT=4
+           COLS='FMOPTI FMUSID'.
+
+:LISTVIEW  LAYOUT=1
+           COLS='FMOPTI FMUSID FMUSDC'.
+
+:ELIST.
+:EPANEL.
+
+.*   ·····························································
+.*   Panel 5.
+.*
+.*   This panel displays a list with the users for this helpdesk.
+.*   To delete the confirmation.
+.*   ·····························································
+:PANEL    NAME=PA05
+          HELP=PA05H
+          KEYL=KL0501
+          TT=TT001
+          ENTER='RETURN'
+          TOPSEP=NONE
+          .&MSG(MH00101).
+
+.*   ·····························································
+.*   Second and third display line
+.*   ·····························································
+:DATA     DEPTH=2
+          BOTSEP=RULE
+          BODYSEP=SPACE
+          MAXHEAD=0
+          LAYOUT=HORIZ.
+
+.*        ···················································
+.*        Panel code
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=PANCH
+          VAR=FMPA5C
+          .
+
+.*        ···················································
+.*        Program subtitle
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=PGMDH
+          VAR=FMPG5D
+          .
+
+.*        ···················································
+.*        Time.
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=TIMEH
+          COND=COTIME
+          VAR=FMTIME
+          .
+
+.*        ···················································
+.*        Date.
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=DATEH
+          COND=CODATE
+          VAR=FMDATE
+          .
+:EDATA.
+
+.*   ·····························································
+.*   Fourth display line is blanks.
+.*   ·····························································
+:DATA     DEPTH=1
+          MAXHEAD=0
+          BOTSEP=NONE
+          BODYSEP=NONE
+          COMPACT
+          LAYOUT=HORIZ.
+:EDATA.
+
+.*   ·····························································
+.*   Data with the helpdesk code
+.*   ·····························································
+:DATA     DEPTH=2
+          LAYOUT=1.
+
+.*        ···················································
+.*        Data columns
+.*        ···················································
+:DATACOL  WIDTH=25.
+:DATACOL  WIDTH='*'.
+
+.*        ···················································
+.*        Helpdesk description
+.*        ···················································
+:DATAI    USAGE=OUT
+          HELP=HEDCH
+          VAR=FMHEDC
+          .&MSG(HLP0001).
+
+:DATAIX   USAGE=OUT
+          VAR=FMHEDD
+          .
+
+:EDATA.
+
+.*   ·····························································
+.*   The list with the valid users.
+.*   ·····························································
+:LIST     DEPTH='*'
+          LISTDEF=LD0501
+          BOTSEP=RULE
+          SCROLL=YES
+          MAXHEAD=1
+          VIEW=ZVIEW.
+
+.*        ···················································
+.*        Top instruction
+.*        ···················································
+:TOPINST.&MSG(TIN0003,OMHDSP).
+:TOPINST.&MSG(TIN0004,OMHDSP).
+
+.*        ···················································
+.*        List columns
+.*        ···················································
+:LISTCOL  VAR=FMOPTI
+          USAGE=OUT
+          MAXWIDTH=3
+          HELP=OPTIH.&MSG(COL0001).
+
+:LISTCOL  VAR=FMUSID
+          MAXWIDTH=10
+          USAGE=OUT
+          HELP=USIDH.&MSG(USR0007).
+
+:LISTCOL  VAR=FMUSDC
+          MAXWIDTH=50
+          USAGE=OUT
+          HELP=USDCH.&MSG(DSC0001).
+
+.*        ···················································
+.*        List views
+.*        ···················································
+:LISTVIEW  LAYOUT=4
+           COLS='FMOPTI FMUSID'.
+
+:LISTVIEW  LAYOUT=1
+           COLS='FMOPTI FMUSID FMUSDC'.
+
+:ELIST.
+:EPANEL.
+:EPNLGRP.

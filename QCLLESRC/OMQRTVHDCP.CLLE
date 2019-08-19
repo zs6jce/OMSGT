@@ -1,0 +1,163 @@
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /*  Program ....: OMQRTVHDCP                                        */
+ /*  Description : CPP for Retrieve HelpDesk                         */
+ /*  Author .....: Remain Software                                    */
+ /*  Module .....: Kernel                                            */
+ /*  Date .......: 25 02 1997                                        */
+ /*                                                                  */
+ /*  Input ......: &HEDC       - Application code                    */
+ /*                                                                  */
+ /*  Output .....: &HEDD       - Helpdesk description                */
+ /*                &HDMC       - Helpdesk manager                    */
+ /*                &CCTN       - Call track number                   */
+ /*                &ICTN       - Increment                           */
+ /*                &CINC       - Incident number                     */
+ /*                &IINC       - Increment                           */
+ /*                &ISFL       - Incident spool file library         */
+ /*                &CTFP       - Call track free field program       */
+ /*                &CTFL       - Call track free field library       */
+ /*                &INFP       - Incidents free field program        */
+ /*                &INFL       - Incidentw free field library        */
+ /*                                                                  */
+ /*  Description : This program is the command processor for         */
+ /*  program OMQRTVHD. This command allows the user to retrieve      */
+ /*  HEL attributes from a HEL in the HEL file.                      */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+             PGM        PARM(&HEDC &HEDD &HDMC &CCTN &ICTN &CINC +
+                          &IINC &ISFL &CTFP &CTFL &INFP &INFL)
+
+ /* ---------------------------------------------------------------- */
+ /* Declare the varaibles                                            */
+ /* ---------------------------------------------------------------- */
+             DCL        VAR(&HEDC) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&HEDD) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&HDMC) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&CCTN) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&ICTN) TYPE(*DEC)  LEN(2 0)
+             DCL        VAR(&CINC) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&IINC) TYPE(*DEC)  LEN(2 0)
+             DCL        VAR(&ISFL) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&CTFP) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&CTFL) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&INFP) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&INFL) TYPE(*CHAR) LEN(10)
+
+
+ /* ---------------------------------------------------------------- */
+ /* Declare the parameters for OMQRTVCC                              */
+ /* ---------------------------------------------------------------- */
+             DCL        VAR(&H@HEDC) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&H@HEDD) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&H@HDMC) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&H@CCTN) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&H@ICTN) TYPE(*DEC)  LEN(2 0)
+             DCL        VAR(&H@CINC) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&H@IINC) TYPE(*DEC)  LEN(2 0)
+             DCL        VAR(&H@ISFL) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&H@CTFP) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&H@CTFL) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&H@INFP) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&H@INFL) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&H@ERR)  TYPE(*CHAR) LEN(136)
+
+/* ----------------------------------------------------------------- */
+/* Program initialisation                                            */
+/* ----------------------------------------------------------------- */
+
+          /* ------------------------------------------------------- */
+          /* Install the error monitor                               */
+          /* ------------------------------------------------------- */
+             MONMSG     MSGID(CPF0000 MCH0000) EXEC(GOTO CMDLBL(ERROR))
+
+ /* ---------------------------------------------------------------- */
+ /* Call the retrieve API                                            */
+ /* ---------------------------------------------------------------- */
+             CALL       PGM(OMQRTVHD) PARM(&HEDC &H@HEDD &H@HDMC +
+                          &H@CCTN &H@ICTN &H@CINC &H@IINC &H@ISFL +
+                          &H@CTFP &H@CTFL &H@INFP &H@INFL &H@ERR +
+                          '1000000000000000')
+
+/* ----------------------------------------------------------------- */
+/* Fill the output parameters if no error.                           */
+/* ----------------------------------------------------------------- */
+             IF         COND(%SST(&H@ERR 8 1) *NE 'E') THEN(DO)
+
+             CHGVAR     VAR(&HEDD) VALUE(&H@HEDD)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&HDMC) VALUE(&H@HDMC)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&CCTN) VALUE(&H@CCTN)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&ICTN) VALUE(&H@ICTN)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&CINC) VALUE(&H@CINC)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&IINC) VALUE(&H@IINC)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&ISFL) VALUE(&H@ISFL)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&CTFP) VALUE(&H@CTFP)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&CTFL) VALUE(&H@CTFL)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&INFP) VALUE(&H@INFP)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&INFL) VALUE(&H@INFL)
+             MONMSG     MSGID(MCH3601)
+
+             ENDDO
+
+/* ----------------------------------------------------------------- */
+/* Handle return messages                                            */
+/* ----------------------------------------------------------------- */
+
+          /* ------------------------------------------------------- */
+          /* Clear this programs message queue                       */
+          /* ------------------------------------------------------- */
+             RMVMSG     CLEAR(*ALL)
+
+          /* ------------------------------------------------------- */
+          /* Error                                                   */
+          /* ------------------------------------------------------- */
+             IF         COND(%SST(&H@ERR 8 1) *EQ 'E') THEN(DO)
+             SNDPGMMSG  MSGID(%SST(&H@ERR 1 7)) MSGF(OMSAPI) +
+                          MSGDTA(%SST(&H@ERR 9 128)) MSGTYPE(*ESCAPE)
+             ENDDO
+
+          /* ------------------------------------------------------- */
+          /* Warning                                                 */
+          /* ------------------------------------------------------- */
+             IF         COND(%SST(&H@ERR 8 1) *EQ 'W') THEN(DO)
+             SNDPGMMSG  MSGID(%SST(&H@ERR 1 7)) MSGF(OMSAPI) +
+                          MSGDTA(%SST(&H@ERR 9 128)) MSGTYPE(*COMP)
+             ENDDO
+
+/* ----------------------------------------------------------------- */
+/* Exit.                                                             */
+/* ----------------------------------------------------------------- */
+             GOTO       CMDLBL(ENDPGM)
+
+/* ----------------------------------------------------------------- */
+/* An error occured                                                  */
+/* ----------------------------------------------------------------- */
+ ERROR:
+             SNDPGMMSG  MSGID(OMQ5012) MSGF(OMSAPI) +
+                          MSGDTA('OMQRTVCC') MSGTYPE(*ESCAPE)
+
+/* ----------------------------------------------------------------- */
+/* End of Program                                                    */
+/* ----------------------------------------------------------------- */
+ ENDPGM:
+             ENDPGM

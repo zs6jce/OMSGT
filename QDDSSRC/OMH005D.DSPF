@@ -1,0 +1,320 @@
+      *$$\CRTOM CRTDSPF
+      *$$\ENDOM
+     A                                      HLPTITLE('Remain Software')
+     A                                      HLPSCHIDX(REMAINHD)
+     A                                      HELP
+     A*%%TS  SD  19961231  143333  EWOUT       REL-V3R1M0  5763-PW1
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      REF(*LIBL/OMSREFHD)
+     A                                      CHGINPDFT
+     A                                      PRINT(*LIBL/QSYSPRT)
+     A                                      ALTHELP(CA01)
+     A          R OMH00501                  SFL
+     A*%%TS  SD  19960909  140309  JAN         REL-V3R1M0  5763-PW1
+     A                                      TEXT('Work with severities')
+     A  93                                  SFLNXTCHG
+     A            FMOPT1         2A  B 13  2TEXT('Option field')
+     A                                      DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A            FMSEVC    R        O 13  7REFFLD(SEVC)
+     A                                      TEXT('Code')
+     A            FMDESC    R        O 13 22REFFLD(DESC)
+     A                                      TEXT('Description')
+     A            FMSTAT    R        O 13 74REFFLD(STAT)
+     A                                      TEXT('Status')
+     A            FMSEW#    R        O 13 17REFFLD(SEW#)
+     A                                      TEXT('Weight')
+     A                                      EDTCDE(Z)
+     A          R OMH00502                  SFLCTL(OMH00501)
+     A*%%TS  SD  19961231  143333  EWOUT       REL-V3R1M0  5763-PW1
+     A                                      SFLSIZ(0009)
+     A                                      SFLPAG(0008)
+     A                                      TEXT('Work with severities')
+     A                                      CA03
+     A                                      CF04
+     A                                      CA05
+     A                                      CF06
+     A                                      CA12
+     A  92                                  ROLLUP(22)
+     A                                      OVERLAY
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A  90                                  SFLDSP
+     A                                      SFLDSPCTL
+     A  91                                  SFLCLR
+     A N92                                  SFLEND(*MORE)
+     A                                      HLPCLR
+     A          H                           HLPARA(01 002 01 002)
+     A                                      HLPPNLGRP('OMH00502' OMH005)
+     A          H                           HLPARA(08 028 08 030)
+     A                                      HLPPNLGRP('OMH00502/FMPOSI' OMH005)
+     A          H                           HLPARA(05 028 05 032)
+     A                                      HLPPNLGRP('OMH00502/FMHEDC' OMH005)
+     A          H                           HLPARA(06 028 06 029)
+     A                                      HLPPNLGRP('OMH00502/FMTABC' OMH005)
+     A          H                           HLPARA(13 002 20 003)
+     A                                      HLPPNLGRP('OMH00501/FMOPT1' OMH005)
+     A          H                           HLPARA(23 001 23 080)
+     A                                      HLPPNLGRP('OMH00502/KEYS' OMH005)
+     A            CRRN01         4S 0H      SFLRCDNBR(CURSOR)
+     A            FMFMTC        10A  H
+     A            FMFLDC        10A  H
+     A                                  1  2'OMH005  '
+     A            MH00501       50A  O  1 16TEXT('Incident severity maint.')
+     A                                      MSGID(MH0 0501 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH00501'
+     A            MH00502       50A  O  2 16TEXT('Work with severity codes')
+     A                                      MSGID(MH0 0502 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            POS0001       25A  O  8  2TEXT('Position at')
+     A                                      MSGID(POS 0001 OMHDSP)
+     A            FMPOSI    R        B  8 28REFFLD(SEW#)
+     A                                      TEXT('Position at')
+     A                                      DSPATR(UL)
+     A                                      EDTCDE(4)
+     A            MH00505       79A  O 12  2TEXT('Subfile header')
+     A                                      MSGID(MH0 0505 OMHDSP)
+     A                                      DSPATR(HI)
+     A            MH00507       70A  O 10  2TEXT('2=Change  3=Copy   4=Delete')
+     A                                      MSGID(MH0 0507 OMHDSP)
+     A                                      COLOR(BLU)
+     A            MH00508        6A  O  8 35TEXT('Position at')
+     A                                      MSGID(MH0 0508 OMHDSP)
+     A            MH00503       25A  O  6  2TEXT('Position at')
+     A                                      MSGID(MH0 0503 OMHDSP)
+     A            MH00504       40A  O  6 35TEXT('Position at')
+     A                                      MSGID(MH0 0504 OMHDSP)
+     A            HED0001       25   O  5  2TEXT('HelpDesk code')
+     A                                      MSGID(HED 0001 OMHDSP)
+     A            FMHEDC    R        B  5 28REFFLD(HEDC)
+     A                                      TEXT('HelpDesk code')
+     A  71                                  DSPATR(RI)
+     A                                      DSPATR(UL)
+     A  71                                  DSPATR(PC)
+     A            FMTABC    R        B  6 28REFFLD(TABC)
+     A                                      TEXT('Position at')
+     A                                      DSPATR(UL)
+     A                                      CHECK(FE)
+     A                                      CHECK(RZ)
+     A                                      CHANGE(41)
+     A            FMHEDD    R   40A  O  5 35REFFLD(HEDD)
+     A                                      TEXT('Description')
+     A                                      DSPATR(HI)
+     A          R OMH00503
+     A*%%TS  SD  19960828  174925  JAN         REL-V3R1M0  5763-PW1
+     A                                      TEXT('Work with severities')
+     A                                      OVERLAY
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            KEY0064       78   O 23  2TEXT('F3=Exit  F5=Refresh  F6=Add  -
+     A                                      F12=Cancel')
+     A                                      MSGID(KEY 0064 OMHDSP)
+     A                                      COLOR(BLU)
+     A          R OMH00504
+     A*%%TS  SD  19961220  135611  EWOUT       REL-V3R1M0  5763-PW1
+     A                                      TEXT('Maintain severity')
+     A                                      CA03
+     A                                      CA12
+     A                                      CA05
+     A                                      CHANGE(40)
+     A                                      OVERLAY
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A                                      HLPCLR
+     A          H                           HLPARA(01 002 01 002)
+     A                                      HLPPNLGRP('OMH00504' OMH005)
+     A          H                           HLPARA(08 028 08 032)
+     A                                      HLPPNLGRP('OMH00504/FMSEVC' OMH005)
+     A          H                           HLPARA(09 028 09 030)
+     A                                      HLPPNLGRP('OMH00504/FMSEWY' OMH005)
+     A          H                           HLPARA(10 028 10 077)
+     A                                      HLPPNLGRP('OMH00504/FMDESC' OMH005)
+     A          H                           HLPARA(11 028 11 028)
+     A                                      HLPPNLGRP('OMH00504/FMDFTI' OMH005)
+     A          H                           HLPARA(23 001 23 080)
+     A                                      HLPPNLGRP('OMH00504/KEYS' OMH005)
+     A            FMHEDC    R        O  5 28REFFLD(HEDC)
+     A                                      TEXT('Help desk code')
+     A                                      DSPATR(HI)
+     A            FMHEDD        40A  O  5 35TEXT('Description')
+     A                                      DSPATR(HI)
+     A            FMTABC    R        O  6 28REFFLD(TABC)
+     A                                      TEXT('Severity type')
+     A                                      DSPATR(HI)
+     A            FMSEVC    R        B  8 28REFFLD(SEVC)
+     A                                      TEXT('Code')
+     A  80 81                               DSPATR(HI)
+     A  80 81                               DSPATR(PR)
+     A N81                                  DSPATR(UL)
+     A  72                                  DSPATR(RI)
+     A  72                                  DSPATR(PC)
+     A                                  1  2'OMH005  '
+     A            MH00501       50A  O  1 16TEXT('Incident severity maint.')
+     A                                      MSGID(MH0 0501 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH00504'
+     A            MH00515       50   O  2 16TEXT('Maintain severity code')
+     A                                      MSGID(MH0 0515 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A N80N81     ACT0001       10A  O  4  2MSGID(ACT 0001 OMHDSP)
+     A                                      DSPATR(RI)
+     A  80N81     ACT0002       10A  O  4  2MSGID(ACT 0002 OMHDSP)
+     A                                      DSPATR(RI)
+     A  80 81N82  ACT0003       10A  O  4  2MSGID(ACT 0003 OMHDSP)
+     A                                      DSPATR(RI)
+     A  80 81 82  ACT0004       10A  O  4  2MSGID(ACT 0004 OMHDSP)
+     A                                      DSPATR(RI)
+     A            MH00510       25A  O  9  2TEXT('Call track number')
+     A                                      MSGID(MH0 0510 OMHDSP)
+     A            FMSEW#    R        B  9 28REFFLD(SEW#)
+     A  80 81                               DSPATR(HI)
+     A  80 81                               DSPATR(PR)
+     A N81                                  DSPATR(UL)
+     A  73                                  DSPATR(RI)
+     A  73                                  DSPATR(PC)
+     A                                      TEXT('Weight')
+     A            MH00511       25A  O 10  2TEXT('Increment')
+     A                                      MSGID(MH0 0511 OMHDSP)
+     A            FMDESC    R     N  B 10 28REFFLD(DESC)
+     A  80 81                               DSPATR(HI)
+     A  80 81                               DSPATR(PR)
+     A  74                                  DSPATR(RI)
+     A  74                                  DSPATR(PC)
+     A N81                                  DSPATR(UL)
+     A                                      CHECK(LC)
+     A                                      TEXT('Description')
+     A            MH00512       25A  O 11  2TEXT('Incident number')
+     A                                      MSGID(MH0 0512 OMHDSP)
+     A            MH00513       25A  O 11 36TEXT('Increment')
+     A                                      MSGID(MH0 0513 OMHDSP)
+     A            FMFMTC        10A  H
+     A            FMFLDC        10A  H
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A  80 81     KEY0066       78A  O 23  2TEXT('F3=Exit ...')
+     A                                      MSGID(KEY 0066 OMHDSP)
+     A                                      COLOR(BLU)
+     A N80
+     AON81        KEY0065       78A  O 23  2TEXT('F3=Exit ...')
+     A                                      MSGID(KEY 0065 OMHDSP)
+     A                                      COLOR(BLU)
+     A            MH00509       25A  O  8  2TEXT('Call track number')
+     A                                      MSGID(MH0 0509 OMHDSP)
+     A            MH00506       25A  O  5  2TEXT('Call track number')
+     A                                      MSGID(MH0 0506 OMHDSP)
+     A            MH00503       25A  O  6  2TEXT('Call track number')
+     A                                      MSGID(MH0 0503 OMHDSP)
+     A            FMDFTI    R        B 11 28REFFLD(DFTI)
+     A  80 81
+     AO 77                                  DSPATR(HI)
+     A  80 81
+     AO 77                                  DSPATR(PR)
+     A  75                                  DSPATR(RI)
+     A  75                                  DSPATR(PC)
+     A N77N81                               DSPATR(UL)
+     A          R OMH00505
+     A*%%TS  SD  19961220  135611  EWOUT       REL-V3R1M0  5763-PW1
+     A                                      TEXT('Work with severities -
+     A                                      no records')
+     A                                      CA03
+     A                                      CF04
+     A                                      CA05
+     A                                      CF06
+     A                                      CA12
+     A                                      OVERLAY
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A                                      HLPCLR
+     A          H                           HLPARA(01 002 01 002)
+     A                                      HLPPNLGRP('OMH00505' OMH005)
+     A          H                           HLPARA(05 028 05 032)
+     A                                      HLPPNLGRP('OMH00505/FMHEDC' OMH005)
+     A          H                           HLPARA(06 028 06 029)
+     A                                      HLPPNLGRP('OMH00505/FMTABC' OMH005)
+     A          H                           HLPARA(23 001 23 080)
+     A                                      HLPPNLGRP('OMH00505/KEYS' OMH005)
+     A            FMFMTC        10A  H
+     A            FMFLDC        10A  H
+     A                                  1  2'OMH005  '
+     A            MH00501       50A  O  1 16TEXT('Incident severity maint.')
+     A                                      MSGID(MH0 0501 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH00501'
+     A            MH00502       50A  O  2 16TEXT('Selection')
+     A                                      MSGID(MH0 0502 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            POS0001       25A  O  8  2TEXT('Position at')
+     A                                      MSGID(POS 0001 OMHDSP)
+     A            FMPOSI    R        O  8 28REFFLD(SEW#)
+     A                                      TEXT('Position at')
+     A                                      DSPATR(UL)
+     A                                      EDTCDE(4)
+     A            MH00505       79A  O 12  2TEXT('Subfile header')
+     A                                      MSGID(MH0 0505 OMHDSP)
+     A                                      DSPATR(HI)
+     A            MH00507       70A  O 10  2TEXT('2=Change  3=Copy   4=Delete')
+     A                                      MSGID(MH0 0507 OMHDSP)
+     A                                      COLOR(BLU)
+     A            MH00508        6A  O  8 35TEXT('Position at')
+     A                                      MSGID(MH0 0508 OMHDSP)
+     A            MH00503       25A  O  6  2TEXT('Position at')
+     A                                      MSGID(MH0 0503 OMHDSP)
+     A            MH00504       40A  O  6 35TEXT('Position at')
+     A                                      MSGID(MH0 0504 OMHDSP)
+     A            MH00506       25A  O  5  2TEXT('Position at')
+     A                                      MSGID(MH0 0506 OMHDSP)
+     A            FMHEDC    R        B  5 28REFFLD(HEDC)
+     A                                      TEXT('HelpDesk code')
+     A  71                                  DSPATR(RI)
+     A                                      DSPATR(UL)
+     A  71                                  DSPATR(PC)
+     A            FMTABC    R        B  6 28REFFLD(TABC)
+     A                                      TEXT('Position at')
+     A                                      DSPATR(UL)
+     A                                      CHECK(FE)
+     A                                      CHECK(RB)
+     A                                      CHANGE(41)
+     A            FMHEDD        40A  O  5 35TEXT('Description')
+     A                                      DSPATR(HI)
+     A            MH00514       25A  O 14  4TEXT('Position at')
+     A                                      MSGID(MH0 0514 OMHDSP)
+     A          R MSGSFL                    SFL
+     A                                      SFLMSGRCD(24)
+     A            MSGKEY                    SFLMSGKEY
+     A            PGMQ                      SFLPGMQ
+     A
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLINZ
+     A                                      SFLSIZ(2)
+     A                                      SFLPAG(1)
+     A                                      SFLDSP
+     A                                      SFLDSPCTL
+     A N91                                  SFLEND
+     A                                      OVERLAY
+     A            PGMQ                      SFLPGMQ
+     A

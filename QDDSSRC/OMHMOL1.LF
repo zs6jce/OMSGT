@@ -1,0 +1,20 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMHMOL1                                       *
+      * Module .....: HelpDesk                                      *
+      * Function ...: HelpDesk Mail Original distributions          *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * ----------------------------------------------------------- *
+                                            UNIQUE
+                R OMHMOR                    PFILE(OMHMO)
+
+      * ----------------------------------------------------------- *
+      * Access path                                                 *
+      * MODSID      - Distribution Identifier                       *
+      * MOSEQ#      - Sequence number                               *
+      * ----------------------------------------------------------- *
+                K MODSID
+                K MOSEQ#

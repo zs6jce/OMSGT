@@ -1,0 +1,424 @@
+      *$$\CRTOM CRTDSPF
+      *$$\ENDOM
+     A*%%TS  SD  19970811  193043  WIM         REL-V3R1M0  5763-PW1
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      REF(*LIBL/OMSREFHD)
+     A                                      CHGINPDFT
+     A                                      HLPTITLE('Remain Software')
+     A                                      HLPSCHIDX(*LIBL/REMAINHD)
+     A                                      HELP
+     A                                      PRINT(*LIBL/QSYSPRT)
+     A                                      ALTHELP(CA01)
+     A          R OMH01401                  SFL
+     A*%%TS  SD  19970811  170413  WIM         REL-V3R1M0  5763-PW1
+     A                                      TEXT('Work with Route Entries (subf-
+     A                                      ile)')
+     A  93                                  SFLNXTCHG
+     A            FMOPTI         2A  B 11  2TEXT('Option field')
+     A                                      DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A  30                                  DSPATR(ND)
+     A  30                                  DSPATR(PR)
+     A            FMRES#    R        O 11  7REFFLD(RES#)
+     A            FMSUL#    R        O 11 14REFFLD(SUL#)
+     A            FMSTAT    R        O 11 19REFFLD(STAT)
+     A            FMNSRC    R        O 11 27REFFLD(STRC)
+     A            FMSTAD    R   40   O 11 39REFFLD(STAD)
+     A          R OMH01402                  SFLCTL(OMH01401)
+     A*%%TS  SD  19970811  170413  WIM         REL-V3R1M0  5763-PW1
+     A                                      SFLSIZ(0011)
+     A                                      SFLPAG(0010)
+     A                                      TEXT('Work with Route Entries')
+     A                                      CF03
+     A                                      CF05
+     A                                      CF06
+     A                                      CF12
+     A  92                                  ROLLUP
+     A                                      CF21
+     A                                      CF04
+     A                                      KEEP
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A                                      OVERLAY
+     A                                      ERASE(OMH01401)
+     A  90                                  SFLDSP
+     A                                      SFLDSPCTL
+     A  91                                  SFLCLR
+     A N92                                  SFLEND(*MORE)
+     A                                      HLPCLR
+     A          H                           HLPPNLGRP(OMH01402 OMH014)
+     A                                      HLPARA(01 002 01 002)
+     A          H                           HLPPNLGRP('OMH01401/FMOPTI' OMH014)
+     A                                      HLPARA(11 002 20 003)
+     A          H                           HLPPNLGRP('OMH01402/KEYS' OMH014)
+     A                                      HLPARA(23 001 23 080)
+     A            FMFLDC        10A  H
+     A            FMFMTC        10A  H
+     A            CRRN01         4S 0H      SFLRCDNBR(CURSOR)
+     A                                  1  2'OMH014  '
+     A            MH01400       50A  O  1 16TEXT('Question list maintenance')
+     A                                      MSGID(MH0 1400 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH01401'
+     A            MH01401       50A  O  2 16TEXT('Work with question lists')
+     A                                      MSGID(MH0 1401 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            HED0001       25A  O  5  2TEXT('HelpDesk code')
+     A                                      MSGID(HED 0001 OMHDSP)
+     A            FMHEDC    R        O  5 28REFFLD(HEDC)
+     A                                      TEXT('HelpDesk code')
+     A                                      DSPATR(HI)
+     A            FMHEDD    R   40   O  5 40REFFLD(HEDD)
+     A                                      TEXT('HelpDesk Description')
+     A                                      DSPATR(HI)
+     A            ROU0002       25A  O  6  2TEXT('Route code')
+     A                                      MSGID(ROU 0002 OMHDSP)
+     A            FMSTRC    R        O  6 28REFFLD(STRC)
+     A                                      DSPATR(HI)
+     A            FMSTRD    R   40   O  6 40REFFLD(STRD)
+     A                                      DSPATR(HI)
+     A            MH01404       75   O  8  2TEXT('Options')
+     A                                      MSGID(MH0 1404 OMHDSP)
+     A  30                                  DSPATR(ND)
+     A                                      COLOR(BLU)
+     A N30        MH01402       78A  O 10  2TEXT('Subfile header')
+     A                                      MSGID(MH0 1402 OMHDSP)
+     A                                      DSPATR(HI)
+     A  30        MH01405       78A  O 10  2TEXT('Subfile header')
+     A                                      MSGID(MH0 1405 OMHDSP)
+     A                                      DSPATR(HI)
+     A          R OMH01403
+     A*%%TS  SD  19970709  125112  JAN         REL-V3R1M0  5763-PW1
+     A                                      TEXT('Work with Route Entries (foot-
+     A                                      er)')
+     A                                      CF03
+     A                                      CF05
+     A                                      CF06
+     A                                      CF12
+     A                                      ROLLUP(92)
+     A                                      OVERLAY
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A N30        KEY0064       78   O 23  2TEXT('F3/F5/F6/F12 F21=Print list')
+     A                                      MSGID(KEY 0064 OMHDSP)
+     A                                      COLOR(BLU)
+     A  30        KEY0066       78   O 23  2TEXT('F3/F5/F6/F12 F21=Print list')
+     A                                      MSGID(KEY 0066 OMHDSP)
+     A                                      COLOR(BLU)
+     A          R OMH01404
+     A*%%TS  SD  19970811  170413  WIM         REL-V3R1M0  5763-PW1
+     A                                      TEXT('Maintain Route Entry')
+     A                                      CF03
+     A                                      CF12
+     A                                      CHANGE(40)
+     A                                      CF04
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A                                      INVITE
+     A                                      OVERLAY
+     A                                      HLPCLR
+     A          H                           HLPPNLGRP(OMH01404 OMH014)
+     A                                      HLPARA(01 002 01 002)
+     A          H                           HLPPNLGRP('OMH01404/FMRESY' OMH014)
+     A                                      HLPARA(08 028 08 030)
+     A          H                           HLPPNLGRP('OMH01404/FMSULY' OMH014)
+     A                                      HLPARA(10 028 10 028)
+     A          H                           HLPPNLGRP('OMH01404/FMSTAT' OMH014)
+     A                                      HLPARA(12 028 12 032)
+     A          H                           HLPPNLGRP('OMH01404/FMNSRC' OMH014)
+     A                                      HLPARA(16 028 16 037)
+     A          H                           HLPPNLGRP('OMH01404/KEYS' OMH014)
+     A                                      HLPARA(23 001 23 080)
+     A            FMFMTC        10A  H
+     A            FMFLDC        10A  H
+     A                                  1  2'OMH014  '
+     A            MH01400       50A  O  1 16TEXT('Question List Maintenance')
+     A                                      MSGID(MH0 1400 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH01402'
+     A            MH01403       50A  O  2 16TEXT('Maintain Question List')
+     A                                      MSGID(MH0 1403 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A N80N81     ACT0001       10A  O  4  2MSGID(ACT 0001 OMHDSP)
+     A                                      DSPATR(RI)
+     A  80N81     ACT0002       10A  O  4  2MSGID(ACT 0002 OMHDSP)
+     A                                      DSPATR(RI)
+     A  80 81     ACT0003       10A  O  4  2MSGID(ACT 0003 OMHDSP)
+     A                                      DSPATR(RI)
+     A            APP0001       25A  O  5  2TEXT('HelpDesk Code')
+     A                                      MSGID(HED 0001 OMHDSP)
+     A            FMHEDC    R        O  5 28REFFLD(HEDC)
+     A                                      TEXT('Application code')
+     A                                      DSPATR(HI)
+     A            FMHEDD    R   40   O  5 40REFFLD(HEDD)
+     A                                      DSPATR(HI)
+     A            ROU0002B      25A  O  6  2TEXT('Route code')
+     A                                      MSGID(ROU 0002 OMHDSP)
+     A            FMSTRC    R        O  6 28REFFLD(STRC)
+     A                                      DSPATR(HI)
+     A            FMSTRD    R   40   O  6 40REFFLD(STRD)
+     A                                      DSPATR(HI)
+     A  80
+     AON80        SEQ0001       25A  O  8  2MSGID(SEQ 0001 OMHDSP)
+     A            FMRES#    R     Y  B  8 28REFFLD(RES#)
+     A N80                                  DSPATR(UL)
+     A                                      EDTCDE(Z)
+     A  80                                  DSPATR(HI)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A  80                                  DSPATR(PR)
+     A                                      CHECK(RB)
+     A            SUP0002       25A  O 10  2MSGID(SUP 0002 OMHDSP)
+     A            FMSUL#    R        B 10 28REFFLD(SUL#)
+     A  81                                  DSPATR(HI)
+     A  71                                  DSPATR(RI)
+     A N81                                  DSPATR(UL)
+     A  71                                  DSPATR(PC)
+     A  81                                  DSPATR(PR)
+     A            STA0001       25A  O 12  2MSGID(STA 0001 OMHDSP)
+     A            FMSTAT    R        B 12 28REFFLD(STAT)
+     A  81                                  DSPATR(HI)
+     A  72                                  DSPATR(RI)
+     A N81                                  DSPATR(UL)
+     A  72                                  DSPATR(PC)
+     A  81                                  DSPATR(PR)
+     A            CHO0060       40A  O 12 40MSGID(CHO 0060 OMHDSP)
+     A            BOO0001        7A  O 14  6COLOR(BLU)
+     A                                      MSGID(BOO 0001 OMHDSP)
+     A  80
+     AON80        ROU0002       25A  O 16  2MSGID(ROU 0002 OMHDSP)
+     A            FMNSRC    R        B 16 28REFFLD(STRC)
+     A  81                                  DSPATR(HI)
+     A  73                                  DSPATR(RI)
+     A N81                                  DSPATR(UL)
+     A  73                                  DSPATR(PC)
+     A  81                                  DSPATR(PR)
+     A            CHO0022       40A  O 16 40MSGID(CHO 0022 OMHDSP)
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            KEY0003       78A  O 23  2TEXT('F3=Exit  F12=Cancel')
+     A                                      MSGID(KEY 0003 OMHDSP)
+     A                                      COLOR(BLU)
+     A          R OMH01405                  SFL
+     A*%%TS  SD  19970811  184132  WIM         REL-V3R1M0  5763-PW1
+     A                                      TEXT('Work with Pager/400 def (subf-
+     A                                      ile)')
+     A  93                                  SFLNXTCHG
+     A            FMOPTI         2A  B 12  2TEXT('Option field')
+     A                                      DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A  30                                  DSPATR(ND)
+     A  30                                  DSPATR(PR)
+     A            FMSEQ#    R    3 00O 12  7REFFLD(SEQ#)
+     A                                      TEXT('sequence')
+     A            FMRCVI    R        O 12 13REFFLD(RCVI)
+     A            FMMSGN    R        O 12 26REFFLD(MSGN)
+     A            FMESCI    R        O 12 36REFFLD(ESCI)
+     A          R OMH01406                  SFLCTL(OMH01405)
+     A*%%TS  SD  19970811  184132  WIM         REL-V3R1M0  5763-PW1
+     A                                      TEXT('Work with Pager/400 def')
+     A                                      CF03
+     A                                      CF05
+     A                                      CF06
+     A                                      CF12
+     A  92                                  ROLLUP
+     A                                      CF21
+     A                                      CF04
+     A                                      KEEP
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A                                      OVERLAY
+     A                                      ERASE(OMH01401)
+     A  90                                  SFLDSP
+     A                                      SFLDSPCTL
+     A  91                                  SFLCLR
+     A N92                                  SFLEND(*MORE)
+     A                                      SFLSIZ(0010)
+     A                                      SFLPAG(0009)
+     A            FMFLDC        10A  H
+     A            FMFMTC        10A  H
+     A            CRRN03         4S 0H      SFLRCDNBR(CURSOR)
+     A                                  1  2'OMH014  '
+     A            MH01400       50A  O  1 16TEXT('Question list maintenance')
+     A                                      MSGID(MH0 1400 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH01403'
+     A            MH01406       50A  O  2 16TEXT('Work with pager/400 receivers-
+     A                                      ')
+     A                                      MSGID(MH0 1406 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            HED0001       25A  O  5  2TEXT('HelpDesk code')
+     A                                      MSGID(HED 0001 OMHDSP)
+     A            FMHEDC    R        O  5 28REFFLD(HEDC)
+     A                                      TEXT('HelpDesk code')
+     A                                      DSPATR(HI)
+     A            FMHEDD    R   40   O  5 40REFFLD(HEDD)
+     A                                      TEXT('HelpDesk Description')
+     A                                      DSPATR(HI)
+     A            ROU0002       25A  O  6  2TEXT('Route code')
+     A                                      MSGID(ROU 0002 OMHDSP)
+     A            FMSTRC    R        O  6 28REFFLD(STRC)
+     A                                      DSPATR(HI)
+     A            FMSTRD    R   40   O  6 40REFFLD(STRD)
+     A                                      DSPATR(HI)
+     A            SEQ0001       25A  O  7  2TEXT('Sequence number')
+     A                                      MSGID(SEQ 0001 OMHDSP)
+     A            FMRES#         3S 0O  7 28DSPATR(HI)
+     A            FMSTAT    R        O  7 40REFFLD(STAT)
+     A                                      DSPATR(HI)
+     A            MH01407       75A  O  9  2TEXT('Options')
+     A                                      MSGID(MH0 1407 OMHDSP)
+     A  30                                  DSPATR(ND)
+     A                                      COLOR(BLU)
+     A N30        MH01408       50A  O 11  2TEXT('Subfile header')
+     A                                      MSGID(MH0 1408 OMHDSP)
+     A                                      DSPATR(HI)
+     A          R OMH01407
+     A*%%TS  SD  19970811  184132  WIM         REL-V3R1M0  5763-PW1
+     A                                      TEXT('Work with Pager/400 def (foot-
+     A                                      er)')
+     A                                      CF03
+     A                                      CF05
+     A                                      CF06
+     A                                      CF12
+     A                                      ROLLUP(92)
+     A                                      OVERLAY
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A N30        KEY0064       78A  O 23  2TEXT('F3/F5/F6/F12 F21=Print list')
+     A                                      MSGID(KEY 0064 OMHDSP)
+     A                                      COLOR(BLU)
+     A  30        KEY0066       78A  O 23  2TEXT('F3/F5/F6/F12 F21=Print list')
+     A                                      MSGID(KEY 0066 OMHDSP)
+     A                                      COLOR(BLU)
+     A          R OMH01408
+     A*%%TS  SD  19970811  193043  WIM         REL-V3R1M0  5763-PW1
+     A                                      TEXT('Create Pager/400 definition')
+     A                                      CF03
+     A                                      CF12
+     A                                      CHANGE(40)
+     A                                      CF04
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A                                      INVITE
+     A                                      OVERLAY
+     A            FMFMTC        10A  H
+     A            FMFLDC        10A  H
+     A                                  1  2'OMH014  '
+     A            MH01400       50A  O  1 16TEXT('Question List Maintenance')
+     A                                      MSGID(MH0 1400 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH01404'
+     A            MH01409       50A  O  2 16TEXT('Maintain Question List')
+     A                                      MSGID(MH0 1403 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A N80N81     ACT0001       10A  O  4  2MSGID(ACT 0001 OMHDSP)
+     A                                      DSPATR(RI)
+     A  80N81     ACT0002       10A  O  4  2MSGID(ACT 0002 OMHDSP)
+     A                                      DSPATR(RI)
+     A  80 81     ACT0003       10A  O  4  2MSGID(ACT 0003 OMHDSP)
+     A                                      DSPATR(RI)
+     A            HED0001       25A  O  5  2TEXT('HelpDesk Code')
+     A                                      MSGID(HED 0001 OMHDSP)
+     A            FMHEDC    R        O  5 28REFFLD(HEDC)
+     A                                      TEXT('Application code')
+     A                                      DSPATR(HI)
+     A            FMHEDD    R   40   O  5 40REFFLD(HEDD)
+     A                                      DSPATR(HI)
+     A            ROU0002B      25A  O  6  2TEXT('Route code')
+     A                                      MSGID(ROU 0002 OMHDSP)
+     A            FMSTRC    R        O  6 28REFFLD(STRC)
+     A                                      DSPATR(HI)
+     A            FMSTRD    R   40   O  6 40REFFLD(STRD)
+     A                                      DSPATR(HI)
+     A  80
+     AON80        SEQ0001       25A  O  7  2MSGID(SEQ 0001 OMHDSP)
+     A            FMRES#    R     Y  O  7 28REFFLD(RES#)
+     A                                      EDTCDE(Z)
+     A                                      DSPATR(HI)
+     A            FMSTAT    R        O  7 40REFFLD(STAT)
+     A                                      DSPATR(HI)
+     A  80
+     AON80        SEQ000102     25A  O  9  2MSGID(SEQ 0001 OMHDSP)
+     A            FMSEQ#         3Y 0B  9 28
+     A N80                                  DSPATR(UL)
+     A                                      EDTCDE(3)
+     A  80                                  DSPATR(HI)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A  80                                  DSPATR(PR)
+     A            RCV0001       25A  O 11  2MSGID(RCV 0001 OMHDSP)
+     A            FMRCVI    R        B 11 28REFFLD(RCVI)
+     A  81                                  DSPATR(HI)
+     A  71                                  DSPATR(RI)
+     A N81                                  DSPATR(UL)
+     A  71                                  DSPATR(PC)
+     A  81                                  DSPATR(PR)
+     A            ESC0004       25A  O 12  2MSGID(ESC 0004 OMHDSP)
+     A            FMESCI    R        B 12 28REFFLD(ESCI)
+     A  81                                  DSPATR(HI)
+     A  72                                  DSPATR(RI)
+     A N81                                  DSPATR(UL)
+     A  72                                  DSPATR(PC)
+     A  81                                  DSPATR(PR)
+     A            MSG0001       25A  O 13  2MSGID(MSG 0001 OMHDSP)
+     A            FMMSGN    R        B 13 28REFFLD(MSGN)
+     A  81                                  DSPATR(HI)
+     A  73                                  DSPATR(RI)
+     A N81                                  DSPATR(UL)
+     A  73                                  DSPATR(PC)
+     A  81                                  DSPATR(PR)
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            KEY0003       78A  O 23  2TEXT('F3=Exit  F12=Cancel')
+     A                                      MSGID(KEY 0003 OMHDSP)
+     A                                      COLOR(BLU)
+     A          R MSGSFL
+     A                                      SFL SFLMSGRCD(24)
+     A            MSGKEY                    SFLMSGKEY
+     A            PGMQ                      SFLPGMQ
+     A          R MSGCTL
+     A                                      SFLCTL(MSGSFL)
+     A                                      SFLINZ
+     A                                      SFLSIZ(2)
+     A                                      SFLPAG(1)
+     A                                      SFLDSP
+     A                                      SFLDSPCTL
+     A N91                                  SFLEND
+     A                                      OVERLAY
+     A            PGMQ                      SFLPGMQ

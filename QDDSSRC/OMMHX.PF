@@ -1,0 +1,33 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMMHX                                         *
+      * Function ...: Helpdesk mail extensions maintenance          *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMRSME
+      * ------------------------------------------------------------ *
+                R OMMHXR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  HXHEDC    R               REFFLD(HEDC)
+                  HXAPII    R               REFFLD(APII)
+                  HXSWTU    R               REFFLD(SWTU)
+                  HXHUID    R               REFFLD(HUID)
+                  HXHADR    R               REFFLD(HADR)
+                  HXEMAC    R               REFFLD(EMAC)
+                  HXEXTI    R               REFFLD(EXTI)
+                  HXEEMC    R               REFFLD(EEMC)
+                  HXMATF    R               REFFLD(MATF)
+                  HXMATL    R               REFFLD(MATL)

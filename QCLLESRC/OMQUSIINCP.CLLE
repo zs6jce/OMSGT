@@ -1,0 +1,395 @@
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /*  Program ....: OMQUSIINCP                                        */
+ /*  Description : CPP for Interface with incident through API       */
+ /*  Author .....: Remain Software                                    */
+ /*  Module .....: Helpdesk                                          */
+ /*  Date .......: 17 11 1996                                        */
+ /*                                                                  */
+ /*  Parameters .: &ACTC       - Action code                         */
+ /*                &FUNKEY     - Use function keys                   */
+ /*                &USERKEYS   - User function keys                  */
+ /*                &CLOSE      - Close API on return                 */
+ /*                &REDISPLAY  - Fast redisplay                      */
+ /*                &PRHEDC     - Protect Helpdesk                    */
+ /*                &PREFILL    - Prefill fields                      */
+ /*                &CSRFIELD   - Cursor field                        */
+ /*                &KEY        - Incident key                        */
+ /*                ....        - The incident attributes             */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+             PGM        PARM(&ACTC &FUNKEY &USERKEYS &CLOSE +
+                          &REDISPLAY &PRHEDC &PREFILL &CSRFIELD +
+                          &KEY  &CTN# &HEDC &INC# &SHID &AIN# &INDT +
+                          &INTM &RCDT &RCTM &STRC &RES# &SUL# &STAT +
+                          &SRDT &SRTM &SEV1 &SEV2 &SEV3 &PRI# &ESC# +
+                          &IEDT &IETM &RUID &AUID &ITPC &CFL# &CFIC +
+                          &USF1 &USF2 &USF3)
+
+ /* ---------------------------------------------------------------- */
+ /* Declare parameter-variables                                      */
+ /* ---------------------------------------------------------------- */
+             DCL        VAR(&ACTC)       TYPE(*CHAR) LEN(2)
+             DCL        VAR(&FUNKEY)     TYPE(*CHAR) LEN(5)
+             DCL        VAR(&USERKEYS)   TYPE(*CHAR) LEN(1581)
+             DCL        VAR(&CLOSE)      TYPE(*CHAR) LEN(1)
+             DCL        VAR(&REDISPLAY)  TYPE(*CHAR) LEN(1)
+             DCL        VAR(&PRHEDC)     TYPE(*CHAR) LEN(1)
+             DCL        VAR(&PREFILL)    TYPE(*CHAR) LEN(1)
+             DCL        VAR(&CSRFIELD)   TYPE(*CHAR) LEN(10)
+             DCL        VAR(&KEY)        TYPE(*CHAR) LEN(18)
+             DCL        VAR(&HEDC)       TYPE(*CHAR) LEN(005)
+             DCL        VAR(&INC#)       TYPE(*CHAR) LEN(010)
+             DCL        VAR(&CTN#)       TYPE(*CHAR) LEN(010)
+             DCL        VAR(&SHID)       TYPE(*CHAR) LEN(050)
+             DCL        VAR(&AIN#)       TYPE(*CHAR) LEN(010)
+             DCL        VAR(&INDT)       TYPE(*CHAR) LEN(007)
+             DCL        VAR(&INTM)       TYPE(*CHAR) LEN(006)
+             DCL        VAR(&RCDT)       TYPE(*CHAR) LEN(007)
+             DCL        VAR(&RCTM)       TYPE(*CHAR) LEN(006)
+             DCL        VAR(&STRC)       TYPE(*CHAR) LEN(010)
+             DCL        VAR(&RES#)       TYPE(*CHAR) LEN(002)
+             DCL        VAR(&SUL#)       TYPE(*CHAR) LEN(001)
+             DCL        VAR(&STAT)       TYPE(*CHAR) LEN(005)
+             DCL        VAR(&SRDT)       TYPE(*CHAR) LEN(007)
+             DCL        VAR(&SRTM)       TYPE(*CHAR) LEN(006)
+             DCL        VAR(&SEV1)       TYPE(*CHAR) LEN(005)
+             DCL        VAR(&SEV2)       TYPE(*CHAR) LEN(005)
+             DCL        VAR(&SEV3)       TYPE(*CHAR) LEN(005)
+             DCL        VAR(&PRI#)       TYPE(*CHAR) LEN(002)
+             DCL        VAR(&ESC#)       TYPE(*CHAR) LEN(002)
+             DCL        VAR(&IEDT)       TYPE(*CHAR) LEN(007)
+             DCL        VAR(&IETM)       TYPE(*CHAR) LEN(006)
+             DCL        VAR(&RUID)       TYPE(*CHAR) LEN(010)
+             DCL        VAR(&AUID)       TYPE(*CHAR) LEN(010)
+             DCL        VAR(&ITPC)       TYPE(*CHAR) LEN(005)
+             DCL        VAR(&CFL#)       TYPE(*CHAR) LEN(003)
+             DCL        VAR(&CFIC)       TYPE(*CHAR) LEN(012)
+             DCL        VAR(&USF1)       TYPE(*CHAR) LEN(010)
+             DCL        VAR(&USF2)       TYPE(*CHAR) LEN(025)
+             DCL        VAR(&USF3)       TYPE(*CHAR) LEN(008)
+
+          /* ------------------------------------------------------- */
+          /* Declare program variables                               */
+          /* ------------------------------------------------------- */
+             DCL        VAR(&I@ILVL)  TYPE(*CHAR) LEN(8)
+             DCL        VAR(&I@ERR)   TYPE(*CHAR) LEN(136)
+             DCL        VAR(&I@FUN#)  TYPE(*CHAR) LEN(2)
+             DCL        VAR(&I@FUN)   TYPE(*CHAR) LEN(782)
+             DCL        VAR(&I@FUSC)  TYPE(*CHAR) LEN(2)
+             DCL        VAR(&I@CFLC)  TYPE(*CHAR) LEN(10)
+             DCL        VAR(&I@KEY)   TYPE(*CHAR) LEN(31)
+             DCL        VAR(&I@ACTC)  TYPE(*CHAR) LEN(2)
+             DCL        VAR(&I@BUF)   TYPE(*CHAR) LEN(300)
+             DCL        VAR(&I@PRCA)  TYPE(*CHAR) LEN(16)
+
+          /* ------------------------------------------------------- */
+          /* Program workfields                                      */
+          /* ------------------------------------------------------- */
+             DCL        VAR(&W#C1) TYPE(*DEC) LEN(6 0)
+             DCL        VAR(&W#C2) TYPE(*DEC) LEN(6 0)
+             DCL        VAR(&W#IX) TYPE(*DEC) LEN(6 0)
+             DCL        VAR(&W#IY) TYPE(*DEC) LEN(6 0)
+             DCL        VAR(&BIN)  TYPE(*CHAR) LEN(2)
+
+          /* ------------------------------------------------------- */
+          /* Inicdent file buffer                                    */
+          /* ------------------------------------------------------- */
+             DCLF       FILE(OMINC)
+
+
+/* ----------------------------------------------------------------- */
+/* Program initialisation                                            */
+/* ----------------------------------------------------------------- */
+
+
+
+          /* ------------------------------------------------------- */
+          /* Install the error monitor                               */
+          /* ------------------------------------------------------- */
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ERROR))
+
+          /* ------------------------------------------------------- */
+          /* Fill default parameters                                 */
+          /* ------------------------------------------------------- */
+             CHGVAR     VAR(&I@ILVL) VALUE('V3R0M0  ')
+             CHGVAR     VAR(&I@FUN#) VALUE(X'00')
+             CHGVAR     VAR(&I@FUN) VALUE(' ')
+             CHGVAR     VAR(&I@ACTC) VALUE(&ACTC)
+
+          /* ------------------------------------------------------- */
+          /* Extract the function keys if wanted                     */
+          /*                                                         */
+          /* W#IY = Offset in internal function key array            */
+          /* W#IX = Offset in external function key array            */
+          /* W#C1 = The number of keys passed                        */
+          /* W#C2 = Used to calculate offset data                    */
+          /* ------------------------------------------------------- */
+             CHGVAR     VAR(&I@FUN#) VALUE(X'0000')
+
+             IF         COND(&FUNKEY *EQ '*USER') THEN(DO)
+
+             CHGVAR     VAR(&I@FUN#) VALUE(%SST(&USERKEYS 1 2))
+
+             CHGVAR     VAR(&W#C1)  VALUE(%BIN(&I@FUN#))
+             CHGVAR     VAR(&W#C2)  VALUE(0)
+             CHGVAR     VAR(&W#IX)  VALUE(1)
+
+          /* ------------------------------------------------------- */
+          /* If keys where passed...                                 */
+          /* ------------------------------------------------------- */
+             IF         COND(&W#C1 *GT 0) THEN(DO)
+
+ KEY_LOOP:
+
+          /* ------------------------------------------------------- */
+          /* Increment the loop counter.                             */
+          /* ------------------------------------------------------- */
+             CHGVAR     VAR(&W#C2) VALUE(&W#C2 +1)
+
+          /* ------------------------------------------------------- */
+          /* Get the offset to the data.                             */
+          /* ------------------------------------------------------- */
+             CHGVAR     VAR(&W#IX)  VALUE((&W#C2 * 2) + 1)
+             CHGVAR     VAR(&BIN)   VALUE(%SST(&USERKEYS &W#IX 2))
+             CHGVAR     VAR(&W#IX)  VALUE(%BIN(&BIN))
+             CHGVAR     VAR(&W#IX)  VALUE(&W#IX + 3)
+
+          /* ------------------------------------------------------- */
+          /* Get the offset to the internal function key array.      */
+          /* ------------------------------------------------------- */
+             CHGVAR     VAR(&W#C2)  VALUE(&W#C2 - 1)
+             CHGVAR     VAR(&W#IY)  VALUE((&W#C2 * 34) + 1)
+             CHGVAR     VAR(&W#C2)  VALUE(&W#C2 + 1)
+
+          /* ------------------------------------------------------- */
+          /* Store the function key number                           */
+          /* ------------------------------------------------------- */
+             CHGVAR     VAR(%SST(&I@FUN &W#IY 2)) +
+                          VALUE(%SST(&USERKEYS &W#IX 2))
+
+          /* ------------------------------------------------------- */
+          /* Store the function key type                             */
+          /* ------------------------------------------------------- */
+             CHGVAR     VAR(&W#IX)  VALUE(&W#IX + 2)
+             CHGVAR     VAR(&W#IY)  VALUE(&W#IY + 2)
+             CHGVAR     VAR(%SST(&I@FUN &W#IY 1)) +
+                          VALUE(%SST(&USERKEYS &W#IX 1))
+
+          /* ------------------------------------------------------- */
+          /* A message id was passed.                                */
+          /* ------------------------------------------------------- */
+             CHGVAR     VAR(&W#IX)  VALUE(&W#IX +1)
+             IF         COND(%SST(&USERKEYS &W#IX 7) *NE +
+                          '*NONE') THEN(DO)
+
+                     /* -------------------------------------------- */
+                     /* Store the text or message code (0=message id)*/
+                     /* -------------------------------------------- */
+             CHGVAR     VAR(&W#IY)  VALUE(&W#IY + 1)
+             CHGVAR     VAR(%SST(&I@FUN &W#IY 1)) VALUE('0')
+
+                     /* -------------------------------------------- */
+                     /* Store the message id.                        */
+                     /* -------------------------------------------- */
+             CHGVAR     VAR(&W#IY)  VALUE(&W#IY + 1)
+             CHGVAR     VAR(%SST(&I@FUN &W#IY 7)) +
+                          VALUE(%SST(&USERKEYS &W#IX 7))
+
+                     /* -------------------------------------------- */
+                     /* Store the message file                       */
+                     /* -------------------------------------------- */
+             CHGVAR     VAR(&W#IX)  VALUE(&W#IX + 7)
+             CHGVAR     VAR(&W#IY)  VALUE(&W#IY + 7)
+             CHGVAR     VAR(%SST(&I@FUN &W#IY 10)) +
+                          VALUE(%SST(&USERKEYS &W#IX 10))
+
+                     /* -------------------------------------------- */
+                     /* Store the message library                    */
+                     /* -------------------------------------------- */
+             CHGVAR     VAR(&W#IX)  VALUE(&W#IX + 10)
+             CHGVAR     VAR(&W#IY)  VALUE(&W#IY + 10)
+             CHGVAR     VAR(%SST(&I@FUN &W#IY 10)) +
+                          VALUE(%SST(&USERKEYS &W#IX 10))
+
+                     /* -------------------------------------------- */
+                     /* Store the filler                             */
+                     /* -------------------------------------------- */
+             CHGVAR     VAR(&W#IY)  VALUE(&W#IY + 10)
+             CHGVAR     VAR(%SST(&I@FUN &W#IY 3)) VALUE('   ')
+             ENDDO
+
+
+          /* ------------------------------------------------------- */
+          /* A message text was specified.                           */
+          /* ------------------------------------------------------- */
+    ELSE     DO
+
+
+                     /* -------------------------------------------- */
+                     /* Store the text or message code (1=Text)      */
+                     /* -------------------------------------------- */
+             CHGVAR     VAR(&W#IY)  VALUE(&W#IY + 1)
+             CHGVAR     VAR(%SST(&I@FUN &W#IY 1)) VALUE('1')
+             CHGVAR     VAR(&W#IY) VALUE(&W#IY +1)
+
+                     /* -------------------------------------------- */
+                     /* Store the text                               */
+                     /* -------------------------------------------- */
+             CHGVAR     VAR(&W#IX)  VALUE(&W#IX + 27)
+             CHGVAR     VAR(%SST(&I@FUN &W#IY 30)) +
+                          VALUE(%SST(&USERKEYS &W#IX 30))
+
+             ENDDO
+
+          /* ------------------------------------------------------- */
+          /* If more keys then reloop                                */
+          /* ------------------------------------------------------- */
+             IF         COND(&W#C1 *NE &W#C2) THEN(GOTO +
+                          CMDLBL(KEY_LOOP))
+             ENDDO
+             ENDDO
+
+          /* ------------------------------------------------------- */
+          /* Fill the cursorfield                                    */
+          /* ------------------------------------------------------- */
+             CHGVAR     VAR(&I@CFLC) VALUE(&CSRFIELD)
+
+          /* ------------------------------------------------------- */
+          /* Fill the processing array                               */
+          /* ------------------------------------------------------- */
+             CHGVAR     VAR(&I@PRCA) VALUE('0000000000000000')
+
+             CHGVAR     VAR(%SST(&I@PRCA 1 1)) VALUE(&CLOSE)
+             CHGVAR     VAR(%SST(&I@PRCA 2 1)) VALUE(&REDISPLAY)
+             CHGVAR     VAR(%SST(&I@PRCA 3 1)) VALUE(&PREFILL)
+             CHGVAR     VAR(%SST(&I@PRCA 4 1)) VALUE(&PRHEDC)
+
+          /* ------------------------------------------------------- */
+          /* Parse the key                                           */
+          /* ------------------------------------------------------- */
+             CHGVAR     VAR(%SST(&I@KEY  1 5))  VALUE(%SST(&KEY 3  5))
+             CHGVAR     VAR(%SST(&I@KEY  6 10)) VALUE(%SST(&KEY 8 10))
+
+          /* ------------------------------------------------------- */
+          /* Prefill?                                                */
+          /* ------------------------------------------------------- */
+             CHGVAR     VAR(&I@BUF) VALUE(' ')
+             IF         COND(&PREFILL *NE '0') THEN(DO)
+
+          /* ------------------------------------------------------- */
+          /* Retrieve the helpdesk                                   */
+          /* ------------------------------------------------------- */
+             IF         COND(&HEDC *EQ '*CUR ') THEN(DO)
+             RTVDTAARA  DTAARA(OMHEDC (1 5)) RTNVAR(&HEDC)
+
+          /* ------------------------------------------------------- */
+          /* Send message if prefill helpdesk and *CUR not found     */
+          /* ------------------------------------------------------- */
+             MONMSG     MSGID(CPF0000) EXEC(DO)
+             IF         COND((&CSRFIELD *EQ 'HEDC' *AND &PREFILL *EQ +
+                          '2') *OR &PREFILL *EQ '1') THEN(SNDPGMMSG +
+                          MSGID(OMQA00E) MSGF(OMSAPI) MSGTYPE(*ESCAPE))
+             ENDDO
+             ENDDO
+
+          /* ------------------------------------------------------- */
+          /* Set numeric values                                      */
+          /* ------------------------------------------------------- */
+          /* CHGVAR     VAR(&NCINDT) VALUE(&INDT)                    */
+          /* CHGVAR     VAR(&NCINTM) VALUE(&INTM)                    */
+          /* CHGVAR     VAR(&NCRCDT) VALUE(&RCDT)                    */
+          /* CHGVAR     VAR(&NCRCTM) VALUE(&RCTM)                    */
+          /* CHGVAR     VAR(&NCRES#) VALUE(&RES#)                    */
+          /* CHGVAR     VAR(&NCSUL#) VALUE(&SUL#)                    */
+          /* CHGVAR     VAR(&NCSRDT) VALUE(&SRDT)                    */
+          /* CHGVAR     VAR(&NCSRTM) VALUE(&SRTM)                    */
+          /* CHGVAR     VAR(&NCPRI#) VALUE(&PRI#)                    */
+          /* CHGVAR     VAR(&NCESC#) VALUE(&ESC#)                    */
+          /* CHGVAR     VAR(&NCIEDT) VALUE(&IEDT)                    */
+          /* CHGVAR     VAR(&NCIETM) VALUE(&IETM)                    */
+          /* CHGVAR     VAR(&NCCFL#) VALUE(&CFL#)                    */
+          /* CHGVAR     VAR(&NCUSF3) VALUE(&USF3)                    */
+
+          /* ------------------------------------------------------- */
+          /* Fill the buffer.                                        */
+          /* ------------------------------------------------------- */
+             CHGVAR     VAR(%SST(&I@BUF 001 005)) VALUE(&HEDC)
+             CHGVAR     VAR(%SST(&I@BUF 006 010)) VALUE(&INC#)
+             CHGVAR     VAR(%SST(&I@BUF 016 010)) VALUE(&CTN#)
+             CHGVAR     VAR(%SST(&I@BUF 026 010)) VALUE(&AIN#)
+             CHGVAR     VAR(%SST(&I@BUF 036 007)) VALUE(&INDT)
+             CHGVAR     VAR(%SST(&I@BUF 043 006)) VALUE(&INTM)
+             CHGVAR     VAR(%SST(&I@BUF 049 007)) VALUE(&RCDT)
+             CHGVAR     VAR(%SST(&I@BUF 056 006)) VALUE(&RCTM)
+             CHGVAR     VAR(%SST(&I@BUF 062 010)) VALUE(&STRC)
+             CHGVAR     VAR(%SST(&I@BUF 072 002)) VALUE(&RES#)
+             CHGVAR     VAR(%SST(&I@BUF 074 001)) VALUE(&SUL#)
+             CHGVAR     VAR(%SST(&I@BUF 075 005)) VALUE(&STAT)
+             CHGVAR     VAR(%SST(&I@BUF 080 007)) VALUE(&SRDT)
+             CHGVAR     VAR(%SST(&I@BUF 087 006)) VALUE(&SRTM)
+             CHGVAR     VAR(%SST(&I@BUF 093 005)) VALUE(&SEV1)
+             CHGVAR     VAR(%SST(&I@BUF 098 005)) VALUE(&SEV2)
+             CHGVAR     VAR(%SST(&I@BUF 103 005)) VALUE(&SEV3)
+             CHGVAR     VAR(%SST(&I@BUF 108 002)) VALUE(&PRI#)
+             CHGVAR     VAR(%SST(&I@BUF 110 002)) VALUE(&ESC#)
+             CHGVAR     VAR(%SST(&I@BUF 112 007)) VALUE(&IEDT)
+             CHGVAR     VAR(%SST(&I@BUF 119 006)) VALUE(&IETM)
+             CHGVAR     VAR(%SST(&I@BUF 125 010)) VALUE(&RUID)
+             CHGVAR     VAR(%SST(&I@BUF 135 010)) VALUE(&AUID)
+             CHGVAR     VAR(%SST(&I@BUF 145 005)) VALUE(&ITPC)
+             CHGVAR     VAR(%SST(&I@BUF 150 003)) VALUE(&CFL#)
+             CHGVAR     VAR(%SST(&I@BUF 153 012)) VALUE(&CFIC)
+             CHGVAR     VAR(%SST(&I@BUF 165 010)) VALUE(&USF1)
+             CHGVAR     VAR(%SST(&I@BUF 175 025)) VALUE(&USF2)
+             CHGVAR     VAR(%SST(&I@BUF 200 008)) VALUE(&USF3)
+             CHGVAR     VAR(%SST(&I@BUF 208 050)) VALUE(&SHID)
+             CHGVAR     VAR(%SST(&I@BUF 258 043)) VALUE(' ')
+             ENDDO
+
+          /* ------------------------------------------------------- */
+          /* Call the API.                                           */
+          /* ------------------------------------------------------- */
+             CALL       PGM(OMQUSIIN) PARM(&I@ILVL   +
+                                           &I@ACTC   +
+                                           &I@BUF    +
+                                           &I@PRCA   +
+                                           &I@ERR    +
+                                           &I@FUN#   +
+                                           &I@FUN    +
+                                           &I@FUSC   +
+                                           &I@CFLC   +
+                                           &I@KEY    )
+
+/* ----------------------------------------------------------------- */
+/* Error, escape.                                                    */
+/* ----------------------------------------------------------------- */
+             IF         COND(%SST(&I@ERR 8 1) *EQ 'E') THEN(DO)
+             SNDPGMMSG  MSGID(%SST(&I@ERR 1 7)) MSGF(OMSAPI) +
+                          MSGDTA(%SST(&I@ERR 9 128)) MSGTYPE(*ESCAPE)
+             ENDDO
+
+             IF         COND(%SST(&I@ERR 8 1) *EQ 'W') THEN(DO)
+             SNDPGMMSG  MSGID(%SST(&I@ERR 1 7)) MSGF(OMSAPI) +
+                          MSGDTA(%SST(&I@ERR 9 128)) MSGTYPE(*COMP)
+             ENDDO
+
+
+
+/* ----------------------------------------------------------------- */
+/* Exit.                                                             */
+/* ----------------------------------------------------------------- */
+             GOTO       CMDLBL(ENDPGM)
+
+/* ----------------------------------------------------------------- */
+/* An error occured                                                  */
+/* ----------------------------------------------------------------- */
+ ERROR:
+             SNDPGMMSG  MSGID(OMQ5012) MSGF(OMSAPI) +
+                          MSGDTA('OMQUSIIN') MSGTYPE(*ESCAPE)
+
+/* ----------------------------------------------------------------- */
+/* End of Program                                                    */
+/* ----------------------------------------------------------------- */
+ ENDPGM:
+             ENDPGM

@@ -1,0 +1,404 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: OMH011                                      :   *.
+.*   : Help for ...: Customer Maintenance                        :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   : This panelgroup contains the U.I.M. help texts for        :   *.
+.*   : Customer Maintenance                                      :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:PNLGRP.
+:IMPORT PNLGRP=OMSREFHD      NAME='*'.
+
+.*   *************************************************************   *.
+.*   * Customer Maintnenance                                     *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=STRCM.Customer Maintenance - Help
+
+:IMHELP NAME=STRCMGEN.
+
+:P.
+Select one of the following:
+
+:P.
+:LINK PERFORM='DSPHELP OMH01102IX'.
+Display 1 - Work with Customers
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP OMH01104IX'.
+Display 2 - Maintain Customer
+:ELINK.
+
+:EHELP.
+
+:HELP NAME=OMH01102IX.General Help For Display 1
+:IMHELP NAME=OMH01102.
+:IMHELP NAME='OMH01102/FMPOSI'.
+:IMHELP NAME='OMH01101/FMOPT1'.
+:IMHELP NAME='OMH01102/KEYS'.
+:EHELP.
+
+:HELP NAME=OMH01104IX.General Help For Display 2
+:IMHELP NAME=OMH01104.
+:IMHELP NAME='OMH01104/FMCUSC'.
+:IMHELP NAME='OMH01104/FMNAMD'.
+:IMHELP NAME='OMH01104/FMADST'.
+:IMHELP NAME='OMH01104/FMZIPC'.
+:IMHELP NAME='OMH01104/FMADRE'.
+:IMHELP NAME='OMH01104/FMCOUD'.
+:IMHELP NAME='OMH01104/FMUSF1'.
+:IMHELP NAME='OMH01104/FMUSF2'.
+:IMHELP NAME='OMH01104/FMUSF3'.
+:IMHELP NAME='OMH01104/KEYS'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : General help for Customer Maintenance                     :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=STRCMGEN.Customer Maintenance - Help
+:XH3.Customer Maintenance
+:ISCH ROOTS='customer maintenance'.
+Customer Maintenance
+
+:P.
+The customer maintenance function enables you to create references
+to the customer who are allowed to call the HelpDesk. You are able
+to create and change customer or to remove customers from the
+database. You can not remove a customer if the customer has ever
+reported incidents.
+
+:P.
+You can enter your customers, being internal or external, in the
+database along with some location data. If you want more information
+about a specific attribute, move the cursor to the attribute area
+and press help. If you want more information about customers in
+general, please follow this link to the
+:LINK PERFORM='DSPHELP CONCUSC OMSCONHD'.
+customer concepts.
+:ELINK.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 1                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH01102.General Help For Display 1
+
+:XH3.Display 1 - Work with customers
+
+:P.
+:LINK PERFORM='DSPHELP STRCM'.
+General Information.
+:ELINK.
+
+:P.
+The work with customers display enables you to work with your
+customer base. All your customers are in this list. Use the
+page keys, or the position attribute to move to a specific
+customer. Use one of the enabled options to perform actions
+on the customer.
+
+:P.
+If you want more information
+about a specific attribute, move the cursor to the attribute area
+and press help. If you want more information about customers in
+general, please follow this link to the
+:LINK PERFORM='DSPHELP CONCUSC OMSCONHD'.
+customer concepts.
+:ELINK.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMPOSI (Position at)                           :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 05 028  05 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01102/FMPOSI'.Position to - Help
+
+:XH3.Position to
+:P.
+:IMHELP NAME='CUSC001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMOPT1 (Option field)                          :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 10 002  20 003                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01101/FMOPT1'.Option - Help
+
+:XH3.Option
+:P.
+These are the list options. The options all act on a
+specific list entry. The following options are available;
+
+:PARML.
+:PT.2=Change
+:PD.
+Use option 2 to change the customer.
+:PT.4=Delete
+:PD.
+Use option 4 to remove the customer. The customer can not be removed
+if there are call tracks for this customer.
+:PT.5=Display
+:PD.
+Use option 5 to view the customer definition.
+:PT.7=Rename
+:PD.
+Use option 7 to rename a customer
+:PT.8=Mail Extensions
+:PD.
+Use option 8 to work with the customers mail extensions.
+:PT.12=Work with Contacts
+:PD.
+Use option 12 to work with the contacts of this customer.
+:EPARML.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01102/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F3=Exit
+:PD.
+Press F3 to end the current task and return to the display
+where you began the task. Any options or changes that you
+keyed on input prompts
+:CIT.since the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F5=Refresh
+:PD.
+Press F5 to refresh the display you are currently working
+on with the (new) values from the OMS database. This is
+sometimes necessary if fields have been changed but the
+changes are not directly reflected on the display.
+
+:PT.F6=Add
+:PD.
+Press F6 to create a customer.
+
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+
+:PT.Roll Keys
+:PD.
+Use the rollkeys to display the next or previous page of the display
+you are currently viewing. If more data is available is indicated
+by a :HP2.+:EHP2. charachter or the text :HP2.'More...':EHP2. in the
+bottom rigth corner of the display or list.
+
+:EPARML.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 2                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH01104.General Help For Display 2
+
+:XH3.Display 2 - Maintain Customer
+
+:P.
+:LINK PERFORM='DSPHELP STRCM'.
+General Information.
+:ELINK.
+
+:P.
+The maintain customer display enables you to maintain the selected
+customer. The action chosen on the previous display will be
+executed here.
+
+:P.
+If you want more information
+about a specific attribute, move the cursor to the attribute area
+and press help. If you want more information about customers in
+general, please follow this link to the
+:LINK PERFORM='DSPHELP CONCUSC OMSCONHD'.
+customer concepts
+:ELINK.
+if you require more information.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMCUSC (Code)                                  :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 06 028  06 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01104/FMCUSC'.
+:IMHELP NAME='CUSC001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMNAMD (Name)                                  :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 08 028  08 077                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01104/FMNAMD'.
+:IMHELP NAME='NAMD001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMADST (Street)                                :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 09 028  09 077                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01104/FMADST'.
+:IMHELP NAME='ADST001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMZIPC (Zipcode)                               :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 10 028  10 052                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01104/FMZIPC'.
+:IMHELP NAME='ZIPC001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMADRE (Residence)                             :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 11 028  11 077                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01104/FMADRE'.
+:IMHELP NAME='ADRE001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMCOUD (Country)                               :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 12 028  12 077                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01104/FMCOUD'.
+:IMHELP NAME='COUD001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMUSF1 (User field 1)                          :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 14 028  14 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01104/FMUSF1'.
+:IMHELP NAME='USF1001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMUSF2 (User field 2)                          :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 15 028  15 052                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01104/FMUSF2'.
+:IMHELP NAME='USF2001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMUSF3 (User field 3)                          :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 16 028  16 042                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01104/FMUSF3'.
+:IMHELP NAME='USF3001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01104/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F3=Exit
+:PD.
+Press F3 to end the current task and return to the display
+where you began the task. Any options or changes that you
+keyed on input prompts
+:CIT.since the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F5=Refresh
+:PD.
+Press F5 to refresh the display you are currently working
+on with the (new) values from the OMS database. This is
+sometimes necessary if fields have been changed but the
+changes are not directly reflected on the display.
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+:EPARML.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 1 - no records                   *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH01105.General Help For Display 1
+:IMHELP NAME=OMH01102.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMPOSI (Position at)                           :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 05 028  05 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01105/FMPOSI'.
+:IMHELP NAME='OMH01102/FMPOSI'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01105/KEYS'.
+:IMHELP NAME='OMH01102/KEYS'.
+:EHELP.
+:EPNLGRP.

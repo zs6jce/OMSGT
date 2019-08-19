@@ -1,0 +1,41 @@
+
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMCRN                                         *
+      * Function ...: Customer Renames                              *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * This file contains all pending and finished Rename-         *
+      * actions on Customers                                        *
+      *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMOPHR
+      * ------------------------------------------------------------ *
+                R OMCRNR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  RNCUSC    R               REFFLD(CUSC)
+                                            TEXT('Current Customer Code')
+                  RNNCUS    R               REFFLD(CUSC)
+                                            TEXT('New Customer Code')
+                  RNNNAM    R               REFFLD(NAMD)
+                                            TEXT('New Name')
+                  RNUSID    R               TEXT('Renamed by')
+                                            REFFLD(USID)
+                  RNDATE    R               TEXT('Date renamed')
+                                            REFFLD(DATE)
+                  RNTIME    R               TEXT('Time renamed')
+                                            REFFLD(TIME)
+                  RNCOMP    R               REFFLD(INDI)
+                                            TEXT('Rename Completed? 0=No 1=Yes')

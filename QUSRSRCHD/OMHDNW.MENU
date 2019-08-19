@@ -1,0 +1,188 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: OMHDNW                                      :   *.
+.*   : Function ...: HelpDesk networking                         :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+.*   ·····························································
+.*   Panel group
+.*   ·····························································
+
+:PNLGRP   SCHIDX=REMAINHD
+          DFTMSGF=OMHDSP
+          SUBMSGF=OMHDSP.
+
+.*        ··················································
+.*        Copyright Remain
+.*        ··················································
+:COPYR.&MSG(CPY0008,OMHMSG).
+
+.*   ·····························································
+.*   Import definitions
+.*   ·····························································
+
+.*        ··················································
+.*        Help for this panelgroup.
+.*        ··················································
+:IMPORT   NAME='*'
+          PNLGRP=OMHDNW.
+
+.*   ·····························································
+.*   Variables
+.*   ·····························································
+
+.*        ··················································
+.*        ZMENU
+.*        ··················································
+:VAR      NAME=ZMENU.
+
+.*   ·····························································
+.*   Conditions
+.*   ·····························································
+
+.*   ·····························································
+.*   Function keys
+.*   ·····························································
+:KEYL     NAME=KL0101
+          HELP=KL0101H.
+
+:KEYI     KEY=F1
+          HELP=F1H
+          ACTION=HELP.
+
+:KEYI     KEY=F3
+          HELP=F3H
+          ACTION='EXIT SET'
+          VARUPD=NO.&MSG(KEYF301).
+
+:KEYI     KEY=F4
+          HELP=F4H
+          ACTION='PROMPT'
+          VARUPD=NO.&MSG(KEYF401).
+
+:KEYI     KEY=F5
+          HELP=F5H
+          ACTION='MENU OMHDNW NORTNPNT'
+          .&MSG(KEYF501).
+
+:KEYI     KEY=F9
+          HELP=F9H
+          ACTION=RETRIEVE.&MSG(KEYF901).
+
+:KEYI     KEY=F12
+          HELP=F12H
+          ACTION='CANCEL SET'
+          VARUPD=NO.&MSG(KEYF121).
+
+:KEYI     KEY=F13
+          HELP=F13H
+          ACTION='MENU SUPPORT'.&MSG(KEYF131).
+
+:KEYI     KEY=F24
+          HELP=F24H
+          ACTION=MOREKEYS.&MSG(KEYF241).
+
+:KEYI     KEY=PAGEUP
+          HELP=PAGEH
+          ACTION='PAGEUP'.
+
+:KEYI     KEY=PAGEDOWN
+          HELP=PAGEH
+          ACTION='PAGEDOWN'.
+
+:KEYI     KEY=ENTER
+          HELP=ENTERH
+          ACTION=ENTER.
+
+:KEYI     KEY=HOME
+          HELP=HOMEH
+          ACTION=HOME.
+
+:KEYI     KEY=HELP
+          HELP=HELPH
+          ACTION=HELP.
+
+:KEYI     KEY=PRINT
+          HELP=PRINTH
+          ACTION=PRINT.
+:EKEYL.
+
+.*   ·····························································
+.*   Panel 1
+.*   ·····························································
+:PANEL    NAME=PA01
+          KEYL=KL0101
+          HELP=OMHDNW
+          ENTER='MSG CPD9817 QCPFMSG'
+          PANELID=ZMENU
+          TOPSEP=SYSNAM.&MSG(MNU2300).
+
+
+.*        ··················································
+.*        Menu area
+.*        ··················································
+:MENU     DEPTH='*'
+          SCROLL=YES
+          BOTSEP=NONE.
+
+.*        ··················································
+.*        Top instructions
+.*        ··················································
+:TOPINST.&MSG(TIN0006).
+
+.*        ··················································
+.*        Menu options
+.*        ··················································
+
+:MENUGRP.&MSG(MNU2308).
+:MENUI    OPTION=1
+          HELP='OMHDNW/OPT1H'
+          ACTION='CMD STRSMX'.&MSG(MNU2301).
+
+:MENUI    OPTION=2
+          HELP='OMHDNW/OPT2H'
+          ACTION='CMD STRHDM'.&MSG(MNU2302).
+
+:MENUI    OPTION=3
+          HELP='OMHDNW/OPT3H'
+          ACTION='CMD STRCM'.&MSG(MNU2303).
+:EMENUGRP.
+
+:MENUGRP.&MSG(MNU2309).
+:MENUI    OPTION=4
+          HELP='OMHDNW/OPT4H'
+          ACTION='CMD STRHDM'.&MSG(MNU2304).
+:EMENUGRP.
+
+:MENUGRP.&MSG(MNU2310).
+:MENUI    OPTION=6
+          HELP='OMHDNW/OPT6H'
+          ACTION='CMD ?SBMJOB CMD(STRTIM OPTION(*START))'.&MSG(MNU2305).
+
+:MENUI    OPTION=7
+          HELP='OMHDNW/OPT7H'
+          ACTION='CMD STRTIM OPTION(*STOP)'.&MSG(MNU2311).
+
+:MENUI    OPTION=8
+          HELP='OMHDNW/OPT8H'
+          ACTION='CMD ?DSTHDD'.&MSG(MNU2306).
+
+:MENUI    OPTION=9
+          HELP='OMHDNW/OPT9H'
+          ACTION='CMD CALL OMH038'.&MSG(MNU2307).
+:EMENUGRP.
+:EMENU.
+
+.*        ··················································
+.*        Command line
+.*        ··················································
+:CMDLINE  SIZE=LONG.&MSG(CMD0003).
+
+:EPANEL.
+
+:EPNLGRP.

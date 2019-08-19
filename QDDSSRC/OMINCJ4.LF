@@ -1,0 +1,73 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMINCJ2                                       *
+      * Function ...: Incidents join customer calls - on priority   *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * This is a join logical over the incidents file and the      *
+      * customer calls file                                         *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ----------------------------------------------------------- *
+      * Record format specification                                 *
+      * ----------------------------------------------------------- *
+                R OMINCR                    JFILE(OMINC OMCCA)
+
+      * ----------------------------------------------------------- *
+      * Join specification                                          *
+      * ----------------------------------------------------------- *
+                J                           JOIN(OMINC OMCCA)
+                                            JFLD(NCHEDC CAHEDC)
+                                            JFLD(NCCTN# CACTN#)
+
+      * ----------------------------------------------------------- *
+      * Fields in access path                                       *
+      * ----------------------------------------------------------- *
+                  NCHEDC
+                  NCINC#
+                  NCCTN#
+                  NCAIN#
+                  NCINDT
+                  NCINTM
+                  NCRCDT
+                  NCRCTM
+                  NCSTRC
+                  NCRES#
+                  NCSUL#
+                  NCSTAT
+                  NCSRDT
+                  NCSRTM
+                  NCSEV1
+                  NCSEV2
+                  NCSEV3
+                  NCPRI#
+                  NCESC#
+                  NCIEDT
+                  NCIETM
+                  NCRUID
+                  NCAUID
+                  NCITPC
+                  NCCFL#
+                  NCCFIC
+                  NCUSF1
+                  NCUSF2
+                  NCUSF3
+                  NCSHID
+                  CACUSC
+                  CACCTC
+
+      * ----------------------------------------------------------- *
+      * Key fields                                                  *
+      * ----------------------------------------------------------- *
+                K NCHEDC
+                K NCPRI#                    DESCEND
+                K NCINC#                    DESCEND
+
+      * ----------------------------------------------------------- *
+      * Omit                                                        *
+      * ----------------------------------------------------------- *
+                O NCSTAT                    VALUES('*CMP ')
+

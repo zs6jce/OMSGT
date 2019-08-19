@@ -1,0 +1,27 @@
+
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMCCOL1                                       *
+      * Function ...: Customer contacts logical (default ind. added)*
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Physical OMCCO
+      * Record   OMCCOR
+      * ------------------------------------------------------------ *
+                                            UNIQUE
+                R OMCCOR                    PFILE(OMCCO)
+
+      * ------------------------------------------------------------ *
+      * Access path
+      * COCUSC      - Customer code
+      * COCNTI      - Default indicator
+      * COCNTC      - Contact code
+      * ------------------------------------------------------------ *
+                K COCUSC
+                K COCNTI                    DESCEND
+                K COCCTC

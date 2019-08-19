@@ -1,0 +1,44 @@
+      *
+      *          ------------------------------------------
+      *          Binary number definition  (alphabetic list)
+      *
+      *          P#APS#   Application scope
+      *          P#COL#   Column
+      *          P#FNR#   Function requested
+      *          P#ILV#   Interface level
+      *          P#ISZ#   Initial size
+      *          P#KEY#   Key
+      *          P#LOB#   Length of buffer
+      *          P#MDL#   Message data or impromptu text length
+      *          P#MXS#   Maximum size
+      *          P#NOR#   Number of records
+      *          P#PSC#   Program stack counter
+      *          P#RSZ#   Record size
+      *          P#RCC#   Record count
+      *          P#ROW#   Row
+      *          P#STP#   Starting position
+      *          P#WTM#   Wait time
+      *          P#NMQ#   Number of message queues
+      *          P#LEN#   Length of entry
+      *          P#LKY#   Length of key
+      *          ------------------------------------------
+     I            DS
+     I I            0                     B   1   40P#LOB#
+     I I            0                     B   5   80P#APS#
+     I I            0                     B   9  120P#ILV#
+     I I            0                     B  13  160P#PSC#
+     I I            0                     B  17  200P#WTM#
+     I I            0                     B  21  240P#FNR#
+     I I            0                     B  25  280P#ISZ#
+     I I            0                     B  29  320P#MDL#
+     I I            0                     B  33  360P#NOR#
+     I I            0                     B  37  400P#RSZ#
+     I I            0                     B  41  440P#RCC#
+     I I            0                     B  45  480P#ROW#
+     I I            0                     B  49  520P#COL#
+     I I            0                     B  53  560P#MXS#
+     I I            0                     B  57  600P#STP#
+     I I            0                     B  61  640P#KEY#
+     I I            0                     B  65  680P#NMQ#
+     I I            0                     B  69  720P#LEN#
+     I I            0                     B  73  760P#LKY#

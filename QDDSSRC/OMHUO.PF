@@ -1,0 +1,34 @@
+
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMHUO                                         *
+      * Function ...: User option file                              *
+      * Module .....: HelpDesk                                      *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * This file holds the user options.                           *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMOPTR
+      * ------------------------------------------------------------ *
+                R OMHUOR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  UOUOPC    R               REFFLD(UOPC)
+                  UOUOPD    R               REFFLD(UOPD)
+                  UOSUL#    R               REFFLD(SUL#)
+                  UOPGMN    R               REFFLD(PGMN)
+                  UOPGML    R               REFFLD(PGML)
+                  UOPRMI    R               REFFLD(PRMI)
+                  UOINTL    R               REFFLD(INTL)

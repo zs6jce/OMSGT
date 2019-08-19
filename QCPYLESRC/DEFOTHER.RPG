@@ -1,0 +1,117 @@
+      *
+      *          ------------------------------------------
+      *          API parameter definition.
+      *
+      *          All fields start with 'P#', followed by a three
+      *          character meaningfull code and end with;
+      *
+      *          # -  4 byte binary number
+      *          Q - 20 byte qualifier
+      *          C - xx byte code field
+      *          D - xx byte description field
+      *          A - Array
+      *            - Buffer field
+      *          ------------------------------------------
+      *
+      *          ------------------------------------------
+      *          Do not initialise fields
+      *          ------------------------------------------
+     C           'PASEN'   IFEQ 'PINKSTRN'
+      *
+      *          ------------------------------------------
+      *          Define internal references
+      *          (other references come from OMSREF)
+      *          ------------------------------------------
+     C                     MOVE *BLANKS   $OBJC$ 10        OS/400 Objc
+     C                     MOVE *BLANKS   $QUAL$ 20        OS/400 Qual
+     C                     MOVE *BLANKS   $CD4A$  4        Code 4 alpha
+     C                     MOVE *BLANKS   $HNDC$  8        Handle code
+     C                     MOVE *BLANKS   $FMTC$  8        Format code
+      *
+      *          ------------------------------------------
+      *          Define fields used by API's.
+      *          ------------------------------------------
+     C           *LIKE     DEFN INDI      P#ATAC           Allow trim
+     C           *LIKE     DEFN $OBJC$    P#AFNC           Alt filename
+      *
+     C           *LIKE     DEFN INDI      P#CLOC           Close option
+     C           *LIKE     DEFN INDI      P#COPC           Copy option
+     C           *LIKE     DEFN INDI      P#CPOC           Csrpos optio
+     C           *LIKE     DEFN $QUAL$    P#CMDQ           Command qual
+      *
+     C           *LIKE     DEFN $CD4A$    P#DPAC           Disp.pos att
+      *
+     C           *LIKE     DEFN OBJA      P#EXAC           Attribute
+     C           *LIKE     DEFN $CD4A$    P#ELEC           Eror lst ent
+     C           *LIKE     DEFN INDI      P#EJOC           Eject option
+     C           *LIKE     DEFN INDI      P#ELAC           Entry len at
+      *
+     C           *LIKE     DEFN $OBJC$    P#FMIC           Input format
+     C           *LIKE     DEFN $OBJC$    P#FMOC           Output fmt
+     C           *LIKE     DEFN $FMTC$    P#FMTC           Format
+     C           *LIKE     DEFN INDI      P#FSHC           Full help
+     C           *LIKE     DEFN INDI      P#FRCC           Force to aux
+     C           *LIKE     DEFN $CD4A$    P#FXLC           Fixed length
+      *
+     C           *LIKE     DEFN $HNDC$    P#HNDC           App. handle
+      *
+     C           *LIKE     DEFN INDI      P#IVAC           Init value
+     C           *LIKE     DEFN INDI      P#IMUC           Imm update
+      *
+     C           *LIKE     DEFN $CD4A$    P#KEYC           Key
+     C           *LIKE     DEFN INDI      P#KINC           Key insertio
+      *
+     C           *LIKE     DEFN $OBJC$    P#LSTC           List name
+     C           *LIKE     DEFN $CD4A$    P#LEHC           Lst entry hn
+     C           *LIKE     DEFN $CD4A$    P#LCOC           list content
+     C           *LIKE     DEFN $CD4A$    P#LLEC           Last lst ent
+      *
+     C           *LIKE     DEFN MSGN      P#MIDC           Message id
+     C           *LIKE     DEFN $QUAL$    P#MSGQ           Message qual
+     C           *LIKE     DEFN $OBJC$    P#MSTC           Message type
+     C           *LIKE     DEFN $OBJC$    P#MTRC           Msg to remove
+     C           *LIKE     DEFN $CD4A$    P#MSKC           Message key
+     C           *LIKE     DEFN $OBJC$    P#MSAC           Message action
+     C           *LIKE     DEFN $CD4A$    P#MRKC           msg ref key
+      *
+     C           *LIKE     DEFN $QUAL$    P#OALQ           Object & lib
+     C           *LIKE     DEFN $CD4A$    P#OPTC           Option code
+     C           *LIKE     DEFN INDI      P#OVRC           Override Prc
+     C           *LIKE     DEFN $OBJC$    P#OBTC           Object type
+     C           *LIKE     DEFN INDI      P#OPMC           Optimiz. cd
+      *
+     C           *LIKE     DEFN $OBJC$    P#PNLC           Panel code
+     C           *LIKE     DEFN $OBJC$    P#PMQC           pgm msg que
+     C           *LIKE     DEFN $CD4A$    P#POSC           Position cod
+     C           *LIKE     DEFN $QUAL$    P#PDFQ           Prtdevicefil
+     C           *LIKE     DEFN $QUAL$    P#PNLQ           Panel group
+     C           *LIKE     DEFN $QUAL$    P#PMQQ           Message qual
+     C           *LIKE     DEFN $OBJC$    P#PWLC           PU-Wind. Loc
+     C           *LIKE     DEFN AUTH      P#PAUC           Public auth
+     C           *LIKE     DEFN $OBJC$    P#PDVC           PGMdialogVAR
+      *
+     C           *LIKE     DEFN INDI      P#RMQQ           Reply msgq q
+     C           *LIKE     DEFN INDI      P#RDOC           Re-disp opt.
+     C           *LIKE     DEFN $OBJC$    P#RDMC           Read mode
+     C           *LIKE     DEFN $OBJC$    P#RPLC           Replace code
+     C           *LIKE     DEFN $OBJC$    P#RFCC           Rtrn Fmt ctl
+     C           *LIKE     DEFN $OBJC$    P#RSVC           Repl.Subst V
+     C           *LIKE     DEFN INDI      P#ROPC           Remove opt.
+      *
+     C           *LIKE     DEFN $QUAL$    P#SECC           Sel.Criteria
+     C           *LIKE     DEFN $CD4A$    P#SHNC           Sel handle
+     C           *LIKE     DEFN INDI      P#SODC           Shropendatap
+      *
+     C           *LIKE     DEFN OBJD      P#TXTD           Text descr.
+      *
+     C           *LIKE     DEFN OBJD      P#USPD           USRSPC desc.
+     C           *LIKE     DEFN $QUAL$    P#USPQ           User space
+     C           *LIKE     DEFN $QUAL$    P#UIXQ           User index q
+     C           *LIKE     DEFN INDI      P#USTC           User task
+     C           *LIKE     DEFN $OBJC$    P#USDT           User data
+      *
+     C           *LIKE     DEFN $OBJC$    P#VRNC           Variable rec
+      *
+     C           *LIKE     DEFN INDI      P#XOPC           Xtended opt.
+      *
+     C                     ENDIF

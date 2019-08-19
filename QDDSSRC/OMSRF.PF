@@ -1,0 +1,33 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMSRF                                         *
+      * Module .....: HelpDesk                                      *
+      * Function ...: Status route actions                          *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * This file contains the HelpDesk status route                *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMSAFR
+      * ------------------------------------------------------------ *
+                R OMSRFR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  RFHEDC    R               REFFLD(HEDC)
+                  RFSTAT    R               REFFLD(STRC)
+                  RFASQ#    R               REFFLD(ASQ#)
+                  RFEOEI    R               REFFLD(EOEI)
+                  RFSEPG    R               REFFLD(SEPG)
+                  RFSEPL    R               REFFLD(SEPL)
+                  RFINTL    R               REFFLD(INTL)

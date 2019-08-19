@@ -1,0 +1,112 @@
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /*  Program ....: OMX920C                                           */
+ /*  Description : Substract two dates                               */
+ /*  Author .....: Remain Software                                    */
+ /*  Date .......: 24-12-1996                                        */
+ /*                                                                  */
+ /*  Parameters .: &DATF  Eldest date *CYMD                7     I   */
+ /*                &DATT  Youngest date *CYMD              7     I   */
+ /*                &TEL#  Difference                       6 0   O   */
+ /*                &STAT  Status                           5     O   */
+ /*                                                                  */
+ /*  Function ...:                                                   */
+ /*  This program gives the difference between two dates in days     */
+ /*                                                                  */
+ /* ------------------------------ --------------------------------- */
+
+             PGM        PARM(&DTFB &DTTB &TEL# &STAT)
+
+ /* ------------------------------ --------------------------------- */
+ /* Declare parameter-variables                                      */
+ /* ------------------------------ --------------------------------- */
+             DCL        VAR(&DTFB) TYPE(*CHAR) LEN(7)
+             DCL        VAR(&DTFA) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&DTTB) TYPE(*CHAR) LEN(7)
+             DCL        VAR(&DTTA) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&DTFN) TYPE(*DEC) LEN(6 0) VALUE(0)
+             DCL        VAR(&DTTN) TYPE(*DEC) LEN(6 0) VALUE(0)
+             DCL        VAR(&YEAF) TYPE(*DEC) LEN(2 0)
+             DCL        VAR(&YEAT) TYPE(*DEC) LEN(2 0)
+             DCL        VAR(&HLP#) TYPE(*DEC) LEN(2 0)
+             DCL        VAR(&DEC#) TYPE(*DEC) LEN(2 2)
+             DCL        VAR(&TEL#) TYPE(*DEC) LEN(6 0)
+             DCL        VAR(&STAT) TYPE(*CHAR) LEN(5)
+
+/* ------------------------------- --------------------------------- */
+/* Monitor.                                                          */
+/* ------------------------------- --------------------------------- */
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ERROR))
+
+/* ------------------------------- --------------------------------- */
+/* Set return status                                                 */
+/* ------------------------------- --------------------------------- */
+             CHGVAR     VAR(&STAT) VALUE('*NORM')
+
+/* ------------------------------- --------------------------------- */
+/* Convert to Julian                                                 */
+/* ------------------------------- --------------------------------- */
+             CVTDAT     DATE(&DTFB) TOVAR(&DTFA) FROMFMT(*CYMD) +
+                          TOFMT(*JUL) TOSEP(*NONE)
+             CVTDAT     DATE(&DTTB) TOVAR(&DTTA) FROMFMT(*CYMD) +
+                          TOFMT(*JUL) TOSEP(*NONE)
+
+/* ------------------------------- --------------------------------- */
+/* Convert to numeric                                                */
+/* ------------------------------- --------------------------------- */
+             CHGVAR     VAR(&DTFN) VALUE(&DTFA)
+             CHGVAR     VAR(&DTTN) VALUE(&DTTA)
+
+/* ------------------------------- --------------------------------- */
+/* Adjust in case of different year                                  */
+/* ------------------------------- --------------------------------- */
+             CHGVAR     VAR(&YEAF) VALUE(&DTFN / 1000)
+             CHGVAR     VAR(&YEAT) VALUE(&DTTN / 1000)
+             IF         COND(&YEAF *NE &YEAT) THEN(DO)
+             CHGVAR     VAR(&HLP#) VALUE(&YEAT - &YEAF)
+
+/* ------------------------------- --------------------------------- */
+/* 19nn or 20nn?                                                     */
+/* ------------------------------- --------------------------------- */
+             IF         COND(&HLP# *LT 0) THEN(DO)
+             CHGVAR     VAR(&HLP#) VALUE(100 + &HLP#)
+             CHGVAR     VAR(&DTTN) VALUE(100000 + &DTTN)
+             ENDDO
+
+/* ------------------------------- --------------------------------- */
+/* 365 or 366?                                                       */
+/* ------------------------------- --------------------------------- */
+             CHGVAR     VAR(&DEC#) VALUE(&HLP# / 4)
+             MONMSG     MSGID(MCH1210)
+             IF         COND(&DEC# *EQ ,00) THEN(DO)
+/*                                                                   */
+/*   (this utility is not activated/completed yet)                   */
+/*                                                                   */
+             ENDDO
+
+/* ------------------------------- --------------------------------- */
+/* How many years?                                                   */
+/* ------------------------------- --------------------------------- */
+LOOP:        CHGVAR     VAR(&DTTN) VALUE(&DTTN - 635)
+             CHGVAR     VAR(&HLP#) VALUE(&HLP# - 1)
+             IF         COND(&HLP# *GT 0) THEN(GOTO CMDLBL(LOOP))
+             ENDDO
+
+/* ------------------------------- --------------------------------- */
+/* Evaluate difference in days                                       */
+/* ------------------------------- --------------------------------- */
+             CHGVAR     VAR(&TEL#) VALUE(&DTTN - &DTFN)
+
+/* ------------------------------- --------------------------------- */
+/* Exit normal                                                       */
+/* ------------------------------- --------------------------------- */
+             GOTO       CMDLBL(ENDPGM)
+
+/* ------------------------------- --------------------------------- */
+/* Error.                                                            */
+/* ------------------------------- --------------------------------- */
+ ERROR:
+             CHGVAR     VAR(&STAT) VALUE('*TERM')
+
+ ENDPGM:
+             ENDPGM

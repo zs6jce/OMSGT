@@ -1,0 +1,32 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMSRE                                         *
+      * Module .....: HelpDesk                                      *
+      * Function ...: Status route entries                          *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * This file contains the HelpDesk status route entries        *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMSRER
+      * ------------------------------------------------------------ *
+                R OMSRER
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  REHEDC    R               REFFLD(HEDC)
+                  RESTRC    R               REFFLD(STRC)
+                  RERES#    R               REFFLD(RES#)
+                  RESUL#    R               REFFLD(SUL#)
+                  RENSRC    R               REFFLD(STRC)
+                  RESTAT    R               REFFLD(STAT)

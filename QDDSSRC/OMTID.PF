@@ -1,0 +1,32 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMTID                                         *
+      * Module .....: Text details for incidents                    *
+      * Function ...: Incidents                                     *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * This file contains the detail incident texts.               *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMTIDR
+      * ------------------------------------------------------------ *
+                R OMTIDR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  IDHEDC    R               REFFLD(HEDC)
+                  IDINC#    R               REFFLD(INC#)
+                  IDITH#    R               REFFLD(ITH#)
+                  IDITXT    R               REFFLD(ITXT)
+                  IDSEQ#    R               REFFLD(SEQ#)
+                  IDINCD    R               REFFLD(INCD)

@@ -1,0 +1,142 @@
+ /* ---------------------------------------------------------------- */
+ /* Description                                                      */
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /* Program ....: OMH032C                                            */
+ /* Function ...: Send e-mail message                                */
+ /* Author .....: Remain Software                                    */
+ /* Parameters .: &MSRV, Mail server                                 */
+ /*               &PORT, Port                                        */
+ /*               &FROM, From user                                   */
+ /*               &TO,   To user                                     */
+ /*               &BCCE, Blank carbon copy                           */
+ /*               &SUBJ, Subject                                     */
+ /*               &TYPE, Plain text or template                      */
+ /*               &SRCQ, source file                                 */
+ /*               &SRCM, Source member                               */
+ /*               &HEDC, Helpdesk                                    */
+ /*               &INC#, Incident                                    */
+ /*                                                                  */
+ /* This parses the command definitions and call program OMH032      */
+ /* which sends the e-mail message.                                  */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+
+     PGM        PARM(&MSRV &PORT &FROM &TO &BCCE &SUBJ &TYPE &SRCQ +
+                          &SRCM &HEDC &INC#)
+
+ /* ---------------------------------------------------------------- */
+ /* Declare parameter-variables                                      */
+ /* ---------------------------------------------------------------- */
+             DCL        VAR(&MSRV)    TYPE(*CHAR) LEN(15)
+             DCL        VAR(&PORT)    TYPE(*CHAR) LEN(4)
+             DCL        VAR(&FROM)    TYPE(*CHAR) LEN(50)
+             DCL        VAR(&TO)      TYPE(*CHAR) LEN(50)
+             DCL        VAR(&BCCE)    TYPE(*CHAR) LEN(50)
+             DCL        VAR(&SUBJ)    TYPE(*CHAR) LEN(70)
+             DCL        VAR(&TYPE)    TYPE(*CHAR) LEN(9)
+             DCL        VAR(&SRCQ)    TYPE(*CHAR) LEN(20)
+             DCL        VAR(&SRCM)    TYPE(*CHAR) LEN(10)
+             DCL        VAR(&HEDC)    TYPE(*CHAR) LEN(05)
+             DCL        VAR(&INC#)    TYPE(*CHAR) LEN(10)
+
+ /* ---------------------------------------------------------------- */
+ /* Variables                                                        */
+ /* ---------------------------------------------------------------- */
+             DCL        VAR(&NULL) TYPE(*CHAR) LEN(1) VALUE(X'00')
+             DCL        VAR(&STAT)    TYPE(*CHAR) LEN(5)
+             DCL        VAR(&SRCL)    TYPE(*CHAR) LEN(10)
+             DCL        VAR(&SRCF)    TYPE(*CHAR) LEN(10)
+             DCL        VAR(&SRC2)    TYPE(*CHAR) LEN(21)
+
+ /* ---------------------------------------------------------------- */
+ /* Declare parameter-variables with null termination                */
+ /* ---------------------------------------------------------------- */
+             DCL        VAR(&OMSRV)    TYPE(*CHAR) LEN(16)
+             DCL        VAR(&OPORT)    TYPE(*CHAR) LEN(5)
+             DCL        VAR(&OFROM)    TYPE(*CHAR) LEN(51)
+             DCL        VAR(&OTO)      TYPE(*CHAR) LEN(51)
+             DCL        VAR(&OBCCE)    TYPE(*CHAR) LEN(51)
+             DCL        VAR(&OSUBJ)    TYPE(*CHAR) LEN(71)
+             DCL        VAR(&OHEDC)    TYPE(*CHAR) LEN(6)
+             DCL        VAR(&OSRC2)    TYPE(*CHAR) LEN(22)
+
+ /* ---------------------------------------------------------------- */
+ /* Install global error monitor                                     */
+ /* ---------------------------------------------------------------- */
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ENDPGM))
+
+ /* ---------------------------------------------------------------- */
+ /* Parse the source file qualifier.                                 */
+ /* ---------------------------------------------------------------- */
+             CHGVAR     VAR(&SRCF) VALUE(%SUBSTRING(&SRCQ 1 10))
+             CHGVAR     VAR(&SRCL) VALUE(%SUBSTRING(&SRCQ 11 10))
+             CHGVAR     VAR(&SRC2) VALUE(&SRCL *TCAT '/' *TCAT &SRCF)
+
+          /* ------------------------------------------------------- */
+          /* If this is a template sender then transfer control      */
+          /* ------------------------------------------------------- */
+             IF         COND(&TYPE *EQ '*TEMPLATE') THEN(DO)
+             CALL       PGM(OMH043C) PARM(&HEDC &INC# '0' &MSRV +
+                          &PORT &FROM &TO &BCCE &SUBJ &SRCF &SRCL +
+                          &SRCM '0' &STAT)
+
+             IF         COND(&STAT *NE '*NORM') THEN(GOTO +
+                          CMDLBL(ERROR))
+
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+          /* ------------------------------------------------------- */
+          /* Override to the sourcefile if this is a sourcefile      */
+          /* ------------------------------------------------------- */
+             OVRDBF     FILE(&SRCF) TOFILE(&SRCL/&SRCF) MBR(&SRCM)
+
+ /* ---------------------------------------------------------------- */
+ /* Add string terminator  (not for the status field)                */
+ /* ---------------------------------------------------------------- */
+             CHGVAR     VAR(&OMSRV) VALUE(&MSRV)
+             CHGVAR     VAR(&OPORT) VALUE(&PORT)
+             CHGVAR     VAR(&OFROM) VALUE(&FROM)
+             CHGVAR     VAR(&OTO)   VALUE(&TO)
+             CHGVAR     VAR(&OBCCE) VALUE(&BCCE)
+             CHGVAR     VAR(&OSUBJ) VALUE(&SUBJ)
+             CHGVAR     VAR(&OSRC2) VALUE(&SRC2)
+             CHGVAR     VAR(&OHEDC) VALUE(&HEDC)
+
+             CHGVAR     VAR(&OMSRV) VALUE(&OMSRV  *TCAT &NULL)
+             CHGVAR     VAR(&OPORT) VALUE(&OPORT  *TCAT &NULL)
+             CHGVAR     VAR(&OFROM) VALUE(&OFROM  *TCAT &NULL)
+             CHGVAR     VAR(&OTO)   VALUE(&OTO    *TCAT &NULL)
+             CHGVAR     VAR(&OBCCE) VALUE(&OBCCE  *TCAT &NULL)
+             CHGVAR     VAR(&OSUBJ) VALUE(&OSUBJ  *TCAT &NULL)
+             CHGVAR     VAR(&OSRC2) VALUE(&OSRC2  *TCAT &NULL)
+             CHGVAR     VAR(&OHEDC) VALUE(&OHEDC  *CAT &NULL)
+
+ /* ---------------------------------------------------------------- */
+ /* Call the mail program                                            */
+ /* ---------------------------------------------------------------- */
+             CALL       PGM(OMH032) PARM(&OMSRV &OPORT &OFROM &OTO +
+                          &OBCCE &OSUBJ &OSRC2 &OHEDC &STAT)
+
+ /* ---------------------------------------------------------------- */
+ /* Return to the caller                                             */
+ /* ---------------------------------------------------------------- */
+             DLTOVR     FILE(*ALL)
+             GOTO       CMDLBL(ENDPGM)
+
+ /* ---------------------------------------------------------------- */
+ /* Handle unexpected errors                                         */
+ /* ---------------------------------------------------------------- */
+ ERROR:
+             SNDPGMMSG  MSGID(OMQ5012) MSGF(OMSAPI) MSGDTA(OMH032C) +
+                          MSGTYPE(*ESCAPE)
+             RETURN
+
+ /* ---------------------------------------------------------------- */
+ /* Exit program processing.                                         */
+ /* ---------------------------------------------------------------- */
+ ENDPGM:
+             RMVMSG     CLEAR(*ALL)
+             RETURN
+             ENDPGM

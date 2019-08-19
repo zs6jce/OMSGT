@@ -1,0 +1,220 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: OMHDNW                                      :   *.
+.*   : Function ...: HD Mail extensions                          :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+.*   ·····························································
+.*   Panel group
+.*   ·····························································
+:PNLGRP   SCHIDX=REMAINHD.
+:IMPORT PNLGRP=OMSCMDHD NAME='*'.
+
+.*   ·····························································
+.*   Help
+.*   ·····························································
+
+.*   ·····························································
+.*   General help for the menu
+.*   ·····························································
+:HELP NAME=OMHDNW.HelpDesk Mail extensions Menu - Help
+:XH3.HelpDesk Mail extensions menu
+:ISCH ROOTS='Mail extensions menu'.
+HelpDesk Mail extensions Menu
+:P.
+Use this menu to use the HelpDesk functions concerning electronic mail
+and networking.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 1
+.*        ···················································
+:HELP NAME='OMHDNW/OPT1H'.System Mail Extensions
+:P.
+:IMHELP NAME='STRSMXIX'.
+:PC.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 2
+.*        ···················································
+:HELP NAME='OMHDNW/OPT2H'.HelpDesk maintenance
+:P.
+:IMHELP NAME='STRHDMIX'.
+:PC.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 3
+.*        ···················································
+:HELP NAME='OMHDNW/OPT3H'.Customer maintenance
+:P.
+:IMHELP NAME='STRCMIX'.
+:PC.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 4
+.*        ···················································
+:HELP NAME='OMHDNW/OPT4H'.HelpDesk maintenance
+:P.
+:IMHELP NAME='STRHDMIX'.
+:PC.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 6, Helpdesk monitor
+.*        ···················································
+:HELP NAME='OMHDNW/OPT6H'.HelpDesk monitor
+:IMHELP NAME='STRTIMIX'.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 7, Stop incident monitor
+.*        ···················································
+:HELP NAME='OMHDNW/OPT7H'.Stop incident monitor
+:P.
+:IMHELP NAME='STRTIMIX'.
+:PC.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 8, Distribute Helpdesk Data
+.*        ···················································
+:HELP NAME='OMHDNW/OPT8H'.Distribute HelpDesk Data
+:IMHELP NAME='DSTHDDIX'.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 9, Work with incoming mail
+.*        ···················································
+:HELP NAME='OMHDNW/OPT9H'.Work with incoming mail
+:XH3.Work with incoming mail
+:P.
+Use this option to start the function "Work with incoming
+distributions".
+:EHELP.
+
+.*        ···················································
+.*        Help for display 1 function keys
+.*        ···················································
+:HELP NAME='KL0101H'.Function keys
+:XH3.Function keys
+
+:P.
+This display supports a set of function keys which allows you to
+perform specific tasks. The keys are listed at the bottom
+of the display.
+:EHELP.
+
+:HELP NAME='F1H'.
+:PARML.
+:PT.F1=Help
+:PD.
+Provides additional information about using the display or a
+specific field on the display.
+:EPARML.
+:EHELP.
+
+:HELP NAME='F3H'.
+:PARML.
+:PT.F3=Exit
+:PD.
+Ends the current task and returns to the display from which the
+task was started.
+:EPARML.
+:EHELP.
+
+:HELP NAME='F4H'.
+:PARML.
+:PT.F4=Prompt
+:PD.
+Provides assistance in entering or selecting a command.
+:EPARML.
+:EHELP.
+
+:HELP NAME='F5H'.
+:PARML.
+:PT.F5=Refresh
+:PD.
+Initializes the display from the database.
+:EPARML.
+:EHELP.
+
+:HELP NAME='F9H'.
+:PARML.
+:PT.F9=Retrieve
+:PD.
+Displays the last command you entered on the command line and any
+parameters you included.  Pressing this key once shows the last
+command you ran.  Pressing this key twice shows the command you
+ran before that and so on.
+:EPARML.
+:EHELP.
+
+:HELP NAME='F12H'.
+:PARML.
+:PT.F12=Cancel
+:PD.
+Returns to the previous menu or display.
+:EPARML.
+:EHELP.
+
+:HELP NAME='F13H'.
+:PARML.
+:PT.F13=User support
+:PD.
+Shows a menu with several types of assistance available.  Select
+this option to access on-line education, Q & A database, search
+index, and additional help topics.
+:EPARML.
+:EHELP.
+
+:HELP NAME='PAGEH'.
+:PARML.
+:PT.Roll Keys
+:PD.
+Moves to the indicated direction to show additional information for
+this display.
+:EPARML.
+:EHELP.
+
+:HELP NAME='ENTERH'.
+:PARML.
+:PT.Enter
+:PD.
+Submits information on the display for processing.
+:EPARML.
+:EHELP.
+
+:HELP NAME='HELPH'.
+:PARML.
+:PT.Help
+:PD.
+Provides additional information about using the display.
+:EPARML.
+:EHELP.
+
+:HELP NAME='HOMEH'.
+:PARML.
+:PT.Home
+:PD.
+Goes to the menu which was shown after you signed on to the system.
+This menu is either the initial menu defined in your user profile
+or the menu you requested from the Sign-On display.
+:EPARML.
+:EHELP.
+
+:HELP NAME='PRINTH'.
+:PARML.
+:PT.Print
+:PD.
+Prints the current contents of the display to an output queue.
+:EPARML.
+:EHELP.
+:EPNLGRP.

@@ -1,0 +1,173 @@
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /*  Program ....: OMQSTATP                                          */
+ /*  Description : User status trigger program                       */
+ /*  Author .....: Remain Software                                   */
+ /*                                                                  */
+ /*  Parameters .:  &HEDC      Customer code                (I)      */
+ /*                 &INC       Incident number              (I)      */
+ /*                 &CTN       Call number                  (I)      */
+ /*                 &EOEI      Entry or exit                (I)      */
+ /*                            '0'  - Exit                           */
+ /*                            '1'  - Entry                          */
+ /*                 &STAO      Old incident status          (I)      */
+ /*                 &STRO      Old status route             (I)      */
+ /*                 &SULO      Old support level            (I)      */
+ /*                 &STAN      New incident status          (I)      */
+ /*                 &STRN      New status route             (I)      */
+ /*                 &SULN      New support level            (I)      */
+ /*                 &ACTC      Action which triggered       (I)      */
+ /*                            '20' - Change                         */
+ /*                            '29' - Status change request          */
+ /*                            '30' - Copy                           */
+ /*                            '40' - Delete                         */
+ /*                            '42' - Complete                       */
+ /*                            '60' - Add                            */
+ /*                                                                  */
+ /* This is the status trigger program. This program is called       */
+ /* when it is defined in the status maintenance function and        */
+ /* triggered by the status change of an incident.                   */
+ /*                                                                  */
+ /* This program can not send a return status to indicate that it    */
+ /* ended in error, so be carefull.                                  */
+ /*                                                                  */
+ /* This program must be ready to expect everything, even a change   */
+ /* to the same status.                                              */
+ /*                                                                  */
+ /* This is an example program. Use this as a basis to create your   */
+ /* own.                                                             */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+
+ /* ---------------------------------------------------------------- */
+ /* Program                                                          */
+ /* ---------------------------------------------------------------- */
+             PGM        PARM(&HEDC &INC &CTN &EOEI &STAO &STRO &SULO +
+                          &STAN &STRN &SULN &ACTC)
+
+          /* ------------------------------------------------------- */
+          /* Declare parameter-variables                             */
+          /* ------------------------------------------------------- */
+             DCL        VAR(&HEDC) TYPE(*CHAR) LEN(005)
+             DCL        VAR(&INC)  TYPE(*CHAR) LEN(010)
+             DCL        VAR(&CTN)  TYPE(*CHAR) LEN(010)
+             DCL        VAR(&EOEI) TYPE(*CHAR) LEN(001)
+             DCL        VAR(&STAO) TYPE(*CHAR) LEN(005)
+             DCL        VAR(&STRO) TYPE(*CHAR) LEN(010)
+             DCL        VAR(&SULO) TYPE(*CHAR) LEN(001)
+             DCL        VAR(&STAN) TYPE(*CHAR) LEN(005)
+             DCL        VAR(&STRN) TYPE(*CHAR) LEN(010)
+             DCL        VAR(&SULN) TYPE(*CHAR) LEN(001)
+             DCL        VAR(&ACTC) TYPE(*CHAR) LEN(002)
+
+          /* ------------------------------------------------------- */
+          /* Declare call track variables                            */
+          /* ------------------------------------------------------- */
+             DCL        VAR(&C@CUSC) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&C@CCTC) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&C@INDT) TYPE(*DEC)  LEN(7 0)
+             DCL        VAR(&C@INTM) TYPE(*DEC)  LEN(6 0)
+             DCL        VAR(&C@RCTM) TYPE(*DEC)  LEN(6 0)
+             DCL        VAR(&C@USID) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&C@CSRC) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&C@USF1) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&C@USF2) TYPE(*CHAR) LEN(25)
+             DCL        VAR(&C@USF3) TYPE(*DEC)  LEN(15 0)
+
+          /* ------------------------------------------------------- */
+          /* Declare incident variables                              */
+          /* ------------------------------------------------------- */
+             DCL        VAR(&I@CTN)   TYPE(*CHAR) LEN(10)
+             DCL        VAR(&I@AIN)   TYPE(*CHAR) LEN(10)
+             DCL        VAR(&I@INDT)  TYPE(*DEC)  LEN(7 0)
+             DCL        VAR(&I@INTM)  TYPE(*DEC)  LEN(6 0)
+             DCL        VAR(&I@RCDT)  TYPE(*DEC)  LEN(7 0)
+             DCL        VAR(&I@RCTM)  TYPE(*DEC)  LEN(6 0)
+             DCL        VAR(&I@STRC)  TYPE(*CHAR) LEN(10)
+             DCL        VAR(&I@RES)   TYPE(*DEC)  LEN(3 0)
+             DCL        VAR(&I@SUL)   TYPE(*DEC)  LEN(1 0)
+             DCL        VAR(&I@STAT)  TYPE(*CHAR) LEN(5)
+             DCL        VAR(&I@SRDT)  TYPE(*DEC)  LEN(7 0)
+             DCL        VAR(&I@SRTM)  TYPE(*DEC)  LEN(6 0)
+             DCL        VAR(&I@SEV1)  TYPE(*CHAR) LEN(5)
+             DCL        VAR(&I@SEV2)  TYPE(*CHAR) LEN(5)
+             DCL        VAR(&I@SEV3)  TYPE(*CHAR) LEN(5)
+             DCL        VAR(&I@PRI)   TYPE(*DEC)  LEN(3 0)
+             DCL        VAR(&I@ESC)   TYPE(*DEC)  LEN(3 0)
+             DCL        VAR(&I@IEDT)  TYPE(*DEC)  LEN(7 0)
+             DCL        VAR(&I@IETM)  TYPE(*DEC)  LEN(6 0)
+             DCL        VAR(&I@RUID)  TYPE(*CHAR) LEN(10)
+             DCL        VAR(&I@AUID)  TYPE(*CHAR) LEN(10)
+             DCL        VAR(&I@ITPC)  TYPE(*CHAR) LEN(5)
+             DCL        VAR(&I@CFL)   TYPE(*DEC)  LEN(5 0)
+             DCL        VAR(&I@CFIC)  TYPE(*CHAR) LEN(12)
+             DCL        VAR(&I@USF1)  TYPE(*CHAR) LEN(10)
+             DCL        VAR(&I@USF2)  TYPE(*CHAR) LEN(25)
+             DCL        VAR(&I@USF3)  TYPE(*DEC)  LEN(15 0)
+             DCL        VAR(&I@SHID)  TYPE(*CHAR) LEN(50)
+             DCL        VAR(&I@FREE)  TYPE(*CHAR) LEN(50)
+
+          /* ------------------------------------------------------- */
+          /* Other variables.                                        */
+          /* ------------------------------------------------------- */
+             DCL        VAR(&USERID) TYPE(*CHAR) LEN(10)
+
+          /* ------------------------------------------------------- */
+          /* Monitor                                                 */
+          /* ------------------------------------------------------- */
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ERROR))
+
+ /* ---------------------------------------------------------------- */
+ /* Processing starts here                                           */
+ /* ---------------------------------------------------------------- */
+
+          /* ------------------------------------------------------- */
+          /* Get some job attributes                                 */
+          /* ------------------------------------------------------- */
+             RTVJOBA    USER(&USERID)
+
+          /* ------------------------------------------------------- */
+          /* Get the incident data.                                  */
+          /* ------------------------------------------------------- */
+             IF         COND(&ACTC *NE '40') THEN(DO)
+             OMQRTVIN   HEDC(&HEDC) INC(&INC) SHID(&I@SHID)
+
+          /* ------------------------------------------------------- */
+          /* Incident added, inform the HelpDesk                     */
+          /* ------------------------------------------------------- */
+             IF         COND((&ACTC *EQ '60') *OR (&ACTC *EQ '30')) +
+                          THEN(DO)
+             SNDMSG     MSG('Incident ' *BCAT &INC *TCAT '. (' *TCAT +
+                          &STAN *TCAT ') ' *BCAT &I@SHID) TOUSR(WIM)
+             ENDDO
+
+          /* ------------------------------------------------------- */
+          /* Other action, inform WIM.                               */
+          /* ------------------------------------------------------- */
+             ELSE       CMD(DO)
+             SNDMSG     MSG('Incident ' *CAT &INC *BCAT 'processed +
+                   with action' *BCAT &ACTC *BCAT ' by user ' *BCAT +
+                          &USERID) TOUSR(WIM)
+             ENDDO
+             ENDDO
+
+          /* ------------------------------------------------------- */
+          /* Exit                                                    */
+          /* ------------------------------------------------------- */
+             GOTO       CMDLBL(ENDPGM)
+
+/* ----------------------------------------------------------------- */
+/* An error occured                                                  */
+/* ----------------------------------------------------------------- */
+ ERROR:
+             SNDPGMMSG  MSGID(OMQ5012) MSGF(OMSAPI) +
+                          MSGDTA('OMQUFECC') MSGTYPE(*ESCAPE)
+             MONMSG     MSGID(CPF0000)
+             RETURN
+
+/* ----------------------------------------------------------------- */
+/* End of Program                                                    */
+/* ----------------------------------------------------------------- */
+ ENDPGM:
+             RETURN
+             ENDPGM

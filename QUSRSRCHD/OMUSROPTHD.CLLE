@@ -1,0 +1,445 @@
+ /* ---------------------------------------------------------------- */
+ /* Program description.                                             */
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /*  Program ....: OMUSROPTHD                                        */
+ /*  Description : Example user option program (general options)     */
+ /*  Author .....: Remain Software                                   */
+ /*  Parameters .: &ENTC, Entity code                                */
+ /*                &KEY,  Entity key buffer                          */
+ /*                &OPTI, Option used                                */
+ /*                &STAT, Return status.                             */
+ /*                                                                  */
+ /*  Function.                                                       */
+ /*  General user option program. You can adapt this program to      */
+ /*  serve your specific needs. The parameters passed are:           */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+ /* Parameter description                                            */
+ /* ---------------------------------------------------------------- */
+ /**                                                                 */
+ /** &ENTC  - Entity code                                            */
+ /** -----                                                           */
+ /*  There are currently four major entities defined for the user    */
+ /*  options, they roughly indicate from which program the user      */
+ /*  options where called. Each entity passes a different key buffer */
+ /*  to the user option program in field &KEY.                       */
+ /*                                                                  */
+ /*  INC  -  The incident entity. This entity can be envoked from    */
+ /*          the incident series.       The key buffer lay-out for   */
+ /*          this entity is:                                         */
+ /*                                                                  */
+ /*           1 - 5   ( 5A)  - Helpdesk Code                         */
+ /*           6 - 15  (10A)  - Incident code                         */
+ /*                                                                  */
+ /*          You can use these values to retrieve other incident     */
+ /*          attributes with the OMQRTVIN command API.               */
+ /*                                                                  */
+ /*                                                                  */
+ /*  CCA  -  The customer call entity. This entity can be envoked    */
+ /*          from the customer call program.   The key buffer        */
+ /*          lay-out for this entity is:                             */
+ /*                                                                  */
+ /*           1 -  5  (5A)   - Helpdesk code                         */
+ /*           6 - 15  (10A)  - Call track number                     */
+ /*                                                                  */
+ /*          You can use these values to retrieve other solution     */
+ /*          attributes with the OMQRTVCC command API.               */
+ /*                                                                  */
+ /**                                                                 */
+ /** &OPTI  - Option used                                            */
+ /** -----                                                           */
+ /*  This parameter contains the option that was used by the user.   */
+ /*                                                                  */
+ /**                                                                 */
+ /** &KEY   - Key buffer to entity                                   */
+ /** -----                                                           */
+ /*  The key buffers are described earlier, but here they are        */
+ /*  again in case you have missed them.                             */
+ /*                                                                  */
+ /*  INC  -  The incident entity buffer                              */
+ /*                                                                  */
+ /*           1 - 5   ( 5A)  - Helpdesk Code                         */
+ /*           6 - 15  (10A)  - Incident code                         */
+ /*                                                                  */
+ /*  CCA  -  The customer call entity buffer                         */
+ /*                                                                  */
+ /*           1 -  5  (5A)   - Helpdesk code                         */
+ /*           6 - 15  (10A)  - Call track number                     */
+ /*                                                                  */
+ /*                                                                  */
+ /**                                                                 */
+ /** &STAT  - Return status                                          */
+ /** -----                                                           */
+ /*  The return status field &STAT can be filled with the following  */
+ /*  values:                                                         */
+ /*                                                                  */
+ /*  *TERM - If this value is used, the calling program will act     */
+ /*          as if an error had occured during the processing of     */
+ /*          the user option. The option in the list will be in      */
+ /*          reverse image and list processing stops. You are        */
+ /*          responsible for sending error messages to the calling   */
+ /*          program to indicate the cause of the error. This can    */
+ /*          be done with the SNDPGMMSG command.                     */
+ /*                                                                  */
+ /*  *CNCL - If this value is used, the calling program will act     */
+ /*          as if the user pressed F12 on a list continuation       */
+ /*          display. The list option will be cleared but list       */
+ /*          processing will stop.                                   */
+ /*                                                                  */
+ /*  *EXIT - If the calling program receives this value it will      */
+ /*          terminate as if the user had pressed F3. All list       */
+ /*          processing and pending functions are canceled.          */
+ /*                                                                  */
+ /*  *NORM - Normal termination of the user option is assumed. The   */
+ /*          list option is blanked and the calling program will     */
+ /*          continue with the next list option. If no more list     */
+ /*          options are keyed, the list will be re-displayed.       */
+ /*                                                                  */
+ /*  (note)  If the user option ended in error, you are              */
+ /*          responsible for sending error messages to the calling   */
+ /*          program to indicate the cause of the error. This can    */
+ /*          be done with the SNDPGMMSG command. The same goes       */
+ /*          for completion messages when the option completed       */
+ /*          normally. This can be done with the same command.       */
+ /*                                                                  */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+             PGM        PARM(&ENTC &KEY &OPTI &STAT)
+
+ /* ---------------------------------------------------------------- */
+ /* Declaration                                                      */
+ /* ---------------------------------------------------------------- */
+
+          /* ------------------------------------------------------- */
+          /* Parameter                                               */
+          /* ------------------------------------------------------- */
+             DCL        VAR(&ENTC) TYPE(*CHAR) LEN(3)
+             DCL        VAR(&KEY)  TYPE(*CHAR) LEN(100)
+             DCL        VAR(&OPTI) TYPE(*CHAR) LEN(2)
+             DCL        VAR(&STAT) TYPE(*CHAR) LEN(5)
+
+          /* ------------------------------------------------------- */
+          /* Incident keyfields                                      */
+          /* ------------------------------------------------------- */
+             DCL        VAR(&HEDC) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&INC)  TYPE(*CHAR) LEN(10)
+             DCL        VAR(&DATE) TYPE(*CHAR) LEN(6)
+
+          /* ------------------------------------------------------- */
+          /* Customer call fields                                    */
+          /* ------------------------------------------------------- */
+          /* DCL        VAR(&HEDC) TYPE(*CHAR) LEN(5)                */
+             DCL        VAR(&CTN#) TYPE(*CHAR) LEN(10)
+
+          /* ------------------------------------------------------- */
+          /* Helpdesk attributes                                     */
+          /* ------------------------------------------------------- */
+             DCL        VAR(&CUSC) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&CCTC) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&emac) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&CTN)  TYPE(*CHAR) LEN(10)
+             DCL        VAR(&SHID) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&TEL)  TYPE(*CHAR) LEN(15)
+             DCL        VAR(&ISFL) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&INST) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&APPL) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&REQ)  TYPE(*CHAR) LEN(10)
+             DCL        VAR(&FIX)  TYPE(*CHAR) LEN(10)
+             DCL        VAR(&MSGD) TYPE(*CHAR) LEN(256)
+
+          /* ------------------------------------------------------- */
+          /* Request attributes                                      */
+          /* ------------------------------------------------------- */
+             DCL        VAR(&USRI) TYPE(*CHAR) LEN(8)
+             DCL        VAR(&ADDR) TYPE(*CHAR) LEN(8)
+
+ /* ---------------------------------------------------------------- */
+ /* Init                                                             */
+ /* ---------------------------------------------------------------- */
+
+          /* ------------------------------------------------------- */
+          /* Install error monitor                                   */
+          /* ------------------------------------------------------- */
+             MONMSG     MSGID(CPF0000 OMQ0000) EXEC(GOTO CMDLBL(ERROR))
+
+ /* ---------------------------------------------------------------- */
+ /* General options                                                  */
+ /* ---------------------------------------------------------------- */
+
+          /* ------------------------------------------------------- */
+          /* QUSCMDLN - This 'command line window' command can be    */
+          /* used in the functions:                                  */
+          /* INCIDENT REGISTRATION                                   */
+          /* CUSTOMER CALL MAINTENANCE                               */
+          /* ------------------------------------------------------- */
+             IF         COND(&OPTI *EQ 'CW') THEN(DO)
+             CALL       PGM(QUSCMDLN)
+             CHGVAR     VAR(&STAT) VALUE('*NORM')
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+          /* ------------------------------------------------------- */
+          /* WRKSPLF - This 'work spoolfile' command can be          */
+          /* used in the functions:                                  */
+          /* INCIDENT REGISTRATION                                   */
+          /* CUSTOMER CALL MAINTENANCE                               */
+          /* ------------------------------------------------------- */
+             IF         COND(&OPTI *EQ 'SP') THEN(DO)
+             WRKSPLF
+             CHGVAR     VAR(&STAT) VALUE('*NORM')
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+          /* ------------------------------------------------------- */
+          /* DSPMSG - This 'display message' command can be          */
+          /* used in the functions:                                  */
+          /* INCIDENT REGISTRATION                                   */
+          /* CUSTOMER CALL MAINTENANCE                               */
+          /* ------------------------------------------------------- */
+             IF         COND(&OPTI *EQ 'DM') THEN(DO)
+             DSPMSG
+             CHGVAR     VAR(&STAT) VALUE('*NORM')
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+          /* ------------------------------------------------------- */
+          /* Error     - Force an error                              */
+          /* used in the functions:                                  */
+          /* INCIDENT REGISTRATION                                   */
+          /* CUSTOMER CALL MAINTENANCE                               */
+          /* ------------------------------------------------------- */
+             IF         COND(&OPTI *EQ 'ER') THEN(DO)
+             CHGVAR     VAR(&STAT) VALUE('*TERM')
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+          /* ------------------------------------------------------- */
+          /* Cancel    - Simulate cancel                             */
+          /* used in the functions:                                  */
+          /* INCIDENT REGISTRATION                                   */
+          /* CUSTOMER CALL MAINTENANCE                               */
+          /* ------------------------------------------------------- */
+             IF         COND(&OPTI *EQ 'CA') THEN(DO)
+             CHGVAR     VAR(&STAT) VALUE('*CNCL')
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+          /* ------------------------------------------------------- */
+          /* Exit      - Simulate Exit                               */
+          /* used in the functions:                                  */
+          /* INCIDENT REGISTRATION                                   */
+          /* CUSTOMER CALL MAINTENANCE                               */
+          /* ------------------------------------------------------- */
+             IF         COND(&OPTI *EQ 'EX') THEN(DO)
+             CHGVAR     VAR(&STAT) VALUE('*EXIT')
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+          /* ------------------------------------------------------- */
+          /* WRKSBMJOB - Work with submitted jobs                    */
+          /* used in the functions:                                  */
+          /* INCIDENT REGISTRATION                                   */
+          /* CUSTOMER CALL MAINTENANCE                               */
+          /* ------------------------------------------------------- */
+             IF         COND(&OPTI *EQ 'WS') THEN(DO)
+             WRKSBMJOB
+             CHGVAR     VAR(&STAT) VALUE('*NORM')
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+ /* ---------------------------------------------------------------- */
+ /* OPTION CI - Change incident                                      */
+ /* ---------------------------------------------------------------- */
+
+             IF         COND(&OPTI *EQ 'CI') THEN(DO)
+
+
+         /*--------------------------------------------------------- */
+         /* If used with wrong entity display message                */
+         /* -------------------------------------------------------- */
+             IF         COND(&ENTC *NE 'INC') THEN(DO)
+             SNDPGMMSG  MSGID(USRE004) MSGF(OMHMSG) MSGDTA(&ENTC +
+                          *CAT 'INC' *CAT '   ' *CAT '   ' *CAT '   ')
+             CHGVAR     VAR(&STAT) VALUE('*TERM')
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+         /*--------------------------------------------------------- */
+         /* Escalate                                                 */
+         /* -------------------------------------------------------- */
+             CHGVAR     VAR(&HEDC) VALUE(%SST(&KEY  1 5))
+             CHGVAR     VAR(&INC) VALUE(%SST(&KEY  6 10))
+
+             ?          OMQCHGIN DESK(&HEDC) INC(&INC)
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+ /* ---------------------------------------------------------------- */
+ /* OPTION ES - Escalate the incident                                */
+ /* ---------------------------------------------------------------- */
+
+             IF         COND(&OPTI *EQ 'ES') THEN(DO)
+
+
+         /*--------------------------------------------------------- */
+         /* If used with wrong entity display message                */
+         /* -------------------------------------------------------- */
+             IF         COND(&ENTC *NE 'INC') THEN(DO)
+             SNDPGMMSG  MSGID(USRE004) MSGF(OMHMSG) MSGDTA(&ENTC +
+                          *CAT 'INC' *CAT '   ' *CAT '   ' *CAT '   ')
+             CHGVAR     VAR(&STAT) VALUE('*TERM')
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+         /*--------------------------------------------------------- */
+         /* Escalate                                                 */
+         /* -------------------------------------------------------- */
+             CHGVAR     VAR(&HEDC) VALUE(%SST(&KEY  1 5))
+             CHGVAR     VAR(&INC) VALUE(%SST(&KEY  6 10))
+
+          ?  OMQCHGIN   ACTC(*ESCALATE) DESK(&HEDC) INC(&INC)
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+ /* ---------------------------------------------------------------- */
+ /* OPTION CF - Create fix from incident.                            */
+ /* ---------------------------------------------------------------- */
+
+             IF         COND(&OPTI *EQ 'CF') THEN(DO)
+
+
+         /*--------------------------------------------------------- */
+         /* If used with wrong entity display message                */
+         /* -------------------------------------------------------- */
+             IF         COND(&ENTC *NE 'INC') THEN(DO)
+             SNDPGMMSG  MSGID(USRE004) MSGF(OMHMSG) MSGDTA(&ENTC +
+                          *CAT 'INC' *CAT '   ' *CAT '   ' *CAT '   ')
+             CHGVAR     VAR(&STAT) VALUE('*TERM')
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+         /*--------------------------------------------------------- */
+         /* Get the incident key                                     */
+         /* -------------------------------------------------------- */
+             CHGVAR     VAR(&HEDC) VALUE(%SST(&KEY  1 5))
+             CHGVAR     VAR(&INC) VALUE(%SST(&KEY  6 10))
+
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+ /* ---------------------------------------------------------------- */
+ /* OPTION CR - Create request from incident                         */
+ /* ---------------------------------------------------------------- */
+
+
+         /*--------------------------------------------------------- */
+         /* If used with wrong entity display message                */
+         /* -------------------------------------------------------- */
+             IF         COND(&ENTC *NE 'INC') THEN(DO)
+             SNDPGMMSG  MSGID(USRE004) MSGF(OMHMSG) MSGDTA(&ENTC +
+                          *CAT 'INC' *CAT '   ' *CAT '   ' *CAT '   ')
+             CHGVAR     VAR(&STAT) VALUE('*TERM')
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+         /*--------------------------------------------------------- */
+         /* Get the incident key                                     */
+         /* -------------------------------------------------------- */
+             CHGVAR     VAR(&HEDC) VALUE(%SST(&KEY  1 5))
+             CHGVAR     VAR(&INC) VALUE(%SST(&KEY  6 10))
+
+
+ /* ---------------------------------------------------------------- */
+ /* OPTION CO - Create outq in outq library.                         */
+ /* ---------------------------------------------------------------- */
+
+             IF         COND(&OPTI *EQ 'CO') THEN(DO)
+
+
+         /*--------------------------------------------------------- */
+         /* If used with wrong entity display message                */
+         /* -------------------------------------------------------- */
+             IF         COND(&ENTC *NE 'INC') THEN(DO)
+             SNDPGMMSG  MSGID(USRE004) MSGF(OMHMSG) MSGDTA(&ENTC +
+                          *CAT 'INC' *CAT '   ' *CAT '   ' *CAT '   ')
+             CHGVAR     VAR(&STAT) VALUE('*TERM')
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+         /*--------------------------------------------------------- */
+         /* Get the incident key                                     */
+         /* -------------------------------------------------------- */
+             CHGVAR     VAR(&HEDC) VALUE(%SST(&KEY  1 5))
+             CHGVAR     VAR(&INC) VALUE(%SST(&KEY  6 10))
+
+         /*--------------------------------------------------------- */
+         /* Get the outq library                                     */
+         /* -------------------------------------------------------- */
+             OMQRTVHD   DESK(&HEDC) ISFL(&ISFL)
+
+         /*--------------------------------------------------------- */
+         /* Create the output queue                                  */
+         /* -------------------------------------------------------- */
+             CRTOUTQ    OUTQ(&ISFL/&INC) TEXT('Remain - Created by +
+                          User Option OMUSROPTHD')
+
+             SNDPGMMSG  MSG('Output queue created.')
+
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+ /* ---------------------------------------------------------------- */
+ /* OPTION SI - Send Information                                     */
+ /* ---------------------------------------------------------------- */
+
+             IF         COND(&OPTI *EQ 'SI') THEN(DO)
+
+
+         /*--------------------------------------------------------- */
+         /* If used with wrong entity display message                */
+         /* -------------------------------------------------------- */
+             IF         COND(&ENTC *NE 'INC') THEN(DO)
+             SNDPGMMSG  MSGID(USRE004) MSGF(OMHMSG) MSGDTA(&ENTC +
+                          *CAT 'INC' *CAT '   ' *CAT '   ' *CAT '   ')
+             CHGVAR     VAR(&STAT) VALUE('*TERM')
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+         /*--------------------------------------------------------- */
+         /* Get the incident key                                     */
+         /* -------------------------------------------------------- */
+             CHGVAR     VAR(&HEDC) VALUE(%SST(&KEY  1 5))
+             CHGVAR     VAR(&INC) VALUE(%SST(&KEY  6 10))
+             OMQRTVIN   HEDC(&HEDC) INC(&INC) CTN(&CTN) SHID(&SHID)
+             OMQRTVCC   HEDC(&HEDC) CTN(&CTN) CUSC(&CUSC) CCTC(&CCTC)
+             OMQRTVCO   CUSC(&CUSC) CCTC(&CCTC) EMAIL(&EMAC)
+
+
+         /*--------------------------------------------------------- */
+         /* Send an e-mail                                           */
+         /* -------------------------------------------------------- */
+             ?          SNDEMAOMS ??TO(&EMAC) ??SUBJ(&SHID) +
+                          TYPE(*TEMPLATE) HEDC(&HEDC) INC(&INC)
+
+             SNDPGMMSG  MSG('e-mail send.')
+
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+ /* ---------------------------------------------------------------- */
+ /* Exit                                                             */
+ /* ---------------------------------------------------------------- */
+
+
+ /* ---------------------------------------------------------------- */
+ /* Errors                                                           */
+ /* ---------------------------------------------------------------- */
+ERROR:
+             CHGVAR     VAR(&STAT) VALUE('*TERM')
+
+ /* ---------------------------------------------------------------- */
+ /* End of program                                                   */
+ /* ---------------------------------------------------------------- */
+ ENDPGM:
+             ENDPGM

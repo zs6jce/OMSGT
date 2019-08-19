@@ -1,0 +1,54 @@
+ /* ---------------------------------------------------------------- */
+ /* Description                                                      */
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /* Program ....: OMH041C                                            */
+ /* Function ...: Call OMH041                                        */
+ /* Author .....: Remain Software                                    */
+ /* Parameters .: CUSC, STAT                                         */
+ /*                                                                  */
+ /* This is the CCP for MHX maintenance                              */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+
+             PGM        PARM(&CUSC &STAT)
+
+ /* ---------------------------------------------------------------- */
+ /* Declare parameter-variables                                      */
+ /* ---------------------------------------------------------------- */
+             DCL        VAR(&CUSC) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&STAT) TYPE(*CHAR) LEN(5)
+             CHGVAR     VAR(&STAT) VALUE('*NORM')
+
+ /* ---------------------------------------------------------------- */
+ /* Install global error monitor                                     */
+ /* ---------------------------------------------------------------- */
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ERROR))
+
+ /* ---------------------------------------------------------------- */
+ /* Call the maintenance program                                     */
+ /* ---------------------------------------------------------------- */
+             CALL       PGM(OMH041) PARM(&CUSC &STAT)
+             IF         COND(&STAT *EQ '*TERM') THEN(GOTO +
+                          CMDLBL(ERROR))
+
+ /* ---------------------------------------------------------------- */
+ /* Program ends normally                                            */
+ /* ---------------------------------------------------------------- */
+             ELSE       CMD(GOTO CMDLBL(ENDPGM))
+
+ /* ---------------------------------------------------------------- */
+ /* Handle unexpected errors                                         */
+ /* ---------------------------------------------------------------- */
+ ERROR:
+             CHGVAR     VAR(&STAT) VALUE('*TERM')
+             SNDPGMMSG  MSGID(OMQ5012) MSGF(OMSAPI) +
+                          MSGDTA(STRCMM) MSGTYPE(*ESCAPE)
+
+ /* ---------------------------------------------------------------- */
+ /* Exit program processing.                                         */
+ /* ---------------------------------------------------------------- */
+ ENDPGM:
+             RMVMSG     CLEAR(*ALL)
+             RETURN
+             ENDPGM

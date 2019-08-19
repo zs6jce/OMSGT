@@ -1,0 +1,250 @@
+      *$$\CRTOM CRTDSPF
+      *$$\ENDOM
+     A**************************************************************************
+     A*                                                                        *
+     A*  File Name   : OMH055D                                                 *
+     A*  Description : Route Maintenance                                       *
+     A*  Programmer  : Arthur Middelveld                                       *
+     A*  Date        : 2001-25-10                                              *
+     A*                                                                        *
+     A**************************************************************************
+     A*                                                                        *
+     A*  Modification Log:                                                     *
+     A*                                                                        *
+     A*  ####    Date    Programmer  Comment                                   *
+     A*  ---- ---------- ----------  ----------------------------------------  *
+     A*                                                                        *
+     A*                                                                        *
+     A**************************************************************************
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      REF(*LIBL/OMRCF)
+     A                                      CHGINPDFT(UL)
+     A                                      HLPTITLE('Route Maintenance')
+     A                                      HELP
+     A                                      PRINT
+     A                                      ALTHELP(CA01)
+     A**************************************************************************
+     A          R OMH055S1                  SFL
+     A                                      SFLNXTCHG
+     A            S1OPTN         2Y 0B 12  2EDTCDE(Z)
+     A            RCMATF    R        O 12 34REFFLD(OMRCFR/RCMATF *LIBL/OMRCF)
+     A            RCMATL    R        O 12 48REFFLD(OMRCFR/RCMATL *LIBL/OMRCF)
+     A            RCMATM    R        O 12 62REFFLD(OMRCFR/RCMATM *LIBL/OMRCF)
+     A            RCACTC    R        O 12 27REFFLD(OMRCFR/RCACTC *LIBL/OMRCF)
+     A            RCSTAT    R        O 12 20REFFLD(OMRCFR/RCSTAT *LIBL/OMRCF)
+     A            RCUSER    R        O 12  6REFFLD(OMRCFR/RCUSER *LIBL/OMRCF)
+     A**************************************************************************
+     A          R OMH055C1                  SFLCTL(OMH055S1)
+     A                                      SFLSIZ(9999)
+     A                                      SFLPAG(0009)
+     A                                      CA03
+     A                                      CA06
+     A                                      CA12
+     A                                      OVERLAY
+     A                                      KEEP
+     A  50                                  SFLDSP
+     A                                      SFLDSPCTL
+     A  52                                  SFLCLR
+     A  51                                  SFLEND(*MORE)
+     A          H                           HLPPNLGRP(OMH055C1 OMH055)
+     A                                      HLPARA(01 002 01 002)
+     A          H                           HLPPNLGRP('OMH055C1/S1OPTN' OMH055)
+     A                                      HLPARA(11 002 21 003)
+     A          H                           HLPPNLGRP('OMH055C1/KEYS' OMH055)
+     A                                      HLPARA(23 001 23 080)
+     A                                  1  2'OMH055'
+     A                                  1 13SYSNAME
+     A                                      DSPATR(ND)
+     A                                  1 30'Route Maintenance'
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH055-01'
+     A                                  2 26'Work with Mail Extentions'
+     A                                      DSPATR(HI)
+     A                                  2 61USER
+     A                                      DSPATR(ND)
+     A                                  2 72TIME
+     A                                      EDTWRD('  :  :  ')
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            FMHEDC    R        O  5 28REFFLD(OMRCFR/RCHEDC *LIBL/OMRCF)
+     A                                      COLOR(WHT)
+     A                                 11  2'Opt'
+     A                                      DSPATR(HI)
+     A                                 10 34'Template'
+     A                                      COLOR(WHT)
+     A                                 11 34'File'
+     A                                      COLOR(WHT)
+     A                                 11 48'Library'
+     A                                      COLOR(WHT)
+     A                                 11 62'Member'
+     A                                      COLOR(WHT)
+     A                                 10 48'Template'
+     A                                      COLOR(WHT)
+     A                                 10 62'Template'
+     A                                      COLOR(WHT)
+     A                                 11 17'Status'
+     A                                      COLOR(WHT)
+     A                                 10 25'Entry'
+     A                                      COLOR(WHT)
+     A                                 11 25'Exit'
+     A                                      COLOR(WHT)
+     A            FMSTRC        10A  O  6 28COLOR(WHT)
+     A            FMSTRD        40A  O  6 40COLOR(WHT)
+     A            FMHEDD        40A  O  5 40COLOR(WHT)
+     A                                 11  6'User'
+     A                                      COLOR(WHT)
+     A            FLD001        25A  O  5  2MSGID(HLP 0012 OMHDSP)
+     A            FLD002        25A  O  6  2MSGID(STA 0004 OMHDSP)
+     A            FLD003        78A  O  9  2COLOR(BLU)
+     A                                      MSGID(OPT 0001 OMHDSP)
+     A            FLD004        25A  O  7  2MSGID(STA 0001 OMHDSP)
+     A            FMSTAC    R        O  7 28REFFLD(OMRCFR/RCSTAC *LIBL/OMRCF)
+     A                                      COLOR(WHT)
+     A            FMSTAD        40A  O  7 40COLOR(WHT)
+     A**************************************************************************
+     A          R OMH055H1
+     A                                      OVERLAY
+     A                                 23  2'F3=Exit   F6=Add   F12=Cancel'
+     A                                      COLOR(BLU)
+     A                                 23 77' '
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A**************************************************************************
+     A          R OMH055F2
+     A                                      CA03
+     A                                      CF04
+     A                                      CA12
+     A                                      RTNCSRLOC(&RCDW1 &FLDW1)
+     A                                      INVITE
+     A  58                                  CSRLOC(VPCSR1     HPCSR1)
+     A                                      OVERLAY
+     A          H                           HLPPNLGRP(OMH055F2 OMH055)
+     A                                      HLPARA(01 002 01 002)
+     A          H                           HLPPNLGRP('OMH055F2/FMUSER' OMH055)
+     A                                      HLPARA(09 028 09 037)
+     A          H                           HLPPNLGRP('OMH055F2/FMSUPL' OMH055)
+     A                                      HLPARA(10 028 10 028)
+     A          H                           HLPPNLGRP('OMH055F2/FMSTAT' OMH055)
+     A                                      HLPARA(11 028 11 028)
+     A          H                           HLPPNLGRP('OMH055F2/FMACTC' OMH055)
+     A                                      HLPARA(12 028 12 028)
+     A          H                           HLPPNLGRP('OMH055F2/FMEEMC' OMH055)
+     A                                      HLPARA(14 028 14 077)
+     A          H                           HLPPNLGRP('OMH055F2/FMBCCE' OMH055)
+     A                                      HLPARA(15 028 15 077)
+     A          H                           HLPPNLGRP('OMH055F2/FMMATF' OMH055)
+     A                                      HLPARA(17 028 17 037)
+     A          H                           HLPPNLGRP('OMH055F2/FMMATL' OMH055)
+     A                                      HLPARA(18 028 18 037)
+     A          H                           HLPPNLGRP('OMH055F2/FMMATM' OMH055)
+     A                                      HLPARA(19 028 19 037)
+     A          H                           HLPPNLGRP('OMH055F2/KEYS' OMH055)
+     A                                      HLPARA(23 001 23 080)
+     A            RCDW1         10A  H
+     A            FLDW1         10A  H
+     A            VPCSR1         3S 0H
+     A            HPCSR1         3S 0H
+     A                                  1 13SYSNAME
+     A                                      DSPATR(ND)
+     A                                  1 30'Extentions Management'
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2 29'Maintain mail extentions'
+     A                                      DSPATR(HI)
+     A                                  2 61USER
+     A                                      DSPATR(ND)
+     A                                  2 72TIME
+     A                                      EDTWRD('  :  :  ')
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A                                  2  2'OMH055-02'
+     A                                  1  2'OMH055'
+     A            FMEEMC    R        O 14 28REFFLD(OMRCFR/RCEEMC *LIBL/OMRCF)
+     A N71        RCBCCE    R        B 15 28REFFLD(OMRCFR/RCBCCE *LIBL/OMRCF)
+     A  71        FMBCCE    R        O 15 28REFFLD(OMRCFR/RCBCCE *LIBL/OMRCF)
+     A N71        RCMATF    R        B 17 28REFFLD(OMRCFR/RCMATF *LIBL/OMRCF)
+     A  62                                  DSPATR(RI)
+     A  62                                  DSPATR(PC)
+     A  71        FMMATF    R        O 17 28REFFLD(OMRCFR/RCMATF *LIBL/OMRCF)
+     A N71        RCMATL    R        B 18 28REFFLD(OMRCFR/RCMATL *LIBL/OMRCF)
+     A  63                                  DSPATR(RI)
+     A  63                                  DSPATR(PC)
+     A  71        FMMATL    R        O 18 28REFFLD(OMRCFR/RCMATL *LIBL/OMRCF)
+     A N71        RCMATM    R        B 19 28REFFLD(OMRCFR/RCMATM *LIBL/OMRCF)
+     A  64                                  DSPATR(RI)
+     A  64                                  DSPATR(PC)
+     A  71        FMMATM    R        O 19 28REFFLD(OMRCFR/RCMATM *LIBL/OMRCF)
+     A N71        RCSTAT    R        B 11 28REFFLD(OMRCFR/RCSTAT *LIBL/OMRCF)
+     A                                      VALUES('0' '9')
+     A  71        FMSTAT    R        O 11 28REFFLD(OMRCFR/RCSTAT *LIBL/OMRCF)
+     A            FMHEDC    R        O  5 28REFFLD(OMRCFR/RCHEDC *LIBL/OMRCF)
+     A                                      COLOR(WHT)
+     A            FMSTRC    R        O  6 28REFFLD(OMRCFR/RCSTRC *LIBL/OMRCF)
+     A                                      COLOR(WHT)
+     A N71        RCACTC    R        B 12 28REFFLD(OMRCFR/RCACTC *LIBL/OMRCF)
+     A                                      VALUES('0' '1')
+     A  71        FMACTC    R        O 12 28REFFLD(OMRCFR/RCACTC *LIBL/OMRCF)
+     A            FMSTRD        40A  O  6 40COLOR(WHT)
+     A                                      TEXT('Route description')
+     A            FMHEDD        40A  O  5 40COLOR(WHT)
+     A                                      TEXT('Helpdesk description')
+     A N70        RCUSER    R        B  9 28REFFLD(OMRCFR/RCUSER *LIBL/OMRCF)
+     A  60                                  DSPATR(PC)
+     A  60                                  DSPATR(RI)
+     A  70        FMUSER    R        O  9 28REFFLD(OMRCFR/RCUSER *LIBL/OMRCF)
+     A                                      COLOR(WHT)
+     A N70        ACT0001       10A  O  4  2MSGID(ACT 0001 OMHDSP)
+     A                                      DSPATR(RI)
+     A  70N71     ACT0002       10A  O  4  2MSGID(ACT 0002 OMHDSP)
+     A                                      DSPATR(RI)
+     A  70 71     ACT0003       10A  O  4  2MSGID(ACT 0003 OMHDSP)
+     A                                      DSPATR(RI)
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            FLD001        25A  O  5  2MSGID(HLP 0012 OMHDSP)
+     A            FLD002        25A  O  6  2MSGID(STA 0004 OMHDSP)
+     A            FLD003        25A  O  9  2MSGID(USR 0001 OMHDSP)
+     A            FLD005        25A  O 11  2MSGID(STA 0001 OMHDSP)
+     A            FLD006        25A  O 12  2MSGID(EOE 0001 OMHDSP)
+     A            FLD007        25A  O 14  2MSGID(EMA 0001 OMHDSP)
+     A            FLD008        25A  O 15  2MSGID(BCC 0001 OMHDSP)
+     A            FLD009        25A  O 17  2MSGID(MAT 0001 OMHDSP)
+     A            FLD010        25A  O 18  2MSGID(MAT 0002 OMHDSP)
+     A            FLD011        25A  O 19  2MSGID(MAT 0003 OMHDSP)
+     A            FLD012        78A  O 23  2COLOR(BLU)
+     A                                      MSGID(KEY 0003 OMHDSP)
+     A            FLD013        25A  O  9 40MSGID(KEY 0101 OMHDSP)
+     A            FLD014        25A  O 11 40MSGID(MH0 5501 OMHDSP)
+     A            FLD015        25A  O 12 40MSGID(MH0 5502 OMHDSP)
+     A            FLD016        25A  O  7  2MSGID(STA 0001 OMHDSP)
+     A            FMSTAC    R        O  7 28REFFLD(OMRCFR/RCSTAC *LIBL/OMRCF)
+     A                                      COLOR(WHT)
+     A            FMSTAD        40A  O  7 40COLOR(WHT)
+     A**************************************************************************
+     A          R MSGRCD                    TEXT('MSG SFL RECORD')
+     A                                      SFL
+     A                                      SFLMSGRCD(24)
+     A            MSGKEY                    SFLMSGKEY
+     A            PGMSGQ                    SFLPGMQ
+     A**************************************************************************
+     A          R MSGCTL                    TEXT('MSG SFL CONTROL')
+     A                                      SFLCTL(MSGRCD)
+     A                                      SFLINZ
+     A                                      SFLSIZ(2)
+     A                                      SFLPAG(1)
+     A                                      SFLDSP
+     A                                      SFLDSPCTL
+     A N98                                  SFLEND
+     A                                      OVERLAY
+     A            PGMSGQ                    SFLPGMQ

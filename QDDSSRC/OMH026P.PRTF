@@ -1,0 +1,74 @@
+      *$$\CRTOM CRTPRTF
+      *$$\ENDOM
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMH026P                                       *
+      * Function ...: Escalation                                    *
+      * Author .....: W.S. Jongman                                  *
+      * Startdate ..: 21-03-1997.                                   *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+                                            REF(OMSREF)
+
+      * ----------------------------------------------------------- *
+      * Page header format                                          *
+      * ----------------------------------------------------------- *
+                R HEADER                    SKIPB(1)
+                                           2'OMH026P'
+                  VAR01        130   O     2
+                                         125DATE
+                                            EDTCDE(Y)
+                                            SPACEA(1)
+
+                                           2'Pag.'
+                                          +1PAGNBR
+
+                                         125TIME
+                                            SPACEA(2)
+      *
+                  VAR02        130         2
+                  PRHEDC    R             28REFFLD(HEDC)
+                                            SPACEA(2)
+      *
+                  VAR03        130         2
+                                            HIGHLIGHT
+                                            SPACEA(1)
+
+                  VAR04        130         2
+                                            HIGHLIGHT
+
+      * ----------------------------------------------------------- *
+      * Line format                                                 *
+      * ----------------------------------------------------------- *
+                R DETAIL                    SPACEB(1)
+
+                  NCINC#    R              2REFFLD(INC#)
+                  FMSHID    R   40        +2REFFLD(SHID)
+                  NCSTAT    R             +2REFFLD(STAT)
+                  FCIEDT    R   -1        +2REFFLD(IEDT)
+                                            EDTCDE(Y)
+                  NCIETM    R             +2REFFLD(IETM)
+                                            EDTWRD('0 :  :  ')
+                  PRESC#    R             +2REFFLD(ESC#)
+                                            EDTCDE(3)
+                  NCPRI#    R             +2REFFLD(PRI#)
+                                            EDTCDE(3)
+                  F4IEDT    R   -1        +2REFFLD(IEDT)
+                                            EDTCDE(Y)
+                  I4IETM    R             +2REFFLD(IETM)
+                                            EDTWRD('0 :  :  ')
+                  I4ESC#    R             +2REFFLD(ESC#)
+                                            EDTCDE(3)
+                  I4PRI#    R             +2REFFLD(PRI#)
+                                            EDTCDE(3)
+                  I4MSID    R             +2REFFLD(MSID)
+                                            HIGHLIGHT
+
+      * ----------------------------------------------------------- *
+      * end format                                                  *
+      * ----------------------------------------------------------- *
+                R FOOTER                    SPACEB(2)
+                  VAR05        130         2

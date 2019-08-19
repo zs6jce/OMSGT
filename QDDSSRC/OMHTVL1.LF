@@ -1,0 +1,33 @@
+      *$$\CRTOM CRTLF
+      *$$\ENDOM
+
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMHTVL1                                       *
+      * Function ...: Selections and default subsets logical.       *
+      * Author .....: W.S. Jongman.                                 *
+      * Startdate ..: 21-01-1992.                                   *
+      *                                                             *
+      * Logical access path over the OMRTV file.                    *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Physical OMHTV
+      * Record OMHTVR
+      * ------------------------------------------------------------ *
+                R OMHTVR                    PFILE(OMHTV)
+
+      * ------------------------------------------------------------ *
+      * Access path                                                  *
+      * TVHEDC      - HELPDESK CODE                                  *
+      * TVUSID      - User id                                        *
+      * TVFMTC      - Format code                                    *
+      * TVRTV#      - Retrieval sequence number                      *
+      * ------------------------------------------------------------ *
+                K TVHEDC
+                K TVUSID
+                K TVFMTC
+                K TVRTV#

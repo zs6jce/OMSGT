@@ -1,0 +1,319 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: OMH055                                      :   *.
+.*   : Help for ...: HMS - Route Maintenance                     :   *.
+.*   : Author .....: A.R.G. Middelveld                           :   *.
+.*   :                                                           :   *.
+.*   : This panelgroup contains the U.I.M. help texts for        :   *.
+.*   : HMS - Route Maintenance                                   :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:PNLGRP.
+
+.*   .............................................................   *.
+.*   : Option help                                               :   *.
+.*   .............................................................   *.
+
+:HELP NAME='OMH055C1/S1OPTN'.Route Maintenance - Help
+
+:P.
+:XH3.Option
+
+:P.
+Use this column to perform different operations on individual
+entries. Type the option number next to an entry and press Enter. You
+can type the same option next to more than one entry at a time, and
+you can also type different options next to different entries at the
+same time. The possible values are:
+
+:PARML.
+:PT.2=Change
+:PD.
+Type 2 to change the attributes of the Entity.
+
+:PT.4=Delete
+:PD.
+Type 4 to delete the Entity.
+:EPARML.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Function keys                                             :   *.
+.*   .............................................................   *.
+
+:HELP NAME='OMH055C1/KEYS'.Route Maintenance - Help
+:IMHELP NAME=KEYS.
+:EHELP.
+
+:HELP NAME=KEYS.Route Maintenance - Help
+
+:P.
+:XH3.Function Keys
+
+:PARML.
+:PT.F3=Exit
+:PD.
+Press F3=Exit to end the current task and return to the display
+where you began the task. Any options or changes which you keyed
+on input prompts :CIT.after the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F6=Add
+:PD.
+Press F6=Add to add a new occurence of the entity you are working
+with.
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes you have
+made on input prompts:CIT.after the last use of the Enter key:ECIT.
+and go back to the previous display.
+
+
+:EPARML.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Route Maintenance                                         :   *.
+.*   .............................................................   *.
+
+:HELP NAME=STREM.Route Maintenance - Help
+
+:IMHELP NAME=STREMGEN.
+
+:P.
+You must use a template file for the layout of the e-mail.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   : General help for Route Maintenance                        :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=STREMGEN.Route Maintenance - Help
+:XH3.Route Maintenance
+:ISCH ROOTS='Route Maintenance'.
+Work with Mail Extentions
+
+:P.
+The Route Maintenance function enables you to work with mail
+extentions. Each entity presents an user or a group who will
+get an e-mail.
+
+:P.
+You can set the options so that the appropriate user or group
+will get the e-mail.
+
+:P.
+Users with the selected support level are allowed to start this
+function.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   : General Help For Display 1.1                              :   *.
+.*   .............................................................   *.
+
+:HELP NAME=OMH055C1.General Help For Display 1-1
+
+:XH3.Display 1-1 - Work with Mail Extentions
+
+:P.
+:LINK PERFORM='DSPHELP STREM'.
+General Information.
+:ELINK.
+
+:P.
+The work with Mail Extentions shows a list of all Users who
+will get an e-mail when a route changes to the selected route.
+
+:P.
+The attributes in this list are:
+:PARML.
+
+:PT.User
+:PD.
+These are the users who will receive an e-mail when the route of the
+incident changes.
+
+:PT.Status
+:PD.
+This is the status of the helpdesk employee. Select one of the
+following;
+:PT.0=Normal
+:PD.
+This value indicates that this person is an active helpdesk employee.
+:PT.9=Disabled
+:PD.
+This value indicates that this employee is no longer used for this
+helpdesk. A disabled helpdesk employee will be in the database but is
+no longer able to add incidents.
+
+:PT.Entry or Exit
+:PD.
+The entry or exit value indicates when the specific e-mail must be
+sent. Select one of the following;
+:PT.0=Entry
+:PD.
+The e-mail is sent when the incident is changed to the statusroute.
+:PT.1=Exit
+:PD.
+The e-mail is sent when the incident is placed into another
+statusroute.
+
+:PT.Template File
+:PD.
+This is the name of the file which contains the mail templates.
+
+:PT.Template Library
+:PD.
+This is the library of the file which contains the mail templates.
+
+:PT.Template Member
+:PD.
+This is the name of the member that is used as text for the e-mail.
+
+:EPARML.
+
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Help For Display 1.2                                      *   *.
+.*   *************************************************************   *.
+.*   .............................................................   *.
+.*   : General Help For Display 1.2                              :   *.
+.*   .............................................................   *.
+
+:HELP NAME=OMH055F2.General Help For Display 1-2
+
+:XH3.Display 1-2 - Maintain mail extentions
+
+:P.
+:LINK PERFORM='DSPHELP STREM'.
+General Information.
+:ELINK.
+
+:P.
+The Maintain mail extentions shows a screen of options who
+can be set to your own satisfaction.
+
+:P.
+The attributes in this list are:
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   : User                                                      :   *.
+.*   .............................................................   *.
+:HELP NAME='OMH055F2/FMUSER'.Maintain mail extentions - Help
+:P.
+:XH3.User
+:P.
+These are the users who will get an e-mail when the route changed.
+:EHELP.
+.*   .............................................................   *.
+.*   : Support level                                             :   *.
+.*   .............................................................   *.
+:HELP NAME='OMH055F2/FMSUPL'.Maintain mail extentions - Help
+:P.
+:XH3.Support level
+:P.
+Use this option to set the support level for this entity.
+:EHELP.
+.*   .............................................................   *.
+.*   : Status                                                    :   *.
+.*   .............................................................   *.
+:HELP NAME='OMH055F2/FMSTAT'.Maintain mail extentions - Help
+:P.
+:XH3.Status
+:P.
+This is the status of the entity. (0=Normal, 9=Disable)
+:EHELP.
+.*   .............................................................   *.
+.*   : Entry or Exit                                             :   *.
+.*   .............................................................   *.
+:HELP NAME='OMH055F2/FMACTC'.Maintain mail extentions - Help
+:P.
+:XH3.Entry or Exit
+:P.
+The entry or exit indicator. (0=Entry, 1=Exit)
+:EHELP.
+.*   .............................................................   *.
+.*   : To E-Mail Adress                                          :   *.
+.*   .............................................................   *.
+:HELP NAME='OMH055F2/FMEEMC'.Maintain mail extentions - Help
+:P.
+:XH3.To E-Mail Adress
+:P.
+The e-mail adress where the message shout be sent to.
+:EHELP.
+.*   .............................................................   *.
+.*   : Carbon Copy Adress                                        :   *.
+.*   .............................................................   *.
+:HELP NAME='OMH055F2/FMBCCE'.Maintain mail extentions - Help
+:P.
+:XH3.Carbon Copy Adress
+:P.
+The e-mail adress where the message addisional shout be sent to.
+:EHELP.
+.*   .............................................................   *.
+.*   : Template File                                             :   *.
+.*   .............................................................   *.
+:HELP NAME='OMH055F2/FMMATF'.Maintain mail extentions - Help
+:P.
+:XH3.Template File
+:P.
+This is the name of the template file.
+:EHELP.
+.*   .............................................................   *.
+.*   : Template Library                                          :   *.
+.*   .............................................................   *.
+:HELP NAME='OMH055F2/FMMATL'.Maintain mail extentions - Help
+:P.
+:XH3.Template Library
+:P.
+This is the name of the template library.
+:EHELP.
+.*   .............................................................   *.
+.*   : Template Member                                           :   *.
+.*   .............................................................   *.
+:HELP NAME='OMH055F2/FMMATM'.Maintain mail extentions - Help
+:P.
+:XH3.Template Member
+:P.
+This is the name of the template member.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Function keys                                             :   *.
+.*   .............................................................   *.
+
+:HELP NAME='OMH055F2/KEYS'.Route Maintenance - Help
+
+:P.
+:XH3.Function Keys
+
+:PARML.
+:PT.F3=Exit
+:PD.
+Press F3=Exit to end the current task and return to the display
+where you began the task. Any options or changes which you keyed
+on input prompts :CIT.after the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes you have
+made on input prompts:CIT.after the last use of the Enter key:ECIT.
+and go back to the previous display.
+
+:EPARML.
+
+:EHELP.
+
+:EPNLGRP.

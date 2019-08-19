@@ -1,0 +1,428 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: REMAINHD                                    :   *.
+.*   : Function ...: Search Index for REMAIN products.           :   *.
+.*   : Section ....: Search Index synonyms                       :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   : This panelgroup contains the search index synonyms for    :   *.
+.*   : REMAIN products.                                          :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:PNLGRP.
+
+.*   .............................................................   *.
+.*   : Synonyms                                                  :   *.
+.*   :...........................................................:   *.
+
+:ISCHSYN ROOT='about'.about help what oms a
+:ISCHSYN ROOT='action'.action event trigger exit
+:ISCHSYN ROOT='analysis'.analisys analyse impact a
+:ISCHSYN ROOT='asking'.ask asking how
+:ISCHSYN ROOT='answer'.answer solution problem
+:ISCHSYN ROOT='call'.call ring phone telephone
+:ISCHSYN ROOT='concepts'.concepts concept idea
+:ISCHSYN ROOT='contact'.contact person client customer
+:ISCHSYN ROOT='customer'.customer client contact
+:ISCHSYN ROOT='employee'.employee user personel
+:ISCHSYN ROOT='distribution'.distribution www notes e-mail
+:ISCHSYN ROOT='entry'.entry entrance step
+:ISCHSYN ROOT='escalation'.escalation trouble bad worse escalate
+:ISCHSYN ROOT='find'.find finding found
+:ISCHSYN ROOT='glossary'.Glossary index fields attributes
+:ISCHSYN ROOT='helpdesk'.helpdesk desk support
+:ISCHSYN ROOT='incident'.incident problem occurence
+:ISCHSYN ROOT='list'.list
+:ISCHSYN ROOT='log'.log history
+:ISCHSYN ROOT='question'.question ask
+:ISCHSYN ROOT='route'.route road flow
+:ISCHSYN ROOT='search'.search quest find look locate
+:ISCHSYN ROOT='status'.status state
+:ISCHSYN ROOT='type'.type kind specie
+
+.*   .............................................................   *.
+.*   : Import tags to the various indexes                        :   *.
+.*   :...........................................................:   *.
+
+:IMPORT PNLGRP=OMSNEWHD NAME=OMSNEWHD.
+:IMPORT PNLGRP=OMSINSHD NAME=OMSINSHD.
+:IMPORT PNLGRP=OMSCONHD NAME=OMSCONHD.
+:IMPORT PNLGRP=OMSCMDHD NAME=OMSCMDHD.
+:IMPORT PNLGRP=OMSREFHD NAME=OMSREFHD.
+:IMPORT PNLGRP=OMHAPIHD NAME=OMHAPIHD.
+:IMPORT PNLGRP=OMSTCHHD NAME=OMSTCHHD.
+:IMPORT PNLGRP=OMSFAQHD NAME=OMSFAQHD.
+
+.*   .............................................................   *.
+.*   : Import tags to functions                                  :   *.
+.*   :...........................................................:   *.
+
+:IMPORT PNLGRP=OMH001 NAME=STRHDM.
+:IMPORT PNLGRP=OMH002 NAME=STRHEM.
+:IMPORT PNLGRP=OMH003 NAME=STRQLM.
+:IMPORT PNLGRP=OMH004 NAME=STRHQM.
+:IMPORT PNLGRP=OMH005 NAME=STRISM.
+:IMPORT PNLGRP=OMH006 NAME=OMH006.
+:IMPORT PNLGRP=OMH007 NAME=OMH007.
+:IMPORT PNLGRP=OMH009 NAME=STRSTM.
+:IMPORT PNLGRP=OMH010 NAME=OMH010.
+:IMPORT PNLGRP=OMH011 NAME=STRCM.
+:IMPORT PNLGRP=OMH012 NAME=OMH012.
+:IMPORT PNLGRP=OMH013 NAME=STRSRM.
+:IMPORT PNLGRP=OMH035 NAME=STRMSM.
+:IMPORT PNLGRP=OMH014 NAME=OMH014.
+:IMPORT PNLGRP=OMH042 NAME=OMH042.
+:IMPORT PNLGRP=OMH015 NAME=OMH015.
+:IMPORT PNLGRP=OMH016 NAME=STRESM.
+:IMPORT PNLGRP=OMH017 NAME=STRCCR.
+:IMPORT PNLGRP=OMH018 NAME=STRIM.
+:IMPORT PNLGRP=OMH044 NAME=STRSMXGEN.
+:IMPORT PNLGRP=OMH020 NAME=OMH020.
+:IMPORT PNLGRP=OMH021 NAME=OMH021.
+:IMPORT PNLGRP=OMH023 NAME=OMH023.
+:IMPORT PNLGRP=OMH027 NAME=STRSAF.
+:IMPORT PNLGRP=OMH028 NAME=STREPM.
+:IMPORT PNLGRP=OMH019 NAME=STRITM.
+:IMPORT PNLGRP=OMH029 NAME=OMH029.
+:IMPORT PNLGRP=OMH030 NAME=STRALM.
+:IMPORT PNLGRP=OMH038 NAME=OMH038.
+:IMPORT PNLGRP=OMH040 NAME=OMH040.
+:IMPORT PNLGRP=OMH041 NAME=OMH041.
+:IMPORT PNLGRP=OMQUSIIN NAME=OMQUSIIN.
+:IMPORT PNLGRP=STRESC NAME=STRESC.
+:IMPORT PNLGRP=ENDESC NAME=ENDESC.
+:IMPORT PNLGRP=DSTHDD NAME=DSTHDD.
+:IMPORT PNLGRP=OMX305 NAME=OMX305.
+
+.*   *************************************************************   *.
+.*   * Add customer call                                         *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH015IX.
+:ISCH ROOTS='customer call'.Add customer call
+:IMHELP NAME=OMH015.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Answer maintenance                                        *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH006IX.
+:ISCH ROOTS='answer'.Answer maintenance
+:IMHELP NAME=OMH006.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Answer list maintenance                                   *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=STRALMIX.
+:ISCH ROOTS='answer list'.Answer list maintenance
+:IMHELP NAME=STRALM.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Asking questions                                          *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH007IX.
+:ISCH ROOTS='question asking'.Asking questions
+:IMHELP NAME=OMH007.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Concepts                                                  *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMSCONHDIX.
+:ISCH ROOTS='concepts'.Concepts
+:IMHELP NAME=OMSCONHD.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Customer maintenance                                      *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=STRCMIX.
+:ISCH ROOTS='customer'.Customer maintenance
+:IMHELP NAME=STRCM.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Start customer call maintenance                           *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=STRCCRIX.
+:ISCH ROOTS='customer call'.Customer call maintenance
+:IMHELP NAME=STRCCR.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Customer contact maintenance                              *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH012IX.
+:ISCH ROOTS='customer contact'.Customer contact maintenance
+:IMHELP NAME=OMH012.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Display Q&A                                               *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMX305IX.
+:ISCH ROOTS='helpdesk'.Display Question & Answer
+:IMHELP NAME=OMX305.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Enter HelpDesk code                                       *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH029IX.
+:ISCH ROOTS='helpdesk'.Enter HelpDesk code
+:IMHELP NAME=OMH029.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Escalation maintenance                                    *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=STRESMIX.
+:ISCH ROOTS='escalation'.Escalation maintenance
+:IMHELP NAME=STRESM.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Escalation                                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=STREPMIX.
+:ISCH ROOTS='escalation'.Escalation property maintenance
+:IMHELP NAME=STREPM.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Employee maintenance                                      *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=STRHEMIX.
+:ISCH ROOTS='helpdesk employee'.Employee maintenance
+:IMHELP NAME=STRHEM.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Glossary                                                  *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMSREFHDIX.
+:ISCH ROOTS='glossary'.Glossary
+:IMHELP NAME=OMSREFHD.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * HelpDesk maintenance                                      *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=STRHDMIX.
+:ISCH ROOTS='helpdesk'.HelpDesk definition
+:IMHELP NAME=STRHDM.
+:EHELP.
+
+.*   *************************************************************   *.
+.*     System mail extension maintenance                             *.
+.*   *************************************************************   *.
+
+:HELP NAME=STRSMXIX.
+:ISCH ROOTS='system'.System mail extension maintenance
+:IMHELP NAME=STRSMXGEN.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Incident maintenance                                      *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=STRIMIX.
+:ISCH ROOTS='incident'.Incident maintenance
+:IMHELP NAME=STRIM.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Enter incdent text                                        *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH023IX.
+:ISCH ROOTS='helpdesk'.Incident text maintenance
+:IMHELP NAME=OMH023.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Incident type maintenance                                 *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=STRITMIX.
+:ISCH ROOTS='incident type'.Incident type maintenance
+:IMHELP NAME=STRITM.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Maintain mail templates                                   *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH042IX.
+:ISCH ROOTS='mail template'.Mail template
+:IMHELP NAME=OMH042.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Incident log inquiry                                      *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH021IX.
+:ISCH ROOTS='log incident'.Incident log inquiry
+:IMHELP NAME=OMH021.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Incident user interface.                                  *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMQUSIINIX.
+:ISCH ROOTS='incident'.Incident API
+:IMHELP NAME=OMQUSIIN.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Question list maintenance                                 *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=STRQLMIX.
+:ISCH ROOTS='question list'.Question list maintenance
+:IMHELP NAME=STRQLM.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Question Maintenance                                      *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=STRHQMIX.
+:ISCH ROOTS='question'.Question Maintenance
+:IMHELP NAME=STRHQM.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Route entry maintenance                                   *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH014IX.
+:ISCH ROOTS='route entry'.Route entry maintenance
+:IMHELP NAME=OMH014.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Status maintenance                                        *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=STRSTMIX.
+:ISCH ROOTS='status'.Status maintenance
+:IMHELP NAME=STRSTM.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Status action maintenance                                 *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH010IX.
+:ISCH ROOTS='status action'.Status action maintenance
+:IMHELP NAME=OMH010.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Status route maintenance                                  *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=STRSRMIX.
+:ISCH ROOTS='status route'.Status route maintenance
+:IMHELP NAME=STRSRM.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Messages maintenance                                      *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=STRMSMIX.
+:ISCH ROOTS='messages'.Messages maintenance
+:IMHELP NAME=STRMSM.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Start search and find                                     *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=STRSAFIX.
+:ISCH ROOTS='search find'.Search and Find
+:IMHELP NAME=STRSAF.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Start escalation                                          *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=STRESCIX.
+:ISCH ROOTS='escalation'.Start escalation
+:IMHELP NAME=STRESC.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * End escalation                                            *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=ENDESCIX.
+:ISCH ROOTS='escalation'.End escalation
+:IMHELP NAME=ENDESC.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Start distribute helpdesk data                            *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=DSTHDDIX.
+:ISCH ROOTS='distribution'.Start distribution helpdesk data
+:IMHELP NAME=DSTHDD.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * HelpDesk mail extension maintenance                       *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH040IX.Mail extension maintenance - Help
+:ISCH ROOTS='mail extension maintenance'.
+Mail extension maintenance
+
+:IMHELP NAME=OMH040.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Customer Mail extension maintenance                     *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH041IX.Mail extension maintenance - Help
+:ISCH ROOTS='mail extension maintenance'.
+Mail extension maintenance
+:IMHELP NAME=OMH041.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * Work with Distributions                                   *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH038IX.Work with Distributions - Help
+:ISCH ROOTS='work with distributions'.
+Work with Distributions
+:IMHELP NAME=OMH038.
+:EHELP.
+
+:EPNLGRP.

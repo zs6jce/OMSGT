@@ -1,0 +1,440 @@
+.*    *$$\CRTOM CRTPNLGRP                                            *.
+.*    *$$ REPLACE(*YES)                                              *.
+.*    *$$ CHRID(*CHRIDCTL)                                           *.
+.*    *$$\ENDOM                                                      *.
+.*   .............................................................
+.*   : Description                                               :
+.*   :...........................................................:
+.*   :                                                           :
+.*   : Panelgroup .: OMX961P                                     :
+.*   : Function ...: Error handler, print RPG status             :
+.*   : Author .....: W.S. Jongman                                :
+.*   : Startdate ..: 07 09 1993                                  :
+.*   :                                                           :
+.*   :                                                           :
+.*   :...........................................................:
+
+:PNLGRP   DFTMSGF=OMSMSG
+          SUBMSGF=OMSDSP.
+
+
+.*   ·····························································
+.*   Class definitions
+.*   ·····························································
+
+.*        ··················································
+.*        Application code
+.*        ··················································
+:CLASS    NAME=APPC
+          BASETYPE='CHAR 5'.
+:ECLASS.
+
+.*        ··················································
+.*        General
+.*        ··················································
+:CLASS    NAME=GC04
+          BASETYPE='CHAR 4'.
+:ECLASS.
+
+:CLASS    NAME=GC30
+          BASETYPE='CHAR 30'.
+:ECLASS.
+
+:CLASS    NAME=GC35
+          BASETYPE='CHAR 35'.
+:ECLASS.
+
+:CLASS    NAME=GC24
+          BASETYPE='CHAR 24'.
+:ECLASS.
+
+:CLASS    NAME=GC80
+          BASETYPE='CHAR 80'.
+:ECLASS.
+
+:CLASS    NAME=GZ20
+          BASETYPE='ZONED 2 0'.
+:ECLASS.
+
+.*        ··················································
+.*        Time
+.*        ··················································
+:CLASS    NAME=TIME
+          BASETYPE='TIME'.
+:ECLASS.
+
+.*        ··················································
+.*        Job number
+.*        ··················································
+:CLASS    NAME=JOBN
+          BASETYPE='ZONED 6 0'.
+:ECLASS.
+
+.*        ··················································
+.*        Message id
+.*        ··················································
+:CLASS    NAME=MSID
+          BASETYPE='CHAR 7'.
+:ECLASS.
+
+.*        ··················································
+.*        Object code
+.*        ··················································
+:CLASS    NAME=OBJC
+          BASETYPE='CHAR 10'.
+:ECLASS.
+
+.*        ··················································
+.*        Number of parameters
+.*        ··················································
+:CLASS    NAME=PARN
+          BASETYPE='ZONED 3 0'.
+:ECLASS.
+
+.*        ··················································
+.*        Operation code
+.*        ··················································
+:CLASS    NAME=OPCD
+          BASETYPE='CHAR 6'.
+:ECLASS.
+
+.*        ··················································
+.*        Report line
+.*        ··················································
+:CLASS    NAME=PRTD
+          BASETYPE='CHAR 130'.
+:ECLASS.
+
+.*        ··················································
+.*        Status code and description
+.*        ··················································
+:CLASS    NAME=STAC
+          BASETYPE='ZONED 5 0'.
+:ECLASS.
+
+:CLASS    NAME=STAD
+          BASETYPE='CHAR 70'.
+:ECLASS.
+
+.*        ··················································
+.*        Statement number
+.*        ··················································
+:CLASS    NAME=STAN
+          BASETYPE='CHAR 8'.
+:ECLASS.
+
+.*        ··················································
+.*        Indicator
+.*        ··················································
+:CLASS    NAME=INDI
+          WIDTH=4
+          BASETYPE='CHAR 1'.
+
+:TL.
+:TI VALUE='"0"'.*NO
+:TI VALUE='"1"'.*YES
+:ETL.
+
+:ECLASS.
+
+.*   ·····························································
+.*   Variables
+.*   ·····························································
+
+.*        ··················································
+.*        Compile date time
+.*        ··················································
+:VAR      NAME=FMCOMD
+          CLASS=TIME.
+
+:VAR      NAME=FMCOMT
+          CLASS=TIME.
+
+.*        ··················································
+.*        Exception date
+.*        ··················································
+:VAR      NAME=FMEXCD
+          CLASS=TIME.
+
+:VAR      NAME=FMEXCT
+          CLASS=TIME.
+
+.*        ··················································
+.*        Operation code
+.*        ··················································
+:VAR      NAME=FMOPCD
+          CLASS=OPCD.
+
+.*        ··················································
+.*        File name
+.*        ··················································
+:VAR      NAME=FMFILC
+          CLASS=STAN.
+
+:VAR      NAME=FMFILC02
+          CLASS=STAN.
+
+.*        ··················································
+.*        Message id.
+.*        ··················································
+:VAR      NAME=FMMSID
+          CLASS=MSID.
+
+:VAR      NAME=FMMSID02
+          CLASS=MSID.
+
+.*        ··················································
+.*        File open indicator
+.*        ··················································
+:VAR      NAME=FMOPEN
+          CLASS=INDI.
+
+.*        ··················································
+.*        File end indicator
+.*        ··················································
+:VAR      NAME=FMFEND
+          CLASS=INDI.
+
+.*        ··················································
+.*        Job data
+.*        ··················································
+:VAR      NAME=FMJOBC
+          CLASS=OBJC.
+
+:VAR      NAME=FMUSID
+          CLASS=OBJC.
+
+:VAR      NAME=FMJOBN
+          CLASS=JOBN.
+
+:VAR      NAME=FMJOBD
+          CLASS=TIME.
+
+.*        ··················································
+.*        Object definition template
+.*        ··················································
+:VAR      NAME=FMODTC
+          CLASS=GC04.
+
+:VAR      NAME=FMODTC02
+          CLASS=GC04.
+
+.*        ··················································
+.*        Number of parameters
+.*        ··················································
+:VAR      NAME=FMPARN
+          CLASS=PARN.
+
+.*        ··················································
+.*        Program code
+.*        ··················································
+:VAR      NAME=FMPGMC
+          CLASS=OBJC.
+
+:VAR      NAME=FMLIBC
+          CLASS=OBJC.
+
+.*        ··················································
+.*        RPG Exception code
+.*        ··················································
+:VAR      NAME=FMREXC
+          CLASS=GC04.
+
+.*        ··················································
+.*        Reserved
+.*        ··················································
+:VAR      NAME=FMR1
+          CLASS=GC30.
+
+:VAR      NAME=FMR2
+          CLASS=GC80.
+
+:VAR      NAME=FMR3
+          CLASS=GC24.
+
+:VAR      NAME=FMR4
+          CLASS=GZ20.
+
+:VAR      NAME=FMR5
+          CLASS=GC35.
+
+.*        ··················································
+.*        Status codes
+.*        ··················································
+:VAR      NAME=FMSTAC
+          CLASS=STAC.
+
+:VAR      NAME=FMPSTD
+          CLASS=STAD.
+
+:VAR      NAME=FMPSTC
+          CLASS=STAC.
+
+:VAR      NAME=FMFSTC
+          CLASS=STAC.
+
+:VAR      NAME=FMFSTD
+          CLASS=STAD.
+
+.*        ··················································
+.*        Record code
+.*        ··················································
+:VAR      NAME=FMRECD
+          CLASS=STAN.
+
+.*        ··················································
+.*        Statement number
+.*        ··················································
+:VAR      NAME=FMSTAN
+          CLASS=STAN.
+
+:VAR      NAME=FMSTAN02
+          CLASS=STAN.
+
+.*        ··················································
+.*        Subroutine name
+.*        ··················································
+:VAR      NAME=FMSUBC
+          CLASS=STAN.
+
+:VAR      NAME=FMSUBC02
+          CLASS=STAN.
+
+.*   ·····························································
+.*   Variable records
+.*   ·····························································
+
+.*        ··················································
+.*        Record 1
+.*        ··················································
+:VARRCD   NAME=VR0101
+          VARS='FMPGMC FMJOBC FMUSID FMJOBN'.
+
+.*        ··················································
+.*        Record 2
+.*        ··················································
+:VARRCD   NAME=VR0102
+          VARS='FMPGMC FMSTAC FMPSTC FMSTAN FMSUBC FMPARN FMMSID'
+          VARS='FMODTC FMR1   FMLIBC FMR2   FMREXC FMR3   FMR4'
+          VARS='FMFILC FMR5   FMJOBC FMUSID FMJOBN FMJOBD FMEXCD'
+          VARS='FMEXCT FMCOMD FMCOMT FMPSTD'.
+
+.*        ··················································
+.*        Record 3
+.*        ··················································
+:VARRCD   NAME=VR0103
+          VARS='FMFILC02 FMOPEN FMFEND FMFSTC FMOPCD FMSUBC02'
+          VARS='FMSTAN02 FMRECD FMMSID02 FMODTC02 FMFSTD'.
+
+.*   ·····························································
+.*   Conditions
+.*   ·····························································
+
+.*   ·····························································
+.*   Heading definitions
+.*   ·····························································
+
+.*        ··················································
+.*        Header
+.*        ··················································
+:PRTHEAD  NAME=PA01
+          WIDTH=132
+          PRODINFO=FMPGMC
+          .&MSG(MX96101).
+
+.*        ··················································
+.*        Data prolog, Job information.
+.*        ··················································
+:DATA     BOTSEP=SPACE
+          TYPE=PROLOG
+          COMPACT
+          BODYSEP=SPACE.
+
+:DATACOL  WIDTH=25.
+:DATACOL  WIDTH='*'.
+
+:DATAI    VAR=FMJOBC
+          .&MSG(JOB0002).
+
+:DATAI    VAR=FMUSID
+          .&MSG(JOB0003).
+
+:DATAI    VAR=FMJOBN
+          .&MSG(JOB0004).
+
+
+:EDATA.
+
+.*        ··················································
+.*        The trailer.
+.*        ··················································
+:PRTTRAIL .&MSG(END0003).
+:EPRTHEAD.
+
+.*   ·····························································
+.*   Print panel for the data
+.*   ·····························································
+
+:PRTPNL   NAME=PA02
+          WIDTH=80.
+
+.*        ··················································
+.*        The data
+.*        ··················································
+:DATA     BOTSEP=NONE
+          COMPACT
+          BODYSEP=NONE.
+
+:DATACOL  WIDTH=25.
+:DATACOL  WIDTH='*'.
+
+.*        ··················································
+.*        Program
+.*        ··················································
+
+:DATAGRP.
+:DATAGRP  COMPACT.
+:DATAI    VAR=FMEXCD.Exception date
+:DATAI    VAR=FMEXCT.Exception time
+:DATAI    VAR=FMCOMD.Compile date
+:DATAI    VAR=FMCOMT.Compile time
+:EDATAGRP.
+
+:DATAGRP  COMPACT.
+:DATAI    VAR=FMPGMC.Program
+:DATAI    VAR=FMLIBC.Library
+:EDATAGRP.
+:DATAGRP  COMPACT.
+:DATAI    VAR=FMPARN.Number of parameters
+:DATAI    VAR=FMSUBC.Subroutine
+:DATAI    VAR=FMSTAN.Statement number
+:DATAI    VAR=FMMSID.Message i.d.
+:EDATAGRP.
+
+:DATAGRP  COMPACT.
+:DATAI    VAR=FMSTAC.Status
+:DATAIX   NEWLINE=NO VAR=FMPSTD.
+:DATAI    VAR=FMPSTC.Previous status
+:DATAI    VAR=FMODTC.MI-I/OD-template
+:EDATAGRP.
+
+:DATAGRP  COMPACT.
+:DATAI    VAR=FMREXC.RPG exception
+:DATAI    VAR=FMFILC.Last file used
+:DATAI    VAR=FMFILC02.File name
+:DATAI    VAR=FMRECD.Record format
+:DATAI    VAR=FMOPEN.File open
+:DATAI    VAR=FMFEND.End of file
+:DATAI    VAR=FMFSTC.Status code
+:DATAIX   NEWLINE=NO VAR=FMFSTD.
+:DATAI    VAR=FMOPCD.Operation code
+:DATAI    VAR=FMSUBC02.Routine in error
+:DATAI    VAR=FMSTAN02.Source statement
+:DATAI    VAR=FMMSID02.Message i.d.
+:DATAI    VAR=FMODTC02.MI-I/OD-template
+:EDATAGRP.
+:EDATAGRP.
+
+:EDATA.
+:EPRTPNL.
+:EPNLGRP.

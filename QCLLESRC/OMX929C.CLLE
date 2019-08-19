@@ -1,0 +1,147 @@
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /*  Program ....: OMX929C                                           */
+ /*  Description : Determine day # of week                           */
+ /*  Author .....: Remain Software                                    */
+ /*  Date .......: 27-01-1997                                        */
+ /*                                                                  */
+ /*  Parameters .: &DTTB  Date                             7     I   */
+ /*                &TEL#  Number                           6 0   O   */
+ /*                &STAT  Status                           5     O   */
+ /*                                                                  */
+ /*  Function ...:                                                   */
+ /*                                                                  */
+ /*  This program gives the number of the day in the week; here      */
+ /*  sunday is day one, monday the second day, saturday number 7.    */
+ /*  The range starts with sunday  5-1-97, the first number one day  */
+ /*  of the first yr this software was implemented, last date        */
+ /*  is 31-12-2039, due to some of limitations of the CVTDAT command.*/
+ /*  Dates outside this range, as  well as invalid dates will cause  */
+ /*  this program to end and *TERM given as status value             */
+ /*                                                                  */
+ /* ------------------------------ --------------------------------- */
+
+             PGM        PARM(&DTTB &TEL# &STAT)
+
+ /* ------------------------------ --------------------------------- */
+ /* Declare parameter-variables                                      */
+ /* ------------------------------ --------------------------------- */
+             DCL        VAR(&DTFB) TYPE(*CHAR) LEN(7) +
+                          VALUE('0970105') /* the first sunday */
+             DCL        VAR(&DTFA) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&DTTB) TYPE(*CHAR) LEN(7)
+             DCL        VAR(&DTTA) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&DTFN) TYPE(*DEC) LEN(6 0) VALUE(0)
+             DCL        VAR(&DTTN) TYPE(*DEC) LEN(6 0) VALUE(0)
+             DCL        VAR(&YEAF) TYPE(*DEC) LEN(2 0)
+             DCL        VAR(&YEAT) TYPE(*DEC) LEN(2 0)
+             DCL        VAR(&HLP#) TYPE(*DEC) LEN(2 0)
+             DCL        VAR(&DEC#) TYPE(*DEC) LEN(8 2)
+             DCL        VAR(&DECA) TYPE(*CHAR) LEN(8)
+             DCL        VAR(&CMPI) TYPE(*CHAR) LEN(2)
+             DCL        VAR(&TEL#) TYPE(*DEC) LEN(6 0)
+             DCL        VAR(&YEAR) TYPE(*DEC) LEN(2 0)
+             DCL        VAR(&STAT) TYPE(*CHAR) LEN(5)
+
+/* ------------------------------- --------------------------------- */
+/* Monitor.                                                          */
+/* ------------------------------- --------------------------------- */
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ERROR))
+
+/* ------------------------------- --------------------------------- */
+/* Control range                                                     */
+/* ------------------------------- --------------------------------- */
+             IF         COND(&DTTB *LT &DTFB) THEN(GOTO CMDLBL(ERROR))
+
+/* ------------------------------- --------------------------------- */
+/* Set return status, and also the workfields                        */
+/* ------------------------------- --------------------------------- */
+             CHGVAR     VAR(&STAT) VALUE('*NORM')
+             CHGVAR     VAR(&TEL#) VALUE(999999)
+             CHGVAR     VAR(&YEAR) VALUE(%SST(&DTTB 2 2))
+
+/* ------------------------------- --------------------------------- */
+/* Convert to Julian                                                 */
+/* ------------------------------- --------------------------------- */
+             CVTDAT     DATE(&DTFB) TOVAR(&DTFA) FROMFMT(*CYMD) +
+                          TOFMT(*JUL) TOSEP(*NONE)
+             CVTDAT     DATE(&DTTB) TOVAR(&DTTA) FROMFMT(*CYMD) +
+                          TOFMT(*JUL) TOSEP(*NONE)
+
+/* ------------------------------- --------------------------------- */
+/* Convert to numeric                                                */
+/* ------------------------------- --------------------------------- */
+             CHGVAR     VAR(&DTFN) VALUE(&DTFA)
+             CHGVAR     VAR(&DTTN) VALUE(&DTTA)
+
+/* ------------------------------- --------------------------------- */
+/* Adjust in the case of different year                              */
+/* ------------------------------- --------------------------------- */
+             CHGVAR     VAR(&YEAF) VALUE(&DTFN / 1000)
+             CHGVAR     VAR(&YEAT) VALUE(&DTTN / 1000)
+             IF         COND(&YEAF *NE &YEAT) THEN(DO)
+             CHGVAR     VAR(&HLP#) VALUE(&YEAT - &YEAF)
+
+/* ------------------------------- --------------------------------- */
+/* 19nn or 20nn?                                                     */
+/* ------------------------------- --------------------------------- */
+             IF         COND(&HLP# *LT 0) THEN(DO)
+             CHGVAR     VAR(&HLP#) VALUE(100 + &HLP#)
+             CHGVAR     VAR(&DTTN) VALUE(100000 + &DTTN)
+             ENDDO
+
+/* ------------------------------- --------------------------------- */
+/* How many leap years?                                              */
+/* ------------------------------- --------------------------------- */
+             CHGVAR     VAR(&YEAR) VALUE(&YEAR + 3)
+             MONMSG     MSGID(MCH1210)
+             CHGVAR     VAR(&YEAR) VALUE(&YEAR / 4)
+
+/* ------------------------------- --------------------------------- */
+/* How many years?                                                   */
+/* ------------------------------- --------------------------------- */
+LOOP:        CHGVAR     VAR(&DTTN) VALUE(&DTTN - 635)
+             CHGVAR     VAR(&HLP#) VALUE(&HLP# - 1)
+             IF         COND(&HLP# *GT 0) THEN(GOTO CMDLBL(LOOP))
+             ENDDO
+
+/* ------------------------------- --------------------------------- */
+/* Evaluate difference in days                                       */
+/* ------------------------------- --------------------------------- */
+             IF         COND(&YEAT = &YEAF) THEN(CHGVAR VAR(&YEAR) +
+                         VALUE(0))
+             CHGVAR     VAR(&TEL#) VALUE(&DTTN - &DTFN + &YEAR)
+
+/* ------------------------------- --------------------------------- */
+/* Evaluate daynumber                                                */
+/* ------------------------------- --------------------------------- */
+             CHGVAR     VAR(&DEC#) VALUE(&TEL# / 7)
+             CHGVAR     VAR(&DECA) VALUE(&DEC#)
+             CHGVAR     VAR(&CMPI) VALUE(%SST(&DECA 7 2))
+             IF         COND(&CMPI *EQ '00') THEN(CHGVAR VAR(&TEL#) +
+                         VALUE(0))
+             IF         COND(&CMPI *EQ '14') THEN(CHGVAR VAR(&TEL#) +
+                         VALUE(1))
+             IF         COND(&CMPI *EQ '28') THEN(CHGVAR VAR(&TEL#) +
+                         VALUE(2))
+             IF         COND(&CMPI *EQ '42') THEN(CHGVAR VAR(&TEL#) +
+                         VALUE(3))
+             IF         COND(&CMPI *EQ '57') THEN(CHGVAR VAR(&TEL#) +
+                         VALUE(4))
+             IF         COND(&CMPI *EQ '71') THEN(CHGVAR VAR(&TEL#) +
+                         VALUE(5))
+             IF         COND(&CMPI *EQ '85') THEN(CHGVAR VAR(&TEL#) +
+                         VALUE(6))
+/* ------------------------------- --------------------------------- */
+/* Exit normal                                                       */
+/* ------------------------------- --------------------------------- */
+             GOTO       CMDLBL(ENDPGM)
+
+/* ------------------------------- --------------------------------- */
+/* Error.                                                            */
+/* ------------------------------- --------------------------------- */
+ ERROR:
+             CHGVAR     VAR(&STAT) VALUE('*TERM')
+
+ ENDPGM:
+             ENDPGM

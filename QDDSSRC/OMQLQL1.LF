@@ -1,0 +1,29 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMQLQL1                                       *
+      * Module .....: HelpDesk                                      *
+      * Function ...: Question list question                        *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * Modification: 3-10-1996, Jan de Zeeuw: remove question      *
+      *                          number from key                    *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ----------------------------------------------------------- *
+      * Record OMQLQR                                               *
+      * ----------------------------------------------------------- *
+                                            UNIQUE
+                R OMQLQR                    PFILE(OMQLQ)
+
+      * ----------------------------------------------------------- *
+      * Access path                                                 *
+      * LQHEDC      - Helpdesk code                                 *
+      * LQQLS#      - Question list number                          *
+      * LQQSQ#      - Question sequence in question list            *
+      * ----------------------------------------------------------- *
+                K LQHEDC
+                K LQQLS#
+                K LQQSQ#

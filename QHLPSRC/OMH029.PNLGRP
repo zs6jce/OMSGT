@@ -1,0 +1,313 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: OMH029                                      :   *.
+.*   : Help for ...: Enter Helpdesk Code                         :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   : This panelgroup contains the U.I.M. help texts for        :   *.
+.*   : Enter Helpdesk Code                                       :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:PNLGRP.
+:IMPORT PNLGRP=OMSREFHD      NAME='*'.
+
+.*   *************************************************************   *.
+.*   * Enter Helpdesk Code                                       *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH029.Enter Helpdesk Code - Help
+
+:IMHELP NAME=OMH029GEN.
+
+:P.
+Select one of the following:
+
+:P.
+:LINK PERFORM='DSPHELP OMH02901IX'.
+Display 1 - Enter Helpdesk Code
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP OMH02902IX'.
+Display 2 - Not Authorized For Function
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP OMH02903IX'.
+Display 3 - Licence Expired
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP OMH02904IX'.
+Display 4 - Product Not Registered
+:ELINK.
+
+:EHELP.
+
+:HELP NAME=OMH02901IX.General Help For Display 1
+:IMHELP NAME=OMH02901.
+:IMHELP NAME='OMH02901/FMHEDC'.
+:IMHELP NAME='OMH02901/KEYS'.
+:EHELP.
+
+:HELP NAME=OMH02902IX.General Help For Display 2
+:IMHELP NAME=OMH02902.
+:IMHELP NAME='OMH02902/KEYS'.
+:EHELP.
+
+:HELP NAME=OMH02903IX.General Help For Display 3
+:IMHELP NAME=OMH02903.
+:IMHELP NAME='OMH02903/KEYS'.
+:EHELP.
+
+:HELP NAME=OMH02904IX.General Help For Display 4
+:IMHELP NAME=OMH02904.
+:IMHELP NAME='OMH02904/KEYS'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : General help for Enter Helpdesk Code                      :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=OMH029GEN.Enter Helpdesk Code - Help
+:XH3.Enter Helpdesk Code
+:ISCH ROOTS='enter helpdesk code'.
+Enter Helpdesk Code
+
+:P.
+Use this function to activate a HelpDesk.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 1                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH02901.General Help For Display 1
+
+:XH3.Display 1 - Enter Helpdesk Code
+
+:P.
+:LINK PERFORM='DSPHELP OMH029'.
+General Information.
+:ELINK.
+
+:P.
+Use this function to activate a HelpDesk.
+:P.
+If you want more information
+about a specific attribute, move the cursor to the attribute area
+and press help. If you want more information about HelpDesks in
+general, please follow this link to the
+:LINK PERFORM='DSPHELP CONHEDC OMSCONHD'.
+helpdesk concepts.
+:ELINK.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMHEDC (Helpdesk code)                         :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 11 044  11 048                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02901/FMHEDC'.
+:IMHELP NAME='HEDC001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02901/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F3=Exit
+:PD.
+Press F3 to end the current task and return to the display
+where you began the task. Any options or changes that you
+keyed on input prompts
+:CIT.since the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F4=Prompt
+:PD.
+Press F4 on a field where you can select from mulitple
+pre defined values. If the F4=Prompt key is active for
+a field is normally shown behind the field in the
+descriptive text. F4=Prompt takes you to another display
+where you can select a value from a list with all the
+available values for the field you have prompted.
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+:EPARML.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 2                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH02902.General Help For Display 2
+
+:XH3.Display 2 - Not Authorized For Function
+
+:P.
+:LINK PERFORM='DSPHELP OMH029'.
+General Information.
+:ELINK.
+
+:P.
+You are not authorized to perform this funtion. Follow the instructions
+on the display and try your request again.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02902/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F3=Exit
+:PD.
+Press F3 to end the current task and return to the display
+where you began the task. Any options or changes that you
+keyed on input prompts
+:CIT.since the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+:EPARML.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 3                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH02903.General Help For Display 3
+
+:XH3.Display 3 - Licence Expired
+
+:P.
+:LINK PERFORM='DSPHELP OMH029'.
+General Information.
+:ELINK.
+
+:P.
+Your licence has expired. Call your supplier for a new licence.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 3 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02903/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F3=Exit
+:PD.
+Press F3 to end the current task and return to the display
+where you began the task. Any options or changes that you
+keyed on input prompts
+:CIT.since the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+:EPARML.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 4                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH02904.General Help For Display 4
+
+:XH3.Display 4 - Product Not Registered
+
+:P.
+:LINK PERFORM='DSPHELP OMH029'.
+General Information.
+:ELINK.
+
+:P.
+You do not have a licence for the HelpDesk. Purchase one and try
+again.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 4 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02904/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F3=Exit
+:PD.
+Press F3 to end the current task and return to the display
+where you began the task. Any options or changes that you
+keyed on input prompts
+:CIT.since the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+:EPARML.
+:EHELP.
+:EPNLGRP.

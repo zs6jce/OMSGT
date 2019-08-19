@@ -1,0 +1,35 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMTIP                                         *
+      * Function ...: Incident predefined texts                     *
+      * Module .....: HelpDesk                                      *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * This file contains the incident text headers                *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMTIPR
+      * ------------------------------------------------------------ *
+                R OMTIPR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  IPHEDC    R               REFFLD(HEDC)
+                  IPTXID    R               REFFLD(MSID)
+                  IPHDR#    R               REFFLD(SEQ#)
+                  IPLIN#    R               REFFLD(SEQ#)
+                  IPITXT    R               REFFLD(ITXT)
+                  IPSUL#    R               REFFLD(SUL#)
+                  IPACTC    R               REFFLD(INDI)
+                                            COLHDG('Active indicator')
+                  IPINCD    R               REFFLD(INCD)

@@ -1,0 +1,38 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMCCA                                         *
+      * Module .....: HelpDesk                                      *
+      * Function ...: Customer calls                                *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * This file contains the customer calls.                      *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMCCAR
+      * ------------------------------------------------------------ *
+                R OMCCAR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  CAHEDC    R               REFFLD(HEDC)
+                  CACTN#    R               REFFLD(CTN#)
+                  CACUSC    R               REFFLD(CUSC)
+                  CACCTC    R               REFFLD(CCTC)
+                  CAINDT    R               REFFLD(INDT)
+                  CAINTM    R               REFFLD(INTM)
+                  CARCTM    R               REFFLD(RCTM)
+                  CAUSID    R               REFFLD(USID)
+                  CACSRC    R               REFFLD(CSRC)
+                  CAUSF1    R               REFFLD(USF1)
+                  CAUSF2    R               REFFLD(USF2)
+                  CAUSF3    R               REFFLD(USF3)

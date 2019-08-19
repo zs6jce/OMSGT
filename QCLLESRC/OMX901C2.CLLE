@@ -1,0 +1,52 @@
+ /* ---------------------------------------------------------------- */
+ /* Description                                                      */
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /* Program ....: OMX901C                                            */
+ /* Function ...: HelpDesk - Send message to program message queue   */
+ /* Author .....: Remain Software                                    */
+ /* Parameters .: &MSGID, message identifier.                        */
+ /*               &MSGF, message file.                               */
+ /*               &MSGFLIB, message file library.                    */
+ /*               &MSGDTA, user class.                               */
+ /*                                                                  */
+ /* This is an adapted version of the standard OMS version. The      */
+ /* difference is that the HelpDesk does not write messages to a     */
+ /* log file. All references to program OMX928 have been removed.    */
+ /*                                                                  */
+ /* This is the subprogram which is called from program's with       */
+ /* display interaction. When a warning or an error occurs, then     */
+ /* this program is called which sends the message to the program    */
+ /* message queue.                                                   */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+
+             PGM        PARM(&MSGID &MSGF &MSGFLIB &MSGDTA)
+
+ /* ---------------------------------------------------------------- */
+ /* Declare parameter-variables                                      */
+ /* ---------------------------------------------------------------- */
+             DCL        VAR(&MSGID)   TYPE(*CHAR) LEN(7)
+             DCL        VAR(&MSGF)    TYPE(*CHAR) LEN(10)
+             DCL        VAR(&MSGFLIB) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&MSGDTA)  TYPE(*CHAR) LEN(256)
+
+ /* ---------------------------------------------------------------- */
+ /* Install global error monitor                                     */
+ /* ---------------------------------------------------------------- */
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ENDPGM))
+
+ /* ---------------------------------------------------------------- */
+ /* Send message                                                     */
+ /* ---------------------------------------------------------------- */
+             SNDPGMMSG  MSGID(&MSGID) MSGF(&MSGFLIB/&MSGF) +
+                          MSGDTA(&MSGDTA)
+
+ /* ---------------------------------------------------------------- */
+ /* Exit program processing                                          */
+ /* ---------------------------------------------------------------- */
+ ENDPGM:     CHGVAR     VAR(&MSGDTA) VALUE(' ')
+             RETURN
+
+             ENDPGM
+

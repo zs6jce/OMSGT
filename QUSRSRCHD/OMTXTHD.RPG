@@ -1,0 +1,424 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * Program ....: OMTXTHD                                       *
+      * Function ...: Handle text copy                              *
+      * Author .....: Remain Software                               *
+      * Parameters .: P#FROM - From code  (INC)                     *
+      *               P#TP   - To code    (REQ, FIX)                *
+      *               P#HEDC - HelpDesk                             *
+      *               P#INC# - Incident                             *
+      *               P#APPC - Application                          *
+      *               P#OKEY - Other key (Request or fix number)    *
+      *                                                             *
+      *                                                             *
+      * ----------------------------------------------------------- *
+      /EJECT
+      * ----------------------------------------------------------- *
+      * Used files                                                  *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * OMTIHL1 - Incident Headers                                  *
+      * OMTIDL1 - Incident details                                  *
+      * OMERDL1 - Request texts                                     *
+      * OMESDL1 - Fix texts                                         *
+      *                                                             *
+      * ----------------------------------------------------------- *
+      /EJECT
+      * ----------------------------------------------------------- *
+      * Sub programs                                                *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * ----------------------------------------------------------- *
+      /EJECT
+      * ----------------------------------------------------------- *
+      * Used indicators                                             *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * 99     - General purpose indicator.                         *
+      *                                                             *
+      * ----------------------------------------------------------- *
+      /EJECT
+      * ----------------------------------------------------------- *
+      * Files                                                       *
+      * ----------------------------------------------------------- *
+     FOMTIHL1 IF  E           K        DISK
+     FOMTIDL1 IF  E           K        DISK
+     FOMERDL1 IF  E           K        DISK                      A
+     FOMESDL1 IF  E           K        DISK                      A
+      * ----------------------------------------------------------- *
+      /EJECT
+      * ----------------------------------------------------------- *
+      * Input specifications                                        *
+      * ----------------------------------------------------------- *
+      *
+      *          ------------------------------------------
+      *          Reference file is used for field definition
+      *          ------------------------------------------
+     I          E DSOMSREF
+      *
+      *          ------------------------------------------
+      *          Program status data structure
+      *          ------------------------------------------
+     IPGM        SDS
+     I                                     *PROGRAM PGMQ
+     I                                     *PARMS   D#PARM
+     I                                      254 263 D#USID
+      *
+      *          ------------------------------------------
+      *          Header block
+      *          ------------------------------------------
+     IHEADER      DS
+     I                                        1  10 D2USID
+     I                                       13  13 D2ITXT
+      *
+     IINCID       DS
+     I                                        1   5 D3HEDC
+     I                                        7  16 D3INC#
+      * ----------------------------------------------------------- *
+      /EJECT
+      * ----------------------------------------------------------- *
+      * Main line                                                   *
+      * ----------------------------------------------------------- *
+      *
+      *          ------------------------------------------
+      *          Get parameters
+      *          ------------------------------------------
+     C           *ENTRY    PLIST
+     C                     PARM           P#FROM  3
+     C                     PARM           P#TO    3
+     C                     PARM           P#HEDC
+     C                     PARM           P#INC#
+     C                     PARM           P#APPC
+     C                     PARM           P#OKEY
+      *
+      *          ------------------------------------------
+      *          Close the program if not correct number of parameters.
+      *          ------------------------------------------
+     C           D#PARM    CASNE6         SRTTLR
+     C                     ENDCS
+      *
+      *          ------------------------------------------
+      *          Process
+      *          ------------------------------------------
+     C                     EXSR SRVERW
+      *
+      *          ------------------------------------------
+      *          Return
+      *          ------------------------------------------
+     C                     EXSR SRTTLR
+      * ------------------------------------------------------------ *
+      /EJECT
+      * ------------------------------------------------------------ *
+      * SRVERW - Main process routine                                * /
+      *                                                              * /
+      * This routine handles the process of the program.             * /
+      *                                                              *
+      * This program copies the incident to the fix or request text. *
+      *                                                              *
+      * ------------------------------------------------------------ *
+     C           SRVERW    BEGSR
+      *
+      *          ------------------------------------------
+      *          Call the correct routinne
+      *          ------------------------------------------
+     C                     SELEC
+     C           P#FROM    WHEQ 'INC'
+     C           P#TO      ANDEQ'REQ'
+     C                     EXSR SRITR
+      *
+     C           P#FROM    WHEQ 'INC'
+     C           P#TO      ANDEQ'FIX'
+     C                     EXSR SRITF
+     C                     ENDSL
+      *
+      *          ------------------------------------------
+      *          End of subroutine
+      *          ------------------------------------------
+     C                     ENDSR
+      * ----------------------------------------------------------- *
+      /EJECT
+      * ----------------------------------------------------------- *
+      * SRITR  - Incident text to request text.                     *
+      *                                                             *
+      * ----------------------------------------------------------- *
+     C           SRITR     BEGSR
+      *
+      *          ------------------------------------------
+      *          Get the last request sequence number
+      *          ------------------------------------------
+     C           $OK1K1    SETGTOMERDL1
+     C           $OK1K1    REDPEOMERDL1                  99
+     C   99                Z-ADD*ZEROS    RDSEQ#
+      *
+      *          ------------------------------------------
+      *          Write incident line
+      *          ------------------------------------------
+     C                     MOVE P#HEDC    D3HEDC
+     C                     MOVE P#INC#    D3INC#
+     C                     MOVE P#APPC    RDAPPC
+     C                     MOVE P#OKEY    RDERR#
+     C                     ADD  10        RDSEQ#
+     C                     MOVELINCID     RDERRD
+     C                     WRITEOMERDR
+      *
+      *          ------------------------------------------
+      *          Read the first header.
+      *          ------------------------------------------
+     C           $IH1K1    CHAINOMTIHL1              99
+     C           *IN99     DOWEQ*OFF
+      *
+      *          ------------------------------------------
+      *          Write the header & a blank line
+      *          ------------------------------------------
+     C                     MOVE IHUSID    D2USID
+     C                     MOVE IHITXT    D2ITXT
+     C                     MOVE P#APPC    RDAPPC
+     C                     MOVE P#OKEY    RDERR#
+     C                     ADD  10        RDSEQ#
+     C                     MOVE IHSITD    RDERRD
+     C                     MOVELHEADER    RDERRD
+     C                     WRITEOMERDR
+      *
+      *          ------------------------------------------
+      *          Read the first detail.
+      *          ------------------------------------------
+     C           $ID1K1    CHAINOMTIDL1              99
+     C           *IN99     DOWEQ*OFF
+      *
+      *          ------------------------------------------
+      *          Write the detail
+      *          ------------------------------------------
+     C                     MOVE P#APPC    RDAPPC
+     C                     MOVE P#OKEY    RDERR#
+     C                     ADD  10        RDSEQ#
+     C                     MOVE IDINCD    RDERRD
+     C                     WRITEOMERDR
+      *
+      *          ------------------------------------------
+      *          Read the next detail.
+      *          ------------------------------------------
+     C           $ID1K1    READEOMTIDL1                  99
+     C                     ENDDO
+      *
+      *          ------------------------------------------
+      *          Read the next header.
+      *          ------------------------------------------
+     C           $IH1K1    READEOMTIHL1                  99
+     C           *IN99     IFEQ *OFF
+     C                     ADD  10        RDSEQ#
+     C                     MOVE *BLANKS   RDERRD
+     C                     WRITEOMERDR
+     C                     ADD  10        RDSEQ#
+     C                     MOVE *BLANKS   RDERRD
+     C                     WRITEOMERDR
+     C                     ENDIF
+     C                     ENDDO
+      *
+      *          ------------------------------------------
+      *          End of subroutine
+      *          ------------------------------------------
+     C                     ENDSR
+      * ----------------------------------------------------------- *
+      /EJECT
+      * ----------------------------------------------------------- *
+      * SRITF  - Incident text to fix text                          *
+      *                                                             *
+      * ----------------------------------------------------------- *
+     C           SRITF     BEGSR
+      *
+      *          ------------------------------------------
+      *          Get the last fix sequence number
+      *          ------------------------------------------
+     C           $OK1K1    SETGTOMESDL1
+     C           $OK1K1    REDPEOMESDL1                  99
+     C   99                Z-ADD*ZEROS    SDSEQ#
+      *
+      *          ------------------------------------------
+      *          Write incident line
+      *          ------------------------------------------
+     C                     MOVE P#HEDC    D3HEDC
+     C                     MOVE P#INC#    D3INC#
+     C                     MOVE P#APPC    SDAPPC
+     C                     MOVE P#OKEY    SDFIX#
+     C                     ADD  10        SDSEQ#
+     C                     MOVELINCID     SDSORD
+     C                     WRITEOMESDR
+      *
+      *          ------------------------------------------
+      *          Read the first header.
+      *          ------------------------------------------
+     C           $IH1K1    CHAINOMTIHL1              99
+     C           *IN99     DOWEQ*OFF
+      *
+      *          ------------------------------------------
+      *          Write the header & a blank line
+      *          ------------------------------------------
+     C                     MOVE IHUSID    D2USID
+     C                     MOVE IHITXT    D2ITXT
+     C                     MOVE P#APPC    SDAPPC
+     C                     MOVE P#OKEY    SDFIX#
+     C                     ADD  10        SDSEQ#
+     C                     MOVE IHSITD    SDSORD
+     C                     MOVELHEADER    SDSORD
+     C                     WRITEOMESDR
+      *
+      *          ------------------------------------------
+      *          Read the first detail.
+      *          ------------------------------------------
+     C           $ID1K1    CHAINOMTIDL1              99
+     C           *IN99     DOWEQ*OFF
+      *
+      *          ------------------------------------------
+      *          Write the detail
+      *          ------------------------------------------
+     C                     MOVE P#APPC    SDAPPC
+     C                     MOVE P#OKEY    SDFIX#
+     C                     ADD  10        SDSEQ#
+     C                     MOVE IDINCD    SDSORD
+     C                     WRITEOMESDR
+      *
+      *          ------------------------------------------
+      *          Read the next detail.
+      *          ------------------------------------------
+     C           $ID1K1    READEOMTIDL1                  99
+     C                     ENDDO
+      *
+      *          ------------------------------------------
+      *          Read the next header.
+      *          ------------------------------------------
+     C           $IH1K1    READEOMTIHL1                  99
+     C           *IN99     IFEQ *OFF
+     C                     ADD  10        SDSEQ#
+     C                     MOVE *BLANKS   SDSORD
+     C                     WRITEOMESDR
+     C                     ADD  10        SDSEQ#
+     C                     MOVE *BLANKS   SDSORD
+     C                     WRITEOMESDR
+     C                     ENDIF
+     C                     ENDDO
+      *
+      *          ------------------------------------------
+      *          End of subroutine
+      *          ------------------------------------------
+     C                     ENDSR
+      * ----------------------------------------------------------- *
+      /EJECT
+      * ----------------------------------------------------------- *
+      * SRINIT - Program initialisation                             *
+      *                                                             *
+      * ----------------------------------------------------------- *
+     C           *INZSR    BEGSR
+      *
+      *          ------------------------------------------
+      *          Close the program if no parameters passed.
+      *          ------------------------------------------
+     C           D#PARM    CASEQ*ZERO     SRTTLR
+     C                     ENDCS
+      *
+      *          ------------------------------------------
+      *          Parameters
+      *          ------------------------------------------
+     C           *LIKE     DEFN HEDC      P#HEDC
+     C           *LIKE     DEFN INC#      P#INC#
+     C           *LIKE     DEFN APPC      P#APPC
+     C           *LIKE     DEFN ERR#      P#OKEY
+      *
+      *          ------------------------------------------
+      *          Keylist for Request of fix text
+      *          ------------------------------------------
+     C           $OK1K1    KLIST
+     C                     KFLD           P#APPC
+     C                     KFLD           P#OKEY
+      *
+      *          ------------------------------------------
+      *          Keylist for incident text.
+      *          ------------------------------------------
+     C           $IH1K1    KLIST
+     C                     KFLD           P#HEDC
+     C                     KFLD           P#INC#
+      *
+      *          ------------------------------------------
+      *          Keylist for incident text.
+      *          ------------------------------------------
+     C           $ID1K1    KLIST
+     C                     KFLD           P#HEDC
+     C                     KFLD           P#INC#
+     C                     KFLD           IHITH#
+      *
+      *          ------------------------------------------
+      *          End of subroutine
+      *          ------------------------------------------
+     C                     ENDSR
+      * ----------------------------------------------------------- *
+      /EJECT
+      * ----------------------------------------------------------- *
+      * *PSSR  - Error handler                                      *
+      *                                                             *
+      * Standard RPG error handler.                                 *
+      * Make sure the data structure PGM is defined as the          *
+      * program status data structure (SDS) with a length of 429.   *
+      * The file information data structure is also passed, but     *
+      * not the complete data structure, only the relevant info.    *
+      * After the program is called, the messages in the queue      *
+      * of this program are passes back to the queue of the         *
+      * calling program and the *CANCL procedure is invoked.        *
+      *                                                             *
+      * ----------------------------------------------------------- *
+     C           *PSSR     BEGSR
+      *
+      *          ------------------------------------------
+      *          Do if error not in this routine.
+      *          ------------------------------------------
+     C           I#PSSR    IFNE *ON                        B01
+     C                     MOVE *ON       I#PSSR  1
+      *
+      *          ------------------------------------------
+      *          No file info is used.
+      *          ------------------------------------------
+     C                     MOVE *BLANKS   FILE
+      *
+      *          ------------------------------------------
+      *          Call the error handler
+      *          ------------------------------------------
+     C                     CALL 'OMX961'
+     C                     PARM           PGM
+     C                     PARM           FILE   57
+      *
+      *          ------------------------------------------
+      *          Else exit immediately ...
+      *          ------------------------------------------
+     C                     ELSE                            X01
+     C                     SETON                     LR
+     C                     RETRN
+     C                     ENDIF                           E01
+      *
+      *          ------------------------------------------
+      *          Exit
+      *          ------------------------------------------
+     C                     EXSR SRTTLR
+      *
+      *          ------------------------------------------
+      *          End of subroutine
+      *          ------------------------------------------
+     C                     ENDSR
+      * ----------------------------------------------------------- *
+      /EJECT
+      * ----------------------------------------------------------- *
+      * SRTTLR - Close the program                                  *
+      *                                                             *
+      * ----------------------------------------------------------- *
+     C           SRTTLR    BEGSR
+      *
+      *          ------------------------------------------
+      *          Return to caller
+      *          ------------------------------------------
+     C                     SETON                     LR
+     C                     RETRN
+      *
+      *          ------------------------------------------
+      *          End of subroutine
+      *          ------------------------------------------
+     C                     ENDSR
+      * ------------------------------------------------------------ *

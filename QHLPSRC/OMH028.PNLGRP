@@ -1,0 +1,421 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: OMH028                                      :   *.
+.*   : Help for ...: Escalation Property Maintenance             :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   : This panelgroup contains the U.I.M. help texts for        :   *.
+.*   : Escalation Property Maintenance                           :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:PNLGRP.
+:IMPORT PNLGRP=OMSREFHD      NAME='*'.
+
+.*   *************************************************************   *.
+.*   * Escalation Property Maintenance                           *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=STREPM.Escalation Property Maintenance - Help
+
+:IMHELP NAME=STREPMGEN.
+
+:P.
+Select one of the following:
+
+:P.
+:LINK PERFORM='DSPHELP OMH02802IX'.
+Display 1 - Work with Escalation Properties
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP OMH02804IX'.
+Display 2 - Maintain Escalation Properties
+:ELINK.
+
+:EHELP.
+
+:HELP NAME=OMH02802IX.General Help For Display 1
+:IMHELP NAME=OMH02802.
+:IMHELP NAME='OMH02802/FMPOS'.
+:IMHELP NAME='OMH02801/FMOPTI'.
+:IMHELP NAME='OMH02802/KEYS'.
+:EHELP.
+
+:HELP NAME=OMH02804IX.General Help For Display 2
+:IMHELP NAME=OMH02804.
+:IMHELP NAME='OMH02804/FMHEDC'.
+:IMHELP NAME='OMH02804/FMSPTM'.
+:IMHELP NAME='OMH02804/FMEPTM'.
+:IMHELP NAME='OMH02804/FMSUND'.
+:IMHELP NAME='OMH02804/FMMOND'.
+:IMHELP NAME='OMH02804/FMTUED'.
+:IMHELP NAME='OMH02804/FMWEDD'.
+:IMHELP NAME='OMH02804/FMTHUD'.
+:IMHELP NAME='OMH02804/FMFRID'.
+:IMHELP NAME='OMH02804/FMSATD'.
+:IMHELP NAME='OMH02804/FMSAMI'.
+:IMHELP NAME='OMH02804/FMESFY'.
+:IMHELP NAME='OMH02804/FMJOBD'.
+:IMHELP NAME='OMH02804/FMJBDL'.
+:IMHELP NAME='OMH02804/KEYS'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : General help for Escalation Property Maintenance          :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=STREPMGEN.Escalation Property Maintenance - Help
+:XH3.Escalation Property Maintenance
+:ISCH ROOTS='escalation property maintenance'.
+Escalation Property Maintenance
+
+:P.
+The escalation property maintenance function enables you to specify
+how and when the escalation jobs should run. You can specify
+your working days and the job description to be used. This
+information and more is specified per HelpDesk.
+
+:P.
+If you want more information
+about a specific attribute, move the cursor to the attribute area
+and press help. If you want more information about escalation in
+general, please follow this link to the
+:LINK PERFORM='DSPHELP CONESC OMSCONHD'.
+escalation concepts.
+:ELINK.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 1                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH02802.General Help For Display 1
+
+:XH3.Display 1 - Work with Escalation Properties
+
+:P.
+:LINK PERFORM='DSPHELP STREPM'.
+General Information.
+:ELINK.
+
+:P.
+The work with escalation properties display enables you select
+escalation properties to change or delete them. You are also able
+to add properties for a HelpDesk for which no properties where
+defined yet.
+
+:P.
+If you want more information
+about a specific attribute, move the cursor to the attribute area
+and press help. If you want more information about escalation in
+general, please follow this link to the
+:LINK PERFORM='DSPHELP CONESC OMSCONHD'.
+escalation concepts.
+:ELINK.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMPOS (Helpdesk code)                          :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 05 028  05 032                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02802/FMPOS'.Positin to - Help
+
+:XH3.Position to
+:P.
+:IMHELP NAME='HEDC001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMOPTI (Option field)                          :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 11 003  20 003                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02801/FMOPTI'.Option field - Help
+
+:XH3.Option field
+:P.
+These are the list options. The options all act on a
+specific list entry. The following options are available;
+
+:PARML.
+:PT.2=Change
+:PD.
+Use option 2 to change the escalation properties.
+:PT.4=Remove
+:PD.
+Use option 4 to remove the escalation properties.
+:EPARML.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02802/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F3=Exit
+:PD.
+Press F3 to end the current task and return to the display
+where you began the task. Any options or changes that you
+keyed on input prompts
+:CIT.since the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F5=Refresh
+:PD.
+Press F5 to refresh the display you are currently working
+on with the (new) values from the OMS database. This is
+sometimes necessary if fields have been changed but the
+changes are not directly reflected on the display.
+
+:PT.F6=Add
+:PD.
+Press F6 to add new escalation properties.
+
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+
+:PT.Roll Keys
+:PD.
+Use the rollkeys to display the next or previous page of the display
+you are currently viewing. If more data is available is indicated
+by a :HP2.+:EHP2. charachter or the text :HP2.'More...':EHP2. in the
+bottom rigth corner of the display or list.
+
+:EPARML.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 2                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH02804.General Help For Display 2
+
+:XH3.Display 2 - Maintain Escalation Properties
+
+:P.
+:LINK PERFORM='DSPHELP STREPM'.
+General Information.
+:ELINK.
+
+:P.
+The Maintain Escalation Properties display enables you to
+create or change escalation properties for a certain HelpDesk.
+You are able to enter the various attributes concerning the
+escalation process. After the escalation properties have been
+entered, you can use the STRESC function to start the escalation
+for a given HelpDesk.
+
+:P.
+If you want more information
+about a specific attribute, move the cursor to the attribute area
+and press help. If you want more information about escalation in
+general, please follow this link to the
+:LINK PERFORM='DSPHELP CONESC OMSCONHD'.
+escalation concepts.
+:ELINK.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMHEDC (Helpdesk code)                         :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 06 028  06 032                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02804/FMHEDC'.
+:IMHELP NAME='HEDC001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMSPTM (Time processing started)               :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 08 028  08 031                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02804/FMSPTM'.
+:IMHELP NAME='SPTM001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMEPTM (Time processing ended)                 :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 09 028  09 031                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02804/FMEPTM'.
+:IMHELP NAME='EPTM001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMSUND (Sunday)                                :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 10 028  10 028                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02804/FMSUND'.Sunday - Help
+:XH3.Sunday
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMMOND (Monday)                                :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 10 030  10 030                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02804/FMMOND'.Monday - Help
+:XH3.Monday
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMTUED (Tuesday)                               :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 10 032  10 032                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02804/FMTUED'.Tuesday - Help
+:XH3.Tuesday
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMWEDD (Wednesday)                             :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 10 034  10 034                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02804/FMWEDD'.Wednesday - Help
+:XH3.Wednesday
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMTHUD (Thursday)                              :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 10 036  10 036                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02804/FMTHUD'.Thursday - Help
+:XH3.Thursday
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMFRID (Friday)                                :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 10 038  10 038                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02804/FMFRID'.Friday - Help
+:XH3.Friday
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMSATD (Saturday)                              :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 10 040  10 040                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02804/FMSATD'.Saturday - Help
+:XH3.Saturday
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMSAMI (Submit monitor)                        :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 12 028  12 028                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02804/FMSAMI'.
+:IMHELP NAME='SAMI001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMESF# (Escalation frequency (hours))          :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 13 028  13 030                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02804/FMESFY'.
+:IMHELP NAME='ESF_001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMJOBD (Job description)                       :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 15 028  15 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02804/FMJOBD'.
+:IMHELP NAME='JOBD001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMJBDL (Job description library)               :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 16 028  16 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02804/FMJBDL'.
+:IMHELP NAME='JBDL001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02804/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F3=Exit
+:PD.
+Press F3 to end the current task and return to the display
+where you began the task. Any options or changes that you
+keyed on input prompts
+:CIT.since the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F4=Prompt
+:PD.
+Press F4 on a field where you can select from mulitple
+pre defined values. If the F4=Prompt key is active for
+a field is normally shown behind the field in the
+descriptive text. F4=Prompt takes you to another display
+where you can select a value from a list with all the
+available values for the field you have prompted.
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+:EPARML.
+:EHELP.
+:EPNLGRP.

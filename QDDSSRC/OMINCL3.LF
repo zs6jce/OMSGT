@@ -1,0 +1,34 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMINCL3                                       *
+      * Module .....: Helpdesk                                      *
+      * Function ...: Incidents logical                             *
+      * Author .....: Remain Software                               *
+      * Purpose ....: This logical was made for pgm OMH026          *
+      *                                                             *
+      * Incidents logical                                           *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ----------------------------------------------------------- *
+      * Record OMINCR                                               *
+      * ----------------------------------------------------------- *
+                R OMINCR                    PFILE(OMINC)
+
+      * ----------------------------------------------------------- *
+      * Access path                                                 *
+      * NCHEDC      - Helpdesk code                                 *
+      * NCSUL#      - Support level                                 *
+      * NCSTAT      - Status                                        *
+      * NCPRI#      - Priority                                      *
+      *                                                             *
+      * Omit condition                                              *
+      * NCRCDT      - Date of completion should not be filled       *
+      * ----------------------------------------------------------- *
+                K NCHEDC
+                K NCSUL#
+                K NCSTAT
+                K NCPRI#
+                O NCSTAT                    COMP(EQ '*CMP ')

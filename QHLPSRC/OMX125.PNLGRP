@@ -1,0 +1,166 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: OMX125                                      :   *.
+.*   : Help for ...: Select Incident Type                        :   *.
+.*   : Author .....: Remain Software                            :   *.
+.*   :                                                           :   *.
+.*   : This panelgroup contains the U.I.M. help texts for        :   *.
+.*   : Select Incident Type                                      :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:PNLGRP.
+
+.*   .............................................................   *.
+.*   : General help for Select Incident Type                     :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=OMX125.Select Incident Type - Help
+:XH3.Select Incident Type
+:ISCH ROOTS='select Incident Type'.
+Select Incident Type
+
+:P.
+This program is used to let the user select an Incident Type from the
+list of Incident Types defined in OMS.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 1                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=PA01H.General Help For Display 1
+
+:XH3.
+Display 1 - Select Incident Type
+
+:P.
+:LINK PERFORM='DSPHELP OMX125'.
+General Information.
+:ELINK.
+
+:P.
+Use this display to select an Incident Type which is then returned to
+the calling program. This function can be started from several programs
+where an Incident Type must be entered.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMOPTI (Option field)                          :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='LA0101H'.Options - Help
+
+:XH3.Options
+:P.
+Use this column to select an Incident Type, you can choose from
+from the following;
+:EHELP.
+
+:HELP NAME='LA0101H/1H'.Options - Help
+:PARML.
+:PT.1=Select
+:PD.Type 1 to select an Incident Type from the list. The Incident Type
+code is returned to the field where you pressed F4.
+:EPARML.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Incident Type                                             :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='FMITPCH'.Incident Type - Help
+:XH3.Incident Type
+:P.
+The code of the Incident Type.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Incident Type Description                                 :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='FMITPDH'.Incident Type Description - Help
+:XH3.Incident Type Description
+:P.
+The description of the Incident Type.
+:EHELP.
+
+
+.*   .............................................................   *.
+.*   : Display 1 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='KL0101H'.Function Keys - Help
+:XH3.Function Keys
+:EHELP.
+
+
+:HELP NAME='KL0101H/F1H'.
+:PARML.
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+:EPARML.
+:EHELP.
+
+:HELP NAME='KL0101H/F11H'.
+:PARML.
+:PT.F11=Display names/Display descriptions
+:PD.
+Press F11 to toggle between a list view with descriptions and
+a list view with names only.
+:EPARML.
+:EHELP.
+
+:HELP NAME='KL0101H/F12H'.
+:PARML.
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+ and go back to the previous display.
+:EPARML.
+:EHELP.
+
+:HELP NAME='KL0101H/ENTERH'.
+:PARML.
+:PT.Enter
+:PD.
+Press Enter in combination with an option number in order to
+process the requested information.
+:EPARML.
+:EHELP.
+
+:HELP NAME='KL0101H/HELPH'.
+:PARML.
+:PT.Help
+:PD.
+Press the Help key to see the help panels like the ones you are
+viewing now. You can use Help on any display that
+supports help.
+:EPARML.
+:EHELP.
+
+:HELP NAME='KL0101H/PAGEH'.
+:PARML.
+:PT.Roll Keys
+:PD.
+Use the rollkeys to display the next or previous page in the list you
+are currently viewing. If more items are in the list is indicated by
+the code at the bottom right corner of the list.
+:EPARML.
+:EHELP.
+
+:HELP NAME='KL0101H/PRINTH'.
+:PARML.
+:PT.Print
+:PD.
+Prints the current contents of the display to an output queue.
+:EPARML.
+:EHELP.
+:EPNLGRP.

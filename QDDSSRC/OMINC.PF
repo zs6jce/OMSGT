@@ -1,0 +1,56 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMINC                                         *
+      * Module .....: HelpDesk                                      *
+      * Function ...: Incidents                                     *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * This file contains the incidents.                           *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMINCR
+      * ------------------------------------------------------------ *
+                R OMINCR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  NCHEDC    R               REFFLD(HEDC)
+                  NCINC#    R               REFFLD(INC#)
+                  NCCTN#    R               REFFLD(CTN#)
+                  NCAIN#    R               REFFLD(AIN#)
+                  NCINDT    R               REFFLD(INDT)
+                  NCINTM    R               REFFLD(INTM)
+                  NCRCDT    R               REFFLD(RCDT)
+                  NCRCTM    R               REFFLD(RCTM)
+                  NCSTRC    R               REFFLD(STRC)
+                  NCRES#    R               REFFLD(RES#)
+                  NCSUL#    R               REFFLD(SUL#)
+                  NCSTAT    R               REFFLD(STAT)
+                  NCSRDT    R               REFFLD(SRDT)
+                  NCSRTM    R               REFFLD(SRTM)
+                  NCSEV1    R               REFFLD(SEV1)
+                  NCSEV2    R               REFFLD(SEV2)
+                  NCSEV3    R               REFFLD(SEV3)
+                  NCPRI#    R               REFFLD(PRI#)
+                  NCESC#    R               REFFLD(ESC#)
+                  NCIEDT    R               REFFLD(IEDT)
+                  NCIETM    R               REFFLD(IETM)
+                  NCRUID    R               REFFLD(RUID)
+                  NCAUID    R               REFFLD(AUID)
+                  NCITPC    R               REFFLD(ITPC)
+                  NCCFL#    R               REFFLD(CFL#)
+                  NCCFIC    R               REFFLD(CFIC)
+                  NCUSF1    R               REFFLD(USF1)
+                  NCUSF2    R               REFFLD(USF2)
+                  NCUSF3    R               REFFLD(USF3)
+                  NCSHID    R               REFFLD(SHID)

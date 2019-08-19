@@ -1,0 +1,112 @@
+      *$$\CRTOM CRTDSPF
+      *$$\ENDOM
+     A                                      HLPTITLE('Remain Software')
+     A                                      HLPSCHIDX(REMAINHD)
+     A                                      HELP
+     A*%%TS  SD  19971107  134648  WIM         REL-V3R1M0  5763-PW1
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      REF(*LIBL/OMSREFHD)
+     A                                      CHGINPDFT
+     A                                      PRINT(*LIBL/QSYSPRT)
+     A                                      ALTHELP(CA01)
+     A          R OMH04401
+     A*%%TS  SD  19971107  134648  WIM         REL-V3R1M0  5763-PW1
+     A                                      TEXT('Specify mail parameters')
+     A                                      CF03
+     A                                      CF04
+     A                                      CF05
+     A                                      ROLLUP(25)
+     A                                      CF12
+     A                                      CHANGE(40)
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A                                      OVERLAY
+     A                                      HLPCLR
+     A          H                           HLPARA(01 002 01 002)
+     A                                      HLPPNLGRP('OMH04401' OMH044)
+     A          H                           HLPARA(06 028 06 042)
+     A                                      HLPPNLGRP('OMH04401/FMIPAD' OMH044)
+     A          H                           HLPARA(07 028 07 031)
+     A                                      HLPPNLGRP('OMH04401/FMPORT' OMH044)
+     A          H                           HLPARA(08 028 08 077)
+     A                                      HLPPNLGRP('OMH04401/FMDOMC' OMH044)
+     A          H                           HLPARA(11 028 11 037)
+     A                                      HLPPNLGRP('OMH04401/FMMATF' OMH044)
+     A          H                           HLPARA(12 028 12 037)
+     A                                      HLPPNLGRP('OMH04401/FMMATL' OMH044)
+     A          H                           HLPARA(14 028 14 030)
+     A                                      HLPPNLGRP('OMH04401/FMMPT' OMH044)
+     A          H                           HLPARA(09 028 09 077)
+     A                                      HLPPNLGRP('OMH04401/FMBCCE' OMH044)
+     A          H                           HLPARA(23 001 23 080)
+     A                                      HLPPNLGRP('OMH04401/KEYS' OMH044)
+     A            FMFMTC        10A  H
+     A            FMFLDC        10A  H
+     A                                  1  2'OMH044  '
+     A            MH04400       50A  O  1 16MSGID(MH0 4400 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH04401'
+     A            MH04401       50A  O  2 16MSGID(MH0 4401 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            TCP0001       25A  O  6  2MSGID(TCP 0001 OMHDSP)
+     A            FMIPAD        15A  B  6 28DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A            TCP0002       25A  O  7  2MSGID(TCP 0002 OMHDSP)
+     A            FMPORT         4A  B  7 28DSPATR(UL)
+     A  71                                  DSPATR(RI)
+     A  71                                  DSPATR(PC)
+     A            TCP0003       25A  O  8  2MSGID(TCP 0003 OMHDSP)
+     A            FMDOMC        50A  B  8 28DSPATR(UL)
+     A  72                                  DSPATR(RI)
+     A  72                                  DSPATR(PC)
+     A            MAT0001       25A  O 11  2MSGID(MAT 0001 OMHDSP)
+     A            FMMATF        10A  B 11 28DSPATR(UL)
+     A  73                                  DSPATR(RI)
+     A  73                                  DSPATR(PC)
+     A            MAT0002       25A  O 12  2MSGID(MAT 0002 OMHDSP)
+     A            FMMATL        10A  B 12 28DSPATR(UL)
+     A  74                                  DSPATR(RI)
+     A  74                                  DSPATR(PC)
+     A            POL0001       25A  O 14  2MSGID(POL 0001 OMHDSP)
+     A            FMMPT          3Y 0B 14 28DSPATR(UL)
+     A  75                                  DSPATR(RI)
+     A  75                                  DSPATR(PC)
+     A                                      CHECK(RB)
+     A                                      EDTCDE(3)
+     A            TIM0009       25A  O 14 40MSGID(TIM 0009 OMHDSP)
+     A            MOR001        15A  O 21 65MSGID(MOR 0001 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            MH04402       78A  O 23  2MSGID(MH0 4402 OMHDSP)
+     A                                      COLOR(BLU)
+     A            BCC0001       25   O  9  2MSGID(BCC 0001 OMHDSP)
+     A            FMBCCE    R     A  B  9 28REFFLD(BCCE)
+     A                                      CHECK(LC)
+     A                                      DSPATR(UL)
+     A  72                                  DSPATR(RI)
+     A  72                                  DSPATR(PC)
+     A          R MSGSFL                    SFL
+     A                                      SFLMSGRCD(24)
+     A            MSGKEY                    SFLMSGKEY
+     A            PGMQ                      SFLPGMQ
+     A          R MSGCTL
+     A                                      SFLCTL(MSGSFL)
+     A                                      SFLINZ
+     A                                      SFLSIZ(2)
+     A                                      SFLPAG(1)
+     A                                      SFLDSP
+     A                                      SFLDSPCTL
+     A N91                                  SFLEND
+     A                                      OVERLAY
+     A            PGMQ                      SFLPGMQ

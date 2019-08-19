@@ -1,0 +1,56 @@
+ /* ---------------------------------------------------------------- */
+ /* Description                                                      */
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /* Program ....: OMH928C                                            */
+ /* Function ...: System message handler.                            */
+ /* Author .....: Remain      .                                      */
+ /*                                                                  */
+ /* This program is called when a system message must be logged.     */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+             PGM
+
+ /* ---------------------------------------------------------------- */
+ /* Declare variabeles                                               */
+ /* ---------------------------------------------------------------- */
+             DCL        VAR(&KEYVAR)    TYPE(*CHAR) LEN(4)
+             DCL        VAR(&FNCC)      TYPE(*CHAR) LEN(5)
+             DCL        VAR(&REL)       TYPE(*CHAR) LEN(5)
+             DCL        VAR(&PGM)       TYPE(*CHAR) LEN(10)
+             DCL        VAR(&LIB)       TYPE(*CHAR) LEN(10)
+             DCL        VAR(&MSGID)     TYPE(*CHAR) LEN(7)
+             DCL        VAR(&MSGQ)      TYPE(*CHAR) LEN(10)
+             DCL        VAR(&MSGF)      TYPE(*CHAR) LEN(10)
+             DCL        VAR(&MSGDTALEN) TYPE(*DEC)  LEN(5 0)
+             DCL        VAR(&MSGFLIB)   TYPE(*CHAR) LEN(10)
+             DCL        VAR(&SENDER)    TYPE(*CHAR) LEN(80)
+             DCL        VAR(&MSGDTA)    TYPE(*CHAR) LEN(256)
+             DCL        VAR(&SEV)       TYPE(*DEC)  LEN(2 0)
+             DCL        VAR(&SEV2)      TYPE(*DEC)  LEN(2 0)
+             DCL        VAR(&SEVLVL)    TYPE(*CHAR) LEN(2)
+             DCL        VAR(&DTA1)      TYPE(*CHAR) LEN(256)
+
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ERROR))
+
+ /* ---------------------------------------------------------------- */
+ /* Receive the message.                                             */
+ /* ---------------------------------------------------------------- */
+             RCVMSG     PGMQ(*PRV *) MSGTYPE(*LAST) RMV(*YES) +
+                          MSGDTA(&MSGDTA) MSGDTALEN(&MSGDTALEN) +
+                          MSGID(&MSGID) SEV(&SEV) SENDER(&SENDER) +
+                          MSGF(&MSGF) MSGFLIB(&MSGFLIB)
+
+ /* ---------------------------------------------------------------- */
+ /* End the program when no message is received                      */
+ /* ---------------------------------------------------------------- */
+             IF         COND(&SENDER *EQ ' ' *OR &MSGID *EQ ' ' *OR +
+                          &MSGF *EQ ' ') THEN(GOTO CMDLBL(ENDPGM))
+
+             GOTO       CMDLBL(ENDPGM)
+
+ERROR:
+
+ENDPGM:
+             RETURN
+             ENDPGM

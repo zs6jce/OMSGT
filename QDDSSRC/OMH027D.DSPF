@@ -1,0 +1,230 @@
+      *$$\CRTOM CRTDSPF
+      *$$\ENDOM
+     A*%%TS  SD  19970415  155356  EWOUT       REL-V3R1M0  5763-PW1
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      REF(*LIBL/OMSREFHD)
+     A                                      CHGINPDFT
+     A                                      HLPTITLE('Remain Software')
+     A                                      HLPSCHIDX(*LIBL/REMAINHD)
+     A                                      HELP
+     A                                      PRINT(*LIBL/QSYSPRT)
+     A                                      ALTHELP(CA01)
+     A          R OMH02701
+     A*%%TS  SD  19970415  155356  EWOUT       REL-V3R1M0  5763-PW1
+     A                                      TEXT('Incident search - Enter searc-
+     A                                      h data')
+     A                                      CF03
+     A                                      CF04
+     A                                      CF05
+     A                                      CF12
+     A                                      CHANGE(40)
+     A                                      OVERLAY
+     A                                      KEEP
+     A                                      ASSUME
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A                                      CSRLOC(FMROW#     FMCOL#)
+     A                                      HLPCLR
+     A          H                           HLPPNLGRP(OMH02701 OMH027)
+     A                                      HLPARA(01 002 01 002)
+     A          H                           HLPPNLGRP('OMH02701/FMHEDC' OMH027)
+     A                                      HLPARA(05 028 05 032)
+     A          H                           HLPPNLGRP('OMH02701/FMSRC1' OMH027)
+     A                                      HLPARA(07 028 08 079)
+     A          H                           HLPPNLGRP('OMH02701/FMITXT' OMH027)
+     A                                      HLPARA(10 028 10 028)
+     A          H                           HLPPNLGRP('OMH02701/FMWRDS' OMH027)
+     A                                      HLPARA(11 028 11 028)
+     A          H                           HLPPNLGRP('OMH02701/FMOPER' OMH027)
+     A                                      HLPARA(12 028 12 028)
+     A          H                           HLPPNLGRP('OMH02701/FMTXTS' OMH027)
+     A                                      HLPARA(13 028 13 028)
+     A          H                           HLPPNLGRP('OMH02701/KEYS' OMH027)
+     A                                      HLPARA(23 001 23 080)
+     A            FMCOL#         3S 0H
+     A            FMROW#         3S 0H
+     A            FMFLDC        10A  H
+     A            FMFMTC        10A  H
+     A                                  1  2'OMH027  '
+     A            MH02700       50A  O  1 16TEXT('Incident search')
+     A                                      MSGID(MH0 2700 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH02701'
+     A            MH02701       50A  O  2 16TEXT('Enter search data')
+     A                                      MSGID(MH0 2701 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            MH02702       78A  O 23  2TEXT('Command keys')
+     A                                      MSGID(MH0 2702 OMHDSP)
+     A                                      COLOR(BLU)
+     A            HED0001       25A  O  5  2TEXT('HelpDesk code')
+     A                                      MSGID(HED 0001 OMHDSP)
+     A            FMHEDC    R        B  5 28REFFLD(HEDC)
+     A                                      TEXT('HelpDesk code')
+     A  80                                  DSPATR(HI)
+     A  80                                  DSPATR(PR)
+     A N80                                  DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A            FMHEDD    R   40   O  5 35REFFLD(HEDD)
+     A                                      TEXT('HelpDesk description')
+     A                                      DSPATR(HI)
+     A            MH02707       25A  O  7  2TEXT('Search words')
+     A                                      MSGID(MH0 2707 OMHDSP)
+     A            FMSRC1        52A  B  7 28DSPATR(UL)
+     A  71                                  DSPATR(PC)
+     A  71                                  DSPATR(RI)
+     A                                      CHECK(LC)
+     A            FMSRC2        52A  B  8 28DSPATR(UL)
+     A  71                                  DSPATR(PC)
+     A  71                                  DSPATR(RI)
+     A                                      CHECK(LC)
+     A            MH02708       25A  O 10  2TEXT('Text code')
+     A                                      MSGID(MH0 2708 OMHDSP)
+     A            FMITXT         1A  B 10 28TEXT('Text type')
+     A                                      DSPATR(UL)
+     A  72                                  DSPATR(PC)
+     A  72                                  DSPATR(RI)
+     A            MH02709       45A  O 10 35TEXT('0=All, 1=Symptom, 2=Cause, 3=-
+     A                                      Answer, 4=Other')
+     A                                      MSGID(MH0 2709 OMHDSP)
+     A            MH02710       25A  O 11  2TEXT('Consider words to be')
+     A                                      MSGID(MH0 2710 OMHDSP)
+     A            FMWRDS         1A  B 11 28TEXT('Consider words to be')
+     A                                      DSPATR(UL)
+     A  73                                  DSPATR(PC)
+     A  73                                  DSPATR(RI)
+     A            MH02711       45A  O 11 35TEXT('1=Substrings, 2=Complete word-
+     A                                      s')
+     A                                      MSGID(MH0 2711 OMHDSP)
+     A            MH02712       25A  O 12  2TEXT('Boolean operator')
+     A                                      MSGID(MH0 2712 OMHDSP)
+     A            FMOPER         1A  B 12 28TEXT('Boolean operator')
+     A                                      DSPATR(UL)
+     A  74                                  DSPATR(PC)
+     A  74                                  DSPATR(RI)
+     A            MH02713       45A  O 12 35TEXT('1=And, 2=Or')
+     A                                      MSGID(MH0 2713 OMHDSP)
+     A            MH02714       25   O 13  2TEXT('Texts to search')
+     A                                      MSGID(MH0 2714 OMHDSP)
+     A            FMTXTS         1A  B 13 28TEXT('Texts to search')
+     A                                      DSPATR(UL)
+     A  75                                  DSPATR(PC)
+     A  75                                  DSPATR(RI)
+     A            MH02715       45   O 13 35TEXT('0=Both, 1=Body, 2=Headers')
+     A                                      MSGID(MH0 2715 OMHDSP)
+     A          R OMH02702                  SFL
+     A*%%TS  SD  19970109  111442  EWOUT       REL-V3R1M0  5763-PW1
+     A                                      TEXT('Work with results (subfile vi-
+     A                                      ew 1')
+     A  93                                  SFLNXTCHG
+     A            FMOPTS         1A  B 12  3TEXT('Option field')
+     A                                      DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A            FMINC#    R        O 12  7REFFLD(INC#)
+     A                                      TEXT('Incident number')
+     A            FMOCCR         5Y 0O 12 19TEXT('Occurences')
+     A                                      EDTCDE(Z)
+     A            FMINCD    R   50A  O 12 26REFFLD(INCD)
+     A                                      TEXT('Text line')
+     A          R OMH02703                  SFLCTL(OMH02702)
+     A*%%TS  SD  19970108  135635  EWOUT       REL-V3R1M0  5763-PW1
+     A                                      SFLSIZ(0010)
+     A                                      SFLPAG(0009)
+     A                                      TEXT('Work with search results')
+     A                                      CF03
+     A                                      CF05
+     A                                      CF12
+     A  92                                  ROLLUP(22)
+     A                                      KEEP
+     A                                      OVERLAY
+     A                                      ERASE(OMH02702)
+     A  90                                  SFLDSP
+     A                                      SFLDSPCTL
+     A  91                                  SFLCLR
+     A N92                                  SFLEND(*MORE)
+     A                                      HLPCLR
+     A          H                           HLPARA(01 002 01 002)
+     A                                      HLPPNLGRP('OMH02703' OMH027)
+     A          H                           HLPARA(07 028 07 037)
+     A                                      HLPPNLGRP('OMH02703/FMPOS' OMH027)
+     A          H                           HLPARA(12 003 20 003)
+     A                                      HLPPNLGRP('OMH02702/FMOPTS' OMH027)
+     A          H                           HLPARA(23 001 23 080)
+     A                                      HLPPNLGRP('OMH02703/KEYS' OMH027)
+     A            CRRN02         4S 0H      SFLRCDNBR(CURSOR)
+     A                                  1  2'OMH027  '
+     A            MH02700       50A  O  1 16TEXT('Incident search')
+     A                                      MSGID(MH0 2700 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH02703'
+     A            MH02703       50A  O  2 16TEXT('Work with search results')
+     A                                      MSGID(MH0 2703 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            HED0001       25A  O  5  2TEXT('HelpDesk code')
+     A                                      MSGID(HED 0001 OMHDSP)
+     A            FMHEDC    R        O  5 28REFFLD(HEDC)
+     A                                      TEXT('HelpDesk code')
+     A                                      DSPATR(HI)
+     A            FMHEDD    R   40   O  5 35REFFLD(HEDD)
+     A                                      TEXT('HelpDesk Description')
+     A                                      DSPATR(HI)
+     A            MH02704       78A  O  9  2TEXT('Options')
+     A  80                                  MSGID(MH0 2704 OMHDSP)
+     A                                      MSGID(MH0 2716 OMHDSP)
+     A                                      COLOR(BLU)
+     A            MH02705       78A  O 11  2TEXT('Subfile header')
+     A                                      MSGID(MH0 2705 OMHDSP)
+     A                                      DSPATR(HI)
+     A            POS0001       25   O  7  2TEXT('Position to')
+     A                                      MSGID(POS 0001 OMHDSP)
+     A            FMPOS     R        B  7 28REFFLD(INC#)
+     A                                      DSPATR(UL)
+     A          R OMH02704
+     A*%%TS  SD  19970103  121554  EWOUT       REL-V3R1M0  5763-PW1
+     A                                      TEXT('Work with search results (foo-
+     A                                      ter)')
+     A                                      CF03
+     A                                      CF05
+     A                                      CF12
+     A  92                                  ROLLUP(22)
+     A                                      OVERLAY
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            MH02706       78A  O 23  2TEXT('Command keys')
+     A                                      MSGID(MH0 2706 OMHDSP)
+     A                                      COLOR(BLU)
+     A          R MSGSFL                    SFL
+     A                                      SFLMSGRCD(24)
+     A            MSGKEY                    SFLMSGKEY
+     A            PGMQ                      SFLPGMQ
+     A          R MSGCTL
+     A                                      SFLCTL(MSGSFL)
+     A                                      SFLINZ
+     A                                      SFLSIZ(2)
+     A                                      SFLPAG(1)
+     A                                      SFLDSP
+     A                                      SFLDSPCTL
+     A N91                                  SFLEND
+     A                                      OVERLAY
+     A            PGMQ                      SFLPGMQ

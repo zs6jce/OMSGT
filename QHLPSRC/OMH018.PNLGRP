@@ -1,0 +1,1200 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: OMH018                                      :   *.
+.*   : Help for ...: Incident Maintenance                        :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   : This panelgroup contains the U.I.M. help texts for        :   *.
+.*   : Incident Maintenance                                      :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:PNLGRP.
+:IMPORT PNLGRP=OMSREFHD      NAME='*'.
+
+.*   *************************************************************   *.
+.*   * Incident Maintenance                                      *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=STRIM.Incident Maintenance - Help
+
+:IMHELP NAME=STRIMGEN.
+
+:P.
+Select one of the following:
+
+:P.
+:LINK PERFORM='DSPHELP OMH01802IX'.
+Display 1 - Work with Incidents
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP OMH01806IX'.
+Display 2 - Specify Incidents to Work with
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP OMH01810IX'.
+Display 3 - Work with Incident Relations
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP OMH01813IX'.
+Display 4 - Work with Q & A History
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP OMH01817IX'.
+Display 5 - Enter Incident Number
+:ELINK.
+
+:EHELP.
+
+:HELP NAME=OMH01802IX.General Help For Display 1
+:IMHELP NAME=OMH01802.
+:IMHELP NAME='OMH01802/FMPS1A'.
+:IMHELP NAME='OMH01802/FMPS1B'.
+:IMHELP NAME='OMH01802/FMPS2A'.
+:IMHELP NAME='OMH01802/FMPS2B'.
+:IMHELP NAME='OMH01802/FMVIEI'.
+:IMHELP NAME='OMH01801/FMOPTI'.
+:IMHELP NAME='OMH01802/KEYS'.
+:EHELP.
+
+:HELP NAME=OMH01806IX.General Help For Display 2
+:IMHELP NAME=OMH01806.
+:IMHELP NAME='OMH01806/FFHEDC'.
+.*:IMHELP NAME='OMH01806/'.
+:IMHELP NAME='OMH01806/FFINCY'.
+.*:IMHELP NAME='OMH01806/FTINCY'.
+:IMHELP NAME='OMH01806/FFCTNY'.
+.*:IMHELP NAME='OMH01806/FTCTNY'.
+:IMHELP NAME='OMH01806/FFPRIY'.
+.*:IMHELP NAME='OMH01806/FTPRIY'.
+:IMHELP NAME='OMH01806/FFCUSC'.
+:IMHELP NAME='OMH01806/FFCCTC'.
+:IMHELP NAME='OMH01806/FFSTAT'.
+:IMHELP NAME='OMH01806/FFSTRC'.
+:IMHELP NAME='OMH01806/FFITPC'.
+:IMHELP NAME='OMH01816/FFRUID'.
+:IMHELP NAME='OMH01816/FFAUID'.
+:IMHELP NAME='OMH01816/FFALSC'.
+:IMHELP NAME='OMH01816/FFACIN'.
+:IMHELP NAME='OMH01816/FFUSF1'.
+:IMHELP NAME='OMH01816/FFUSF2'.
+:IMHELP NAME='OMH01816/FFUSF3'.
+:IMHELP NAME='OMH01816/FFVIEI'.
+:IMHELP NAME='OMH01806/FMDEFI'.
+:IMHELP NAME='OMH01806/KEYS'.
+:EHELP.
+
+:HELP NAME=OMH01810IX.General Help For Display 3
+:IMHELP NAME=OMH01810.
+:IMHELP NAME='OMH01809/FMOPTI'.
+:IMHELP NAME='OMH01810/KEYS'.
+:EHELP.
+
+:HELP NAME=OMH01813IX.General Help For Display 4
+:IMHELP NAME=OMH01813.
+:IMHELP NAME='OMH01812/FMOPTS'.
+:IMHELP NAME='OMH01813/KEYS'.
+:EHELP.
+
+:HELP NAME=OMH01817IX.General Help For Display 5
+:IMHELP NAME=OMH01817.
+:IMHELP NAME='OMH01817/FMLNIN'.
+:IMHELP NAME='OMH01817/FMLNAC'.
+:IMHELP NAME='OMH01817/KEYS'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : General help for Incident Maintenance                     :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=STRIMGEN.Incident Maintenance - Help
+:XH3.Incident Maintenance
+:ISCH ROOTS='incident maintenance'.
+Incident Maintenance
+
+:P.
+The :PK.Incident Maintenance:EPK. function is used to manage all
+open incidents. You are able to do all actions that are needed
+for registration, processing and analaysis.
+
+:P.
+You are able to filter the incident database to select only those
+incidents you need. In addition to this, you can use an answer list
+to further define your query.
+
+:P.
+Please read the descriptions for each display to get a feeling
+about what the function can do.
+
+:P.
+If you want more information
+about a specific attribute, move the cursor to the attribute area
+and press help. If you want more information about incindents in
+general, please follow this link to the
+:LINK PERFORM='DSPHELP CONINC OMSCONHD'.
+incident concepts.
+:ELINK.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 1 - View 1                       *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH01802.General Help For Display 1
+
+:XH3.Display 1 - Work with Incidents
+
+:P.
+:LINK PERFORM='DSPHELP STRIM'.
+General Information.
+:ELINK.
+
+:P.
+The Work with Incidents display enables you to perform actions
+on all incidents to which you are authorized. Please view the
+helptext of the
+:LINK PERFORM='DSPHELP FMOPTI'.
+options
+:ELINK.
+to see the actions possible on each incident.
+
+:P.
+If you want more information
+about a specific attribute, move the cursor to the attribute area
+and press help. If you want more information about incidents in
+general, please follow this link to the
+:LINK PERFORM='DSPHELP CONINC OMSCONHD'.
+incident concepts.
+:ELINK.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 - 1 FMPS1A (Helpdesk code)                      :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 028  07 032                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01802/FMPS1A'.Position to - Help
+
+:XH3.Position to
+:P.
+:IMHELP NAME='HEDC001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 - 1 FMPS1B (Priority)                           :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 034  07 036                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01802/FMPS1B'.Position to - Help
+
+:XH3.Position to
+:P.
+:IMHELP NAME='PRI_001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 - 1 FMPS2A (Helpdesk code)                      :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 028  07 032                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01802/FMPS2A'.Position to - Help
+
+:XH3.Position to
+:P.
+:IMHELP NAME='HEDC001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 - 1 FMPS2B (Incident number)                    :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 034  07 043                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01802/FMPS2B'.Position to - Help
+
+:XH3.Position to
+:P.
+:IMHELP NAME='INC_001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 - 1 FMVIEI (View on)                            :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 074  07 074                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01802/FMVIEI'.View on - Help
+
+:XH3.View on
+:P.
+Use this indicator to view the incidents on priority :PK.(0):EPK. or
+on incident number :pk.(1):EPK.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 - 1 FMOPTI (Option field)                       :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 12 002  20 003                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01801/FMOPTI'.Option field - Help
+
+:XH3.Option field
+:P.
+These are the list options. The options all act on a
+specific list entry. The following options are available;
+
+:PARML.
+:PT.1=Status
+:PD.
+Use option 1 to change the status of the incident. What status the
+incident wil recieve depends on the next status in the
+status route.
+:PC.
+Please view the
+:LINK PERFORM='DSPHELP OMSCONHD OMSCONHD'.
+concepts
+:ELINK.
+for more information.
+
+:PT.2=Change
+:PD.
+Use option 2 to change the attributes of the incidents.
+
+:PT.5=Display
+:PD.
+Use option 5 to display the attributes of the incidents.
+
+:PT.6=Print
+:PD.
+Use option 6 to print the incident.
+
+:PT.8=Display log
+:PD.
+Use option 8 to display the actions that where performed on
+this incident.
+
+:PT.9=(de)allocate
+:PD.
+Use option 9 to allocate the incident to you if it was not already
+allocated to someone else. If the incident was already allocated to
+you then the incident will be deallocated.
+
+:PT.10=Link
+:PD.
+Use this option to relate the incident to another incident.
+
+:PT.12=Relationships
+:PD.
+Use this option to show the incident relationships.
+
+:PT.14=Spool files
+:PD.
+This option will show the contets of the output queue with the
+same name as the incident. The output queue will be searched in
+the incident spooled files library. This is a HelpDesk attribute.
+
+:PT.16=Start Q&A
+:PD.
+This option will start a question list. You can only answer a
+question list once.
+
+:PT.18=Q&A History
+:PD.
+This option will allow you to view the question and answer
+history of a specific question list.
+
+:PT.20=Search
+:PD.
+Use option 20 to search the incident text database for keywords.
+
+:PT.22=Connect request
+:PD.
+Use option 22 to connect an OMS request to the incident.
+
+:PT./=User options
+:PD.
+Use option / to view a selection list with user defined options.
+:EPARML.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 - 1 Function keys.                              :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01802/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F3=Exit
+:PD.
+Press F3 to end the current task and return to the display
+where you began the task. Any options or changes that you
+keyed on input prompts
+:CIT.since the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F5=Refresh
+:PD.
+Press F5 to refresh the display you are currently working
+on with the (new) values from the OMS database. This is
+sometimes necessary if fields have been changed but the
+changes are not directly reflected on the display.
+
+:PT.F6=Add
+:PD.
+Press F6 to add a new incident. This is only possible if the
+customer call function was started first.
+
+
+:PT.F11=view
+:PD.
+Press F11 to see more attributes of the same incident.
+
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+
+:PT.F17=Subset
+:PD.
+Press F17 for entering selection fields in order to create a
+subset of the shown incidents. If you are working with a subsetted list
+the first time the list is shown a message is displayed warning
+you that you are viewing a subset of the list.
+
+:PT.F18=Add Call
+:PD.
+Press F18 to add a new customer call. After the call is added, you
+are required to add an incident also. When the call and the incident
+are added, you can add more incidents to the same call by pressing
+function key F6=Add.
+
+:PT.F23=More Options
+:PD.
+Press F23 to view the description of other available options.
+
+
+:PT.F24=More keys
+:PD.
+Press F24 to view the description of other available function keys.
+
+
+:PT.Roll Keys
+:PD.
+Use the rollkeys to display the next or previous page of the display
+you are currently viewing. If more data is available is indicated
+by a :HP2.+:EHP2. charachter or the text :HP2.'More...':EHP2. in the
+bottom rigth corner of the display or list.
+
+:EPARML.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 1 - View 2                       *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH01805.General Help For Display 1
+:IMHELP NAME=OMH01802.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 - 2 FMPS1A (Helpdesk code)                      :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 028  07 032                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01805/FMPS1A'.
+:IMHELP NAME='OMH01802/FMPS1A'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 - 2 FMPS1B (Priority)                           :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 034  07 036                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01805/FMPS1B'.
+:IMHELP NAME='OMH01802/FMPS1B'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 - 2 FMPS2A (Helpdesk code)                      :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 028  07 032                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01805/FMPS2A'.
+:IMHELP NAME='OMH01802/FMPS2A'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 - 2 FMPS2B (Incident number)                    :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 034  07 043                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01805/FMPS2B'.
+:IMHELP NAME='OMH01802/FMPS2B'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 - 2 FMVIEI (View on)                            :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 074  07 074                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01805/FMVIEI'.
+:IMHELP NAME='OMH01802/FMVIEI'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 - 2 FMOPTI (Option field)                       :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 12 002  20 003                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01804/FMOPTI'.
+:IMHELP NAME='OMH01801/FMOPTI'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 - 2 Function keys.                              :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01805/KEYS'.
+:IMHELP NAME='OMH01802/KEYS'.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 2 - Part 1                       *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH01806.General Help For Display 2
+
+:XH3.Display 2 - Specify Incidents to Work with
+
+:P.
+:LINK PERFORM='DSPHELP STRIM'.
+General Information.
+:ELINK.
+
+:P.
+The :PK.Specify Incidents to Work with:EPK. display enables you
+filter the incidents to get a view containing only the incidents
+you want to see. You can use a number of selection criteria.
+
+:P.
+If you want more information
+about a specific attribute, move the cursor to the attribute area
+and press help. If you want more information about incidents in
+general, please follow this link to the
+:LINK PERFORM='DSPHELP CONINC OMSCONHD'.
+incident concepts.
+:ELINK.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 1 FFHEDC (HelpDesk code from)                 :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 028  07 032                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01806/FFHEDC'.HelpDesk code from - Help
+:IMHELP NAME='HEDC001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 1  (HelpDesk code to)                   :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 047  07 051                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01806/'.HelpDesk code to - Help
+:IMHELP NAME='HEDC001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 1 FFINC# (Incident number from)               :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 09 028  09 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01806/FFINCY'.Incident number from - Help
+:IMHELP NAME='INC_001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 1 FTINC# (Incident number to)                 :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 09 047  09 056                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01806/FTINCY'.Incident number to - Help
+:IMHELP NAME='INC_001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 1 FFCTN# (Call track number from)             :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 10 028  10 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01806/FFCTNY'.Call track number from - Help
+:IMHELP NAME='CTN_001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 1 FTCTN# (Call track number to)               :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 10 047  10 056                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01806/FTCTNY'.Call track number to - Help
+:IMHELP NAME='CTN_001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 1 FFPRI# (Priority from)                      :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 11 028  11 030                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01806/FFPRIY'.Priority from - Help
+:IMHELP NAME='PRI_001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 1 FTPRI# (Priority to)                        :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 11 047  11 049                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01806/FTPRIY'.Priority to - Help
+:IMHELP NAME='PRI_001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 1 FFSTAT (Status from)                        :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 14 028  14 032                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01806/FFSTAT'.Status - Help
+:IMHELP NAME='STAT001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 1 FFITPC (Incident type code from)            :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 16 028  16 032                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01806/FFITPC'.Incident type - Help
+:IMHELP NAME='ITPC001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 1 FFRUID (Registered by from)                 :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 18 028  18 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01816/FFRUID'.Registered by - Help
+:IMHELP NAME='RUID001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 1 FFAUID (Allocated by from)                  :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 19 028  19 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01816/FFAUID'.Allocated by - Help
+:IMHELP NAME='AUID001'.
+
+:P.
+:PARML.
+
+:PT.*NONE
+:PD.
+This selects all incidents which are not allocated to any user. This
+enables you to view all incidents which must still be assigned.
+:EPARML.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 1 FMDEFI (Save as default subset)             :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 21 028  21 028                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01806/FMDEFI'.
+:IMHELP NAME='INDI002'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 1 FFSTRC (Status route from)                  :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 15 028  15 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01806/FFSTRC'.
+:IMHELP NAME='STRC001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 1 FFCUSC (Customer from)                      :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 13 028  13 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01806/FFCUSC'.
+:IMHELP NAME='CUSC001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 1 FFCCTC (Customer contact from)              :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 13 028  13 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01806/FFCCTC'.Customer Contact Code - Help
+:IMHELP NAME='CCTC001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 1 Function keys.                              :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01806/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F4=Prompt
+:PD.
+Press F4 on a field where you can select from mulitple
+pre defined values. If the F4=Prompt key is active for
+a field is normally shown behind the field in the
+descriptive text. F4=Prompt takes you to another display
+where you can select a value from a list with all the
+available values for the field you have prompted.
+
+:PT.F5=Refresh
+:PD.
+Press F5 to refresh the display you are currently working
+on with the (new) values from the OMS database. This is
+sometimes necessary if fields have been changed but the
+changes are not directly reflected on the display.
+
+:PT.F9=Retrieve
+:PD.
+If you have changed a subset the subset value is saved. You
+can retrieve the last 10 subsets you have entered by subsequently
+pressing F9. The default subset is restored by pressing F14.
+The subsets are saved per application and user. Every user can have
+ten saved subsets per application and function.
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+
+:PT.F14=Restore defaults
+:PD.
+If you have created a default subset, you can retrieve it by
+pressing F14.
+
+
+:PT.Roll Keys
+:PD.
+Use the rollkeys to display the next or previous page of the display
+you are currently viewing. If more data is available is indicated
+by a :HP2.+:EHP2. charachter or the text :HP2.'More...':EHP2. in the
+bottom rigth corner of the display or list.
+
+:EPARML.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 1 - View 3                       *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH01808.General Help For Display 1
+:IMHELP NAME=OMH01802.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 - 3 FMPS1A (Helpdesk code)                      :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 028  07 032                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01808/FMPS1A'.
+:IMHELP NAME='OMH01802/FMPS1A'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 - 3 FMPS1B (Priority)                           :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 034  07 036                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01808/FMPS1B'.
+:IMHELP NAME='OMH01802/FMPS1B'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 - 3 FMPS2A (Helpdesk code)                      :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 028  07 032                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01808/FMPS2A'.
+:IMHELP NAME='OMH01802/FMPS2A'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 - 3 FMPS2B (Incident number)                    :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 034  07 043                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01808/FMPS2B'.
+:IMHELP NAME='OMH01802/FMPS2B'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 - 3 FMVIEI (View on)                            :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 074  07 074                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01808/FMVIEI'.
+:IMHELP NAME='OMH01802/FMVIEI'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 - 3 FMOPTI (Option field)                       :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 12 002  20 003                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01807/FMOPTI'.
+:IMHELP NAME='OMH01801/FMOPTI'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 - 3 Function keys.                              :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01808/KEYS'.
+:IMHELP NAME='OMH01802/KEYS'.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 3                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH01810.General Help For Display 3
+
+:XH3.Display 3 - Work with Incidents Relations
+
+:P.
+:LINK PERFORM='DSPHELP STRIM'.
+General Information.
+:ELINK.
+
+:P.
+Thw Work with Incident Relations display shows all relations to
+the selected incident. The incident can be related to a OMS request,
+or another incident. If the relation is to another incident it
+can be a :PK.hard:EPK. or a :PK.soft:EPK. link. A hard link or
+*ACCUMULATED link indicates that the incident is accumulated to
+the incident in the list. If the relation type indicates a :PK.<:EPK.
+then the incident in the list is accumulated to this incident.
+
+:P.
+If you want more information
+about a specific attribute, move the cursor to the attribute area
+and press help. If you want more information about incidents
+and relationships in general, please follow this link to the
+:LINK PERFORM='DSPHELP CONINC OMSCONHD'.
+incident concepts.
+:ELINK.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 3  FMOPTI (Option field)                          :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 12 002  20 003                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01809/FMOPTI'.Option - Help
+
+:XH3.Option
+:P.
+These are the list options. The options all act on a
+specific list entry. The following options are available;
+
+:PARML.
+:PT.5=Display
+:PD.
+Use option 5 to display the contents of the related object.
+:PT.12=Work with Fixes
+:PD.
+If the related incident is a request then it is possible to
+enter the OMS fix management function.
+:EPARML.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 3 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01810/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F3=Exit
+:PD.
+Press F3 to end the current task and return to the display
+where you began the task. Any options or changes that you
+keyed on input prompts
+:CIT.since the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F5=Refresh
+:PD.
+Press F5 to refresh the display you are currently working
+on with the (new) values from the OMS database. This is
+sometimes necessary if fields have been changed but the
+changes are not directly reflected on the display.
+
+:PT.F8=Connect Request
+:PD.
+Press F8 to connect an OMS request to this fix.
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+:EPARML.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 4                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH01813.General Help For Display 4
+
+:XH3.Display 4 - Work with Q & A History
+
+:P.
+:LINK PERFORM='DSPHELP STRIM'.
+General Information.
+:ELINK.
+
+:P.
+The Work with Q&A history display allows you to select a
+Question list for processing or displaying. Select the
+desired question list and press Enter.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 4  FMOPTS (Option field)                          :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 12 003  15 003                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01812/FMOPTS'.Option - Help
+
+:XH3.Option
+:P.
+These are the list options. The options all act on a
+specific list entry. The following options are available;
+
+:PARML.
+:PT.1=Select
+:PD.
+Use option 1 to select the question list.
+:EPARML.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 4 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01813/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F3=Exit
+:PD.
+Press F3 to end the current task and return to the display
+where you began the task. Any options or changes that you
+keyed on input prompts
+:CIT.since the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F5=Refresh
+:PD.
+Press F5 to refresh the display you are currently working
+on with the (new) values from the OMS database. This is
+sometimes necessary if fields have been changed but the
+changes are not directly reflected on the display.
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+:EPARML.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 2 - Part 2                       *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH01816.General Help For Display 2
+:IMHELP NAME=OMH01806.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 2 FMDEFI (Save as default subset)             :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 21 028  21 028                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01816/FMDEFI'.
+:IMHELP NAME='OMH01806/FMDEFI'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 2 FFACIN (General purpose indicator)          :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 028  07 028                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01816/FFACIN'.Accumulated incidents only - Help
+:XH3.Accumulated incidents only
+:P.
+Use this field to indicate if you only want to see accumulated
+incidents. Accumulated incidents are the incidents which do
+not follow the status and priority change of other incidents.
+:P.
+If an incident is not an accumulated incident then its status depends
+on the status change of other incidents. Use option 12 to view
+the incident relationships.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 2 FFUSF1 (Incident free field 1)              :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 11 028  11 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01816/FFUSF1'.
+:IMHELP NAME='USF1001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 2 FFUSF2 (Incident free field 2)              :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 12 028  12 052                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01816/FFUSF2'.
+:IMHELP NAME='USF2001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 2 FFUSF3 (Incident free field 3)              :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 13 028  13 042                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01816/FFUSF3'.
+:IMHELP NAME='USF3001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 2 FFVIEI (View on)                            :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 17 028  17 028                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01816/FFVIEI'.View on
+:XH3.View on
+:P.
+Use this indicator to view the incidents on priority :PK.(0):EPK. or
+on incident number :pk.(1):EPK.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 2 FFALSC (Answer list code)                   :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 09 028  09 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01816/FFALSC'.
+:IMHELP NAME='ALSC001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 - 2 Function keys.                              :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01816/KEYS'.
+:IMHELP NAME='OMH01806/KEYS'.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 5                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH01817.General Help For Display 5
+
+:XH3.Display 5 - Connect Incident
+
+:P.
+:LINK PERFORM='DSPHELP STRIM'.
+General Information.
+:ELINK.
+
+:P.
+The connect incident window Enables you to connect an incident
+to this incident. This
+can be a :PK.hard:EPK. or a :PK.soft:EPK. link. A hard or
+*ACCUMULATED link indicates that the incident is accumulated to
+the incident in the list. If the relation type indicates a :PK.<:EPK.
+then the incident in the list is accumulated to this incident.
+
+:P.
+If you want more information
+about a specific attribute, move the cursor to the attribute area
+and press help. If you want more information about incidents
+and relationships in general, please follow this link to the
+:LINK PERFORM='DSPHELP CONINC OMSCONHD'.
+incident concepts.
+:ELINK.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 5  FMLNIN (Incident number)                       :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 03 027  03 036                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01817/FMLNIN'.
+:IMHELP NAME='INC_001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 5  FMLNAC (General purpose indicator)             :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 04 027  04 027                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01817/FMLNAC'.Connection type - Help
+
+:XH3.Connection type
+:P.
+Specify the connection type.
+:PARML.
+
+:PT.0=Link
+:PD.
+A relationship is added to this incident but it is a soft
+relationship. If the selected incident changes then this incident
+will not change.
+:PT.1=Accumulate
+:PD.
+This incident is accumulated to the incident you specify. If the
+status and the priority of the accumulated incident change, then
+this incident will also change.
+:EPARML.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 5 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH01817/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F5=Refresh
+:PD.
+Press F5 to refresh the display you are currently working
+on with the (new) values from the OMS database. This is
+sometimes necessary if fields have been changed but the
+changes are not directly reflected on the display.
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+:EPARML.
+:EHELP.
+:EPNLGRP.

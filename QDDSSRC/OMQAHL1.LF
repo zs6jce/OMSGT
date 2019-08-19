@@ -1,0 +1,28 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMQAHL1                                       *
+      * Module .....: HelpDesk                                      *
+      * Function ...: Question and answer history                   *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ----------------------------------------------------------- *
+      * Record OMQAHR                                               *
+      * ----------------------------------------------------------- *
+                                            UNIQUE
+                R OMQAHR                    PFILE(OMQAH)
+
+      * ----------------------------------------------------------- *
+      * Access path                                                 *
+      * AHHEDC      - Helpdesk code                                 *
+      * AHINC#      - Incident number                               *
+      * AHOQL#      - Original question list number                 *
+      * AHSEQ#      - Sequence number                               *
+      * ----------------------------------------------------------- *
+                K AHHEDC
+                K AHINC#
+                K AHOQL#
+                K AHSEQ#

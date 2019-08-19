@@ -1,0 +1,1028 @@
+      *$$\CRTOM CRTPRTF
+      *$$\ENDOM
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMQPRTIN                                      *
+      * Function ...: Incidents printerfile                         *
+      * Author .....: REMAIN SOFTWARE                               *
+      *                                                             *
+      * This printerfile is used to print an incident               *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ----------------------------------------------------------- *
+      * Page header format                                          *
+      * ----------------------------------------------------------- *
+                R PAGEH
+                                        1  1'OMQPRTIN'
+                  FMCONM    R        O  1 41REFFLD(CONM OMSREF)
+                                        1125DATE
+                                            EDTCDE(Y)
+        51        TRE001        50      2 41
+       N51        TRE007        50      2 41
+                                        2  1'Pag.'
+                                          +1PAGNBR
+                                            EDTCDE(4)
+                                        2125TIME
+                                        4  1' '
+
+      * ----------------------------------------------------------- *
+      * Command input                                               *
+      * ----------------------------------------------------------- *
+                R COMM                      SPACEB(1)
+                                            SPACEA(1)
+                                           1'OMQPRTIN'
+        44                                10
+                                            SPACEA(1)
+     A                                      MSGCON(34 MQP0058 OMSDSP)
+       N44                                10
+                                            SPACEA(1)
+     A                                      MSGCON(34 MQP0064 OMSDSP)
+        21                                 4
+     A                                      MSGCON(20 MQP0002 OMSDSP)
+        21                                28'HEDC'
+        21        PPHEDC        10        35
+                                            SPACEA(1)
+        22                                 4
+     A                                      MSGCON(20 MQP0003 OMSDSP)
+        22                                28'INC'
+        22        PPINC         10        35
+                                            SPACEA(1)
+        23                                 4
+     A                                      MSGCON(20 MQP0004 OMSDSP)
+        23                                28'CTN'
+        23        PPCTN         10        35
+                                            SPACEA(1)
+        24                                 4
+     A                                      MSGCON(20 CUS0001 OMSDSP)
+        24                                28'CUSC'
+        24        PPCUSC        10        35
+                                            SPACEA(1)
+        25                                 4
+     A                                      MSGCON(20 CNT0001 OMSDSP)
+        25                                28'CCTC'
+        25        PPCCTC        10        35
+                                            SPACEA(1)
+        26                                 4
+     A                                      MSGCON(20 MQP0005 OMSDSP)
+        26                                28'INDT'
+                                            SPACEA(1)
+        26                                 8
+     A                                      MSGCON(20 MQP0006 OMSDSP)
+        26        PPIDTF         6  0     35
+                                            SPACEA(1)
+                                            EDTWRD('  -  -  ')
+        26                                 8
+     A                                      MSGCON(20 MQP0007 OMSDSP)
+        26        PPIDTT         6  0     35
+                                            SPACEA(1)
+                                            EDTWRD('  -  -  ')
+        27                                 4
+     A                                      MSGCON(20 MQP0010 OMSDSP)
+        27                                28'INTM'
+                                            SPACEA(1)
+        27                                 8
+     A                                      MSGCON(20 MQP0011 OMSDSP)
+        27        PPITMF         6  0     35
+                                            SPACEA(1)
+                                            EDTWRD('  :  :  ')
+        27                                 8
+     A                                      MSGCON(20 MQP0012 OMSDSP)
+        27        PPITMT         6  0     35
+                                            SPACEA(1)
+                                            EDTWRD('  :  :  ')
+        28                                 4
+     A                                      MSGCON(20 MQP0042 OMSDSP)
+        28                                28'RCDT'
+                                            SPACEA(1)
+        28                                 8
+     A                                      MSGCON(20 MQP0006 OMSDSP)
+        28        PPCDTF         6  0     35
+                                            SPACEA(1)
+                                            EDTWRD('  -  -  ')
+        28                                 8
+     A                                      MSGCON(20 MQP0007 OMSDSP)
+        28        PPCDTT         6  0     35
+                                            SPACEA(1)
+                                            EDTWRD('  -  -  ')
+        29                                 4
+     A                                      MSGCON(20 MQP0015 OMSDSP)
+        29                                28'STRC'
+        29        PPSTRC        10        35
+                                            SPACEA(1)
+        30                                 4
+     A                                      MSGCON(20 MQP0016 OMSDSP)
+        30                                28'SULC'
+        30        PPSULC        10        35
+                                            SPACEA(1)
+        31                                 4
+     A                                      MSGCON(20 MQP0017 OMSDSP)
+        31                                28'STAT'
+        31        PPSTAT        10        35
+                                            SPACEA(1)
+        32                                 4
+     A                                      MSGCON(20 MQP0018 OMSDSP)
+        32                                28'SEV1'
+        32        PPSEV1        10        35
+                                            SPACEA(1)
+        33                                 4
+     A                                      MSGCON(20 MQP0019 OMSDSP)
+        33                                28'SEV2'
+        33        PPSEV2        10        35
+                                            SPACEA(1)
+        34                                 4
+     A                                      MSGCON(20 MQP0020 OMSDSP)
+        34                                28'SEV3'
+        34        PPSEV3        10        35
+                                            SPACEA(1)
+        35                                 4
+     A                                      MSGCON(20 MQP0021 OMSDSP)
+        35                                28'PRIC'
+                                            SPACEA(1)
+        35                                 8
+     A                                      MSGCON(20 MQP0061 OMSDSP)
+        35        PPPRIF         3  0     35
+                                            SPACEA(1)
+                                            EDTCDE(4)
+        35                                 8
+     A                                      MSGCON(20 MQP0060 OMSDSP)
+        35        PPPRIT         3  0     35
+                                            SPACEA(1)
+                                            EDTCDE(4)
+        36                                 4
+     A                                      MSGCON(20 MQP0022 OMSDSP)
+        36                                28'RUID'
+        36        PPRUID        10        35
+                                            SPACEA(1)
+        37                                 4
+     A                                      MSGCON(20 MQP0023 OMSDSP)
+        37                                28'AUID'
+        37        PPAUID        10        35
+                                            SPACEA(1)
+        38                                 4
+     A                                      MSGCON(20 MQP0024 OMSDSP)
+        38                                28'ITYP'
+        38        PPITYP        10        35
+                                            SPACEA(1)
+        39                                 4
+     A                                      MSGCON(20 MQP0025 OMSDSP)
+        39                                28'USF1'
+        39        PPUSF1        10        35
+                                            SPACEA(1)
+        40                                 4
+     A                                      MSGCON(20 MQP0026 OMSDSP)
+        40                                28'USF2'
+        40        PPUSF2        25        35
+                                            SPACEA(1)
+        41                                 4
+     A                                      MSGCON(20 MQP0027 OMSDSP)
+        41                                28'USF3'
+        41        PPUSF3        15  0     35
+                                            SPACEA(1)
+                                            EDTCDE(4)
+        42                                 4
+     A                                      MSGCON(20 MQP0047 OMSDSP)
+        42                                28'ESCC'
+                                            SPACEA(1)
+        42                                 8
+     A                                      MSGCON(20 MQP0062 OMSDSP)
+        42        PPESCD        10        35
+                                            SPACEA(1)
+        42                                 8
+     A                                      MSGCON(20 MQP0063 OMSDSP)
+        42        PPESC#         3  0     35
+                                            SPACEA(1)
+                                            EDTCDE(4)
+        43                                 4
+     A                                      MSGCON(20 MQP0051 OMSDSP)
+        43                                28'ESDT'
+        43        PPESDT         6  0     35
+                                            SPACEA(1)
+                                            EDTWRD('  -  -  ')
+        46                                 4
+     A                                      MSGCON(20 HST0001 OMSDSP)
+        46                                28'HIST'
+        46        PPHIST         5        35
+                                            SPACEA(1)
+        45                                 4
+     A                                      MSGCON(20 AVG0001 OMSDSP)
+        45                                28'PAVE'
+        45        PPPAVE         5        35
+                                            SPACEA(1)
+        45                                 6
+     A                                      MSGCON(20 MQP0067 OMSDSP)
+        45        PPFSTR        10        35
+                                            SPACEA(1)
+        45                                 6
+     A                                      MSGCON(20 MQP0068 OMSDSP)
+        45        PPFSTA        10        35
+                                            SPACEA(1)
+        45                                 6
+     A                                      MSGCON(20 MQP0069 OMSDSP)
+        45        PPTSTR        10        35
+                                            SPACEA(1)
+        45                                 6
+     A                                      MSGCON(20 MQP0070 OMSDSP)
+        45        PPTSTA        10        35
+                                            SPACEA(1)
+
+      * ----------------------------------------------------------- *
+      * Incident short format header                                *
+      * ----------------------------------------------------------- *
+                R INCHR                     SPACEB(2)
+                  TRE011       132         1SPACEA(1)
+                                           1'-----------------------------------
+                                            ------------------------------------
+                                            ------------------------------------
+                                            ----------------------------'
+
+      * ----------------------------------------------------------- *
+      * Header for accumulated incident                             *
+      * ----------------------------------------------------------- *
+                R ACCHR                     SPACEB(2)
+                  TRE012       132         1SPACEA(1)
+                                           1'-----------------------------------
+                                            ------------------------------------
+                                            ------------------------------------
+                                            ----------------------------'
+
+      * ----------------------------------------------------------- *
+      * Header for questions and answers                            *
+      * ----------------------------------------------------------- *
+                R QAAHR                     SPACEB(2)
+                  TRE013       108         1
+                  PRDESC        23       110SPACEA(1)
+                                           1'-----------------------------------
+                                            ------------------------------------
+                                            ------------------------------------
+                                            ----------------------------'
+
+      * ----------------------------------------------------------- *
+      * Header for related incidents                                *
+      * ----------------------------------------------------------- *
+                R RINHR                     SPACEB(2)
+                  TRE015       132         1SPACEA(1)
+                                           1'-----------------------------------
+                                            ------------------------------------
+                                            ------------------------------------
+                                            ----------------------------'
+
+      * ----------------------------------------------------------- *
+      * No incidents                                                *
+      * ----------------------------------------------------------- *
+                R INCND                     SPACEB(2)
+                  TRE014       132         1SPACEA(1)
+
+      * ----------------------------------------------------------- *
+      * Incident format SHORT                                       *
+      * ----------------------------------------------------------- *
+                R INCDR                     SPACEB(1)
+       N52        PRHEDC    R              1REFFLD(HEDC OMSREF)
+        52        PRAIN#    R              1REFFLD(AIN# OMSREF)
+       N52        PRINC#    R              8REFFLD(INC# OMSREF)
+                  PRCTN#    R             18REFFLD(CTN# OMSREF)
+                  PRCUSC    R             29REFFLD(CUSC OMSREF)
+                  PRDAY#    R             40REFFLD(DTE# OMSREF)
+                                          42'-'
+                  PRMON#    R             43REFFLD(DTE# OMSREF)
+                                          45'-'
+                  PRYEA#    R             46REFFLD(DTE# OMSREF)
+                  PRSTRC    R             50REFFLD(STRC OMSREF)
+                  PRSUL#    R             61REFFLD(SUL# OMSREF)
+                  PRSTAT    R             63REFFLD(STAT OMSREF)
+                  PRAUID    R             69REFFLD(AUID OMSREF)
+                  PRPRI#    R             80REFFLD(PRI# OMSREF)
+                  PRESC#    R             84REFFLD(ESC# OMSREF)
+                  PRITPC    R             88REFFLD(ITPC OMSREF)
+                  PRSHID    R             94REFFLD(SHID OMSREF)
+
+      * ----------------------------------------------------------- *
+      * Incident format DETAIL                                      *
+      * ----------------------------------------------------------- *
+                R INCDD                     SPACEB(1)
+                  INC001        25         1
+                  PRINC#    R             27REFFLD(INC# OMSREF)
+                  INC002        25        51
+                  PRCTN#    R             77REFFLD(CTN# OMSREF)
+                                            SPACEA(1)
+                  INC003        25         1
+                  PRAIN#    R             27REFFLD(AIN# OMSREF)
+                  INC021        25        51
+                  PRCUSC    R             77REFFLD(CUSC OMSREF)
+                                            SPACEA(1)
+                  INC005        25         1
+                  PRINDT    R   -1        27REFFLD(INDT OMSREF)
+                                            EDTCDE(Y)
+                  PRINTM    R             38REFFLD(INTM OMSREF)
+                                            EDTWRD('  :  :  ')
+                  INC006        25        51
+                  PRRCDT    R   -1        77REFFLD(RCDT OMSREF)
+                                            EDTCDE(Y)
+                  PRRCTM    R             88REFFLD(RCTM OMSREF)
+                                            EDTWRD('  :  :  ')
+                                            SPACEA(1)
+                  INC007        25         1
+                  PRSTAT    R             27REFFLD(STAT OMSREF)
+                  PRSUL#    R             34REFFLD(SUL# OMSREF)
+                  INC008        25        51
+                  PRSRDT    R   -1        77REFFLD(SRDT OMSREF)
+                                            EDTCDE(Y)
+                  PRSRTM    R             88REFFLD(SRTM OMSREF)
+                                            EDTWRD('  :  :  ')
+                                            SPACEA(1)
+                  INC004        25         1
+                  PRSTRC    R             27REFFLD(STRC OMSREF)
+                  INC010        25        51
+                  PRPRI#    R             77REFFLD(PRI# OMSREF)
+                                            SPACEA(1)
+                                            EDTCDE(4)
+                  INC011        25         1
+                  PRESC#    R             27REFFLD(ESC# OMSREF)
+                                            EDTCDE(4)
+                  INC012        25        51
+                  PRIEDT    R   -1        77REFFLD(IEDT OMSREF)
+                                            EDTCDE(Y)
+                  PRIETM    R             88REFFLD(IETM OMSREF)
+                                            EDTWRD('  :  :  ')
+                                            SPACEA(1)
+                  INC013        25         1
+                  PRRUID    R             27REFFLD(RUID OMSREF)
+                  INC014        25        51
+                  PRAUID    R             77REFFLD(AUID OMSREF)
+                                            SPACEA(1)
+                  INC015        25         1
+                  PRITPC    R             27REFFLD(ITPC OMSREF)
+                  INC016        25        51
+                  PRCFIC    R             77REFFLD(CFIC OMSREF)
+                  PRCFL#    R             82REFFLD(CFL# OMSREF)
+                                            EDTCDE(4)
+                                            SPACEA(1)
+                  INC017        25         1
+                  PRUSF1    R             27REFFLD(USF1 OMSREF)
+                  INC019        25        51
+                  PRUSF2    R             77REFFLD(USF2 OMSREF)
+                                            SPACEA(1)
+                  INC020        25         1
+                  PRUSF3    R             27REFFLD(USF3 OMSREF)
+                                            EDTCDE(4)
+                  INC009        25        51
+                  PRSEV1    R             77REFFLD(SEV1 OMSREF)
+                  PRSEV2    R             83REFFLD(SEV2 OMSREF)
+                  PRSEV3    R             89REFFLD(SEV3 OMSREF)
+                                            SPACEA(1)
+                  INC018        25         1
+                  PRSHID    R             27REFFLD(SHID OMSREF)
+                                            SPACEA(1)
+
+      * ----------------------------------------------------------- *
+      * Header text bloc                                            *
+      * ----------------------------------------------------------- *
+                R TXTHR                     SPACEB(1)
+                                            SPACEA(1)
+                  PRTXTH        50         1
+                  TYP007         5        55
+                  PRTYPD        10        61
+
+      * ----------------------------------------------------------- *
+      * Detail text bloc                                            *
+      * ----------------------------------------------------------- *
+                R TXTDR                     SPACEA(1)
+        50                                  SPACEB(1)
+                  PRTXTD        70         5
+
+      * ----------------------------------------------------------- *
+      * Question and answer format                                  *
+      * ----------------------------------------------------------- *
+                R QAADR                     SPACEB(1)
+                  PRQUES    R   55        10REFFLD(QUES OMSREF)
+                  PRANSC    R   55        70REFFLD(ANSC OMSREF)
+
+      * ----------------------------------------------------------- *
+      * Request short format header *LIST                           *
+      * ----------------------------------------------------------- *
+                R REQSLH                    SPACEB(2)
+                  TRE002       132         1SPACEA(1)
+                                           1'-----------------------------------
+                                            ------------------------------------
+                                            ------------------------------------
+                                            ----------------------------'
+
+      * ----------------------------------------------------------- *
+      * Request short format  *LIST                                 *
+      * ----------------------------------------------------------- *
+                R REQSL                     SPACEB(1)
+                  FMRAPP    R              1REFFLD(APPC OMSREF)
+                  FMERR#    R              7REFFLD(ERR# OMSREF)
+                  FMINDT    R   -1        18REFFLD(INDT OMSREF)
+                                            EDTCDE(Y)
+                  RRUSID    R             27REFFLD(USID OMSREF)
+                  RRUSRI    R             38REFFLD(USRI OMSREF)
+                  RRADDR    R             47REFFLD(ADDR OMSREF)
+                  RRERRT    R             56REFFLD(ERRT OMSREF)
+                  RRPRIN    R             58REFFLD(PRIN OMSREF)
+        60        FMWCDT    R   -1        60REFFLD(WCDT OMSREF)
+                                            EDTCDE(Y)
+                  RRTEL#    R             69REFFLD(TEL# OMSREF)
+                  FMSHED    R  -10        85REFFLD(SHED OMSREF)
+                  RRREAC    R            126REFFLD(REAC OMSREF)
+                  RRPDLC    R            128REFFLD(PDLC OMSREF)
+
+      * ----------------------------------------------------------- *
+      * Fix short format header *LIST                               *
+      * ----------------------------------------------------------- *
+                R FIXSLH                    SPACEB(3)
+                  TRE003       132         1SPACEA(1)
+                                           1'-----------------------------------
+                                            ------------------------------------
+                                            ------------------------------------
+                                            ----------------------------'
+
+      * ----------------------------------------------------------- *
+      * Fix short format *LIST                                      *
+      * ----------------------------------------------------------- *
+                R FIXSL                     SPACEB(1)
+                  FMRAPP    R              1REFFLD(APPC OMSREF)
+                  FMERR#    R              7REFFLD(ERR# OMSREF)
+                  FMFAPP    R             18REFFLD(APPC OMSREF)
+                  FMFIX#    R             24REFFLD(FIX# OMSREF)
+                  RSFIXT    R             35REFFLD(FIXT OMSREF)
+                  RSPRIN    R             37REFFLD(PRIN OMSREF)
+                  RSRLS#    R             39REFFLD(RLS# OMSREF)
+                  RSPGMR    R             50REFFLD(PGMR OMSREF)
+        61        FMESDT    R   -1        61REFFLD(ESDT OMSREF)
+                                            EDTCDE(Y)
+                  RSSHFD    R             70REFFLD(SHFD OMSREF)
+                  RSREAC    R            126REFFLD(REAC OMSREF)
+                  RSFIXS    R            128REFFLD(FIXS OMSREF)
+
+      * ----------------------------------------------------------- *
+      * Solution short format header *LIST                          *
+      * ----------------------------------------------------------- *
+                R SOLSLH                    SPACEB(3)
+                  TRE004       132         1SPACEA(1)
+                                           1'-----------------------------------
+                                            ------------------------------------
+                                            ------------------------------------
+                                            ----------------------------'
+
+      * ----------------------------------------------------------- *
+      * Solution short format *LIST                                 *
+      * ----------------------------------------------------------- *
+                R SOLSL                     SPACEB(1)
+                  FMRAPP    R              1REFFLD(APPC OMSREF)
+                  FMERR#    R              7REFFLD(ERR# OMSREF)
+                  FMFAPP    R             18REFFLD(APPC OMSREF)
+                  FMFIX#    R             24REFFLD(FIX# OMSREF)
+                  ROOBJC    R             35REFFLD(OBJC OMSREF)
+                  ROOBJT    R             48REFFLD(OBJT OMSREF)
+                  ROMBRC    R             58REFFLD(MBRC OMSREF)
+                  ROOBJA    R             69REFFLD(OBJA OMSREF)
+                  ROOBJL    R             80REFFLD(OBJL OMSREF)
+                  ROSOLT    R             91REFFLD(SOLT OMSREF)
+                  FMOBJ2    R  -15        93REFFLD(OBJD OMSREF)
+                  FMPDLC    R            128REFFLD(PDLC OMSREF)
+
+
+      * ----------------------------------------------------------- *
+      * Fix short format header *COMPOUND                           *
+      * ----------------------------------------------------------- *
+                R FIXSCH                    SPACEB(2)
+                  TRE005       126         7SPACEA(1)
+                                           7'-----------------------------------
+                                            ------------------------------------
+                                            ------------------------------------
+                                            ----------------------'
+
+      * ----------------------------------------------------------- *
+      * Fix short format *COMPOUND                                  *
+      * ----------------------------------------------------------- *
+                R FIXSC                     SPACEB(1)
+                  FMFAPP    R              7REFFLD(APPC OMSREF)
+                  FMFIX#    R             13REFFLD(FIX# OMSREF)
+                  RSFIXT    R             24REFFLD(FIXT OMSREF)
+                  RSPRIN    R             26REFFLD(PRIN OMSREF)
+                  RSRLS#    R             28REFFLD(RLS# OMSREF)
+                  RSPGMR    R             39REFFLD(PGMR OMSREF)
+        61        FMESDT    R   -1        50REFFLD(ESDT OMSREF)
+                                            EDTCDE(Y)
+                  RSEPH#    R             59REFFLD(EPH# OMSREF)
+                                            EDTCDE(4)
+        62        FMEDDT    R   -1        66REFFLD(EDDT OMSREF)
+                                            EDTCDE(Y)
+                  RSSHFD    R             75REFFLD(SHFD OMSREF)
+                  RSREAC    R            126REFFLD(REAC OMSREF)
+                  RSFIXS    R            128REFFLD(FIXS OMSREF)
+
+      * ----------------------------------------------------------- *
+      * Solution short format header *COMPOUND                      *
+      * ----------------------------------------------------------- *
+                R SOLSCH                    SPACEB(2)
+                  TRE006       120        13SPACEA(1)
+                                          13'-----------------------------------
+                                            ------------------------------------
+                                            ------------------------------------
+                                            ---------------'
+
+      * ----------------------------------------------------------- *
+      * Solution short format *COMPOUND                             *
+      * ----------------------------------------------------------- *
+                R SOLSC                     SPACEB(1)
+                  ROOBJC    R             13REFFLD(OBJC OMSREF)
+                  ROOBJT    R             26REFFLD(OBJT OMSREF)
+                  ROMBRC    R             36REFFLD(MBRC OMSREF)
+                  ROOBJA    R             47REFFLD(OBJA OMSREF)
+                  ROOBJL    R             58REFFLD(OBJL OMSREF)
+                  ROSOLT    R             69REFFLD(SOLT OMSREF)
+                  FMVRS#         7        71
+                  FMOBJD    R   -2        79REFFLD(OBJD OMSREF)
+                  FMPDLC    R            128REFFLD(PDLC OMSREF)
+
+      * ----------------------------------------------------------- *
+      * Request format *DETAIL                                      *
+      * ----------------------------------------------------------- *
+                R REQDET                    SPACEB(2)
+      *
+                  ERR001        25         1TEXT('Request number')
+                  RRAPPC    R             27REFFLD(APPC OMSREF)
+                  RRERR#    R             33REFFLD(ERR# OMSREF)
+                  ERR006        25        45TEXT('Request status')
+                  RRPDLC    R             71REFFLD(PDLC OMSREF)
+                                            SPACEA(1)
+      *
+                  USR003        25         1TEXT('User id')
+                  RRUSID    R             27REFFLD(USID OMSREF)
+                  USR011        25        45TEXT('Remote User')
+                  RRUSRI    R             71REFFLD(USRI OMSREF)
+                  RRADDR    R             82REFFLD(ADDR OMSREF)
+                                            SPACEA(1)
+      *
+                  ERR014        25         1TEXT('Request type')
+                  FMTYPC    R             27REFFLD(VALC OMSREF)
+                  DAT006        25        45TEXT('Income date / time')
+                  FMINDT    R   -1        71REFFLD(INDT OMSREF)
+                                            EDTCDE(Y)
+                  RRINTM    R             82REFFLD(INTM OMSREF)
+                                            EDTWRD('  :  :  ')
+                                            SPACEA(1)
+      *
+                  PRI001        25         1TEXT('Priority')
+                  FMPRIC    R             27REFFLD(VALC OMSREF)
+                  DAT004        25        45TEXT('Expect. compl-dt')
+       N61                                  SPACEA(1)
+        61        FMWCDT    R   -1        71REFFLD(WCDT OMSREF)
+                                            EDTCDE(Y)
+                                            SPACEA(1)
+      *
+                  TEL001        25         1TEXT('Telephone')
+                  RRTEL#    R             27REFFLD(TEL# OMSREF)
+                  DAT005        25        45TEXT('Realiz. compl-dt')
+        62        FMRCDT    R   -1        71REFFLD(RCDT OMSREF)
+                                            EDTCDE(Y)
+                  FMRSNC    R             82REFFLD(VALC OMSREF)
+                                            SPACEA(1)
+      *
+                  ERR002        25         1TEXT('Short descript.')
+                  RRSHED    R             27REFFLD(SHED OMSREF)
+
+
+      * ----------------------------------------------------------- *
+      * Request basic text format                                   *
+      * ----------------------------------------------------------- *
+                R REQTXT                    SPACEB(1)
+      *
+                  RDERRD    R             27REFFLD(ERRD OMSREF)
+
+      * ----------------------------------------------------------- *
+      * Fix format *DETAIL                                          *
+      * ----------------------------------------------------------- *
+                R FIXDET                    SPACEB(2)
+      *
+        70        ERR001        25         1TEXT('Request number')
+        70        SRAPPC    R             27REFFLD(APPC OMSREF)
+        70        SRERR#    R             33REFFLD(ERR# OMSREF)
+                                            SPACEA(1)
+      *
+                  FIX001        25         6TEXT('Fix number')
+                  SRFAPP    R             32REFFLD(APPC OMSREF)
+                  SRFIX#    R             38REFFLD(FIX# OMSREF)
+                  FIX002        25        50TEXT('Fix status    ')
+                  RSFIXS    R             76REFFLD(PDLC OMSREF)
+                                            SPACEA(1)
+      *
+                  PGM001        25         6TEXT('Programmer    ')
+                  RSPGMR    R             32REFFLD(PGMR OMSREF)
+                  RLS002        25        50TEXT('Release number')
+                  RSRLS#    R             76REFFLD(RLS# OMSREF)
+                                            SPACEA(1)
+      *
+                  FIX011        25         6TEXT('Fix type ')
+                  FMFTYP    R             32REFFLD(VALC OMSREF)
+                  DAT014        25        50TEXT('Expected start')
+       N61                                  SPACEA(1)
+        61        FMESDT    R   -1        76REFFLD(ESDT OMSREF)
+                                            EDTCDE(Y)
+                                            SPACEA(1)
+      *
+                  PRI001        25         6TEXT('Priority')
+                  FMPRIC    R             32REFFLD(VALC OMSREF)
+                  DAT015        25        50TEXT('Realz. start')
+       N62                                  SPACEA(1)
+        62        FMRSDT    R   -1        76REFFLD(RSDT OMSREF)
+                                            EDTCDE(Y)
+                                            SPACEA(1)
+      *
+                  DAT016        25         6TEXT('Exp. dev')
+        63        FMEDDT    R   -1        32REFFLD(EDDT OMSREF)
+                                            EDTCDE(Y)
+                  DAT018        25        50TEXT('Expect. compl-dt')
+       N65                                  SPACEA(1)
+        65        FMECDT    R   -1        76REFFLD(ECDT OMSREF)
+                                            EDTCDE(Y)
+                                            SPACEA(1)
+      *
+                  DAT017        25         6TEXT('Rea. dev')
+        64        FMRDDT    R   -1        32REFFLD(RDDT OMSREF)
+                                            EDTCDE(Y)
+                  DAT019        25        50TEXT('Realiz. compl-dt')
+       N66                                  SPACEA(1)
+        66        FMRCDT    R   -1        76REFFLD(RCDT OMSREF)
+                                            EDTCDE(Y)
+                                            SPACEA(1)
+      *
+                  HRS001        25         6TEXT('Exp. hours')
+                  RSEPH#    R             34REFFLD(EPH# OMSREF)
+                                            EDTCDE(M)
+                  REA001        25        50TEXT('Reason code')
+                  FMRSNC    R             76REFFLD(VALC OMSREF)
+                                            SPACEA(1)
+      *
+                  HRS002        25         6TEXT('Rea. hours')
+                  RSERH#    R             34REFFLD(ERH# OMSREF)
+                                            EDTCDE(M)
+                  DEX001        25        50TEXT('Dev exit cnt')
+                  RSDEX#    R             76REFFLD(DEX# OMSREF)
+                                            EDTCDE(M)
+                                            SPACEA(1)
+      *
+                  FIX003        25         6TEXT('Short descript.')
+                  RSSHFD    R             32REFFLD(SHFD OMSREF)
+
+
+      * ----------------------------------------------------------- *
+      * Fix format *DETAIL text                                     *
+      * ----------------------------------------------------------- *
+                R FIXTXT                    SPACEB(1)
+      *
+                  SDSORD    R             32REFFLD(SORD OMSREF)
+
+      * ----------------------------------------------------------- *
+      * Sol format *DETAIL                                          *
+      * ----------------------------------------------------------- *
+                R SOLDET                    SPACEB(2)
+      *
+        70        ERR001        25         1TEXT('Request number')
+        70        SRAPPC    R             27REFFLD(APPC OMSREF)
+        70        SRERR#    R             33REFFLD(ERR# OMSREF)
+                                            SPACEA(1)
+      *
+        70        FIX001        25         1TEXT('Fix number')
+        70        SRFAPP    R             27REFFLD(APPC OMSREF)
+        70        SRFIX#    R             33REFFLD(FIX# OMSREF)
+                                            SPACEA(1)
+      *
+                  OBJ001        25        11TEXT('Object code   ')
+                  ROOBJC    R             37REFFLD(OBJC OMSREF)
+                  PDL003        25        55TEXT('Environment cd')
+                  ROPDLC    R             81REFFLD(PDLC OMSREF)
+                                            SPACEA(1)
+      *
+                  OBJ003        25        11TEXT('Object type')
+                  ROOBJT    R             37REFFLD(OBJT OMSREF)
+                  STA001        25        55TEXT('Status ')
+                  ROSTAT    R             81REFFLD(STAT OMSREF)
+                                            SPACEA(1)
+      *
+                  OBJ004        25        11TEXT('Object attribute')
+                  ROOBJA    R             37REFFLD(OBJA OMSREF)
+                  OBJ008        25        55TEXT('Object library')
+                  ROOBJL    R             81REFFLD(OBJL OMSREF)
+                                            SPACEA(1)
+      *
+                  DET001        25        11TEXT('Detail code')
+                  ROMBRC    R             37REFFLD(MBRC OMSREF)
+                  VRS007        25        55TEXT('Version ')
+                  FMVRS#         7        81
+                                            SPACEA(1)
+      *
+                  OBJ022        25        11TEXT('Object class')
+                  FMOCLS         7        37
+                  VRS008        25        55TEXT('Version based on')
+                  FMVRSB         7        81SPACEA(1)
+      *
+                  SOL002        25        11TEXT('Solution type')
+                  FMSOLT        10        37
+                  SRC006        25        55TEXT('Source processing')
+                  FMSRCP         7        81
+                                            SPACEA(1)
+      *
+                  OVR001        25        11TEXT('Override code')
+                  FMOVRC         7        37
+                  FMFLTE        15        45TEXT('Followers/Leader')
+                  FMFAP1    R             61REFFLD(APPC OMSREF)
+                  FMFIX1    R             67REFFLD(FIX# OMSREF)
+                  FMFAP2    R             80REFFLD(APPC OMSREF)
+                  FMFIX2    R             86REFFLD(FIX# OMSREF)
+                  FMFAP3    R             99REFFLD(APPC OMSREF)
+                  FMFIX3    R            105REFFLD(FIX# OMSREF)
+                  FMFAP4    R            118REFFLD(APPC OMSREF)
+                  FMFIX4    R            124REFFLD(FIX# OMSREF)
+                                            SPACEA(1)
+        60        FMFAP5    R             61REFFLD(APPC OMSREF)
+        60        FMFIX5    R             67REFFLD(FIX# OMSREF)
+        60        FMFAP6    R             80REFFLD(APPC OMSREF)
+        60        FMFIX6    R             86REFFLD(FIX# OMSREF)
+        60        FMFAP7    R             99REFFLD(APPC OMSREF)
+        60        FMFIX7    R            105REFFLD(FIX# OMSREF)
+        60        FMFAP8    R            118REFFLD(APPC OMSREF)
+        60        FMFIX8    R            124REFFLD(FIX# OMSREF)
+                                            SPACEA(1)
+      *
+                  OBJ002        25        11TEXT('Object description')
+                  FMSORD    R             37REFFLD(SORD OMSREF)
+
+
+      * ----------------------------------------------------------- *
+      * SOL format *DETAIL text                                     *
+      * ----------------------------------------------------------- *
+                R SOLTXT                    SPACEB(1)
+      *
+                  ODSORD    R             37REFFLD(SORD OMSREF)
+
+      * ----------------------------------------------------------- *
+      * Request/Fix quality short format header                     *
+      * ----------------------------------------------------------- *
+                R REQSQH                    SPACEB(2)
+                  TRE008       132         1SPACEA(1)
+                                           1'-----------------------------------
+                                            ------------------------------------
+                                            ------------------------------------
+                                            ----------------------------'
+
+      * ----------------------------------------------------------- *
+      * Fix quality short format                                    *
+      * ----------------------------------------------------------- *
+                R FIXSQ                     SPACEB(1)
+                  FMRAPP    R              1REFFLD(APPC OMSREF)
+                  FMERR#    R              7REFFLD(ERR# OMSREF)
+                  FMFAPP    R             50REFFLD(APPC OMSREF)
+                  FMFIX#    R             56REFFLD(FIX# OMSREF)
+                  FMPGMR    R             67REFFLD(PGMR OMSREF)
+                  FMFIXS    R             78REFFLD(FIXS OMSREF)
+                  FMFIXT    R             85REFFLD(FIXT OMSREF)
+                  FMDEX#         3  0     94EDTCDE(4)
+                  FMSDT#         5  0    101EDTCDE(M)
+                  FMDDT#         5  0    108EDTCDE(M)
+                  FMCDT#         5  0    115EDTCDE(M)
+                  FMHRS#         8  2    122EDTCDE(M)
+
+      * ----------------------------------------------------------- *
+      * Fix quality '---- ---' line                                 *
+      * ----------------------------------------------------------- *
+                R FIXSQT                    SPACEB(1)
+                  TRE009        42        90
+
+      * ----------------------------------------------------------- *
+      * Request total quality short format                          *
+      * ----------------------------------------------------------- *
+                R REQSQ                     SPACEB(1)
+                  FMRAPP    R              1REFFLD(APPC OMSREF)
+                  FMERR#    R              7REFFLD(ERR# OMSREF)
+                  FMUSID    R             18REFFLD(USID OMSREF)
+                  FMPDLC    R             29REFFLD(PDLC OMSREF)
+                  FMERRT    R             36REFFLD(ERRT OMSREF)
+                  FMDTRT         5  0     40EDTCDE(K)
+                  FMFAPP    R             50REFFLD(APPC OMSREF)
+                  FMFIX#    R             56REFFLD(FIX# OMSREF)
+                  FMPGMR    R             67REFFLD(PGMR OMSREF)
+                  FMFIXS    R             78REFFLD(FIXS OMSREF)
+                  FMFIXT    R             85REFFLD(FIXT OMSREF)
+                  FMFCNT         3  0     90EDTCDE(4)
+                  FMDEXT         5  2     94EDTCDE(4)
+                  FMSDTT         5  0    101EDTCDE(M)
+                  FMDDTT         5  0    108EDTCDE(M)
+                  FMCDTT         5  0    115EDTCDE(M)
+                  FMHRST         8  2    122EDTCDE(M)
+
+      * ----------------------------------------------------------- *
+      * Application total quality short format                      *
+      * ----------------------------------------------------------- *
+                R APPSQ                     SPACEB(1)
+                                          39'-------'
+                                            SPACEA(1)
+                  FMRAPP    R              1REFFLD(APPC OMSREF)
+                  FMDTRA         7  0     37EDTCDE(K)
+                                            SPACEA(2)
+
+      * ----------------------------------------------------------- *
+      * Fix format *DETAIL quality                                  *
+      * ----------------------------------------------------------- *
+                R FIXDTQ                    SPACEB(2)
+      *
+                  ERR001        25         1TEXT('Request number')
+                  SRAPPC    R             27REFFLD(APPC OMSREF)
+                  SRERR#    R             33REFFLD(ERR# OMSREF)
+                                            SPACEA(1)
+      *
+                  FIX001        25         1TEXT('Fix number')
+                  SRFAPP    R             27REFFLD(APPC OMSREF)
+                  SRFIX#    R             33REFFLD(FIX# OMSREF)
+                  FIX002        25        45TEXT('Fix status    ')
+                  RSFIXS    R             72REFFLD(PDLC OMSREF)
+                                            SPACEA(1)
+      *
+                  FIX011        25         1TEXT('Fix type ')
+                  FMFTYP    R             27REFFLD(VALC OMSREF)
+                  PGM001        25        45TEXT('Programmer    ')
+                  RSPGMR    R             72REFFLD(PGMR OMSREF)
+                                            SPACEA(1)
+      *
+                  FIX003        25         1TEXT('Short descript.')
+                  RSSHFD    R             27REFFLD(SHFD OMSREF)
+                                            SPACEA(1)
+      *
+                  DEX001        25         1TEXT('Dev exit cnt')
+                  RSDEX#    R             27REFFLD(DEX# OMSREF)
+                                            EDTCDE(M)
+                                            SPACEA(1)
+      *
+                  DAT020        25         1TEXT('Start dates')
+        61        FMESDT    R   -1        27REFFLD(ESDT OMSREF)
+                                            EDTCDE(Y)
+        62        FMRSDT    R   -1        38REFFLD(RSDT OMSREF)
+                                            EDTCDE(Y)
+                  FMSDT#         5  0     51EDTCDE(M)
+                                            SPACEA(1)
+      *
+                  DAT021        25         1TEXT('Devend dates')
+        63        FMEDDT    R   -1        27REFFLD(EDDT OMSREF)
+                                            EDTCDE(Y)
+        64        FMRDDT    R   -1        38REFFLD(RDDT OMSREF)
+                                            EDTCDE(Y)
+                  FMDDT#         5  0     51EDTCDE(M)
+                                            SPACEA(1)
+      *
+                  DAT022        25         1TEXT('Compl. dates')
+        65        FMECDT    R   -1        27REFFLD(ECDT OMSREF)
+                                            EDTCDE(Y)
+        66        FMRCDT    R   -1        38REFFLD(RCDT OMSREF)
+                                            EDTCDE(Y)
+                  FMCDT#         5  0     51EDTCDE(M)
+                                            SPACEA(1)
+      *
+                  HRS003        25         1TEXT('Exp/rea hrs.')
+                  RSEPH#    R             29REFFLD(EPH# OMSREF)
+                                            EDTCDE(M)
+                  RSERH#    R             40REFFLD(ERH# OMSREF)
+                                            EDTCDE(M)
+                  FMHRS#         8  2     50EDTCDE(M)
+
+      * ----------------------------------------------------------- *
+      * Cover page format                                           *
+      * ----------------------------------------------------------- *
+                R COVER                     SPACEB(3)
+                  TRE104        25         1TEXT('Selection fields')
+                                            SPACEA(2)
+      *
+                  APP001        25         1TEXT('Application code')
+                  FMRAPP    R             27REFFLD(APPC OMSREF)
+                                            SPACEA(1)
+      *
+                  ERR001        25         1TEXT('Request number')
+                  FMERR#    R             27REFFLD(ERR# OMSREF)
+                                            SPACEA(1)
+      *
+        61        PDL003        25         1TEXT('Environment code')
+        61        FMPDLC    R             27REFFLD(PDLC OMSREF)
+                                            SPACEA(1)
+      *
+        62        ERR014        25         1TEXT('Request type')
+        62        FMERRT    R             27REFFLD(ERRT OMSREF)
+        62        FMERRD        25        31TEXT('Request Desc.')
+                                            SPACEA(1)
+      *
+        63        PRI001        25         1TEXT('Priority')
+        63        FMPRIN    R             27REFFLD(PRIN OMSREF)
+        63        FMPRID        25        31TEXT('Priority Desc.')
+                                            SPACEA(1)
+      *
+        64        ERR011        25         1TEXT('Reason code')
+        64        FMREAC    R             27REFFLD(REAC OMSREF)
+                                            SPACEA(1)
+      *
+        65        USR003        25         1TEXT('User id')
+        65        FMUSID    R             27REFFLD(USID OMSREF)
+                                            SPACEA(1)
+      *
+        66        TEL001        25         1TEXT('TEL#')
+        66        FMTEL#    R             27REFFLD(TEL# OMSREF)
+                                            SPACEA(1)
+      *
+        67        ADR005        25         1TEXT('Remote address')
+        67        FMADDR    R             27REFFLD(ADDR OMSREF)
+                                            SPACEA(1)
+      *
+        68        USR011        25         1TEXT('Remote user')
+        68        FMUSRI    R             27REFFLD(USRI OMSREF)
+                                            SPACEA(1)
+      *
+        69        DAT001        25         1TEXT('Income date')
+        70        FMINFR    R   -1        27REFFLD(INDT OMSREF)
+                                            EDTCDE(Y)
+        69                                37'-'
+       N71                                  SPACEA(1)
+        71        FMINTO    R   -1        40REFFLD(INDT OMSREF)
+                                            EDTCDE(Y)
+                                            SPACEA(1)
+      *
+        78        DAT12R        25         1TEXT('Wanted compl. date')
+        78        FMCOCO         4        27
+        78        DAT13R        25        37TEXT('Realiz compl. date')
+                                            SPACEA(1)
+      *
+        72        DAT012        25         1TEXT('Wanted compl. date')
+        73        FMWCFR    R   -1        27REFFLD(WCDT OMSREF)
+                                            EDTCDE(Y)
+        72                                37'-'
+       N74                                  SPACEA(1)
+        74        FMWCTO    R   -1        40REFFLD(WCDT OMSREF)
+                                            EDTCDE(Y)
+                                            SPACEA(1)
+      *
+        75        DAT013        25         1TEXT('Realiz compl. date')
+        76        FMRCFR    R   -1        27REFFLD(RCDT OMSREF)
+                                            EDTCDE(Y)
+        75                                37'-'
+       N77                                  SPACEA(1)
+        77        FMRCTO    R   -1        40REFFLD(RCDT OMSREF)
+                                            EDTCDE(Y)
+                                            SPACEA(1)
+
+                  TRE101        25         1TEXT('Report data')
+                                            SPACEB(2)
+                                            SPACEA(2)
+      *
+                  ERR012        25         1TEXT('Request data')
+                  FMREIN         7        27SPACEA(1)
+      *
+                  FIX009        25         1TEXT('Fix data')
+                  FMFIIN         7        27SPACEA(1)
+      *
+                  SOL001        25         1TEXT('Solution data')
+                  FMSOIN         7        27SPACEA(1)
+      *
+                  TRE103        25         1TEXT('Output format')
+                  FMLSTF        10        27SPACEA(2)
+      *
+                  ERR013        25         1TEXT('Request qual. data')
+                  FMRQIN         7        27SPACEA(1)
+      *
+                  FIX010        25         1TEXT('Fix quality data')
+                  FMFQIN         7        27SPACEA(1)
+
+      * ----------------------------------------------------------- *
+      * End page format                                             *
+      * ----------------------------------------------------------- *
+                R ENDPG                     SPACEB(3)
+      *
+                  TRE111        25         1TEXT('Incidents Printed')
+                  FMPRTI         5  0     27EDTCDE(2)
+                                            SPACEA(1)
+      *
+                  TRE106        25         1TEXT('Requests printed')
+                  FMPRTR         5  0     27EDTCDE(2)
+                                            SPACEA(1)
+      *
+                  TRE107        25         1TEXT('Fixs printed')
+                  FMPRTF         5  0     27EDTCDE(2)
+                                            SPACEA(1)
+      *
+                  TRE108        25         1TEXT('Sols printed')
+                  FMPRTS         5  0     27EDTCDE(2)
+                                            SPACEA(1)
+      *
+                  TRE109        25         1TEXT('Requests quality')
+                  FMPRQR         5  0     27EDTCDE(2)
+                                            SPACEA(1)
+      *
+                  TRE110        25         1TEXT('Fixs quality')
+                  FMPRQF         5  0     27EDTCDE(2)
+                                            SPACEA(2)
+      *
+                  TRE112        25         1TEXT('Average')
+                  FMPAVG         7  2     27EDTCDE(2)
+                                            SPACEA(2)
+      *
+                  END001        60        31TEXT('End of report')
+      *

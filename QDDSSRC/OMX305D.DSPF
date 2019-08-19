@@ -1,0 +1,59 @@
+      *$$\CRTOM CRTDSPF
+      *$$\ENDOM
+     A                                      HLPTITLE('Remain Software')
+     A                                      HLPSCHIDX(REMAINHD)
+     A                                      HELP
+     A*%%TS  SD  19970110  115340  EWOUT       REL-V3R1M0  5763-PW1
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      REF(*LIBL/OMSREFHD)
+     A                                      CHGINPDFT
+     A                                      PRINT(*LIBL/QSYSPRT)
+     A                                      ALTHELP(CA01)
+     A          R OMX30501
+     A*%%TS  SD  19970110  115340  EWOUT       REL-V3R1M0  5763-PW1
+     A                                      TEXT('View')
+     A                                      CA03
+     A                                      CA12
+     A                                      KEEP
+     A                                      OVERLAY
+     A                                      HLPCLR
+     A          H                           HLPARA(01 002 01 002)
+     A                                      HLPPNLGRP('OMX30501' OMX305)
+     A          H                           HLPARA(23 001 23 080)
+     A                                      HLPPNLGRP('OMX30501/KEYS' OMX305)
+     A            ACT0004       10A  O  4  2MSGID(ACT 0004 OMHDSP)
+     A                                      DSPATR(RI)
+     A  41 40     FMANSC    R        O 11 28REFFLD(ANSC)
+     A                                      TEXT('Answer')
+     A                                      DSPATR(HI)
+     A                                  1  2'OMX305  '
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMX30501'
+     A            MX30500       50   O  1 16TEXT('Display question')
+     A  80N81                               MSGID(MX3 0504 OMHDSP)
+     A N80 81                               MSGID(MX3 0505 OMHDSP)
+     A                                      MSGID(MX3 0506 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            MX30507       78   O 23  2TEXT('F3=Exit ...')
+     A                                      MSGID(MX3 0507 OMHDSP)
+     A                                      COLOR(BLU)
+     A            FMQUES    R        O  6 28REFFLD(QUES)
+     A                                      TEXT('Question')
+     A                                      DSPATR(HI)
+     A  41 40     MX30501       25A  O 11  2MSGID(MX3 0501 OMHDSP)
+     A                                      TEXT('Answer:')
+     A  40        MX30502       25A  O  6  2MSGID(MX3 0502 OMHDSP)
+     A                                      TEXT('Question:')
+     A  41N40     MX30503       25A  O  6  2MSGID(MX3 0503 OMHDSP)
+     A                                      TEXT('Answer:')

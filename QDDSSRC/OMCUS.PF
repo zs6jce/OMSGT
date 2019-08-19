@@ -1,0 +1,35 @@
+
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMCUS                                         *
+      * Function ...: Customers                                     *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * This is the customer file                                   *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMCUSR
+      * ------------------------------------------------------------ *
+                R OMCUSR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  USCUSC    R               REFFLD(CUSC)
+                  USNAMD    R               REFFLD(NAMD)
+                  USADST    R               REFFLD(ADST)
+                  USZIPC    R               REFFLD(ZIPC)
+                  USADRE    R               REFFLD(ADRE)
+                  USCOUD    R               REFFLD(COUD)
+                  USUSF1    R               REFFLD(USF1)
+                  USUSF2    R               REFFLD(USF2)
+                  USUSF3    R               REFFLD(USF3)

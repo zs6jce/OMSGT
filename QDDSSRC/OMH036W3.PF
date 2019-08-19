@@ -1,0 +1,197 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMH036W3                                      *
+      * Module .....: HelpDesk                                      *
+      * Function ...: Data for creating mail message                *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * Packed fields become signed fields.                         *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+                R H36W3R
+
+      * ------------------------------------------------------------ *
+      * Field descriptions incidents
+      * ------------------------------------------------------------ *
+                  NCHEDC    R               REFFLD(HEDC)
+                  NCINC#    R               REFFLD(INC#)
+                  NCCTN#    R               REFFLD(CTN#)
+                  NCAIN#    R               REFFLD(AIN#)
+                  NCINDT    R               REFFLD(INDT)
+                  NCINTM    R               REFFLD(INTM)
+                  NCRCDT    R               REFFLD(RCDT)
+                  NCRCTM    R               REFFLD(RCTM)
+                  NCSTRC    R               REFFLD(STRC)
+                  NCRES#    R     S         REFFLD(RES#)
+                  NCSUL#    R               REFFLD(SUL#)
+                  NCSTAT    R               REFFLD(STAT)
+                  NCSRDT    R               REFFLD(SRDT)
+                  NCSRTM    R               REFFLD(SRTM)
+                  NCSEV1    R               REFFLD(SEV1)
+                  NCSEV2    R               REFFLD(SEV2)
+                  NCSEV3    R               REFFLD(SEV3)
+                  NCPRI#    R     S         REFFLD(PRI#)
+                  NCESC#    R     S         REFFLD(ESC#)
+                  NCIEDT    R               REFFLD(IEDT)
+                  NCIETM    R               REFFLD(IETM)
+                  NCRUID    R               REFFLD(RUID)
+                  NCAUID    R               REFFLD(AUID)
+                  NCITPC    R               REFFLD(ITPC)
+                  NCCFL#    R     S         REFFLD(CFL#)
+                  NCCFIC    R               REFFLD(CFIC)
+                  NCUSF1    R               REFFLD(USF1)
+                  NCUSF2    R               REFFLD(USF2)
+                  NCUSF3    R     S         REFFLD(USF3)
+                  NCSHID    R               REFFLD(SHID)
+
+      * ------------------------------------------------------------ *
+      * Field descriptions customer calls
+      * ------------------------------------------------------------ *
+                  CAHEDC    R               REFFLD(HEDC)
+                  CACTN#    R               REFFLD(CTN#)
+                  CACUSC    R               REFFLD(CUSC)
+                  CACCTC    R               REFFLD(CCTC)
+                  CAINDT    R               REFFLD(INDT)
+                  CAINTM    R               REFFLD(INTM)
+                  CARCTM    R               REFFLD(RCTM)
+                  CAUSID    R               REFFLD(USID)
+                  CACSRC    R               REFFLD(CSRC)
+                  CAUSF1    R               REFFLD(USF1)
+                  CAUSF2    R               REFFLD(USF2)
+                  CAUSF3    R     S         REFFLD(USF3)
+
+      * ------------------------------------------------------------ *
+      * Field descriptions customer contacts
+      * ------------------------------------------------------------ *
+                  COCUSC    R               REFFLD(CUSC)
+                  COCCTC    R               REFFLD(CCTC)
+                  COCNTI    R               REFFLD(CNTI)
+                  COTITL    R               REFFLD(TITL)
+                  CONAMD    R               REFFLD(NAMD)
+                  COTEL#    R               REFFLD(TEL#)
+                  COEMAC    R               REFFLD(EMAC)
+                  COCFL#    R     S         REFFLD(CFL#)
+                  COUSF1    R               REFFLD(USF1)
+                  COUSF2    R               REFFLD(USF2)
+                  COUSF3    R     S         REFFLD(USF3)
+
+      * ------------------------------------------------------------ *
+      * Field descriptions customers
+      * ------------------------------------------------------------ *
+                  USCUSC    R               REFFLD(CUSC)
+                  USNAMD    R               REFFLD(NAMD)
+                  USADST    R               REFFLD(ADST)
+                  USZIPC    R               REFFLD(ZIPC)
+                  USADRE    R               REFFLD(ADRE)
+                  USCOUD    R               REFFLD(COUD)
+                  USUSF1    R               REFFLD(USF1)
+                  USUSF2    R               REFFLD(USF2)
+                  USUSF3    R     S         REFFLD(USF3)
+
+      * ------------------------------------------------------------ *
+      * Field descriptions text headers
+      * ------------------------------------------------------------ *
+                  IHHEDC    R               REFFLD(HEDC)
+                  IHINC#    R               REFFLD(INC#)
+                  IHITH#    R     S         REFFLD(ITH#)
+                  IHITXT    R               REFFLD(ITXT)
+                  IHINDT    R               REFFLD(INDT)
+                  IHINTM    R               REFFLD(INTM)
+                  IHSUL#    R               REFFLD(SUL#)
+                  IHUSID    R               REFFLD(USID)
+                  IHSITD    R               REFFLD(SITD)
+
+      * ------------------------------------------------------------ *
+      * Field descriptions text details
+      * ------------------------------------------------------------ *
+                  IDHEDC    R               REFFLD(HEDC)
+                  IDINC#    R               REFFLD(INC#)
+                  IDITH#    R     S         REFFLD(ITH#)
+                  IDITXT    R               REFFLD(ITXT)
+                  IDSEQ#    R     S         REFFLD(SEQ#)
+                  IDINCD    R               REFFLD(INCD)
+
+      * ------------------------------------------------------------ *
+      * Field descriptions status routes
+      * ------------------------------------------------------------ *
+                  TRHEDC    R               REFFLD(HEDC)
+                  TRSTRC    R               REFFLD(STRC)
+                  TRSTRI    R               REFFLD(STRI)
+                  TRSTRD    R               REFFLD(STRD)
+
+      * ------------------------------------------------------------ *
+      * Field descriptions status route entries
+      * ------------------------------------------------------------ *
+                  REHEDC    R               REFFLD(HEDC)
+                  RESTRC    R               REFFLD(STRC)
+                  RERES#    R     S         REFFLD(RES#)
+                  RESUL#    R               REFFLD(SUL#)
+                  RENSRC    R               REFFLD(STRC)
+                  RESTAT    R               REFFLD(STAT)
+
+      * ------------------------------------------------------------ *
+      * Field descriptions status
+      * ------------------------------------------------------------ *
+                  TAHEDC    R               REFFLD(HEDC)
+                  TASTAT    R               REFFLD(STAT)
+                  TASTAD    R               REFFLD(STAD)
+
+      * ------------------------------------------------------------ *
+      * Field descriptions question lists
+      * ------------------------------------------------------------ *
+                  QLHEDC    R               REFFLD(HEDC)
+                  QLQLS#    R     S         REFFLD(QLS#)
+                  QLDESC    R               REFFLD(DESC)
+
+      * ------------------------------------------------------------ *
+      * Field descriptions question list answers
+      * ------------------------------------------------------------ *
+                  LAHEDC    R               REFFLD(HEDC)
+                  LAQLS#    R     S         REFFLD(QLS#)
+                  LAQSQ#    R     S         REFFLD(QSQ#)
+                  LAQUE#    R     S         REFFLD(QUE#)
+                  LAANS#    R     S         REFFLD(ANS#)
+                  LAGLS#    R     S         REFFLD(GLS#)
+                  LAGQS#    R     S         REFFLD(GQS#)
+                  LASEV1    R               REFFLD(SEV1)
+                  LASEV2    R               REFFLD(SEV2)
+                  LASEV3    R               REFFLD(SEV3)
+                  LASTRC    R               REFFLD(STRC)
+                  LARES#    R     S         REFFLD(RES#)
+                  LAPRI#    R     S         REFFLD(PRI#)
+                  LAITPC    R               REFFLD(ITPC)
+                  LAUSF1    R               REFFLD(USF1)
+                  LAUSF2    R               REFFLD(USF2)
+                  LAUSF3    R     S         REFFLD(USF3)
+
+      * ------------------------------------------------------------ *
+      * Field descriptions questions
+      * ------------------------------------------------------------ *
+                  QUHEDC    R               REFFLD(HEDC)
+                  QUQUE#    R     S         REFFLD(QUE#)
+                  QUQUEI    R               REFFLD(QUEI)
+                  QUQGRC    R               REFFLD(QGRC)
+                  QUQUES    R               REFFLD(QUES)
+
+      * ------------------------------------------------------------ *
+      * Field descriptions answers
+      * ------------------------------------------------------------ *
+                  NSHEDC    R               REFFLD(HEDC)
+                  NSQUE#    R     S         REFFLD(QUE#)
+                  NSANS#    R     S         REFFLD(ANS#)
+                  NSANSC    R               REFFLD(ANSC)
+
+      * ------------------------------------------------------------ *
+      * Field descriptions answers
+      * ------------------------------------------------------------ *
+                  LQHEDC    R               REFFLD(HEDC)
+                  LQQLS#    R     S         REFFLD(QLS#)
+                  LQQSQ#    R     S         REFFLD(QSQ#)
+                  LQQUE#    R     S         REFFLD(QUE#)

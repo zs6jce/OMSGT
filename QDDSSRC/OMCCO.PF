@@ -1,0 +1,37 @@
+
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMCCO                                         *
+      * Function ...: Customers                                     *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * This is the customer file                                   *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMCCOR
+      * ------------------------------------------------------------ *
+                R OMCCOR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  COCUSC    R               REFFLD(CUSC)
+                  COCCTC    R               REFFLD(CCTC)
+                  COCNTI    R               REFFLD(CNTI)
+                  COTITL    R               REFFLD(TITL)
+                  CONAMD    R               REFFLD(NAMD)
+                  COTEL#    R               REFFLD(TEL#)
+                  COEMAC    R               REFFLD(EMAC)
+                  COCFL#    R               REFFLD(CFL#)
+                  COUSF1    R               REFFLD(USF1)
+                  COUSF2    R               REFFLD(USF2)
+                  COUSF3    R               REFFLD(USF3)

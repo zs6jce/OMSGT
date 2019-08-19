@@ -1,0 +1,48 @@
+      *$$\CRTOM CRTDSPF
+      *$$\ENDOM
+     A*%%TS  SD  19970903  183406  WIM         REL-V3R1M0  5763-PW1
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      REF(*LIBL/OMSREFHD)
+     A                                      ALTHELP(CA01)
+     A                                      HELP
+     A          R MSGSFL                    SFL
+     A*%%TS  SD  19970903  182906  WIM         REL-V3R1M0  5763-PW1
+     A                                      SFLMSGRCD(08)
+     A            MSGKEY                    SFLMSGKEY
+     A            PGMQ                      SFLPGMQ(10)
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A*%%TS  SD  19970903  182906  WIM         REL-V3R1M0  5763-PW1
+     A                                      OVERLAY
+     A                                      SFLDSP
+     A                                      SFLDSPCTL
+     A                                      SFLINZ
+     A N91                                  SFLEND
+     A                                      SFLSIZ(0003)
+     A                                      SFLPAG(0002)
+     A                                      WINDOW(4 10 10 60)
+     A                                      USRRSTDSP
+     A                                  1  1'OMH03701'
+     A            MH03700       40A  O  1 11MSGID(MH0 3700 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 53DATE
+     A                                      EDTCDE(Y)
+     A            DST0010       25A  O  3  1MSGID(DST 0010 OMHDSP)
+     A            FMDSID    R        O  3 27REFFLD(DSID)
+     A                                      DSPATR(HI)
+     A            CUS0005       25A  O  4  1MSGID(CUS 0005 OMHDSP)
+     A            FMCUSC    R        O  4 27REFFLD(CUSC)
+     A                                      DSPATR(HI)
+     A            CUS0004       25A  O  5  1MSGID(CUS 0004 OMHDSP)
+     A            FMCCTC    R        O  5 27REFFLD(CCTC)
+     A                                      DSPATR(HI)
+     A            MH03701       60A  O  7  1MSGID(MH0 3701 OMHDSP)
+     A            PGMQ                      SFLPGMQ(10)
+     A          R CLEAR
+     A*%%TS  SD  19930825  143250  ANDRE       REL-V2R2M0  5738-PW1
+     A                                      CLRL(*NO) OVERLAY FRCDTA
+     A                                  2  1' '
+     A          R DUMMY
+     A*%%TS  SD  19930825  143250  ANDRE       REL-V2R2M0  5738-PW1
+     A                                      ASSUME
+     A                                  1  3' '

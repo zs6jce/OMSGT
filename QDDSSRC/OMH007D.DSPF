@@ -1,0 +1,365 @@
+      *$$\CRTOM CRTDSPF
+      *$$\ENDOM
+     A*%%TS  SD  19970904  201639  WIM         REL-V3R1M0  5763-PW1
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      REF(*LIBL/OMSREFHD)
+     A                                      CHGINPDFT
+     A                                      HLPTITLE('Remain Software')
+     A                                      HLPSCHIDX(*LIBL/REMAINHD)
+     A                                      HELP
+     A                                      PRINT(*LIBL/QSYSPRT)
+     A                                      ALTHELP(CA01)
+     A          R OMH00701                  SFL
+     A*%%TS  SD  19960930  171838  JAN         REL-V3R1M0  5763-PW1
+     A                                      TEXT('Answer questions')
+     A  93                                  SFLNXTCHG
+     A            FMOPT1         1A  B 14  3TEXT('Option field')
+     A                                      DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A            FMANSD        73A  O 14  7TEXT('Answer')
+     A            FMANS#    R        H      REFFLD(ANS#)
+     A          R OMH00702                  SFLCTL(OMH00701)
+     A*%%TS  SD  19970217  090704  JAN         REL-V3R1M0  5763-PW1
+     A                                      SFLSIZ(0008)
+     A                                      SFLPAG(0007)
+     A                                      TEXT('Answer questions')
+     A                                      CA03
+     A                                      CA05
+     A                                      CA12
+     A  40                                  CA15(15)
+     A  92                                  ROLLUP(22)
+     A                                      KEEP
+     A                                      OVERLAY
+     A                                      ERASE(OMH00701)
+     A  90                                  SFLDSP
+     A                                      SFLDSPCTL
+     A  91                                  SFLCLR
+     A N92                                  SFLEND(*MORE)
+     A                                      HLPCLR
+     A          H                           HLPARA(01 002 01 002)
+     A                                      HLPPNLGRP('OMH00702' OMH007)
+     A          H                           HLPARA(14 003 20 003)
+     A                                      HLPPNLGRP('OMH00701/FMOPT1' OMH007)
+     A          H                           HLPARA(23 001 23 080)
+     A                                      HLPPNLGRP('OMH00702/KEYS' OMH007)
+     A            CRRN01         4S 0H      SFLRCDNBR(CURSOR)
+     A                                  1  2'OMH007  '
+     A            MH00701       50A  O  1 16TEXT('Customer call registration')
+     A  80                                  MSGID(MH0 0701 OMHDSP)
+     A                                      MSGID(MH0 0728 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH00701'
+     A            MH00702       50A  O  2 16TEXT('Answer questions')
+     A                                      MSGID(MH0 0702 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            MH00703       25A  O  7  2TEXT('Question:')
+     A                                      MSGID(MH0 0703 OMHDSP)
+     A            FMQUES    R        O  7 28REFFLD(QUES)
+     A                                      DSPATR(HI)
+     A            MH00506       25A  O  5  2TEXT('Help desk:')
+     A                                      MSGID(MH0 0506 OMHDSP)
+     A            FMHEDC    R        O  5 28REFFLD(HEDC)
+     A                                      DSPATR(HI)
+     A            MH00710       25A  O  6  2TEXT('Incident number')
+     A                                      MSGID(MH0 0710 OMHDSP)
+     A            FMCTN#    R        O  6 28REFFLD(CTN#)
+     A                                      DSPATR(HI)
+     A                                      TEXT('Call track number')
+     A            MH00706       25A  O 11  2TEXT('1=Select...')
+     A                                      MSGID(MH0 0706 OMHDSP)
+     A                                      COLOR(BLU)
+     A            MH00707       26A  O 13  2TEXT('Opt  Answer')
+     A                                      MSGID(MH0 0707 OMHDSP)
+     A                                      DSPATR(HI)
+     A          R OMH00703
+     A*%%TS  SD  19960916  132205  JAN         REL-V3R1M0  5763-PW1
+     A                                      TEXT('F3=Exit...')
+     A                                      OVERLAY
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A  41
+     AON40        MH00704       78   O 23  2TEXT('F3=Exit...')
+     A                                      MSGID(MH0 0704 OMHDSP)
+     A                                      COLOR(BLU)
+     A  40N41     MH00705       78   O 23  2TEXT('F3=Exit...')
+     A                                      MSGID(MH0 0705 OMHDSP)
+     A                                      COLOR(BLU)
+     A          R OMH00704
+     A*%%TS  SD  19960930  171838  JAN         REL-V3R1M0  5763-PW1
+     A                                      TEXT('View')
+     A                                      CA03
+     A                                      CA12
+     A                                      OVERLAY
+     A                                      HLPCLR
+     A          H                           HLPARA(01 002 01 002)
+     A                                      HLPPNLGRP('OMH00704' OMH007)
+     A          H                           HLPARA(23 001 23 080)
+     A                                      HLPPNLGRP('OMH00704/KEYS' OMH007)
+     A            ACT0004       10A  O  4  2MSGID(ACT 0004 OMHDSP)
+     A                                      DSPATR(RI)
+     A            FMANSC    R        O 11 28REFFLD(ANSC)
+     A                                      TEXT('Answer')
+     A                                      DSPATR(HI)
+     A                                  1  2'OMH007  '
+     A            MH00701       50A  O  1 16TEXT('Customer call registration')
+     A  80                                  MSGID(MH0 0701 OMHDSP)
+     A                                      MSGID(MH0 0728 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH00704'
+     A            MH00715       50A  O  2 16TEXT('View question & answer')
+     A                                      MSGID(MH0 0715 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            MH00711       78A  O 23  2TEXT('F3=Exit ...')
+     A                                      MSGID(MH0 0711 OMHDSP)
+     A                                      COLOR(BLU)
+     A            FMQUES    R        O  6 28REFFLD(QUES)
+     A                                      TEXT('Question')
+     A                                      DSPATR(HI)
+     A            MH00716       25A  O 11  2MSGID(MH0 0716 OMHDSP)
+     A                                      TEXT('Answer:')
+     A            MH00703       25A  O  6  2MSGID(MH0 0703 OMHDSP)
+     A                                      TEXT('Question:')
+     A          R OMH00705                  SFL
+     A*%%TS  SD  19961001  164832  JAN         REL-V3R1M0  5763-PW1
+     A                                      TEXT('History')
+     A  93                                  SFLNXTCHG
+     A            FMOPT2         1A  B 11  3TEXT('Option field')
+     A                                      DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A            FMQUED        37A  O 11  6TEXT('Question')
+     A            FMANSE        36A  O 11 45TEXT('Answer')
+     A            FMQUE#    R        H      REFFLD(QUE#)
+     A            FMANS#    R        H      REFFLD(ANS#)
+     A          R OMH00706                  SFLCTL(OMH00705)
+     A*%%TS  SD  19970904  201639  WIM         REL-V3R1M0  5763-PW1
+     A                                      SFLSIZ(0011)
+     A                                      SFLPAG(0010)
+     A                                      TEXT('History')
+     A                                      CA03
+     A                                      CA12
+     A  92                                  ROLLUP(22)
+     A                                      CA05
+     A                                      OVERLAY
+     A  90                                  SFLDSP
+     A                                      SFLDSPCTL
+     A  91                                  SFLCLR
+     A N92                                  SFLEND(*MORE)
+     A                                      HLPCLR
+     A          H                           HLPPNLGRP(OMH00706 OMH007)
+     A                                      HLPARA(01 002 01 002)
+     A          H                           HLPPNLGRP('OMH00705/FMOPT2' OMH007)
+     A                                      HLPARA(11 003 20 003)
+     A          H                           HLPPNLGRP('OMH00706/KEYS' OMH007)
+     A                                      HLPARA(23 001 23 080)
+     A            CRRN02         4S 0H      SFLRCDNBR(CURSOR)
+     A                                  1  2'OMH007  '
+     A            MH00701       50A  O  1 16TEXT('Customer call registration')
+     A  80                                  MSGID(MH0 0701 OMHDSP)
+     A                                      MSGID(MH0 0728 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH00705'
+     A            MH00713       50A  O  2 16TEXT('History of questions & answer-
+     A                                      s')
+     A                                      MSGID(MH0 0713 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            MH00714       50A  O  8  2TEXT('5=View...')
+     A                                      MSGID(MH0 0714 OMHDSP)
+     A                                      COLOR(BLU)
+     A            MH00506       25A  O  5  2TEXT('Help desk:')
+     A                                      MSGID(MH0 0506 OMHDSP)
+     A            FMHEDC    R        O  5 28REFFLD(HEDC)
+     A                                      DSPATR(HI)
+     A            MH00710       25A  O  6  2TEXT('Incident nr.:')
+     A                                      MSGID(MH0 0710 OMHDSP)
+     A            FMCTN#    R        O  6 28REFFLD(CTN#)
+     A                                      DSPATR(HI)
+     A            MH00712       60A  O 10  2TEXT('Opt  question...')
+     A                                      MSGID(MH0 0712 OMHDSP)
+     A                                      DSPATR(HI)
+     A          R OMH00707
+     A*%%TS  SD  19960916  132205  JAN         REL-V3R1M0  5763-PW1
+     A                                      TEXT('Work with Application Interfa-
+     A                                      ces')
+     A                                      OVERLAY
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            MH00705       78   O 23  2TEXT('F3=Exit...')
+     A                                      MSGID(MH0 0711 OMHDSP)
+     A                                      COLOR(BLU)
+     A          R OMH00709
+     A*%%TS  SD  19961007  133442  JAN         REL-V3R1M0  5763-PW1
+     A                                      TEXT('View')
+     A                                      CA03
+     A                                      CA12
+     A  40                                  CA15(15)
+     A                                      KEEP
+     A                                      OVERLAY
+     A                                      HLPCLR
+     A          H                           HLPARA(01 002 22 080)
+     A                                      HLPPNLGRP('OMH00709' OMH007)
+     A          H                           HLPARA(23 001 23 080)
+     A                                      HLPPNLGRP('OMH00709/KEYS' OMH007)
+     A                                  1  2'OMH007  '
+     A            MH00701       50A  O  1 16TEXT('Customer call registration')
+     A  80                                  MSGID(MH0 0701 OMHDSP)
+     A                                      MSGID(MH0 0728 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH00709'
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A N40        MH00726       78A  O 23  2TEXT('F3=Exit ...')
+     A                                      MSGID(MH0 0726 OMHDSP)
+     A                                      COLOR(BLU)
+     A  40        MH00727       78A  O 23  2TEXT('F3=Exit ...')
+     A                                      MSGID(MH0 0727 OMHDSP)
+     A                                      COLOR(BLU)
+     A            MH00723      159   O  5  2MSGID(MH0 0723 OMHDSP)
+     A                                      TEXT('Question:')
+     A            MH00721      159A  O  7  2MSGID(MH0 0721 OMHDSP)
+     A                                      TEXT('Question:')
+     A          R OMH00710
+     A*%%TS  SD  19961008  101912  JAN         REL-V3R1M0  5763-PW1
+     A                                      TEXT('View')
+     A                                      CA03
+     A                                      CA12
+     A  40                                  CA15(15)
+     A                                      OVERLAY
+     A                                      KEEP
+     A                                      HLPCLR
+     A          H                           HLPARA(01 002 22 080)
+     A                                      HLPPNLGRP('OMH00710' OMH007)
+     A          H                           HLPARA(23 001 23 080)
+     A                                      HLPPNLGRP('OMH00710/KEYS' OMH007)
+     A                                  1  2'OMH007  '
+     A            MH00701       50A  O  1 16TEXT('Customer call registrayion')
+     A  80                                  MSGID(MH0 0701 OMHDSP)
+     A                                      MSGID(MH0 0728 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH00710'
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A N40        MH00711       78A  O 23  2TEXT('F3=Exit ...')
+     A                                      MSGID(MH0 0711 OMHDSP)
+     A                                      COLOR(BLU)
+     A  40        MH00722       78A  O 23  2TEXT('F3=Exit ...')
+     A                                      MSGID(MH0 0722 OMHDSP)
+     A                                      COLOR(BLU)
+     A            MH00724      159A  O  5  2MSGID(MH0 0724 OMHDSP)
+     A                                      TEXT('Question:')
+     A                                      DSPATR(HI)
+     A            MH00721      159A  O  8  2MSGID(MH0 0721 OMHDSP)
+     A                                      TEXT('Question:')
+     A          R OMH00711
+     A*%%TS  SD  19970123  160226  EWOUT       REL-V3R1M0  5763-PW1
+     A                                      TEXT('Answer questions')
+     A                                      CA03
+     A                                      CA05
+     A                                      CA12
+     A  40                                  CA15(15)
+     A  92                                  ROLLUP(22)
+     A                                      OVERLAY
+     A                                      KEEP
+     A                                      HLPCLR
+     A          H                           HLPARA(01 002 01 002)
+     A                                      HLPPNLGRP('OMH00711' OMH007)
+     A          H                           HLPARA(23 001 23 080)
+     A                                      HLPPNLGRP('OMH00711/KEYS' OMH007)
+     A                                  1  2'OMH007  '
+     A            MH00701       50A  O  1 16TEXT('Customer call registration')
+     A  80                                  MSGID(MH0 0701 OMHDSP)
+     A                                      MSGID(MH0 0728 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH00701'
+     A            MH00702       50A  O  2 16TEXT('Answer questions')
+     A                                      MSGID(MH0 0702 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            MH00703       25A  O  7  2TEXT('Question:')
+     A                                      MSGID(MH0 0703 OMHDSP)
+     A            FMQUES    R        O  7 28REFFLD(QUES)
+     A                                      DSPATR(HI)
+     A            MH00506       25A  O  5  2TEXT('Help desk:')
+     A                                      MSGID(MH0 0506 OMHDSP)
+     A            FMHEDC    R        O  5 28REFFLD(HEDC)
+     A                                      DSPATR(HI)
+     A            MH00710       25A  O  6  2TEXT('Incident number')
+     A                                      MSGID(MH0 0710 OMHDSP)
+     A            FMINC#    R        O  6 28REFFLD(INC#)
+     A                                      DSPATR(HI)
+     A            MH00706       25A  O 11  2TEXT('1=Select...')
+     A                                      MSGID(MH0 0706 OMHDSP)
+     A                                      COLOR(BLU)
+     A            MH00707       26A  O 13  2TEXT('Opt  Answer')
+     A                                      MSGID(MH0 0707 OMHDSP)
+     A                                      DSPATR(HI)
+     A            MH00725       75A  O 15  3MSGID(MH0 0725 OMHDSP)
+     A          R MSGSFL                    SFL
+     A                                      SFLMSGRCD(24)
+     A            MSGKEY                    SFLMSGKEY
+     A            PGMQ                      SFLPGMQ
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLINZ
+     A                                      SFLSIZ(2)
+     A                                      SFLPAG(1)
+     A                                      SFLDSP
+     A                                      SFLDSPCTL
+     A N91                                  SFLEND
+     A                                      OVERLAY
+     A            PGMQ                      SFLPGMQ
+     A

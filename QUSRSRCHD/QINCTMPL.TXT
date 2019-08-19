@@ -1,0 +1,137 @@
+# Lines which start with this symbol are remark lines.
+# They are ignored.
+#
+#
+# The following commands can be used.
+#
+#
+# <read all text headers>  <iterate>
+# <read all text details>  <iterate>
+#
+#
+# The following fields can be used.
+#
+# INCIDENT FILE
+# -------------------------------------
+# &INHEDC       Helpdesk
+# &ININCN       Incident
+# &INCTNN       Call track number
+# &INAINN       Accumulated incident number
+# &INIIDT       Incident income date
+# &INIITM       Incident income time
+# &INICDT       Incident compl. date
+# &INICTM       Incident compl. time
+# &INSTRC       Status route code
+# &INRESN       Route entry sequence
+# &INSULN       Support level
+# &INSTAT       Status
+# &INSRDT       Status route date
+# &INSRTM       Status route time
+# &INSEV1       Technical severity
+# &INSEV2       Customer severity
+# &INSEV3       Marketing severity
+# &INPRIN       Priority
+# &INESCN       Escalation counter
+# &INIEDT       Last escalation date
+# &INIETM       Last escalation time
+# &INRUID       Registered by
+# &INAUID       Allocated by
+# &INITPC       Incident type
+# &INCFLN       Configuration list number
+# &INCFIC       Configuration item
+# &ININF1       User field 1
+# &ININF2       User field 2
+# &ININF3       User field 3
+# &INSHID       Short incident description
+#
+# CALL FILE
+# -------------------------------------
+# &CAHEDC       Helpdesk code
+# &CACTNN       Call track number
+# &CACUSC       Customer
+# &CACCTC       Contact
+# &CACIDT       Income date
+# &CACITM       Income time
+# &CACCTM       Completion time
+# &CAUSID       Registered by
+# &CACSRC       Call source
+# &CACAF1       User field 1
+# &CACAF2       User field 2
+# &CACAF3       User field 3
+#
+# CONTACT FILE
+# -------------------------------------
+# &COCUSC       Customer
+# &COCCTC       Contact
+# &COCNTI       Default contact
+# &COTITL       Title
+# &COCONM       Contact name
+# &COTELN       Telephone
+# &COEMAC       Email
+# &COCFLN       Configuration list
+# &COCOF1       User field 1
+# &COCOF2       User field 2
+# &COCOF3       User field 3
+#
+# CUSTOMER FILE
+# -------------------------------------
+# &CUCUSC       Customer code
+# &CUCUNM       Name
+# &CUADST       Street
+# &CUZIPC       Zip code
+# &CUADRE       Residence
+# &CUCOUD       Country
+# &CUCUF1       User field 1
+# &CUCUF2       User field 2
+# &CUCUF3       User field 3
+#
+# INCIDENT HEADER TEXTS
+# -------------------------------------
+# &IHHEDC       Helpdesk code
+# &IHINCN       Incident number
+# &IHITHN       Incident text header seq.
+# &IHITXT       Incident text type
+# &IHHIDT       Income date
+# &IHHITM       Income time
+# &IHHSUP       Support level
+# &IHHUID       User i.d., or user class
+#
+# INCIDENT DETAIL TEXTS
+# -------------------------------------
+# &IHSITD       Short incident text desc.
+# &IDHEDC       Helpdesk code
+# &IDINCN       Incident number
+# &IDITHN       Incident text header seq.
+# &IDITXT       Incident text type
+# &IDSEQN       Sequence number
+# &IDINCD       Incident description
+#
+#
+# EXAMPLE
+#
+Dear &COTITL &COCONM,
+
+Thank you for reporting incident &ININCN in helpdesk
+&INHEDC. The associated call number is &CACTNN.
+
+The description is "&INSHID".
+The additional text blocks associated with this incident are:
+
+
+<read all text headers>
+&IHSITD
+----------------------------------------------------------------------
+<read all text details>
+&IDINCD
+<iterate>
+
+<iterate>
+
+Your incident wil be reported as soon as possible. The current
+priority is &INPRIN/999. If you have further questions, please
+contact the helpdesk. The number is 030 609 70 75.
+
+Best regards,
+
+Remain Software
+Helpdesk

@@ -1,0 +1,189 @@
+      *$$\CRTOM CRTDSPF
+      *$$\ENDOM
+     A                                      HLPTITLE('Jan de Zeeuw')
+     A                                      HLPSCHIDX(REMAINHD)
+     A                                      HELP
+     A*%%TS  SD  19971002  143556  WIM         REL-V3R1M0  5763-PW1
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      REF(*LIBL/OMSREFHD)
+     A                                      CHGINPDFT
+     A                                      PRINT(*LIBL/QSYSPRT)
+     A                                      ALTHELP(CA01)
+     A          R OMH04004
+     A*%%TS  SD  19971002  143556  WIM         REL-V3R1M0  5763-PW1
+     A                                      TEXT('HelpDesk Mail Extensions')
+     A                                      CA03(03)
+     A  80N81                               CF23(23)
+     A                                      CA12(12)
+     A                                      CA05(05)
+     A                                      CHANGE(40)
+     A  80                                  ROLLUP(25)
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A                                      OVERLAY
+     A                                      HLPCLR
+     A          H                           HLPARA(01 002 01 002)
+     A                                      HLPPNLGRP('OMH04004' OMH040)
+     A          H                           HLPARA(08 028 08 028)
+     A                                      HLPPNLGRP('OMH04004/FMAPII' OMH040)
+     A          H                           HLPARA(09 028 09 037)
+     A                                      HLPPNLGRP('OMH04004/FMSWTU' OMH040)
+     A          H                           HLPARA(11 028 11 035)
+     A                                      HLPPNLGRP('OMH04004/FMHUID' OMH040)
+     A          H                           HLPARA(12 028 12 035)
+     A                                      HLPPNLGRP('OMH04004/FMHADR' OMH040)
+     A          H                           HLPARA(15 028 15 037)
+     A                                      HLPPNLGRP('OMH04004/FMMATF' OMH040)
+     A          H                           HLPARA(16 028 16 037)
+     A                                      HLPPNLGRP('OMH04004/FMMATL' OMH040)
+     A          H                           HLPARA(18 028 18 028)
+     A                                      HLPPNLGRP('OMH04004/FMEXTI' OMH040)
+     A          H                           HLPARA(19 028 19 077)
+     A                                      HLPPNLGRP('OMH04004/FMEEMC' OMH040)
+     A          H                           HLPARA(13 028 13 077)
+     A                                      HLPPNLGRP('OMH04004/FMEMAC' OMH040)
+     A          H                           HLPARA(23 001 23 080)
+     A                                      HLPPNLGRP('OMH04004/KEYS' OMH040)
+     A            FMFMTC        10A  H
+     A            FMFLDC        10A  H
+     A                                  1  2'OMH040  '
+     A            MH00101       50A  O  1 17TEXT('Import Library Maintenance')
+     A                                      MSGID(MH0 0101 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH04004'
+     A            MS00105       50A  O  2 17TEXT('Maintain definition')
+     A                                      MSGID(MH0 4001 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A N80N81     ACT0001       10A  O  4  2MSGID(ACT 0001 OMHDSP)
+     A                                      DSPATR(RI)
+     A  80N81     ACT0002       10A  O  4  2MSGID(ACT 0002 OMHDSP)
+     A                                      DSPATR(RI)
+     A  80 81     ACT0003       10A  O  4  2MSGID(ACT 0003 OMHDSP)
+     A                                      DSPATR(RI)
+     A            HLP0012       25A  O  6  2TEXT('Call track number')
+     A                                      MSGID(HLP 0012 OMHDSP)
+     A            FMHEDC    R        O  6 28REFFLD(HEDC)
+     A                                      TEXT('Help desk code')
+     A                                      DSPATR(HI)
+     A            FMHEDD        40A  O  6 40TEXT('Help desk descr.')
+     A                                      DSPATR(HI)
+     A            INC0008       25A  O  8  2TEXT('Call track number')
+     A                                      MSGID(INC 0008 OMHDSP)
+     A            FMAPII    R        B  8 28REFFLD(APII)
+     A                                      TEXT('Auto process')
+     A  80 81                               DSPATR(HI)
+     A  80 81                               DSPATR(PR)
+     A N81                                  DSPATR(UL)
+     A  23
+     AO 72                                  DSPATR(RI)
+     A  72                                  DSPATR(PC)
+     A            MH04002       25A  O  8 40MSGID(MH0 4002 OMHDSP)
+     A            HLP0003       25A  O  9  2MSGID(USR 0015 OMHDSP)
+     A            FMSWTU    R        B  9 28REFFLD(SWTU)
+     A                                      TEXT('Send to user')
+     A  80 81                               DSPATR(HI)
+     A  80 81                               DSPATR(PR)
+     A N81                                  DSPATR(UL)
+     A  23
+     AO 73                                  DSPATR(RI)
+     A  73                                  DSPATR(PC)
+     A            HLP0004       25A  O 11  2MSGID(HLP 0014 OMHDSP)
+     A            FMHUID    R        B 11 28REFFLD(HUID)
+     A  80 81                               DSPATR(HI)
+     A  80 81                               DSPATR(PR)
+     A  23
+     AO 74                                  DSPATR(RI)
+     A  74                                  DSPATR(PC)
+     A N81                                  DSPATR(UL)
+     A                                      TEXT('HelpDesk user')
+     A            HLP0005       25A  O 12  2MSGID(HLP 0015 OMHDSP)
+     A            FMHADR    R        B 12 28REFFLD(HADR)
+     A                                      TEXT('HelpDesk adress')
+     A N81                                  DSPATR(UL)
+     A  23
+     AO 75                                  DSPATR(RI)
+     A  75                                  DSPATR(PC)
+     A  80 81                               DSPATR(HI)
+     A  80 81                               DSPATR(PR)
+     A            MAT0001       25A  O 15  2TEXT('Mail templaye library')
+     A                                      MSGID(MAT 0001 OMHDSP)
+     A            FMMATF    R     N  B 15 28REFFLD(MATF)
+     A N81                                  DSPATR(UL)
+     A  23
+     AO 78                                  DSPATR(RI)
+     A  78                                  DSPATR(PC)
+     A  80 81                               DSPATR(HI)
+     A  80 81                               DSPATR(PR)
+     A            MAT0002       25A  O 16  2TEXT('Mail template library')
+     A                                      MSGID(MAT 0002 OMHDSP)
+     A            FMMATL    R        B 16 28REFFLD(MATL)
+     A  80 81                               DSPATR(HI)
+     A  80 81                               DSPATR(PR)
+     A N81                                  DSPATR(UL)
+     A  23
+     AO 79                                  DSPATR(RI)
+     A  79                                  DSPATR(PC)
+     A            HLP004A       25A  O 18  2MSGID(EXT 0001 OMHDSP)
+     A            FMEXTI    R     N  B 18 28REFFLD(EXTI)
+     A                                      TEXT('External interface indicator')
+     A N81                                  DSPATR(UL)
+     A  23
+     AO 76                                  DSPATR(RI)
+     A  76                                  DSPATR(PC)
+     A  80 81                               DSPATR(HI)
+     A  80 81                               DSPATR(PR)
+     A            MH04003       41A  O 18 40MSGID(MH0 4003 OMHDSP)
+     A            FLD001        25A  O 19  2MSGID(EXT 0002 OMHDSP)
+     A            FMEEMC    R        B 19 28REFFLD(EEMC)
+     A  80 81                               DSPATR(HI)
+     A  80 81                               DSPATR(PR)
+     A N81                                  DSPATR(UL)
+     A  23
+     AO 77                                  DSPATR(RI)
+     A  77                                  DSPATR(PC)
+     A                                      CHECK(LC)
+     A            MOR001        15A  O 21 65MSGID(MOR 0001 OMHDSP)
+     A                                      DSPATR(HI)
+     A N80                                  DSPATR(ND)
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A N80N81
+     AO 80 81     KEY0065       78A  O 23  2TEXT('F3=Exit ...')
+     A                                      MSGID(KEY 0065 OMHDSP)
+     A                                      COLOR(BLU)
+     A  80        KEY0072       78A  O 23  2TEXT('F3=Exit ...')
+     A                                      MSGID(KEY 0072 OMHDSP)
+     A                                      COLOR(BLU)
+     A            EMA0001       25A  O 13  2MSGID(EMA 0001 OMHDSP)
+     A            FMEMAC    R        B 13 28REFFLD(EMAC)
+     A N81                                  DSPATR(UL)
+     A  23
+     AO 71                                  DSPATR(RI)
+     A  71                                  DSPATR(PC)
+     A  80 81                               DSPATR(HI)
+     A  80 81                               DSPATR(PR)
+     A                                      CHECK(LC)
+     A          R MSGSFL                    SFL
+     A                                      SFLMSGRCD(24)
+     A            MSGKEY                    SFLMSGKEY
+     A            PGMQ                      SFLPGMQ
+     A
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLINZ
+     A                                      SFLSIZ(2)
+     A                                      SFLPAG(1)
+     A                                      SFLDSP
+     A                                      SFLDSPCTL
+     A N91                                  SFLEND
+     A                                      OVERLAY
+     A            PGMQ                      SFLPGMQ
+     A

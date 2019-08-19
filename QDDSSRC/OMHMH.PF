@@ -1,0 +1,38 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMHMH                                         *
+      * Function ...: HelpDesk Mail Headers                         *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMHMHR
+      * ------------------------------------------------------------ *
+                R OMHMHR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  MHDSID    R               REFFLD(DSID)
+                  MHUSRI    R               REFFLD(USRI)
+                  MHADDR    R               REFFLD(ADDR)
+                  MHSUBJ    R               REFFLD(SUBJ)
+                  MHSHID    R               REFFLD(SHID)
+                  MHHEDC    R               REFFLD(HEDC)
+                  MHINC#    R               REFFLD(INC#)
+                  MHCUSC    R               REFFLD(CUSC)
+                  MHCCTC    R               REFFLD(CCTC)
+                  MHRUID    R               REFFLD(RUID)
+                  MHCSRC    R               REFFLD(CSRC)
+                  MHSTRC    R               REFFLD(STRC)
+                  MHRES#    R               REFFLD(RES#)
+                  MHSTAT    R               REFFLD(STAT)
+                  MHINDI    R               REFFLD(INDI)

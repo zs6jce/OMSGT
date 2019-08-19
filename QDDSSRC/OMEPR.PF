@@ -1,0 +1,37 @@
+
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMEPR                                         *
+      * Function ...: Escalation                                    *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * This is the escalation property file                        *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMEPRR
+      * ------------------------------------------------------------ *
+                R OMEPRR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  PRHEDC    R               REFFLD(HEDC)
+                  PRJOBD    R               REFFLD(JBD)
+                  PRJBDL    R               REFFLD(JBDL)
+                  PRESF#    R               REFFLD(ESF#)
+                  PRSAMI    R               REFFLD(SAMI)
+                  PRJOB#    R               REFFLD(JOB#)
+                  PRJOBN    R               REFFLD(JOBN)
+                  PRUSID    R               REFFLD(USID)
+                  PRDOWA    R               REFFLD(DOWA)
+                  PRSPTM    R               REFFLD(SPTM)
+                  PREPTM    R               REFFLD(EPTM)

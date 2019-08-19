@@ -1,0 +1,41 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMQLA                                         *
+      * Module .....: HelpDesk                                      *
+      * Function ...: Question list questions, answers and actions  *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMQLAR
+      * ------------------------------------------------------------ *
+                R OMQLAR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  LAHEDC    R               REFFLD(HEDC)
+                  LAQLS#    R               REFFLD(QLS#)
+                  LAQSQ#    R               REFFLD(QSQ#)
+                  LAQUE#    R               REFFLD(QUE#)
+                  LAANS#    R               REFFLD(ANS#)
+                  LAGLS#    R               REFFLD(GLS#)
+                  LAGQS#    R               REFFLD(GQS#)
+                  LASEV1    R               REFFLD(SEV1)
+                  LASEV2    R               REFFLD(SEV2)
+                  LASEV3    R               REFFLD(SEV3)
+                  LASTRC    R               REFFLD(STRC)
+                  LARES#    R               REFFLD(RES#)
+                  LAPRI#    R               REFFLD(PRI#)
+                  LAITPC    R               REFFLD(ITPC)
+                  LAUSF1    R               REFFLD(USF1)
+                  LAUSF2    R               REFFLD(USF2)
+                  LAUSF3    R               REFFLD(USF3)

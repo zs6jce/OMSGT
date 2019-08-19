@@ -1,0 +1,3586 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: OMSREFHD                                    :   *.
+.*   : Help for ...: OMS - Reference file for HelpDesk           :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   : This panelgroup contains the U.I.M. help texts for        :   *.
+.*   : the reference file.                                       :   *.
+.*   :                                                           :   *.
+.*   : WARNING                                                   :   *.
+.*   : Do not add fields manually, use the GENREFSRC command     :   *.
+.*   : if new fields must be added. Only edit the text between   :   *.
+.*   : the :HELP and :EHELP labels.                              :   *.
+.*   :                                                           :   *.
+.*   : The control records have the following format.            :   *.
+.*   :                                                           :   *.
+.*   :  1 -  3   Control code .*$                                :   *.
+.*   :  4 - 13   Reference field name                            :   *.
+.*   : 14 - 47   Default help name to use                        :   *.
+.*   :...........................................................:   *.
+
+:PNLGRP.
+.*   .............................................................   *.
+.*   : Synonyms                                                  :   *.
+.*   :...........................................................:   *.
+
+:ISCHSYN ROOT='data'.data element field
+
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Glossary index                                            :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMSREFHD'.Glossary - Help
+
+:P.
+This is the HelpDesk glossary.
+
+:P.:LINK PERFORM='DSPHELP ACPV001 OMSREFHD'.Action
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP AIN_001 OMSREFHD'.Accumulated incident
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP AIN_001 OMSREFHD'.Accumulated incident
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP ALSC001 OMSREFHD'.Answer List Code
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP APII001 OMSREFHD'.Auto process incidents
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP ADDR001 OMSREFHD'.User address, distribution
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP ANS_001 OMSREFHD'.Answer sequence
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP ANSC001 OMSREFHD'.Answer
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP AUID001 OMSREFHD'.Allocated by
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP IRAH001 OMSREFHD'.Application or HelpDesk
+:ELINK.
+
+:P.:LINK PERFORM='DSPHELP BCCE001 OMSREFHD'.Bcc for contact mail
+:ELINK.
+
+:P.:LINK PERFORM='DSPHELP CCTC001 OMSREFHD'.Customer contact
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP CFL_001 OMSREFHD'.Confirguration list number
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP CNTI001 OMSREFHD'.Contact status
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP CN5_001 OMSREFHD'.Counter
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP COUD001 OMSREFHD'.Country
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP CSRC001 OMSREFHD'.Call source
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP CTFL001 OMSREFHD'.Call track free field library
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP CTFP001 OMSREFHD'.Call track free field program
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP CTN_001 OMSREFHD'.Call Track
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP CUSC001 OMSREFHD'.Customer code
+:ELINK.
+
+:P.:LINK PERFORM='DSPHELP DDTA001 OMSREFHD'.Data
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP DESC001 OMSREFHD'.Description
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP DFTI001 OMSREFHD'.Default
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP DOMC001 OMSREFHD'.Domain
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP DSID001 OMSREFHD'.Distribution id.
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP DOWA001 OMSREFHD'.Day of the week.
+:ELINK.
+
+:P.:LINK PERFORM='DSPHELP EEMC001 OMSREFHD'.External E-mail address
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP EMAC001 OMSREFHD'.E-Mail account
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP EOEI001 OMSREFHD'.Entry or exit indicator
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP EPTM001 OMSREFHD'.End time
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP ESC_001 OMSREFHD'.Escalation Counter
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP ESF_001 OMSREFHD'.Escalation Frequency
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP ESTS001 OMSREFHD'.External Status
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP EXTI001 OMSREFHD'.External Interface Indicator
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP USDC001 OMSREFHD'.Employee description
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP USID001 OMSREFHD'.Employee code
+:ELINK.
+
+:P.:LINK PERFORM='DSPHELP GLS_001 OMSREFHD'.Goto question list
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP GQS_001 OMSREFHD'.Goto question sequence
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP INDI001 OMSREFHD'.General Purpose Indicator
+:ELINK.
+
+:P.:LINK PERFORM='DSPHELP HADR001 OMSREFHD'.HelpDesk User address
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP HDMC001 OMSREFHD'.HelpDesk Manager
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP HEDC001 OMSREFHD'.HelpDesk Code
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP HEDD001 OMSREFHD'.HelpDesk Description
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP HUID001 OMSREFHD'.HelpDesk User id.
+:ELINK.
+
+:P.:LINK PERFORM='DSPHELP IEDT001 OMSREFHD'.Incident Escalation Date
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP IETM001 OMSREFHD'.Incident Escalation Time
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP INC_001 OMSREFHD'.Incident Number
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP INCD001 OMSREFHD'.Incident Description
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP INCR001 OMSREFHD'.Increment
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP INDT001 OMSREFHD'.Income Date
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP INFL001 OMSREFHD'.Incident Free Field Library
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP INFP001 OMSREFHD'.Incident Free Field Program.
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP INTL001 OMSREFHD'.Interface level
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP INTM001 OMSREFHD'.Income time
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP IPAD001 OMSREFHD'.Incoming mail address
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP IRTP001 OMSREFHD'.Incident relation type
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP ISFL001 OMSREFHD'.Incident spool file library
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP ITPC001 OMSREFHD'.Incident type code
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP ITPD001 OMSREFHD'.Incident type description
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP SITD001 OMSREFHD'.Incident Text
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP ITXT001 OMSREFHD'.Incident text type
+:ELINK.
+
+:P.:LINK PERFORM='DSPHELP JOBD001 OMSREFHD'.Job description
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP JBDL001 OMSREFHD'.Job description library
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP JOB_001 OMSREFHD'.Job number
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP JOBN001 OMSREFHD'.Job name
+:ELINK.
+
+:P.:LINK PERFORM='DSPHELP INC_002 OMSREFHD'.Last Generated Incident
+:ELINK.
+
+:P.:LINK PERFORM='DSPHELP LIBC001 OMSREFHD'.Library name
+:ELINK.
+
+:P.:LINK PERFORM='DSPHELP MPT_001 OMSREFHD'.Mail polling time
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP MSGD001 OMSREFHD'.Message data
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP MSGF001 OMSREFHD'.Message file
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP MSGN001 OMSREFHD'.Message number
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP MSGT001 OMSREFHD'.Message type
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP MSG1001 OMSREFHD'.Message
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP MSID001 OMSREFHD'.Message number
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP MTDI001 OMSREFHD'.Mail template default indication
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP MATF001 OMSREFHD'.Mail template file
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP MATL001 OMSREFHD'.Mail template library
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP MATM001 OMSREFHD'.Mail template
+:ELINK.
+
+:P.:LINK PERFORM='DSPHELP NAMD001 OMSREFHD'.Name
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP DYS_001 OMSREFHD'.Number of days
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP HRS_001 OMSREFHD'.Number of Hours
+:ELINK.
+
+:P.:LINK PERFORM='DSPHELP OQL_001 OMSREFHD'.Originating Question List
+:ELINK.
+
+:P.:LINK PERFORM='DSPHELP PGML001 OMSREFHD'.Program library
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP PGMN001 OMSREFHD'.Program name
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP PIN_001 OMSREFHD'.Priority increment
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP PORT001 OMSREFHD'.Port
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP PRH_001 OMSREFHD'.Priority range high
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP PRI_001 OMSREFHD'.Priority
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP PRL_001 OMSREFHD'.Priority range low
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP PRMI001 OMSREFHD'.Pass parameters
+:ELINK.
+
+:P.:LINK PERFORM='DSPHELP QGRC001 OMSREFHD'.Question Group Code
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP QLS_001 OMSREFHD'.Question list number
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP QSQ_001 OMSREFHD'.Question sequence in list
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP QUE_001 OMSREFHD'.Question number
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP QUEI001 OMSREFHD'.Question Indicator
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP QUES001 OMSREFHD'.Question
+:ELINK.
+
+:P.:LINK PERFORM='DSPHELP RCDT001 OMSREFHD'.Realized completion date
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP RCTM001 OMSREFHD'.Realized completion time
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP RES_001 OMSREFHD'.Route entry sequence
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP RUID001 OMSREFHD'.Registered by user
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP ADRE001 OMSREFHD'.Residence
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP IRIT001 OMSREFHD'.Related Object
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP STRI001 OMSREFHD'.Route indicator
+:ELINK.
+
+:P.:LINK PERFORM='DSPHELP INDI002 OMSREFHD'.Save as default subset
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP ADST001 OMSREFHD'.Street
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP SAMI001 OMSREFHD'.Submit monitor (stay active)
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP SEPG001 OMSREFHD'.Status exit program
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP SEPL001 OMSREFHD'.Status exit program library
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP SEQ_001 OMSREFHD'.Sequence number
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP SEVC001 OMSREFHD'.Severity code
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP ASQ_001 OMSREFHD'.Status action sequence
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP SEV1001 OMSREFHD'.Severity Technical
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP SEV2001 OMSREFHD'.Severity Customer
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP SEV3001 OMSREFHD'.Severity Marketing
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP SEW_001 OMSREFHD'.Severity Weight
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP SHID001 OMSREFHD'.Short incident description
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP SRDT001 OMSREFHD'.Status date
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP SRTM001 OMSREFHD'.Status time
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP STAD001 OMSREFHD'.Status description
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP STAT001 OMSREFHD'.Status
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP STRC001 OMSREFHD'.Status route code
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP STRD001 OMSREFHD'.Status route description
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP SUBJ001 OMSREFHD'.Subject
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP SUL_001 OMSREFHD'.Support level
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP SWTU001 OMSREFHD'.Send warnings to user
+:ELINK.
+
+:P.:LINK PERFORM='DSPHELP ITH_001 OMSREFHD'.Text Sequence Number
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP SPTM001 OMSREFHD'.Time processing started
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP TABC001 OMSREFHD'.Table code
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP TEL_001 OMSREFHD'.Telephone number
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP TITL001 OMSREFHD'.Title
+:ELINK.
+
+:P.:LINK PERFORM='DSPHELP UOPC001 OMSREFHD'.User option code
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP UOPD001 OMSREFHD'.User option description
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP USF1001 OMSREFHD'.User field 1
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP USF2001 OMSREFHD'.User field 2
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP USF3001 OMSREFHD'.User field 3
+:ELINK.
+:PC.:LINK PERFORM='DSPHELP USRI001 OMSREFHD'.Distributed user id.
+:ELINK.
+
+:P.:LINK PERFORM='DSPHELP ZIPC001 OMSREFHD'.Zip code
+:ELINK.
+:EHELP.
+
+.*$ACPV      'ACPV001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : ACPV                                        :   *.
+.*   : Description : Action                                      :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='ACPV001'.Action
+:ISCH ROOTS='data'.Action
+:XH3.Action
+
+:P.
+The action code is used in several commands. It indicates the action to
+be used on an incident.
+:EHELP.
+
+.*$ACTC      'ACTC001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : ACTC                                        :   *.
+.*   : Description : Action code                                 :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='ACTC001'.Action Code
+
+:P.
+
+The action code is used in several commands. It indicates the action to
+be used on a particular entity.
+:EHELP.
+
+.*$ADDR    'ADDR001'.
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : ADDR                                        :   *.
+.*   : Description : User address, distribution                  :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='ADDR001'.
+:ISCH ROOTS='User id, distribution'.User id, distribution
+:XH3.User id, distribution
+
+:P.
+The address of the user for distribution.
+:EHELP.
+
+.*$ADRE      'ADRE001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : ADRE                                        :   *.
+.*   : Description : Address residence                           :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='ADRE001'.Residence
+
+:P.
+Enter the name of the customers residence.
+:EHELP.
+
+.*$ADST      'ADST001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : ADST                                        :   *.
+.*   : Description : Address street                              :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='ADST001'.Street - Help
+:ISCH ROOTS='Street'.Street
+:XH3.Street
+
+:P.
+Enter the name of the street the customer lives in or can be contacted.
+:EHELP.
+
+.*$AIN#      'AIN_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : AIN#                                        :   *.
+.*   : Description : Accumulated incident number                 :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='AIN_001'.Accumulated incident - Help
+:ISCH ROOTS='Accumulated incident'.Accumulated incident
+:XH3.Accumulated incident
+
+:P.
+The accumulated incident number is the incident which caused other incidents
+to occur. You can connect other incidents to the accumulated incidents.
+The connected incidents then follow the accumulated incident in:
+
+:UL.
+:LI.Status
+:LP.When the status of the accumulated incident changes, the status other
+incidents change accordingly.
+
+:LI.Status Route
+:LP.The status route of the accumulated incident is the status route of
+all following incidents.
+
+:LI.Priority
+:LP.The priority of the accumulated incident will be propagated amongst
+all followers
+:EUL.
+:EHELP.
+
+.*$ALSC      'ALSC001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : ALSC                                        :   *.
+.*   : Description : Answer list code                            :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='ALSC001'.Answer List Code - Help
+:ISCH ROOTS='Answer List Code'.Answer List Code
+:XH3.Answer List Code
+
+:P.
+Use the answer list for data analysis.
+
+:P.
+The answer list can be used to filter questions and answers from the
+incidents Q&A history. You can add questions and answer to the answer list.
+If these questions and answers correspond with the questions and answers
+in the incidents history, the incident will be printed or displayed.
+
+:P.
+If you have asked a question like :HP1.Does the problem pertain hardware or
+software:EHP1. you can filter all incidents with the desired answer. Any
+question can be loaded in an answer list.
+:EHELP.
+
+.*$ALSD      'ALSD001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : ALSD                                        :   *.
+.*   : Description : Answer list description                     :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='ALSD001'.Answer list description - Help
+:ISCH ROOTS='Answer list description'.Answer list description
+:XH3.Answer list description
+
+:P.
+The answer list description is a meaningfull text describing the function
+of the answer list code. You can use this description to quickly identify
+the purpose of the answer list.
+:EHELP.
+
+.*$ANS#      'ANS_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : ANS#                                        :   *.
+.*   : Description : Answer sequence                             :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='ANS_001'.Answer sequence - Help
+:ISCH ROOTS='data'.Answer sequence
+:XH3.Answer sequence
+
+:P.
+
+Sequence numbers are used to store the answers to a question. This
+sequence number determines how the answers are presented. The answer
+with the lowest sequence number is presented before an answer with a
+higher sequence number.
+:EHELP.
+
+.*$ANSC      'ANSC001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : ANSC                                        :   *.
+.*   : Description : Answer                                      :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='ANSC001'.Answer - Help
+:ISCH ROOTS='data'.Answer
+:XH3.Answer
+
+:P.
+Enter text which is used to describe the answer. The answer must not
+be ambigious in order for the HelpDesk operator to allow a quick selection.
+Although you may use 256 positions to describe the answer, you must try
+to format the text in a way the operator can select it quickly.
+
+:EHELP.
+
+.*$APII    'APII001'.
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : APII                                        :   *.
+.*   : Description : User address, distribution                  :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='APII001'.
+:ISCH ROOTS='Auto process incidents'.Auto process incidents
+:XH3.Auto process incidents
+
+:P.
+This indicator handles the way your incoming electronic incidents are
+processed. You can allow the system to register incoming incidents
+automaticaly, which has pro's and cons. Obviously the automatic processing
+is more comfortable, but you may risk a number of unwanted incidents, such
+as jokes or mistakes.
+:EHELP.
+
+.*$ASQ#      'ASQ_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : ASQ#                                        :   *.
+.*   : Description : Status action sequence                      :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='ASQ_001'.Status action sequence - Help
+:ISCH ROOTS='data'.Status action sequence
+:XH3.Status action sequence
+
+:P.
+The status action sequence determines the sequence in which a status action
+is executed. A :LINK PERFORM='DSPHELP SEPG001'.
+status action:ELINK.
+is a program which is executed when the status of an
+:LINK PERFORM='DSPHELP INC_001'.incident:ELINK. changes.
+:EHELP.
+
+.*$AUID      'AUID001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : AUID                                        :   *.
+.*   : Description : Allocated by user                           :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='AUID001'.Allocated by - Help
+:ISCH ROOTS='data'.Allocated by
+:XH3.Allocated by
+
+:P.
+This attributes holds the AS/400 user id of the user which has allocated
+the incident. When the incident is allocated, other users can not change
+it. If you are a HelpDesk manager, you can allocate an incident to
+another user. Otherwise, you can only allocate an incident to yourself.
+:EHELP.
+
+.*$CCTC      'CCTC001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : CCTC                                        :   *.
+.*   : Description : Customer contact code                       :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='CCTC001'.Customer contact - Help
+:ISCH ROOTS='data'.Customer contact
+:XH3.Customer contact
+
+:P.
+The customer contact is a person which can report incidents on behalf
+of the customer. You can create a default contact which is automatically
+selected if the customer to which he or she belongs is selected.
+Contacts can be created "on the fly" when a new customer call is
+registered in the OMS database.
+
+:P.
+You can view the
+:LINK PERFORM='DSPHELP CONCUSC OMSCONHD'.
+customer concepts
+:ELINK.
+for more information on customers and customer contacts.
+:EHELP.
+
+.*$CFIC      'CFIC001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : CFIC                                        :   *.
+.*   : Description : Configuration item                          :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='CFIC001'.
+
+:P.
+This field is not supported yet.
+:EHELP.
+
+.*$CFL#      'CFL_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : CFL#                                        :   *.
+.*   : Description : Configuration list number                   :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='CFL_001'.Confirguration list number - Help
+:ISCH ROOTS='data'.Configuration list number
+:XH3.Configuration list number
+
+:P.
+This field is not supported yet.
+:EHELP.
+
+
+.*$CNTI      'CNTI001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : CNTI                                        :   *.
+.*   : Description : Contact status                              :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='CNTI001'.Contact Status - Help
+:ISCH ROOTS='data'.Contact Status
+:XH3.Contact Status
+
+:P.
+The contact status indicates the contact which normally reports incidents
+on behalf of the customer. If the customer is selected, the default contact
+is automatically selected as well. You can override the default contact
+if another person is making the call. If the contact is disabled then
+you are not able use this contact. The following values are allowed;
+
+:P.
+:PARML.
+:PT.:PK DEF.0=Normal:EPK.
+:PD.
+This value indicates that this person is a normal contact.
+
+:PT.1=Default
+:PD.
+This value indicates that this person is the default contact.
+
+:PT.9=Disabled
+:PD.
+This value indicates that this person is no longer used for this
+customer. A disabled contact will remain in the database but is
+no longer able to report incidents.
+:EPARML.
+
+:P.
+You can view the
+:LINK PERFORM='DSPHELP CONCUSC OMSCONHD'.
+customer concepts
+:ELINK.
+for more information on customers and customer contacts.
+:EHELP.
+
+.*$CN5#      'CN5_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : CN5#                                        :   *.
+.*   : Description : Counter lenght 5                            :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='CN5_001'.Counter - Help
+:ISCH ROOTS='data'.Counter
+:XH3.Counter
+
+:P.
+HMS uses various counters, like to keep track of the number of
+escalations. Usually the use of them goes without saying.
+:EHELP.
+
+.*$COUD      'COUD001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : COUD                                        :   *.
+.*   : Description : Country                                     :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='COUD001'.Country - Help
+:ISCH ROOTS='data'.Country
+:XH3.Country
+
+:P.
+Specifies the country in which the customer is located.
+
+
+:P.
+You can view the
+:LINK PERFORM='DSPHELP CONCUSC OMSCONHD'.
+customer concepts
+:ELINK.
+for more information on customers and customer contacts.
+
+:EHELP.
+
+.*$CSRC      'CSRC001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : CSRC                                        :   *.
+.*   : Description : Call source code                            :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='CSRC001'.Call source - Help
+:ISCH ROOTS='data'.Call source
+:XH3.Call source
+
+:P.
+The call source indicates how the incident related to this call has
+arrived. The possible values are:
+
+:P.
+:PARML.
+:PT.:PK DEF.0=Telephone:EPK.
+:PD.
+This value indicates that the call arrived by telephone. This is the
+default value.
+
+:PT.1=E-mail
+:PD.
+This value indicates that this call arrived by E-mail.
+
+:PT.2=Fax
+:PD.
+The call arrived per Fax.
+
+:PT.3=WWW
+:PD.
+The call arrived via the World Wide Web.
+
+:PT.4=Lotus Notes
+:PD.
+The call arrived via a Lotus Notes database.
+
+:EPARML.
+
+
+:P.
+You can view the
+:LINK PERFORM='DSPHELP CONCALL OMSCONHD'.
+customer call concepts
+:ELINK.
+for more information on customer calls.
+:EHELP.
+
+.*$CTFL      'CTFL001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : CTFL                                        :   *.
+.*   : Description : Call track free field lib.                  :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='CTFL001'.Call track free field library - Help
+:ISCH ROOTS='data'.Call track free field library
+:XH3.Call track free field library
+
+:P.
+You have three extra fields which can be used to extend the call
+track entity. You can create a program to check the contents of
+the fields when they are added to the database. The possible values are;
+
+:PARML.
+:PT.*LIBL
+:PD.
+The library list is searched to locate the program.
+:PT.Library-name
+:PD.
+Enter the library where the program is located.
+:EPARML.
+
+:P.
+
+An example program is stored in source member OMQUFECC in sourcefile
+QUSRSRC in your HelpDesk library.
+
+:P.
+Please consult the
+:LINK PERFORM='DSPHELP CTFP OMSTECHD'.Technical Reference:ELINK. for more
+information.
+
+:EHELP.
+
+.*$CTFP      'CTFP001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : CTFP                                        :   *.
+.*   : Description : Call track free field pgm.                  :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='CTFP001'.Call track free field program - Help
+:ISCH ROOTS='data'.Call track free field program
+:XH3.Call track free field program
+
+:P.
+The call track free field program is used to extend the call track
+database with your own data. You can use this program to check the
+contents of the extra fields when a call track is added. If the program
+decides that one of the fields is not filled correctly, it can send a
+message to the call track program which will then disallow the registration
+of the call track until the field is filled with a correct value.
+
+:P.
+An example program is stored in source member OMQUFECC in sourcefile
+QUSRSRC in your HelpDesk library.
+
+:P.
+Please consult the
+:LINK PERFORM='DSPHELP CTFP OMSTECHD'.Technical Reference:ELINK. for more
+information.
+:EHELP.
+
+.*$CTN#      'CTN_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : CTN#                                        :   *.
+.*   : Description : Call track number                           :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='CTN_001'.Call Track - Help
+:ISCH ROOTS='data'.Call Track
+:XH3.Call Track
+
+:P.
+The Call Track number is used to label all incoming calls. You can
+only add incidents if a call registred first. You can give the Call
+Track number to a customer as a referene to the placed call. The
+customer can use this number to refer to it at a later time. The
+call track numbers are generated automatically.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONCALL OMSCONHD'.
+customer call concepts.
+:ELINK. for more information.
+:EHELP.
+
+.*$CUSC      'CUSC001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : CUSC                                        :   *.
+.*   : Description : Customer code                               :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='CUSC001'.Customer code - Help
+:ISCH ROOTS='data'.Customer code
+:XH3.Customer code
+
+:P.
+The customer code is used to quickly identify the customer when a call
+is placed to the HelpDesk. In order to allow the HelpDesk customer to
+find the customer code quickly when a call is placed you should use
+meaningfull customer codes. If you have external customers you can
+use codes as:
+
+:P.
+:FIG.
+Customer                Proposed code
+
+Windmill BV             WINDMILL
+Third National Bank     THIRDNATB
+Mainland Sequoia        MAINLAND
+:EFIG.
+
+:P.
+If the customer places the call and states the name of the company, you
+can use the first positions of the name to start a search. The list of
+customers will then be positioned at the first customers with these
+characters in the first positions of their name.
+
+:P.
+If you use internal customers, you can use the department code as the
+customer code. In this case you would have customer codes like:
+
+:P.
+:FIG.
+Customer                Proposed code
+
+Production              PROD
+EDP                     EDP
+Accounting              ACCOUNT
+:EFIG.
+
+:P.
+Finally, you can give a customer code to your customer. The customer must
+use this code as an identification. In this case you do not need meaningfull
+customer codes.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONCUSC OMSCONHD'.
+customer concepts
+:ELINK. for more information.
+:EHELP.
+
+.*$DDTA    'DDTA001'.
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : DDTA                                        :   *.
+.*   : Description : Data                                        :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='DDTA001'.
+:ISCH ROOTS='Data'.Data
+:XH3.Data
+
+:P.
+Data in general indicates a description or the full contents of an
+entity.
+:EHELP.
+
+.*$DESC      'DESC001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : DESC                                        :   *.
+.*   : Description : Description                                 :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='DESC001'.Description - Help
+:ISCH ROOTS='data'.Description
+:XH3.Description
+
+:P.
+The description of the attribute.
+:EHELP.
+
+.*$DFTI      'DFTI001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : DFTI                                        :   *.
+.*   : Description : Default inidicator                          :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='DFTI001'.Default - Help
+:ISCH ROOTS='data'.Default
+:XH3.Default
+
+:P.
+The default indicator is used to indicate whether a given value or name
+is an entity default. The indicator can be set on or off. The result
+of this indicator being on is shown as a "*"-sign.
+:EHELP.
+
+.*$DOMC      'DOMC001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : DOMC                                        :   *.
+.*   : Description : Domain                                      :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='DOMC001'.Domain - Help
+:ISCH ROOTS='data'.Domain
+:XH3.Domain
+
+:P.
+Use this field to type the name of the internet domain the system
+is in. The domain name will be used when handshaking with a
+SMTP server.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONNET OMSCONHD'.
+Networking Concepts
+:ELINK. for more information.
+:EHELP.
+
+.*$DOWA      'DOWA001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : DOWA                                        :   *.
+.*   : Description : Day of week array                           :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='DOWA001'.Day of the week. - Help
+:ISCH ROOTS='data'.Day of the week.
+:XH3.Day of the week.
+
+:P.
+The days of the week. Enter a '1' for a working day or a '0' or blank
+for a non working day. The escalation process will only start on
+working days.
+
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONCUSC OMSCONHD'.
+escalation concepts
+:ELINK. for more information.
+:EHELP.
+
+.*$DSID    'DSID001'.
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : DSID                                        :   *.
+.*   : Description : Distribution id.                                        :
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='DSID001'.
+:ISCH ROOTS='Distribution id.'.Distribution id.
+:XH3.Distribution id.
+
+:P.
+The distribution id is used by the helpdesk to identify the
+distribution received from the network.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONNET OMSCONHD'.
+Networking Concepts
+:ELINK. for more information.
+:EHELP.
+
+.*$DYS#      'DYS_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : DYS#                                        :   *.
+.*   : Description : Number of days                              :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='DYS_001'.Number of days - Help
+:ISCH ROOTS='data'.Number of days
+:XH3.Number of days
+
+:P.
+
+This attribute is used to indicate how many days are in between two
+escalations. An escalation causes the priority of an incident to increase.
+:EHELP.
+
+.*$EEMC    'EEMC001'.
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : EEMC                                        :   *.
+.*   : Description : External E-mail address
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='EEMC001'.
+:ISCH ROOTS='External E-mail address'.External E-mail address
+:XH3.External E-mail address
+
+:P.
+If you want the Helpdesk to synchronize the incidents with an external
+database, you must enter the e-mail address of that database. Incidents
+and definitions are distributed to the database located on this
+address. The mail address must contain a fully qualified internet
+e-mail address. These addresses have the form "user@host.domain".
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONNET OMSCONHD'.
+Networking Concepts
+:ELINK. for more information.
+:EHELP.
+
+.*$EMAC      'EMAC001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : EMAC                                        :   *.
+.*   : Description : E-mail account                              :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='EMAC001'.E-Mail account - Help
+:ISCH ROOTS='data network email notes'. E-mail account
+:XH3.E-Mail account
+
+:P.
+This is the e-mail account where this entity can be reached.
+The e-mail address used in the Helpdesk identifies the e-mail sent
+from this Helpdesk. The e-mail address used for the customer
+contact is the e-mail address of that contact. The customer contact
+can only receive e-mail via Mail Templates if the address is
+specified. These addresses have the form "user@host.domain".
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONNET OMSCONHD'.
+Networking Concepts
+:ELINK. for more information.
+
+:EHELP.
+
+.*$EOEI      'EOEI001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : EOEI                                        :   *.
+.*   : Description : Entry or exit indicator                     :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='EOEI001'.Entry or exit indicator - Help
+:ISCH ROOTS='data'.Entry or exit indicator
+:XH3.Entry or exit indicator
+
+:P.
+The entry or exit indication indicates when the status program should
+be called. Should the status action program be called when this status
+is given to the incident or when the status is removed from the incident.
+Choose from the following:
+
+:P.
+:PARML.
+:PT.:PK DEF.0=*ENTRY:EPK.
+:PD.
+The program is called when the incidents is getting the indicated status.
+:PT.1=*EXIT
+:PD.
+The program is called when the incident leaves this status.
+:PT.2=*BOTH
+:PD.
+The program is called when the incident leaves or enters this status.
+This option is only valid when indicated.
+:PT.3=*ALWAYS
+:PD.
+The program is called when the incident is escalated anytime when
+having this status and remains within the priority range.
+This option is only valid when indicated.
+:EPARML.
+:EHELP.
+
+.*$EPTM      'EPTM001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : EPTM                                        :   *.
+.*   : Description : Time processing ended                       :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='EPTM001'.End time - Help
+:ISCH ROOTS='data'.End time
+:XH3.End time
+
+:P.
+Enter the time your company stops working. This means that the escalation
+will not escalate beyond this point in time.
+:EHELP.
+
+.*$ESC#      'ESC_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : ESC#                                        :   *.
+.*   : Description : Escalation counter                          :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='ESC_001'.Escalation Counter - Help
+:ISCH ROOTS='data'.Escalation Counter
+:XH3.Escalation Counter
+
+:P.
+The escalation counter is an incident attribute. This attribute
+indicates the number of times the incident was escalated so far.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONESC OMSCONHD'.
+escalation concepts
+:ELINK. for more information.
+:EHELP.
+
+.*$ESF#      'ESF_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : ESF#                                        :   *.
+.*   : Description : Escalation frequency (hours)                :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='ESF_001'.Escalation Frequency - Help
+:ISCH ROOTS='data'.Escalation Frequency
+:XH3.Escalation Frequency
+
+:P.
+When the escalation job is started as a deamon, you can indicate the
+wake-up frequency of the program. If you specify a 4, then the
+escalation will be done once every hour. The frequency you specify
+depends on the escalation you have specified. If you want to escalate
+a certain status every 60 minutes then you should specify an escalation
+frequency of 1 hour. 1 Hour is the lowest possible frequency. If you
+have specified escalations shorter than 1 hour, this will be handled
+by the escalation program.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONESC OMSCONHD'.
+escalation concepts
+:ELINK. for more information.
+
+:EHELP.
+
+.*$ESTS      'ESTS001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : ESTS                                        :   *.
+.*   : Description : External status                             :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='ESTS001'.External Status - Help
+:ISCH ROOTS='data'.External Status
+:XH3.External Status
+
+:P.
+The external status determines the status of the object related to
+this incident.
+
+:P.
+This object can be a OMS request or another incident.
+:EHELP.
+
+.*$EXTI    'EXTI001'.
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : EXTI                                        :   *.
+.*   : Description : External interface indicator
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='EXTI001'.
+:ISCH ROOTS='External interface indicator'.External interface indicator
+:XH3.External interface indicator
+
+:P.
+Use this indicator to identify the external interface. Select one of
+the following;
+:PARML.
+:PT.0=None
+:PD.
+You are not using an external database to store your incidents.
+:PT.1=Lotus Notes
+:PD.
+Helpdesk data is distributed to the external Lotus Notes HMS database.
+:EPARML.
+
+:P.
+Consult the
+:LINK PERFORM='DSPHELP CONNET OMSCONHD'.
+Networking Concepts
+:ELINK. for more information.
+:EHELP.
+
+.*$GLS#      'GLS_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : GLS#                                        :   *.
+.*   : Description : Goto list                                   :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='GLS_001'.Goto question list - Help
+:ISCH ROOTS='data'.Goto question list
+:XH3.Goto question list
+
+:P.
+Enter the question list sequence of the question list where the Q&A
+should continue when this answer is given.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONQUES OMSCONHD'.
+Q&A concepts
+:ELINK. for more information.
+
+:EHELP.
+
+.*$GQS#      'GQS_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : GQS#                                        :   *.
+.*   : Description : Goto question sequence                      :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='GQS_001'.Goto question sequence - Help
+:ISCH ROOTS='data'.Goto question sequence
+:XH3.Goto question sequence
+
+:P.
+The sequence of the question in the question list where the Q&A must
+continue when this answer is given.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONQUES OMSCONHD'.
+Q&A concepts
+:ELINK. for more information.
+:EHELP.
+
+.*$HADR    'HADR001'.
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : HADR                                        :   *.
+.*   : Description : Helpdesk user address
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='HADR001'.
+:ISCH ROOTS='Helpdesk user address'.Helpdesk user address
+:XH3.Helpdesk user address
+
+:P.
+This is the address of the AS/400 user profile which is
+used by the networking interface to send Helpdesk data to. The
+address and the user must be assigned an SMTP address. The
+network monitor checks if mail has arrived for this database and
+processes the data distributed to it. Please
+consult the
+:LINK PERFORM='DSPHELP CONNET OMSCONHD'.
+Networking Concepts
+:ELINK. for more information.
+:EHELP.
+
+.*$HDMC      'HDMC001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : HDMC                                        :   *.
+.*   : Description : Helpdesk manager                            :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='HDMC001'.HelpDesk Manager - Help
+:ISCH ROOTS='data'.HelpDesk Manager
+:XH3.HelpDesk Manager
+
+:P.
+The HelpDesk manager is the person responsible for the maintenance of
+the HelpDesk. The HelpDesk manager and employees with support level
+'9' have the highest level of authority within a HelpDesk.
+
+:P.
+HelpDesk managers are able to maintain the definitions of the helpdesk.
+This includes items as question lists, status routes, severities and
+incident types.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP OMSCONHD OMSCONHD'.
+concepts
+:ELINK. for more information about all aspects of the HelpDesk.
+
+:EHELP.
+
+.*$HEDC      'HEDC001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : HEDC                                        :   *.
+.*   : Description : Helpdesk code                               :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='HEDC001'.HelpDesk Code - Help
+:ISCH ROOTS='data'.HelpDesk Code
+:XH3.HelpDesk Code
+
+:P.
+The helpdesk code is an unique identification of the HelpDesk. Once
+the code has been added, it cannot be changed. To change the code
+you have to delete the old application  and add a new one. Almost
+all data defined in the HelpDesk is related to a HelpDesk code.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP OMSCONHD OMSCONHD'.
+concepts
+:ELINK. for more information about all aspects of the HelpDesk.
+
+:EHELP.
+
+.*$HEDD      'HEDD001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : HEDD                                        :   *.
+.*   : Description : Helpdesk description                        :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='HEDD001'.HelpDesk Description - Help
+:ISCH ROOTS='data'.HelpDesk Description
+:XH3.HelpDesk Description
+
+:P.
+The helpdesk description contains information about the helpdesk code.
+A blank value is not allowed.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP OMSCONHD OMSCONHD'.
+concepts
+:ELINK. for more information about all aspects of the HelpDesk.
+
+:EHELP.
+
+.*$HRS#      'HRS_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : HRS#                                        :   *.
+.*   : Description : Number of hours                             :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='HRS_001'.Number of Hours - Help
+:ISCH ROOTS='data'.Number of Hours
+:XH3.Number of Hours
+
+:P.
+The number of hours.
+:EHELP.
+
+.*$HUID    'HUID001'.
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : HUID                                        :   *.
+.*   : Description : Helpdesk user id.                                        :
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='HUID001'.
+:ISCH ROOTS='Helpdesk user id.'.Helpdesk user id.
+:XH3.Helpdesk user id.
+
+:P.
+This is the user part
+of the address of the AS/400 user profile which is
+used by the networking interface to send Helpdesk data to. The
+address and the user must be assigned an SMTP address. The
+network monitor checks if mail has arrived for this database and
+processes the data distributed to it. Please
+consult the
+:LINK PERFORM='DSPHELP CONNET OMSCONHD'.
+Networking Concepts
+:ELINK. for more information.
+:EHELP.
+
+.*$IEDT      'IEDT001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : IEDT                                        :   *.
+.*   : Description : Incident escalation date                    :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='IEDT001'.Incident Escalation Date - Help
+:ISCH ROOTS='data'.Incident Escalation Date
+:XH3.Incident Escalation Date
+
+:P.
+This is the date the incident was last escalated. When the incident
+is escalated again, then this date changes.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONESC OMSCONHD'.
+escalation concepts
+:ELINK. for more information.
+
+:EHELP.
+
+.*$IETM      'IETM001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : IETM                                        :   *.
+.*   : Description : Incident escalation time                    :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='IETM001'.Incident Escalation Time - Help
+:ISCH ROOTS='data'.Incident Escalation Time
+:XH3.Incident Escalation Time
+
+:P.
+This is the time the incident was last escalated. When the incident
+is escalated again, then this time changes.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONESC OMSCONHD'.
+escalation concepts
+:ELINK. for more information.
+:EHELP.
+
+.*$INC#      'INC_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : INC#                                        :   *.
+.*   : Description : Incident number                             :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='INC_001'.Incident Number - Help
+:ISCH ROOTS='data'.Incident Number
+:XH3.Incident Number
+
+:P.
+The incident number is an identification of an incident. The incident
+number is unique per HelpDesk.
+:P.
+You can use the special value :PK.*GEN:EPK. if you create a new
+incident. This indicates that the incident number will be
+generated according to the rules specified in the helpdesk
+definition. If you are using this special value for the
+incindent number, you will be informed by a message on your display which
+number has been assigned to your incindet. The incident number
+must be unique per HelpDesk. A blank value is not allowed.
+
+:P.
+Consult the
+:LINK PERFORM='DSPHELP INC_001'.
+last incident number generated
+:ELINK.
+for details about how this number is generated.
+
+:P.
+For more general information about the incident, see the incident
+:LINK PERFORM='DSPHELP CONINC OMSCONHD'.
+concepts.
+:ELINK.
+:EHELP.
+
+.*$INC#      'INC_002'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : INC#                                        :   *.
+.*   : Description : Incident number                             :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='INC_002'.Last Generated Incident Number - Help
+:ISCH ROOTS='data'.Last Generated Incident Number
+:XH3.Last Generated Incident Number
+
+:P.
+The Last incident number is used by the helpdesk as a base
+for generating new incident numbers. During addition of an incident,
+OMS will
+generate the incident number if the default number "*GEN" has
+been used. The generated number is stored in this attribute.
+
+:P.
+The Last number is shown and can be maintained in the
+:LINK PERFORM='DSPHELP STRHDDIX OMSCMDHD'.HelpDesk Definition
+:ELINK.function.
+
+:P.
+The following rules apply to generation of numbers:
+
+:OL.
+:LI.If the string ends with an alphabetic character the HelpDesk will extend
+the string with "0000".
+
+:LI.If the string ends with a numeric character the HelpDesk will use all
+ending numeric characters as a base.
+:EOL.
+
+:XMP.
+Examples: (Assume increment value is 1)
+
++---------------------------------+
+¬ Base value      Generated value ¬
++---------------------------------+
+¬  I              I0001           ¬
+¬  I1             I2              ¬
+¬  I9             I10             ¬
+¬  ABCDEFGHI      ABCDEF0001      ¬
+¬  I00000000      I00000001       ¬
++---------------------------------+
+
+:EXMP.
+:EHELP.
+
+.*$INCD      'INCD001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : INCD                                        :   *.
+.*   : Description : Incident description                        :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='INCD001'.Incident Description - Help
+:ISCH ROOTS='data'.Incident Description
+:XH3.Incident Description
+
+:P.
+Enter the short description of the incident. The short description is
+a mandatory attribute. If the value of the text is *NONE, the subject
+line of the first text block will be copied into the short description.
+:EHELP.
+
+.*$INCR      'INCR001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : INCR                                        :   *.
+.*   : Description : Increment                                   :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='INCR001'.Increment - Help
+:ISCH ROOTS='data'.Increment
+:XH3.Increment
+
+:P.
+The increment value is used to increment the incident and the customer
+call
+track numbers. This value is added to numeric part of these numbers to
+get
+a new value.
+:EHELP.
+
+.*$INDI      'INDI001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : INDI                                        :   *.
+.*   : Description : General purpose indicator                   :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='INDI001'.General Purpose Indicator - Help
+:ISCH ROOTS='data'.General Purpose Indicator
+:XH3.General Purpose Indicator
+
+:P.
+This is a general purpose indicator.
+:EHELP.
+
+.*$INDI      'INDI002'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : INDI                                        :   *.
+.*   : Description : Save as defaulyt subset                     :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='INDI002'.Save as default subset - Help
+:ISCH ROOTS='data'.Save as default subset
+:XH3.Save as default subset
+
+:P.
+Use this field to specify if this selection must be saved as
+your default selection for this function. Every time you
+enter this function, the saved default subset will be activated.
+
+:P.
+To remove a default subset, press F5 and save that subset.
+:EHELP.
+
+.*$INDT      'INDT001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : INDT                                        :   *.
+.*   : Description : Income date                                 :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='INDT001'.Income Date - Help
+:ISCH ROOTS='data'.Income Date
+:XH3.Income Date
+
+:P.
+The income date shows the date the entry was registered.
+:EHELP.
+
+.*$INFL      'INFL001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : INFL                                        :   *.
+.*   : Description : Incident free field library                 :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='INFL001'.Incident Free Field Library - Help
+:ISCH ROOTS='data'.Incident Free Field Library
+:XH3.Incident Free Field Library
+
+:P.
+You have three extra fields which can be used to extend the call
+track entity. You can create a program to check the contents of
+the fields when they are added to the database. The possible values are;
+
+:PARML.
+:PT.*LIBL
+:PD.
+The library list is searched to locate the program.
+:PT.Library-name
+:PD.
+Enter the library where the program is located.
+:EPARML.
+
+:P.
+
+An example program is stored in source member OMQUFEIN in sourcefile
+QUSRSRC in your HelpDesk library.
+
+:EHELP.
+
+.*$INFP      'INFP001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : INFP                                        :   *.
+.*   : Description : Incident free field program                 :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='INFP001'.Incident Free Field Program. - Help
+:ISCH ROOTS='data'.Incident Free Field Program.
+:XH3.Incident Free Field Program.
+
+:P.
+Enter the name of the program used to check the free field of the
+incidents. An example of such a program is OMQUEFIN. The source
+to this program can be found in the QUSRSRC file in your HelpDesk library.
+
+:P.
+The free field program is used to extend the
+database with your own data. You can use this program to check the
+contents of the extra fields when an incident is added. If the program
+decides that one of the fields is not filled correctly, it can send a
+message to the incident entry program which will then disallow the
+registration of the incident until the field is filled with a correct
+value.
+
+:P.
+An example program is stored in source member OMQUFECC in sourcefile
+QUSRSRC in your HelpDesk library.
+
+:EHELP.
+
+.*$INTL      'INTL001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : INTL                                        :   *.
+.*   : Description : Interface level                             :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='INTL001'.Interface level - Help
+:ISCH ROOTS='data'.Interface level
+:XH3.Interface level
+
+:P.
+The interface level is used if an HelpDesk function executes
+a user program, in order to describe the interface to be used. Future
+conflicts will be prevented by
+using the interface level.
+
+:P.
+It is recommended to use the latest interface level, because
+it will provide you with more functionality.
+
+:EHELP.
+
+.*$INTM      'INTM001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : INTM                                        :   *.
+.*   : Description : Income time                                 :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='INTM001'.Income time - Help
+:ISCH ROOTS='data'.Income time
+:XH3.Income time
+
+:P.
+The income time shows the time the entry was registered.
+:EHELP.
+
+.*$IPAD      'IPAD001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : IPAD                                         :   *.
+.*   : Description : Incoming server address                     :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='IPAD001'.Mail Server Address - Help
+:ISCH ROOTS='Incoming mail notes server address'.Mail Server Address
+:XH3.Mail Server Address
+
+:P.
+In order for the helpdesk to send mail to a remote database or
+via a Mail Template to a customer contact, it must communicate
+with a mail server. Specify the address of the mail server which
+is used to route mail.
+
+:P.
+If you want to use the address of the AS/400 mail server you must
+specify the "127.0.0.1" address. This is the address of the
+local machine. Please note that for this option to work, you must
+setup the SMTP and TCP/IP environments.
+Consult the
+:LINK PERFORM='DSPHELP CONNET OMSCONHD'.
+Networking Concepts
+:ELINK. for more information.
+
+:EHELP.
+
+.*$IRAH      'IRAH001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : IRAH                                        :   *.
+.*   : Description : Incident relation appl/helpd                :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='IRAH001'.Application or HelpDesk - Help
+:ISCH ROOTS='data'.Application or HelpDesk
+:XH3.Application or HelpDesk
+
+:P.
+This is the placeholder of the related object. If the object is an
+incident then it is a
+:LINK PERFORM='DSPHELP HEDC001'.
+HelpDesk code
+:ELINK.
+otherwise it is an
+
+:LINK PERFORM='DSPHELP APPC001 OMSREFHD'.
+Aplication code.
+:ELINK.
+:EHELP.
+
+.*$BCCE      'BCCE001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : BCCE                                        :   *.
+.*   : Description : Bcc for contact mail                        :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='BCCE001'.Bcc for contact mail - Help
+:ISCH ROOTS='data'.Bcc for contact mail
+:XH3.Bcc for contact mail
+
+:P.
+This is the mailbox of the user or lotus notes database to which
+blind carbon copies of mail is sent to in case the helpdesk sends
+e-mail to a customer contact. Consult the
+:LINK PERFORM='DSPHELP CONNECT OMSCONHD'.
+Networking Concepts
+:ELINK. for more information.
+:EHELP.
+
+.*$IRIT      'IRIT001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : IRIT                                        :   *.
+.*   : Description : Incident relation item                      :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='IRIT001'.Related Object - Help
+:ISCH ROOTS='data'.Related Object
+:XH3.Related Object
+
+:P.
+The item related to the incident can be another
+:LINK PERFORM='DSPHELP INC_001'.
+incident
+:ELINK.
+or a
+:LINK PERFORM='DSPHELP ERR_001 OMSREFHD'.
+request number.
+:ELINK.
+
+:EHELP.
+
+.*$IRTP      'IRTP001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : IRTP                                        :   *.
+.*   : Description : Incident relation type                      :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='IRTP001'.Incident relation type - Help
+:ISCH ROOTS='data'.Incident relation type
+:XH3.Incident relation type
+
+:P.
+This attribute determines if the incident is related ot another incident
+or to a OMS request.
+:EHELP.
+
+.*$ISFL      'ISFL001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : ISFL                                        :   *.
+.*   : Description : Incident spool file library                 :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='ISFL001'.Incident spool file library - Help
+:ISCH ROOTS='data'.Incident spool file library
+:XH3.Incident spool file library
+
+:P.
+You are able to move AS/400 spool files to the output queues in this library.
+You can then enquire the output queue from within incident maintenance. If
+you use option 14, and the output queue exists in the library, the
+spooled files it contains are listed.
+
+:P.
+OMS display's the output queue with the same name as the incident.
+
+:P.
+Use the normal spool file processing options to process the spool file.
+:EHELP.
+
+.*$ITH#      'ITH_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : ITH#                                        :   *.
+.*   : Description : Incident text header seq.                   :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='ITH_001'.Text Sequence Number - Help
+:ISCH ROOTS='data'.Text Sequence Number
+:XH3.Text Sequence Number
+
+:P.
+This sequence number determines the sequence in which incident texts
+where added to the incident. The text block with the lowest sequence
+number is added first.
+:EHELP.
+
+.*$ITPC      'ITPC001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : ITPC                                        :   *.
+.*   : Description : Incident type code                          :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='ITPC001'.Incident type code - Help
+:ISCH ROOTS='data'.Incident type code
+:XH3.Incident type code
+
+:P.
+The 'Incident type' indicates the type of incident. These types
+are user defined and can be maintained in the Incident Type Maintenance
+function.
+:EHELP.
+
+.*$ITPD      'ITPD001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : ITPD                                        :   *.
+.*   : Description : Incident type description                   :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='ITPD001'.Incident type description - Help
+:ISCH ROOTS='data'.Incident type description
+:XH3.Incident type description
+
+:P.
+This is the description of the incident type.
+:EHELP.
+
+.*$ITXT      'ITXT001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : ITXT                                        :   *.
+.*   : Description : Incident text type                          :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='ITXT001'.Incident text type - Help
+:ISCH ROOTS='data'.Incident text type
+:XH3.Incident text type
+
+:P.
+The incident text type determines the type of text. The following values
+are allowed;
+
+:PARML.
+:PT.:PK DEF.1=Symptom:EPK.
+:PD.
+Symptom text is used to describe what the user sees or experiences. The
+symptom may not be the cause of the solution. E.g. if the printer does
+not print, it may or may not be a printer error. You can use
+the Search & Find function to scan the text in the symptom database
+to find incidents with similar symptoms.
+
+:PT.2=Cause
+:PD.
+Cause text is used to describe the cause of what the user sees or
+experiences.  You can use
+the Search & Find function to scan the text in the symptom database
+to find incidents with similar causes and display the solution texts
+of the incidents found to find the solution to the problem you are
+investigating.
+
+:PT.3=Solution
+:PD.
+Solution text is used to describe the solution to the reported problem.
+
+:PT.4=Other
+:PD.
+Other text can be used when an incident is registered to which the
+Symptom/Cause/Solution paradigm doesn't apply. This text would be entered
+if the user does not report an incident on which action has to be taken on.
+:EPARML.
+
+:EHELP.
+
+.*$JBD       'JOBD001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : JBD                                         :   *.
+.*   : Description : Job description                             :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='JOBD001'.Job description - Help
+:ISCH ROOTS='data'.Job description
+:XH3.Job description
+
+:P.
+The job description is used to submit the escalation procedure. The
+job description OMHDESCJBD is shipped with the HelpDesk software.
+
+:P.
+You must alter this job description to suit your specific needs.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONESC OMSCONHD'.
+escalation concepts
+:ELINK. for more information.
+:EHELP.
+
+.*$JBDL      'JBDL001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : JBDL                                        :   *.
+.*   : Description : Job description library                     :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='JBDL001'.Job description library - Help
+:ISCH ROOTS='data'.Job description library
+:XH3.Job description library
+
+:P.
+Enter the library where the
+
+:LINK PERFORM='DSPHELP JOBD001'.
+job description
+:ELINK.
+resides.
+:EHELP.
+
+.*$JOB#      'JOB_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : JOB#                                        :   *.
+.*   : Description : Job number                                  :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='JOB_001'.Job number - Help
+:ISCH ROOTS='data'.Job number
+:XH3.Job number
+
+:P.
+The number of the escalation job.
+:EHELP.
+
+.*$JOBN      'JOBN001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : JOBN                                        :   *.
+.*   : Description : Job name                                    :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='JOBN001'.Job name - Help
+:ISCH ROOTS='data'.Job name
+:XH3.Job name
+
+:P.
+The name of the escalation job.
+:EHELP.
+
+.*$LIBC      'LIBC001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : LIBC                                        :   *.
+.*   : Description : Library name                                :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='LIBC001'.Library name - Help
+:ISCH ROOTS='data'.Library name
+:XH3.Library name
+
+:P.
+The name of the library.
+:EHELP.
+
+.*$MATF      'MATF001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : MATF                                        :   *.
+.*   : Description : Mail template file                                 :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='MATF001'.Mail template file - Help
+:ISCH ROOTS='data mail template network'.Mail template file
+:XH3.Mail template file
+
+:P.
+This is the name of the file which contains the Mail Templates. You
+can specify a file at the system level by entering the System Mail
+Extensions (STRSMX). You are able to override the default Mail
+Template file at the Helpdesk level.
+Consult the
+:LINK PERFORM='DSPHELP CONNET OMSCONHD'.
+Networking Concepts
+:ELINK. for more information.
+:EHELP.
+
+.*$MATL      'MATL001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : MATL                                        :   *.
+.*   : Description : Mail template library                                 :   *
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='MATL001'.Mail template library - Help
+:ISCH ROOTS='data mail template network'.Mail template library
+:XH3.Mail template library
+
+:P.
+This is the library of the file which contains the Mail Templates. You
+can specify a location at the system level by entering the System Mail
+Extensions (STRSMX). You are able to override the default Mail
+Template file at the Helpdesk level.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONNET OMSCONHD'.
+Networking Concepts
+:ELINK. for more information.
+:EHELP.
+
+.*$MATM      'MATM001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : MATM                                        :   *.
+.*   : Description : Mail template                                         :   *
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='MATM001'.Mail template - Help
+:ISCH ROOTS='data template mail network '.Mail template
+:XH3.Mail template
+
+:P.
+Fill in the name of the mail template, or *NONE if no template is used.
+If you are in change mode and this field is blanked, *NONE is assumed.
+You must specify which mail template is used from the mail template
+file for a corresponding Incident Method. If you want to sent an
+e-mail to a customer contact whenever an incindent is added by this
+contact than you must specify a template for the *ADD method.
+Consult the
+:LINK PERFORM='DSPHELP CONNET OMSCONHD'.
+Networking Concepts
+:ELINK. for more information.
+:EHELP.
+
+.*$MSGD      'MSGD001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : MSGD                                        :   *.
+.*   : Description : Message data                                :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='MSGD001'.Message data - Help
+:ISCH ROOTS='data'.Message data
+:XH3.Message data
+
+:P.
+The message data.
+:EHELP.
+
+.*$MSGF      'MSGF001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : MSGF                                        :   *.
+.*   : Description : Message file                                :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='MSGF001'.Message file - Help
+:ISCH ROOTS='data'.Message file
+:XH3.Message file
+
+:P.
+The message file.
+:EHELP.
+
+.*$MSGN      'MSGN001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : MSGN                                        :   *.
+.*   : Description : Message file                                :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='MSGN001'.Message number - Help
+:ISCH ROOTS='data'.Message number
+:XH3.Message number
+
+:P.
+The message number.
+:EHELP.
+
+.*$MSGT      'MSGT001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : MSGT                                        :   *.
+.*   : Description : Message file                                :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='MSGT001'.Message type - Help
+:ISCH ROOTS='data'.Message type
+:XH3.Message type
+
+:P.
+This can be:
+A for alphanumeric;
+N for numeric;
+T for tone;
+V for voice;
+:EHELP.
+
+.*$MSG1      'MSG1001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : MSG1                                        :   *.
+.*   : Description : Message contents                            :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='MSG1001'.Message contents - Help
+:ISCH ROOTS='data'.Message contents
+:XH3.Message contents
+
+:P.
+The message contents; not all contents are valid, as this depends
+on the kind of pager.
+:EHELP.
+
+.*$MSID      'MSID001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : MSID                                        :   *.
+.*   : Description : Message number                              :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='MSID001'.Message number - Help
+:ISCH ROOTS='data'.Message number
+:XH3.Message number
+
+:P.
+The message id.
+:EHELP.
+
+.*$MPT#      'MPT_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : MPT#                                        :   *.
+.*   : Description : Mail polling interval                                 :   *
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='MPT_001'.Mail polling interval - Help
+:ISCH ROOTS='data'.Mail polling interval
+:XH3.Mail polling interval
+
+:P.
+The mail polling interval must be used if you want to check for
+incoming mail for the specified helpdesk users.
+The Helpdesk Monitor waits for a new incident to
+process until the interval time has passed. After this, the network
+is checked for new mail. Use a low interval if you expect to
+receive a lot of network traffic.
+
+:P.
+Consult the
+:LINK PERFORM='DSPHELP CONNET OMSCONHD'.
+Networking Concepts
+:ELINK. for more information.
+:EHELP.
+
+.*$MTDI      'MTDI001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : MTDI                                        :   *.
+.*   : Description : Mail template default indicator
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='MTDI001'.Mail template default indicator - Help
+:ISCH ROOTS='data'.Mail template default indicator
+:XH3.Mail template default indicator
+
+:P.
+The mail template default indicator indicates which templates are
+going to be used for this contact. The following rules apply:
+
+:parml.
+:pt.0=Contact
+:pd.Only the templates defined for this contact are used. Other defined
+templates are ignored.
+
+:pt.1=Calculate
+:pd.The template that has to be used is determined by checking the
+defined templates. First it is checked if templates are defined at
+the contact level. If not then the templates defined at the customer
+level are used, then the templates at the helpdesk level and finally
+the templates at the system level.
+
+:pt.2=Customer
+:pd.The templates defined at contact level are used; if nothing is
+defined, the templates defined at customer level will be used.
+
+:pt.3=Helpdesk
+:pd.The templates defined at contact level are used; if nothing is
+defined, the templates defined at helpdesk level will be used.
+
+:pt.4=System
+:pd.The templates defined at contact level are used; if nothing is
+defined, the templates defined at system level will be used.
+
+:pt.9=None
+:pd.No templates are used at all; this contact will not be mailed.
+:eparml.
+
+:P.
+Consult the
+:LINK PERFORM='DSPHELP CONNET OMSCONHD'.
+Networking Concepts
+:ELINK. for more information.
+
+:EHELP.
+
+.*$NAMD      'NAMD001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : NAMD                                        :   *.
+.*   : Description : Name                                        :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='NAMD001'.Name - Help
+:ISCH ROOTS='data'.Name
+:XH3.Name
+
+:P.
+This is the description of the customer and the contact name. Enter
+a value by which the customer or the customer contact can be easily
+recognized.
+
+:P.
+Read the
+:LINK PERFORM='DSPHELP CONCUSC OMSCONHD'.
+customer concepts
+:ELINK. for more customer information.
+:EHELP.
+
+.*$OQL#      'OQL_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : OQL#                                        :   *.
+.*   : Description : Originating question list                   :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OQL_001'.Originating Question List - Help
+:ISCH ROOTS='data'.Originating Question List
+:XH3.Originating Question List
+
+:P.
+Question lists are used to answer the questions for a given incident.
+However, one question can be used in multiple question lists. The
+context of a question list can sometimes be important. You can use
+the originating question list to filter this.
+
+:P.
+The question answered is "I want to see all incidents with this answer
+to this question, but only if the question was asked from this question
+list (the originating question list)".
+:EHELP.
+
+.*$PGML      'PGML001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : PGML                                        :   *.
+.*   : Description : Program library                             :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='PGML001'.Program library - Help
+:ISCH ROOTS='data'.Program library
+:XH3.Program library
+
+:P.
+The library of the program.
+:EHELP.
+
+.*$PGMN      'PGMN001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : PGMN                                        :   *.
+.*   : Description : Program name                                :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='PGMN001'.Program name - Help
+:ISCH ROOTS='data'.Program name
+:XH3.Program name
+
+:P.
+The name of the program
+:EHELP.
+
+.*$PIN#      'PIN_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : PIN#                                        :   *.
+.*   : Description : Priority increment                          :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='PIN_001'.Priority increment - Help
+:ISCH ROOTS='data'.Priority increment
+:XH3.Priority increment
+
+:P.
+The priority increment is added to the priority of the incident when the
+incident is escalated. The priority can not exceed 999.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONESC OMSCONHD'.
+escalation concepts
+:ELINK. for more information.
+
+:EHELP.
+
+.*$PORT      'PORT001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : PORT                                        :   *.
+.*   : Description : Port                                        :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='PORT001'.Port - Help
+:ISCH ROOTS='Port'.Port
+:XH3.Port
+
+:P.
+Specify the port used to communicate with the mail server. Specify
+port number 25 which is the default SMTP port. Specify a different
+number if you are sure this is the port used by the SMTP
+server.
+
+:P.
+Consult the
+:LINK PERFORM='DSPHELP CONNET OMSCONHD'.
+Networking Concepts
+:ELINK. for more information.
+:EHELP.
+
+.*$PRH#      'PRH_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : PRH#                                        :   *.
+.*   : Description : Priority range high                         :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='PRH_001'.Priority range high - Help
+:ISCH ROOTS='data'.Priority range high
+:XH3.Priority range high
+
+:P.
+The priority high range determines that incidents with a priority
+less and equal are legible for this escalation. Incidents with
+a priority higher than this number are not escalated by this escalation
+rule.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONESC OMSCONHD'.
+escalation concepts
+:ELINK. for more information.
+
+:EHELP.
+
+.*$PRI#      'PRI_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : PRI#                                        :   *.
+.*   : Description : Priority                                    :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='PRI_001'.Priority - Help
+:ISCH ROOTS='data'.Priority
+:XH3.Priority
+
+:P.
+The priority determines the importance of an incident. You determine how
+the priority of incidents are established. This is done by assiging
+weights to severities or adding a priority when a certain question is
+asked.
+
+:P.
+You can also use the escalation function to determine how
+incidents must be escalated. The final way to prioritize an incident
+is to call the incident change API. This in only allowed for HelpDesk
+managers.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONESC OMSCONHD'.
+escalation concepts
+:ELINK. for more information.
+
+:EHELP.
+
+.*$PRL#      'PRL_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : PRL#                                        :   *.
+.*   : Description : Priority range low                          :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='PRL_001'.Priority range low - Help
+:ISCH ROOTS='data'.Priority range low
+:XH3.Priority range low
+
+:P.
+The priority low range determines that incidents with a priority
+greater and equal are legible for this escalation. Incidents with
+a priority less than this number are not escalated by this escalation
+rule.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONESC OMSCONHD'.
+escalation concepts
+:ELINK. for more information.
+
+
+:EHELP.
+
+.*$PRMI      'PRMI001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : PRMI                                        :   *.
+.*   : Description : Pass parameters indicator                   :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='PRMI001'.Pass parameters - Help
+:ISCH ROOTS='data'.Pass parameters
+:XH3.Pass parameters
+
+:P.
+This element specifies whether or not parameters are passed to the
+calling program. The possible values are:
+
+:PARML.
+:PT.0=No
+:PD.
+No parameters are passed to the calling program.
+:PT.1=Yes
+:PD.
+Parameters are passed to the calling program.
+:EPARML.
+
+:EHELP.
+
+.*$QGRC      'QGRC001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : QGRC                                        :   *.
+.*   : Description : Question group code                         :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='QGRC001'.Question Group Code - Help
+:ISCH ROOTS='data'.Question Group Code
+:XH3.Question Group Code
+
+:P.
+Use the question group code to arrange the questions. It will most
+certainly happen that a lot of questions will be created. And, once
+a question has been answered, it can no longer be removed from the
+database. To allow grouping of questions, you can use the question group.
+
+:P.
+The question group allows you to quickly select those questions in
+which you are interested. You can assign any code to a question. The
+Question Maintenance function allows you to list only those questions which
+are assigned to a special question group.
+
+:P.
+In the list display, you can use the special value :PK DEF.*:EPK. and
+:PK DEF.*ALL:EPK. The value '*' indicates that you want to view all
+questions which are catagorized. *ALL indicates that you want to see
+all questions. Use a specific question group code (retrieve one with F4)
+to see only questions which belong to a specific question group.
+
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONQUES OMSCONHD'.
+Q&A concepts
+:ELINK. for more information about questions and answers.
+:EHELP.
+
+.*$QLS#      'QLS_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : QLS#                                        :   *.
+.*   : Description : Question list number                        :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='QLS_001'.Question list number - Help
+:ISCH ROOTS='data'.Question list number
+:XH3.Question list number
+
+:P.
+The question list number is used to arrange the question lists. The
+question list with the lowest sequence number is used as the
+incident entry question list.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONQUES OMSCONHD'.
+Q&A concepts
+:ELINK. for more information about questions and answers.
+:EHELP.
+
+.*$QSQ#      'QSQ_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : QSQ#                                        :   *.
+.*   : Description : Question sequence in Q.list                 :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='QSQ_001'.Question sequence in question list - Help
+:ISCH ROOTS='data'.Question sequence in question list
+:XH3.Question sequence in question list
+
+:P.
+The question sequence in the question list determines the order of the
+question in the question list. The first question in the originating
+question list is asked when a call is registered.
+asked
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONQUES OMSCONHD'.
+Q&A concepts
+:ELINK. for more information about questions and answers.
+
+:EHELP.
+
+.*$QUE#      'QUE_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : QUE#                                        :   *.
+.*   : Description : Question number                             :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='QUE_001'.Question number - Help
+:ISCH ROOTS='data'.Question number
+:XH3.Question number
+
+:P.
+The question number is used to sequence questions.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONQUES OMSCONHD'.
+Q&A concepts
+:ELINK. for more information about questions and answers.
+
+:EHELP.
+
+.*$QUEI      'QUEI001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : QUEI                                        :   *.
+.*   : Description : Question indicator                          :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='QUEI001'.Question Indicator - Help
+:ISCH ROOTS='data'.Question Indicator
+:XH3.Question Indicator
+
+:P.
+Not used in this release.
+:EHELP.
+
+.*$QUES      'QUES001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : QUES                                        :   *.
+.*   : Description : Question                                    :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='QUES001'.Question - Help
+:ISCH ROOTS='data'.Question
+:XH3.Question
+
+:P.
+
+A meaningfull unambiguous question must be asked when you expect
+them to be answered. Keep this in mind when you create questions.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONQUES OMSCONHD'.
+Q&A concepts
+:ELINK. for more information about questions and answers.
+
+:EHELP.
+
+.*$RCDT      'RCDT001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : RCDT                                        :   *.
+.*   : Description : Realized completion date                    :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='RCDT001'.Realized completion date - Help
+:ISCH ROOTS='data'.Realized completion date
+:XH3.Realized completion date
+
+:P.
+The realized completion date is the date the entry actually completed.
+:EHELP.
+
+.*$RCTM      'RCTM001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : RCTM                                        :   *.
+.*   : Description : Realized completion time                    :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='RCTM001'.Realized completion time - Help
+:ISCH ROOTS='data'.Realized completion time
+:XH3.Realized completion time
+
+:P.
+The realized completion time is the time the entry actually completed.
+:EHELP.
+
+.*$RES#      'RES_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : RES#                                        :   *.
+.*   : Description : Route entry sequence                        :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='RES_001'.Route entry sequence - Help
+:ISCH ROOTS='data'.Route entry sequence
+:XH3.Route entry sequence
+
+:P.
+
+The route entry sequence determines the next step in the status route. When an
+incident must be assigned a next status then the next status of the
+incident can only be statusses with a higher sequence number on the
+same support level and the first status on the next available support level.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONSTAT OMSCONHD'.
+status concepts
+:ELINK. for more information about stausses and status routes.
+
+:EHELP.
+
+.*$RUID      'RUID001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : RUID                                        :   *.
+.*   : Description : Registered by user                          :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='RUID001'.Registered by user - Help
+:ISCH ROOTS='data'.Registered by user
+:XH3.Registered by user
+
+:P.
+This is the user who created the entry.
+:EHELP.
+
+.*$SAMI      'SAMI001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : SAMI                                        :   *.
+.*   : Description : Submit monitor                              :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='SAMI001'.Submit monitor (stay active) - Help
+:ISCH ROOTS='data'.Submit monitor (stay active)
+:XH3.Submit monitor (stay active)
+
+:P.
+This attribute indicates whether the escalation job must run once
+or stay active as a monitor. The following values are allowed;
+
+:PARML.
+:PT.0=No
+:PD.
+The escalation job runs once when it is started and the terminates. This
+will effectively scan all incidents, escalate and terminate.
+If you have more subtle escalation rules, you can start the escalation
+job and keep it active. It will wake up at certain intervals and perform
+the escalation.
+
+:PT.1=Yes
+:PD.
+The escalation job stays active and executes at certain intervals.
+:EPARML.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONESC OMSCONHD'.
+escalation concepts
+:ELINK. for more information about escalations.
+
+
+:EHELP.
+
+.*$SEPG      'SEPG001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : SEPG                                        :   *.
+.*   : Description : Status exit program                         :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='SEPG001'.Status exit program - Help
+:ISCH ROOTS='data'.Status exit program
+:XH3.Status exit program
+
+:P.
+You can trigger the execution of a program when an incident receives
+or leaves a certain status.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONSTAT OMSCONHD'.
+status concepts
+:ELINK. for more information about statusses and status routes.
+
+:EHELP.
+
+.*$SEPL      'SEPL001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : SEPL                                        :   *.
+.*   : Description : Status exit program library                 :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='SEPL001'.Status exit program library - Help
+:ISCH ROOTS='data'.Status exit program library
+:XH3.Status exit program library
+
+:P.
+The status program exit library.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONSTAT OMSCONHD'.
+status concepts
+:ELINK. for more information about statusses and status routes.
+
+:EHELP.
+
+.*$SEQ#      'SEQ_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : SEQ#                                        :   *.
+.*   : Description : Sequence number                             :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='SEQ_001'.Sequence number - Help
+:ISCH ROOTS='data'.Sequence number
+:XH3.Sequence number
+
+:P.
+Sequence number
+:EHELP.
+
+.*$SEVC      'SEVC001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : SEVC                                        :   *.
+.*   : Description : Severity code                               :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='SEVC001'.Severity code - Help
+:ISCH ROOTS='data'.Severity code
+:XH3.Severity code
+
+:P.
+Severity code.
+:EHELP.
+
+.*$SEV1      'SEV1001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : SEV1                                        :   *.
+.*   : Description : Severity 1                                  :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='SEV1001'.Technical severity - Help
+:ISCH ROOTS='data'.Technical severity
+:XH3.Technical severity
+
+:P.
+The technical severity is a degree which should tell you how hard it
+is to solve the problem. You can create a technical severity table
+with severities from high to low.
+
+:EHELP.
+
+.*$SEV2      'SEV2001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : SEV2                                        :   *.
+.*   : Description : Severity 2                                  :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='SEV2001'.Customer severity - Help
+:ISCH ROOTS='data'.Customer severity
+:XH3.Customer severity
+
+:P.
+The customer severity is a degree which should tell you how important
+the problem is for your client. You can create a customer severity table
+with severities from high to low.
+:EHELP.
+
+.*$SEV3      'SEV3001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : SEV3                                        :   *.
+.*   : Description : Severity 3                                  :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='SEV3001'.Marketing severity - Help
+:ISCH ROOTS='data'.Marketing severity
+:XH3.Marketing severity
+
+:P.
+The marketing severity is a degree which should tell you how important
+the problem is for your client (to be). You can create a marketing
+ severity table with severities from high to low.
+
+:EHELP.
+
+.*$SEW#      'SEW_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : SEW#                                        :   *.
+.*   : Description : Severity weigth                             :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='SEW_001'.Severity Weight - Help
+:ISCH ROOTS='data'.Severity Weight
+:XH3.Severity Weight
+
+:P.
+The severity weight is added to the priority when the severity code
+is assigned to the incident. If the severity code is changed to another
+severity code then the original weight is subtracted from the priority
+and the new weight is added.
+:EHELP.
+
+.*$SHID      'SHID001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : SHID                                        :   *.
+.*   : Description : Short incident descript.                    :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='SHID001'.Short incident description - Help
+:ISCH ROOTS='data'.Short incident description
+:XH3.Short incident description
+
+:P.
+Enter a meaningfull description. The short description is initially
+filled with *NONE. When the first text block is created then the header
+of the text block is used as the incident description.
+:EHELP.
+
+.*$SITD      'SITD001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : SITD                                        :   *.
+.*   : Description : Short incident text desc.                   :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='SITD001'.Incident Text - Help
+:ISCH ROOTS='data'.Incident Text
+:XH3.Incident Text
+
+:P.
+Use the incident text to describe all actions performed on the
+incident.
+:EHELP.
+
+.*$SPTM      'SPTM001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : SPTM                                        :   *.
+.*   : Description : Time processing started                     :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='SPTM001'.Time processing started - Help
+:ISCH ROOTS='data'.Time processing started
+:XH3.Time processing started
+
+:P.
+The time the escalation job started processing .
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONESC OMSCONHD'.
+escalation concepts
+:ELINK. for more information about escalations.
+
+:EHELP.
+
+.*$SRDT      'SRDT001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : SRDT                                        :   *.
+.*   : Description : Status date                                 :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='SRDT001'.Status date - Help
+:ISCH ROOTS='data'.Status date
+:XH3.Status date
+
+:P.
+The date the status of the incident last changed.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONSTAT OMSCONHD'.
+status concepts
+:ELINK. for more information about statusses.
+:EHELP.
+
+.*$SRTM      'SRTM001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : SRTM                                        :   *.
+.*   : Description : Status time                                 :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='SRTM001'.Status time - Help
+:ISCH ROOTS='data'.Status time
+:XH3.Status time
+
+:P.
+The time the status of the incident last changed.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONSTAT OMSCONHD'.
+status concepts
+:ELINK. for more information about statusses.
+
+:EHELP.
+
+.*$STAD      'STAD001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : STAD                                        :   *.
+.*   : Description : Status description                          :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='STAD001'.Status description - Help
+:ISCH ROOTS='data'.Status description
+:XH3.Status description
+
+:P.
+A short description of the meaning of the status.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONSTAT OMSCONHD'.
+status concepts
+:ELINK. for more information about statusses.
+
+:EHELP.
+
+.*$STAT      'STAT001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : STAT                                        :   *.
+.*   : Description : Status                                      :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='STAT001'.Status - Help
+:ISCH ROOTS='data'.Status
+:XH3.Status
+
+:P.
+Enter a meaningful code used to describe the status.
+
+:p.
+You can consult the
+:LINK PERFORM='DSPHELP CONSTAT OMSCONHD'.
+status concepts
+:ELINK. for more information about statusses.
+
+:EHELP.
+
+.*$STRC      'STRC001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : STRC                                        :   *.
+.*   : Description : Status route code                           :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='STRC001'.Status route code - Help
+:ISCH ROOTS='data'.Status route code
+:XH3.Status route code
+
+:P.
+Enter a meaningful code to describe the status route.
+
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONSTAT OMSCONHD'.
+status concepts
+:ELINK. for more information about status routes.
+
+:EHELP.
+
+.*$STRD      'STRD001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : STRD                                        :   *.
+.*   : Description : Route description                           :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='STRD001'.Status route description - Help
+:ISCH ROOTS='data'.Status route description
+:XH3.Status route description
+
+:P.
+Enter the description of the status route.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONSTAT OMSCONHD'.
+status concepts
+:ELINK. for more information about status routes.
+
+:EHELP.
+
+.*$STRI      'STRI001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : STRI                                        :   *.
+.*   : Description : Route indicator                             :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='STRI001'.Route indicator - Help
+:ISCH ROOTS='data'.Route indicator
+:XH3.Route indicator
+
+:P.
+Not used in this release.
+:EHELP.
+
+.*$SUBJ    'SUBJ001'.
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : SUBJ                                        :   *.
+.*   : Description : Subject                                        :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='SUBJ001'.
+:ISCH ROOTS='Subject'.Subject
+:XH3.Subject
+
+:P.
+Your text here (from the reference helpfile)
+:EHELP.
+
+.*$SUL#      'SUL_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : SUL#                                        :   *.
+.*   : Description : Support level                               :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='SUL_001'.Support level - Help
+:ISCH ROOTS='data'.Support level
+:XH3.Support level
+
+:P.
+The support level is used as a authorization as well as a specialization
+code. You can assign support level codes from '0' to '9'.
+
+:p.
+A user can change an incident if his support level is equal to or higher
+than the support level assigned to the incident.
+
+:P.
+A user can read the incident texts if his support level is equal to
+or higher than the support level assigned to the text block. The user
+can always read the header line of the text block.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONEMPC OMSCONHD'.
+employee concepts
+:ELINK. for more information about support levels.
+
+:EHELP.
+
+.*$SWTU    'SWTU001'.
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : SWTU                                        :   *.
+.*   : Description : Send warning to user
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='SWTU001'.
+:ISCH ROOTS='Send warning to user'.Send warning to user
+:XH3.Send warning to user
+
+:P.
+ Here you can fill in the name of one user who gets a warning in case
+ an incoming incident can not be processed by The Incident Monitor.
+Most likely this will be the person who is
+ responsable for the processing of the incidents sent by the network.
+
+:P.
+Consult the
+:LINK PERFORM='DSPHELP CONNET OMSCONHD'.
+Networking Concepts
+:ELINK. for more information.
+:EHELP.
+
+.*$TABC      'TABC001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : TABC                                        :   *.
+.*   : Description : Table code                                  :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='TABC001'.Table code - Help
+:ISCH ROOTS='data'.Table code
+:XH3.Table code
+
+:P.
+Enter the table code. The following values are allowed.
+
+:OL.
+:LI.:PK DEF.Technical severity:EPK.
+:LI.Customer severity
+:LI.Marketing severity
+:EOL.
+
+:EHELP.
+
+.*$TEL#      'TEL_001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : TEL#                                        :   *.
+.*   : Description : Telephone number                            :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='TEL_001'.Telephone number - Help
+:ISCH ROOTS='data'.Telephone number
+:XH3.Telephone number
+
+:P.
+This is the telephone number where the contact or the customer
+can be reached.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONCUSC OMSCONHD'.
+customer concepts
+:ELINK. for more information about customers and customer contacts.
+
+
+:EHELP.
+
+.*$TITL      'TITL001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : TITL                                        :   *.
+.*   : Description : Title                                       :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='TITL001'.Title - Help
+:ISCH ROOTS='data'.Title
+:XH3.Title
+
+:P.
+Enter the title of the person.
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONCUSC OMSCONHD'.
+customer concepts
+:ELINK. for more information about customers and customer contacts.
+:EHELP.
+
+.*$UOPC      'UOPC001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : UOPC                                        :   *.
+.*   : Description : User option                                 :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='UOPC001'.User option code - Help
+:ISCH ROOTS='data'.User option code
+:XH3.User option code
+
+:P.
+This is the user option code. A user option can be used in the HelpDesk
+to do some tasks which are not provided.
+
+:EHELP.
+
+.*$UOPD      'UOPD001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : UOPD                                        :   *.
+.*   : Description : User option description                     :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='UOPD001'.User option description - Help
+:ISCH ROOTS='data'.User option description
+:XH3.User option description
+
+:P.
+This is the description of the user option.
+:EHELP.
+
+.*$USDC      'USDC001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : USDC                                        :   *.
+.*   : Description : User description                            :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='USDC001'.Employee description - Help
+:ISCH ROOTS='data'.Employee description
+:XH3.Employee description
+
+:P.
+The employee description is retrieved from the AS/400
+user profile.
+:EHELP.
+
+.*$USF1      'USF1001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : USF1                                        :   *.
+.*   : Description : User field 1                                :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='USF1001'.User field 1 - Help
+:ISCH ROOTS='data'.User field 1
+:XH3.User field 1
+
+:P.
+You can use this field to enter your own data. User fields can be used
+in the customer, customer contact, customer call and incident database.
+:EHELP.
+
+.*$USF2      'USF2001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : USF2                                        :   *.
+.*   : Description : User field 2                                :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='USF2001'.User field 2 - Help
+:ISCH ROOTS='data'.User field 2
+:XH3.User field 2
+
+:P.
+You can use this field to enter your own data. User fields can be used
+in the customer, customer contact, customer call and incident database.
+:EHELP.
+
+.*$USF3      'USF3001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : USF3                                        :   *.
+.*   : Description : User field 3                                :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='USF3001'.User field 3 - Help
+:ISCH ROOTS='data'.User field 3
+:XH3.User field 3
+
+:P.
+You can use this field to enter your own data. User fields can be used
+in the customer, customer contact, customer call and incident database.
+:EHELP.
+
+.*$USID      'USID001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : USID                                        :   *.
+.*   : Description : User i.d., or user class                    :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='USID001'.Employee code - Help
+:ISCH ROOTS='data'.Employee code
+:XH3.Employee code
+
+:P.
+This is the employee code. Each employee must have a corresponding
+user profile. Press F4 to get a list of all available user profiles.
+
+
+:P.
+You can consult the
+:LINK PERFORM='DSPHELP CONEMPC OMSCONHD'.
+employee concepts
+:ELINK. for more information about employees.
+
+
+:EHELP.
+
+.*$USRI    'USRI001'.
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : USRI                                        :   *.
+.*   : Description : Distributed user id.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='USRI001'.
+:ISCH ROOTS='Distributed user id.'.Distributed user id.
+:XH3.Distributed user id.
+
+:P.
+The user id of the person who is receiving the message.
+:EHELP.
+
+.*$ZIPC      'ZIPC001'
+.*   .............................................................   *.
+.*   :                                                           :   *.
+.*   : Field       : ZIPC                                        :   *.
+.*   : Description : Zip code                                    :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='ZIPC001'.Zip code - Help
+:ISCH ROOTS='data'.Zip code
+:XH3.Zip code
+
+:P.
+Zip code.
+:EHELP.
+:EPNLGRP.

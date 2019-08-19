@@ -1,0 +1,226 @@
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /*  Program ....: OMQCHGINCP                                        */
+ /*  Description : CPP FOR COMMAND OMQCHGIN - Change Incident API.   */
+ /*  Author .....: Remain Software                                    */
+ /*  Date .......: 23 11 1996                                        */
+ /*                                                                  */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+
+ /* ---------------------------------------------------------------- */
+ /* Program                                                          */
+ /* ---------------------------------------------------------------- */
+             PGM        PARM(&ACTC &HEDC &INC# &CTN# &SHID &AIN# +
+                          &INDT &INTM &RCDT &RCTM &STRC &RES# &SUL# +
+                          &STAT &SRDT &SRTM &SEV1 &SEV2 &SEV3 &PRI# +
+                          &ESC# &IEDT &IETM &RUID &AUID &ITPC &CFL# +
+                          &CFIC &USF1 &USF2 &USF3 &THED &TINC &TAPP +
+                          &TREQ &EOPI &PCMI &CCMI &RCMI)
+
+          /* ------------------------------------------------------- */
+          /* Declare parameter-variables                             */
+          /* ------------------------------------------------------- */
+             DCL        VAR(&ACTC) TYPE(*CHAR) LEN(002)
+             DCL        VAR(&HEDC) TYPE(*CHAR) LEN(005)
+             DCL        VAR(&INC#) TYPE(*CHAR) LEN(010)
+             DCL        VAR(&CTN#) TYPE(*CHAR) LEN(010)
+             DCL        VAR(&SHID) TYPE(*CHAR) LEN(050)
+             DCL        VAR(&AIN#) TYPE(*CHAR) LEN(010)
+             DCL        VAR(&INDT) TYPE(*CHAR) LEN(007)
+             DCL        VAR(&INTM) TYPE(*CHAR) LEN(006)
+             DCL        VAR(&RCDT) TYPE(*CHAR) LEN(007)
+             DCL        VAR(&RCTM) TYPE(*CHAR) LEN(006)
+             DCL        VAR(&STRC) TYPE(*CHAR) LEN(010)
+             DCL        VAR(&RES#) TYPE(*CHAR) LEN(002)
+             DCL        VAR(&SUL#) TYPE(*CHAR) LEN(001)
+             DCL        VAR(&STAT) TYPE(*CHAR) LEN(005)
+             DCL        VAR(&SRDT) TYPE(*CHAR) LEN(007)
+             DCL        VAR(&SRTM) TYPE(*CHAR) LEN(006)
+             DCL        VAR(&SEV1) TYPE(*CHAR) LEN(005)
+             DCL        VAR(&SEV2) TYPE(*CHAR) LEN(005)
+             DCL        VAR(&SEV3) TYPE(*CHAR) LEN(005)
+             DCL        VAR(&PRI#) TYPE(*CHAR) LEN(002)
+             DCL        VAR(&ESC#) TYPE(*CHAR) LEN(002)
+             DCL        VAR(&IEDT) TYPE(*CHAR) LEN(007)
+             DCL        VAR(&IETM) TYPE(*CHAR) LEN(006)
+             DCL        VAR(&RUID) TYPE(*CHAR) LEN(010)
+             DCL        VAR(&AUID) TYPE(*CHAR) LEN(010)
+             DCL        VAR(&ITPC) TYPE(*CHAR) LEN(005)
+             DCL        VAR(&CFL#) TYPE(*CHAR) LEN(003)
+             DCL        VAR(&CFIC) TYPE(*CHAR) LEN(012)
+             DCL        VAR(&USF1) TYPE(*CHAR) LEN(010)
+             DCL        VAR(&USF2) TYPE(*CHAR) LEN(025)
+             DCL        VAR(&USF3) TYPE(*CHAR) LEN(008)
+             DCL        VAR(&THED) TYPE(*CHAR) LEN(005)
+             DCL        VAR(&TINC) TYPE(*CHAR) LEN(010)
+             DCL        VAR(&TAPP) TYPE(*CHAR) LEN(005)
+             DCL        VAR(&TREQ) TYPE(*CHAR) LEN(010)
+             DCL        VAR(&EOPI) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&UPDI) TYPE(*CHAR) LEN(1) VALUE('1')
+             DCL        VAR(&UPBI) TYPE(*CHAR) LEN(1) VALUE('1')
+             DCL        VAR(&CCMI) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&PCMI) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&RCMI) TYPE(*CHAR) LEN(1)
+
+          /* ------------------------------------------------------- */
+          /* Declare program variables                               */
+          /* ------------------------------------------------------- */
+             DCL        VAR(&INTL) TYPE(*CHAR) LEN(8)
+             DCL        VAR(&BUF)  TYPE(*CHAR) LEN(300)
+             DCL        VAR(&PRC)  TYPE(*CHAR) LEN(40)
+             DCL        VAR(&ERR)  TYPE(*CHAR) LEN(136)
+             DCL        VAR(&FLD)  TYPE(*CHAR) LEN(130)
+             DCL        VAR(&RES#1) TYPE(*CHAR) LEN(2) VALUE(X'001D')
+             DCL        VAR(&RES#2) TYPE(*CHAR) LEN(2) VALUE(X'002D')
+             DCL        VAR(&RES#3) TYPE(*CHAR) LEN(2) VALUE(X'003D')
+
+             DCL        VAR(&USF31) TYPE(*CHAR) LEN(8) +
+                          VALUE(X'000000000000001D')
+
+          /* ------------------------------------------------------- */
+          /* Monitor                                                 */
+          /* ------------------------------------------------------- */
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ERROR))
+
+ /* ---------------------------------------------------------------- */
+ /* Processing starts here                                           */
+ /* ---------------------------------------------------------------- */
+
+          /* ------------------------------------------------------- */
+          /* Close program when ACTC = 99                            */
+          /* ------------------------------------------------------- */
+             IF         COND(&ACTC *EQ '99') THEN(DO)
+             CALL       PGM(OMQCHGIN)
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+          /* ------------------------------------------------------- */
+          /* Change input buffer for special values                  */
+          /* ------------------------------------------------------- */
+             IF         COND(&RES# *EQ &RES#1) THEN(CHGVAR +
+                          VAR(&RES#) VALUE('*S'))
+             IF         COND(&RES# *EQ &RES#2) THEN(CHGVAR +
+                          VAR(&RES#) VALUE('*F'))
+             IF         COND(&RES# *EQ &RES#3) THEN(CHGVAR +
+                          VAR(&RES#) VALUE('*N'))
+
+             IF         COND(&USF3 *EQ &USF31) THEN(CHGVAR +
+                          VAR(&USF3) VALUE('*SAME   '))
+
+/* ----------------------------------------------------------------- */
+/* Initialize buffer                                                 */
+/* ----------------------------------------------------------------- */
+             CHGVAR     VAR(&INTL) VALUE('V3R0M0  ')
+             CHGVAR     VAR(&BUF)  VALUE(' ')
+             CHGVAR     VAR(&PRC)  VALUE(' ')
+             CHGVAR     VAR(&ERR)  VALUE(' ')
+             CHGVAR     VAR(&FLD)  VALUE(' ')
+
+/* ----------------------------------------------------------------- */
+/* Fill Processing indicators                                        */
+/* ----------------------------------------------------------------- */
+             CHGVAR     VAR(%SST(&PRC 1 1))   VALUE(&EOPI)
+             CHGVAR     VAR(%SST(&PRC 2 1))   VALUE(&UPDI)
+             CHGVAR     VAR(%SST(&PRC 3 1))   VALUE(&UPBI)
+             CHGVAR     VAR(%SST(&PRC 4 1))   VALUE(&PCMI)
+             CHGVAR     VAR(%SST(&PRC 5 1))   VALUE(&CCMI)
+             CHGVAR     VAR(%SST(&PRC 6 1))   VALUE(&RCMI)
+
+/* ----------------------------------------------------------------- */
+/* Fill Buffer data                                                  */
+/* ----------------------------------------------------------------- */
+             CHGVAR     VAR(%SST(&BUF   1  5)) VALUE(&HEDC)
+             CHGVAR     VAR(%SST(&BUF   6 10)) VALUE(&INC#)
+             CHGVAR     VAR(%SST(&BUF  16 10)) VALUE(&CTN#)
+             CHGVAR     VAR(%SST(&BUF  26 10)) VALUE(&AIN#)
+             CHGVAR     VAR(%SST(&BUF  36  7)) VALUE(&INDT)
+             CHGVAR     VAR(%SST(&BUF  43  6)) VALUE(&INTM)
+             CHGVAR     VAR(%SST(&BUF  49  7)) VALUE(&RCDT)
+             CHGVAR     VAR(%SST(&BUF  56  6)) VALUE(&RCTM)
+             CHGVAR     VAR(%SST(&BUF  62 10)) VALUE(&STRC)
+             CHGVAR     VAR(%SST(&BUF  72  2)) VALUE(&RES#)
+             CHGVAR     VAR(%SST(&BUF  74  1)) VALUE(&SUL#)
+             CHGVAR     VAR(%SST(&BUF  75  5)) VALUE(&STAT)
+             CHGVAR     VAR(%SST(&BUF  80  7)) VALUE(&SRDT)
+             CHGVAR     VAR(%SST(&BUF  87  6)) VALUE(&SRTM)
+             CHGVAR     VAR(%SST(&BUF  93  5)) VALUE(&SEV1)
+             CHGVAR     VAR(%SST(&BUF  98  5)) VALUE(&SEV2)
+             CHGVAR     VAR(%SST(&BUF 103  5)) VALUE(&SEV3)
+             CHGVAR     VAR(%SST(&BUF 108  2)) VALUE(&PRI#)
+             CHGVAR     VAR(%SST(&BUF 110  2)) VALUE(&ESC#)
+             CHGVAR     VAR(%SST(&BUF 112  7)) VALUE(&IEDT)
+             CHGVAR     VAR(%SST(&BUF 119  6)) VALUE(&IETM)
+             CHGVAR     VAR(%SST(&BUF 125 10)) VALUE(&RUID)
+             CHGVAR     VAR(%SST(&BUF 135 10)) VALUE(&AUID)
+             CHGVAR     VAR(%SST(&BUF 145  5)) VALUE(&ITPC)
+             CHGVAR     VAR(%SST(&BUF 150  3)) VALUE(&CFL#)
+             CHGVAR     VAR(%SST(&BUF 153 12)) VALUE(&CFIC)
+             CHGVAR     VAR(%SST(&BUF 165 10)) VALUE(&USF1)
+             CHGVAR     VAR(%SST(&BUF 175 25)) VALUE(&USF2)
+             CHGVAR     VAR(%SST(&BUF 200 08)) VALUE(&USF3)
+             CHGVAR     VAR(%SST(&BUF 208 50)) VALUE(&SHID)
+             CHGVAR     VAR(%SST(&BUF 258  5)) VALUE(&THED)
+             CHGVAR     VAR(%SST(&BUF 263 10)) VALUE(&TINC)
+             CHGVAR     VAR(%SST(&BUF 273  5)) VALUE(&TAPP)
+             CHGVAR     VAR(%SST(&BUF 278 10)) VALUE(&TREQ)
+             CHGVAR     VAR(%SST(&BUF 288 13)) VALUE(' ')
+
+/* ----------------------------------------------------------------- */
+/* Call OMS API OMQCHGIN - Change Incident                           */
+/* ----------------------------------------------------------------- */
+             CALL       PGM(OMQCHGIN) PARM(&INTL &ACTC &BUF &PRC +
+                          &ERR &FLD)
+
+/* ----------------------------------------------------------------- */
+/* Send completion message when no errors                            */
+/* ----------------------------------------------------------------- */
+             IF         COND(%SST(&ERR 8 1) *EQ ' ') THEN(DO)
+             SNDPGMMSG  MSGID(OMQA001) MSGF(OMSAPI) MSGDTA(%SST(&BUF +
+                          1 15)) MSGTYPE(*COMP)
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+/* ----------------------------------------------------------------- */
+/* When messages have been send, send them to the caller             */
+/* ----------------------------------------------------------------- */
+             IF         COND(%SST(&ERR 1 7) *EQ ' ') THEN(DO)
+
+             CALL       PGM(QMHMOVPM) PARM('    ' '*COMP     +
+                          *DIAG     *ESCAPE   *INFO     ' +
+                          X'00000004' 'OMQCHGINCP' X'00000001' +
+                          X'00000000')
+             MONMSG     MSGID(CPF0000)
+
+             ENDDO
+
+/* ----------------------------------------------------------------- */
+/* Send message when error or warning                                */
+/* ----------------------------------------------------------------- */
+             IF         COND(%SST(&ERR 1 7) *EQ ' ') THEN(SNDPGMMSG +
+                          MSGID(OMQ5020) MSGF(OMSAPI) +
+                          MSGDTA(OMQCHGIN) MSGTYPE(*ESCAPE))
+             ELSE       CMD(SNDPGMMSG MSGID(%SST(&ERR 1 7)) +
+                          MSGF(OMSAPI) MSGDTA(%SST(&ERR 9 128)) +
+                          MSGTYPE(*ESCAPE))
+
+/* ----------------------------------------------------------------- */
+/* Go to end of program                                              */
+/* ----------------------------------------------------------------- */
+             GOTO       CMDLBL(ENDPGM)
+
+/* ----------------------------------------------------------------- */
+/* An error occured                                                  */
+/* ----------------------------------------------------------------- */
+ ERROR:
+             SNDPGMMSG  MSGID(OMQ5012) MSGF(OMSAPI) +
+                          MSGDTA('OMQCHGIN') MSGTYPE(*ESCAPE)
+             MONMSG     MSGID(CPF0000)
+             RETURN
+
+/* ----------------------------------------------------------------- */
+/* End of Program                                                    */
+/* ----------------------------------------------------------------- */
+ ENDPGM:
+             RETURN
+             ENDPGM

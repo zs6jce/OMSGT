@@ -1,0 +1,125 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: OMH041                                      :   *.
+.*   : Help for ...: Mail extension maintenance                  :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   : This panelgroup contains the U.I.M. help texts for        :   *.
+.*   : Mail extension maintenance                                :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:PNLGRP.
+:IMPORT PNLGRP=OMSREFHD      NAME='*'.
+
+.*   .............................................................   *.
+.*   : General help for Mail extension maintenance               :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=OMH041.Mail extension maintenance - Help
+:XH3.Mail extension maintenance
+:ISCH ROOTS='mail extension maintenance'.
+Mail extension maintenance
+
+:P.
+Mail extension is the definition of a number of elements belonging
+to the domain of electronic mail. Mail extensions can be found at
+system, contact, customer or contact level.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 1                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH04104.General Help For Display 1
+
+:XH3.Display 1 - Maintain Helpdesk Definition
+
+:P.
+:LINK PERFORM='DSPHELP OMH041'.
+General Information.
+:ELINK.
+
+:P.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMEXTI (External interface indicator)          :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 08 028  08 028                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH04104/FMEXTI'.External interface indicator - Help
+
+:P.
+:IMHELP NAME='EXTI001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMEEMC (External e-mail adress)                :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 09 028  09 077                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH04104/FMEEMC'.External e-mail adress - Help
+
+:P.
+:IMHELP NAME='EEMC001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH04104/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F3=Exit
+:PD.
+Press F3 to end the current task and return to the display
+where you began the task. Any options or changes that you
+keyed on input prompts
+:CIT.since the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F5=Refresh
+:PD.
+Press F5 to refresh the display you are currently working
+on with the (new) values from the OMS database. This is
+sometimes necessary if fields have been changed but the
+changes are not directly reflected on the display.
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+
+:PT.F23=Delete
+:PD.
+Press F23 to remove this entry. Note that all the defined
+mail template will be removed as well.
+
+
+:PT.Roll up
+:PD.
+Use the roll up key to watch the templates per action.
+Activation of this key is shown
+by a :HP2.+:EHP2. charachter or the text :HP2.'More...':EHP2. in the
+bottom rigth corner of the display or list.
+
+:EPARML.
+:EHELP.
+:EPNLGRP.

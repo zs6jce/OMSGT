@@ -1,0 +1,297 @@
+      *$$\CRTOM CRTDSPF
+      *$$\ENDOM
+     A*%%TS  SD  19970819  085324  JAN         REL-V3R1M0  5763-PW1
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      REF(*LIBL/OMSREFHD)
+     A                                      CHGINPDFT
+     A                                      HLPTITLE('Remain Software')
+     A                                      HLPSCHIDX(*LIBL/REMAINHD)
+     A                                      HELP
+     A                                      PRINT(*LIBL/QSYSPRT)
+     A                                      ALTHELP(CA01)
+     A          R OMH01601                  SFL
+     A*%%TS  SD  19970818  172019  JAN         REL-V3R1M0  5763-PW1
+     A                                      TEXT('Work with Escalations (subfil-
+     A                                      e)')
+     A  93                                  SFLNXTCHG
+     A            FMOPTI         1A  B 13  3TEXT('Option field')
+     A                                      DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A            FMSUL#    R        O 13  7REFFLD(SUL#)
+     A            FMSTAT    R        O 13 10REFFLD(STAT)
+     A            FMPRL#    R        O 13 18REFFLD(PRL#)
+     A                                      EDTCDE(3)
+     A            FMPRH#    R        O 13 24REFFLD(PRH#)
+     A                                      EDTCDE(3)
+     A            FMDYS#    R        O 13 40REFFLD(DYS#)
+     A                                      EDTCDE(3)
+     A            FMHRS#    R    3S00O 13 47REFFLD(HRS#)
+     A                                      EDTCDE(3)
+     A            FMPIN#    R        O 13 32REFFLD(PIN#)
+     A                                      EDTCDE(3)
+     A            FMPGMN    R        O 13 53REFFLD(PGMN)
+     A            FMLIBC    R        O 13 64REFFLD(LIBC)
+     A            FMEOEI    R        O 13 77REFFLD(EOEI)
+     A          R OMH01602                  SFLCTL(OMH01601)
+     A*%%TS  SD  19970814  145636  JAN         REL-V3R1M0  5763-PW1
+     A                                      SFLSIZ(0009)
+     A                                      SFLPAG(0008)
+     A                                      TEXT('Work with Escalations')
+     A                                      CF03
+     A                                      CF05
+     A                                      CF06
+     A                                      CF12
+     A  92                                  ROLLUP
+     A                                      KEEP
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A                                      OVERLAY
+     A                                      ERASE(OMH01601)
+     A  90                                  SFLDSP
+     A                                      SFLDSPCTL
+     A  91                                  SFLCLR
+     A N92                                  SFLEND(*MORE)
+     A                                      HLPCLR
+     A          H                           HLPPNLGRP(OMH01602 OMH016)
+     A                                      HLPARA(01 002 01 002)
+     A          H                           HLPPNLGRP('OMH01602/FMPOS1' OMH016)
+     A                                      HLPARA(07 028 07 028)
+     A          H                           HLPPNLGRP('OMH01602/FMPOS2' OMH016)
+     A                                      HLPARA(07 030 07 034)
+     A          H                           HLPPNLGRP('OMH01601/FMOPTI' OMH016)
+     A                                      HLPARA(13 003 20 003)
+     A          H                           HLPPNLGRP('OMH01602/KEYS' OMH016)
+     A                                      HLPARA(23 001 23 080)
+     A            FMFLDC        10A  H
+     A            FMFMTC        10A  H
+     A            CRRN01         4S 0H      SFLRCDNBR(CURSOR)
+     A                                  1  2'OMH016  '
+     A            MH01600       50A  O  1 16TEXT('Escalation Maintenance')
+     A                                      MSGID(MH0 1600 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH01601'
+     A            MH01601       50A  O  2 16TEXT('Work with Escalations')
+     A                                      MSGID(MH0 1601 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            HED0001       25A  O  5  2TEXT('HelpDesk code')
+     A                                      MSGID(HED 0001 OMHDSP)
+     A            FMHEDC    R        O  5 28REFFLD(HEDC)
+     A                                      TEXT('HelpDesk code')
+     A                                      DSPATR(HI)
+     A            FMHEDD    R   40   O  5 35REFFLD(HEDD)
+     A                                      TEXT('HelpDesk Description')
+     A                                      DSPATR(HI)
+     A            POS0001       25A  O  7  2TEXT('Position at')
+     A                                      MSGID(POS 0001 OMHDSP)
+     A            FMPOS1    R        B  7 28REFFLD(SUL#)
+     A                                      DSPATR(UL)
+     A            FMPOS2    R        B  7 30REFFLD(STAT)
+     A                                      DSPATR(UL)
+     A            MH01604       70A  O  9  2TEXT('Options')
+     A                                      MSGID(MH0 1604 OMHDSP)
+     A                                      COLOR(BLU)
+     A            MH01607       79A  O 11  2TEXT('Subfile header 1')
+     A                                      MSGID(MH0 1607 OMHDSP)
+     A                                      DSPATR(HI)
+     A            MH01602       79A  O 12  2TEXT('Subfile header 2')
+     A                                      MSGID(MH0 1602 OMHDSP)
+     A                                      DSPATR(HI)
+     A          R OMH01603
+     A*%%TS  SD  19961011  152107  EWOUT       REL-V3R1M0  5763-PW1
+     A                                      TEXT('Work with Escalations (foo-
+     A                                      ter)')
+     A                                      CF03
+     A                                      CF05
+     A                                      CF06
+     A                                      CF12
+     A                                      ROLLUP(92)
+     A                                      OVERLAY
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            MH01603       78A  O 23  2TEXT('F3/F5/F6/F12')
+     A                                      MSGID(MH0 1603 OMHDSP)
+     A                                      COLOR(BLU)
+     A          R OMH01604
+     A*%%TS  SD  19970819  085324  JAN         REL-V3R1M0  5763-PW1
+     A                                      TEXT('Maintain Escalation')
+     A                                      CF03
+     A                                      CF12
+     A N80
+     AON81                                  CF04
+     A                                      CHANGE(40)
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A                                      INVITE
+     A                                      OVERLAY
+     A                                      HLPCLR
+     A          H                           HLPPNLGRP(OMH01604 OMH016)
+     A                                      HLPARA(01 002 01 002)
+     A          H                           HLPPNLGRP('OMH01604/FMSULY' OMH016)
+     A                                      HLPARA(07 028 07 028)
+     A          H                           HLPPNLGRP('OMH01604/FMSTAT' OMH016)
+     A                                      HLPARA(08 028 08 032)
+     A          H                           HLPPNLGRP('OMH01604/FMPRLY' OMH016)
+     A                                      HLPARA(10 028 10 030)
+     A          H                           HLPPNLGRP('OMH01604/FMPRHY' OMH016)
+     A                                      HLPARA(11 028 11 030)
+     A          H                           HLPPNLGRP('OMH01604/FMDYSY' OMH016)
+     A                                      HLPARA(13 028 13 030)
+     A          H                           HLPPNLGRP('OMH01604/FMHRSY' OMH016)
+     A                                      HLPARA(14 028 14 030)
+     A          H                           HLPPNLGRP('OMH01604/FMPINY' OMH016)
+     A                                      HLPARA(16 028 16 030)
+     A          H                           HLPPNLGRP('OMH01604/FMPGMN' OMH016)
+     A                                      HLPARA(18 028 18 038)
+     A          H                           HLPPNLGRP('OMH01604/FMLIBC' OMH016)
+     A                                      HLPARA(19 028 19 038)
+     A          H                           HLPPNLGRP('OMH01604/FMEOEI' OMH016)
+     A                                      HLPARA(20 028 20 030)
+     A          H                           HLPPNLGRP('OMH01604/KEYS' OMH016)
+     A                                      HLPARA(23 001 23 080)
+     A            FMFMTC        10A  H
+     A            FMFLDC        10A  H
+     A                                  1  2'OMH016  '
+     A            MH01600       50A  O  1 16TEXT('Escalation Maintenance')
+     A                                      MSGID(MH0 1600 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH01602'
+     A            MH01606       50A  O  2 16TEXT('Maintain Escalation')
+     A                                      MSGID(MH0 1606 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A N80N81     ACT0001       10A  O  4  2MSGID(ACT 0001 OMHDSP)
+     A                                      DSPATR(RI)
+     A  80N81     ACT0002       10A  O  4  2MSGID(ACT 0002 OMHDSP)
+     A                                      DSPATR(RI)
+     A  80 81     ACT0003       10A  O  4  2MSGID(ACT 0003 OMHDSP)
+     A                                      DSPATR(RI)
+     A            HED0001       25A  O  5  2TEXT('HelpDesk code')
+     A                                      MSGID(HED 0001 OMHDSP)
+     A            FMHEDC    R        O  5 28REFFLD(HEDC)
+     A                                      TEXT('HelpDesk code')
+     A                                      DSPATR(HI)
+     A            FMHEDD    R   40   O  5 40REFFLD(HEDD)
+     A                                      TEXT('HelpDesk Description')
+     A                                      DSPATR(HI)
+     A            SUP0002       25A  O  7  2TEXT('Support level')
+     A                                      MSGID(SUP 0002 OMHDSP)
+     A            FMSUL#    R        B  7 28REFFLD(SUL#)
+     A  81                                  DSPATR(HI)
+     A  70                                  DSPATR(RI)
+     A N81                                  DSPATR(UL)
+     A  70                                  DSPATR(PC)
+     A  81                                  DSPATR(PR)
+     A            STA0001       25A  O  8  2TEXT('Status')
+     A                                      MSGID(STA 0001 OMHDSP)
+     A N81        PMT0001       25A  O  8 40TEXT('F4=Prompt')
+     A                                      MSGID(PMT 0001 OMHDSP)
+     A            FMSTAT    R        B  8 28REFFLD(STAT)
+     A  81                                  DSPATR(HI)
+     A  71                                  DSPATR(RI)
+     A N81                                  DSPATR(UL)
+     A  71                                  DSPATR(PC)
+     A  81                                  DSPATR(PR)
+     A            PRL0001       25A  O 10  2TEXT('Priority range low')
+     A                                      MSGID(PRL 0001 OMHDSP)
+     A            FMPRL#    R        B 10 28REFFLD(PRL#)
+     A  81                                  DSPATR(HI)
+     A  72                                  DSPATR(RI)
+     A N81                                  DSPATR(UL)
+     A  72                                  DSPATR(PC)
+     A  81                                  DSPATR(PR)
+     A                                      EDTCDE(3)
+     A            PRH0001       25A  O 11  2TEXT('Priority range high')
+     A                                      MSGID(PRH 0001 OMHDSP)
+     A            FMPRH#    R        B 11 28REFFLD(PRH#)
+     A  81                                  DSPATR(HI)
+     A  73                                  DSPATR(RI)
+     A N81                                  DSPATR(UL)
+     A  73                                  DSPATR(PC)
+     A  81                                  DSPATR(PR)
+     A                                      EDTCDE(3)
+     A            DYS0001       25A  O 13  2TEXT('Number of days')
+     A                                      MSGID(DYS 0001 OMHDSP)
+     A            FMDYS#    R        B 13 28REFFLD(DYS#)
+     A  81                                  DSPATR(HI)
+     A  74                                  DSPATR(RI)
+     A N81                                  DSPATR(UL)
+     A  74                                  DSPATR(PC)
+     A  81                                  DSPATR(PR)
+     A                                      EDTCDE(3)
+     A            HRS0006       25A  O 14  2TEXT('Number of hours')
+     A                                      MSGID(HRS 0006 OMHDSP)
+     A            FMHRS#    R    3S00B 14 28REFFLD(HRS#)
+     A  81                                  DSPATR(HI)
+     A  75                                  DSPATR(RI)
+     A N81                                  DSPATR(UL)
+     A  75                                  DSPATR(PC)
+     A  81                                  DSPATR(PR)
+     A                                      EDTCDE(3)
+     A            PIN0001       25A  O 16  2TEXT('Priority increment')
+     A                                      MSGID(PIN 0001 OMHDSP)
+     A            FMPIN#    R        B 16 28REFFLD(PIN#)
+     A  81                                  DSPATR(HI)
+     A  76                                  DSPATR(RI)
+     A N81                                  DSPATR(UL)
+     A  76                                  DSPATR(PC)
+     A  81                                  DSPATR(PR)
+     A                                      EDTCDE(3)
+     A            FMPGMN    R        B 18 28REFFLD(PGMN)
+     A  81                                  DSPATR(HI)
+     A  81                                  DSPATR(PR)
+     A N81                                  DSPATR(UL)
+     A  77                                  DSPATR(RI)
+     A  77                                  DSPATR(PC)
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            MH01605       78A  O 23  2TEXT('F3=Exit  F12=Cancel')
+     A                                      MSGID(MH0 1605 OMHDSP)
+     A                                      COLOR(BLU)
+     A            PGM001        25A  O 18  2MSGID(PGM 0002 OMHDSP)
+     A            LIB002        25A  O 19  2MSGID(LIB 0002 OMHDSP)
+     A            ENT001        25   O 20  2MSGID(ENT 0001 OMHDSP)
+     A            FMLIBC    R        B 19 28REFFLD(LIBC)
+     A  81                                  DSPATR(HI)
+     A  81                                  DSPATR(PR)
+     A N81                                  DSPATR(UL)
+     A  78                                  DSPATR(RI)
+     A  78                                  DSPATR(PC)
+     A            FMEOEI    R        B 20 28REFFLD(EOEI)
+     A  81                                  DSPATR(HI)
+     A  81                                  DSPATR(PR)
+     A N81                                  DSPATR(UL)
+     A  79                                  DSPATR(RI)
+     A  79                                  DSPATR(PC)
+     A N81        CHO058        40A  O 20 40MSGID(CHO 0058 OMHDSP)
+     A N81        CHO063        25A  O 19 40MSGID(CHO 0063 OMHDSP)
+     A          R MSGSFL
+     A                                      SFL SFLMSGRCD(24)
+     A            MSGKEY                    SFLMSGKEY
+     A            PGMQ                      SFLPGMQ
+     A          R MSGCTL
+     A                                      SFLCTL(MSGSFL)
+     A                                      SFLINZ
+     A                                      SFLSIZ(2)
+     A                                      SFLPAG(1)
+     A                                      SFLDSP
+     A                                      SFLDSPCTL
+     A N91                                  SFLEND
+     A                                      OVERLAY
+     A            PGMQ                      SFLPGMQ

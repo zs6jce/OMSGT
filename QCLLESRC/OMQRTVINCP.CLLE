@@ -1,0 +1,272 @@
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /*  Program ....: OMQRTVINCP                                        */
+ /*  Description : CPP for retrieve incident by API                  */
+ /*  Author .....: Remain Software                                    */
+ /*  Module .....: HelpDesk                                          */
+ /*  Date .......: 6-2-1997                                          */
+ /*                                                                  */
+ /*  Input ......: &HEDC       - HelpDesk Code                       */
+ /*                &INC#       - Incident number                     */
+ /*                                                                  */
+ /*  Output .....: &CTN#       - Call track number                   */
+ /*                &AIN#       - Accumulated inc. number             */
+ /*                &INDT       - Incoming date                       */
+ /*                &INTM       - Incoming time                       */
+ /*                &RCDT       - Completion date                     */
+ /*                &RCTM       - Completion time                     */
+ /*                &STRC       - Status route code                   */
+ /*                &RES#       - Route entry sequence                */
+ /*                &SUL#       - Support level                       */
+ /*                &STAT       - Status                              */
+ /*                &SRDT       - Status date                         */
+ /*                &SRTM       - Status time                         */
+ /*                &SEV1       - Severity 1                          */
+ /*                &SEV2       - Severity 2                          */
+ /*                &SEV3       - Severity 3                          */
+ /*                &PRI#       - Priority                            */
+ /*                &ESC#       - Escalation counter                  */
+ /*                &IEDT       - Escalation date                     */
+ /*                &IETM       - Escalation time                     */
+ /*                &RUID       - Registered by user                  */
+ /*                &AUID       - Allocated by user                   */
+ /*                &ITPC       - Type code                           */
+ /*                &CFL#       - Configuration list number           */
+ /*                &CFIC       - Configuration item                  */
+ /*                &USF1       - User field 1                        */
+ /*                &USF2       - User field 2                        */
+ /*                &USF3       - User field 3                        */
+ /*                &SHID       - Short description                   */
+ /*                                                                  */
+ /*  Description : This program is the command processor for         */
+ /*  program OMQRTVIN.                                               */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+             PGM        PARM(&HEDC &INC# &CTN# &AIN# &INDT &INTM +
+                          &RCDT &RCTM &STRC &RES# &SUL# &STAT &SRDT +
+                          &SRTM &SEV1 &SEV2 &SEV3 &PRI# &ESC# &IEDT +
+                          &IETM &RUID &AUID &ITPC &CFL# &CFIC &USF1 +
+                          &USF2 &USF3 &SHID)
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+ /* Declare the varaibles                                            */
+ /* ------------------------- -------------------------------------- */
+             DCL        VAR(&HEDC)    TYPE(*CHAR) LEN(5)
+             DCL        VAR(&INC#)    TYPE(*CHAR) LEN(10)
+             DCL        VAR(&CTN#)    TYPE(*CHAR) LEN(10)
+             DCL        VAR(&AIN#)    TYPE(*CHAR) LEN(10)
+             DCL        VAR(&INDT)    TYPE(*DEC) LEN(7 0)
+             DCL        VAR(&INTM)    TYPE(*DEC) LEN(6 0)
+             DCL        VAR(&RCDT)    TYPE(*DEC) LEN(7 0)
+             DCL        VAR(&RCTM)    TYPE(*DEC) LEN(6 0)
+             DCL        VAR(&STRC)    TYPE(*CHAR) LEN(10)
+             DCL        VAR(&RES#)    TYPE(*DEC) LEN(3 0)
+             DCL        VAR(&SUL#)    TYPE(*CHAR) LEN(1)
+             DCL        VAR(&STAT)    TYPE(*CHAR) LEN(5)
+             DCL        VAR(&SRDT)    TYPE(*DEC) LEN(7 0)
+             DCL        VAR(&SRTM)    TYPE(*DEC) LEN(6 0)
+             DCL        VAR(&SEV1)    TYPE(*CHAR) LEN(5)
+             DCL        VAR(&SEV2)    TYPE(*CHAR) LEN(5)
+             DCL        VAR(&SEV3)    TYPE(*CHAR) LEN(5)
+             DCL        VAR(&PRI#)    TYPE(*DEC) LEN(3 0)
+             DCL        VAR(&ESC#)    TYPE(*DEC) LEN(3 0)
+             DCL        VAR(&IEDT)    TYPE(*DEC) LEN(7 0)
+             DCL        VAR(&IETM)    TYPE(*DEC) LEN(6 0)
+             DCL        VAR(&RUID)    TYPE(*CHAR) LEN(10)
+             DCL        VAR(&AUID)    TYPE(*CHAR) LEN(10)
+             DCL        VAR(&ITPC)    TYPE(*CHAR) LEN(5)
+             DCL        VAR(&CFL#)    TYPE(*DEC) LEN(5 0)
+             DCL        VAR(&CFIC)    TYPE(*CHAR) LEN(12)
+             DCL        VAR(&USF1)    TYPE(*CHAR) LEN(10)
+             DCL        VAR(&USF2)    TYPE(*CHAR) LEN(25)
+             DCL        VAR(&USF3)    TYPE(*DEC) LEN(15 0)
+             DCL        VAR(&SHID)    TYPE(*CHAR) LEN(50)
+
+ /* ---------------------------------------------------------------- */
+ /* Declare the parameters for OMQRTVIN                              */
+ /* ---------------------------------------------------------------- */
+             DCL        VAR(&I@CTN#)  TYPE(*CHAR) LEN(10)
+             DCL        VAR(&I@AIN#)  TYPE(*CHAR) LEN(10)
+             DCL        VAR(&I@INDT)  TYPE(*DEC) LEN(7 0)
+             DCL        VAR(&I@INTM)  TYPE(*DEC) LEN(6 0)
+             DCL        VAR(&I@RCDT)  TYPE(*DEC) LEN(7 0)
+             DCL        VAR(&I@RCTM)  TYPE(*DEC) LEN(6 0)
+             DCL        VAR(&I@STRC)  TYPE(*CHAR) LEN(10)
+             DCL        VAR(&I@RES#)  TYPE(*DEC) LEN(3 0)
+             DCL        VAR(&I@SUL#)  TYPE(*CHAR) LEN(1)
+             DCL        VAR(&I@STAT)  TYPE(*CHAR) LEN(5)
+             DCL        VAR(&I@SRDT)  TYPE(*DEC) LEN(7 0)
+             DCL        VAR(&I@SRTM)  TYPE(*DEC) LEN(6 0)
+             DCL        VAR(&I@SEV1)  TYPE(*CHAR) LEN(5)
+             DCL        VAR(&I@SEV2)  TYPE(*CHAR) LEN(5)
+             DCL        VAR(&I@SEV3)  TYPE(*CHAR) LEN(5)
+             DCL        VAR(&I@PRI#)  TYPE(*DEC) LEN(3 0)
+             DCL        VAR(&I@ESC#)  TYPE(*DEC) LEN(3 0)
+             DCL        VAR(&I@IEDT)  TYPE(*DEC) LEN(7 0)
+             DCL        VAR(&I@IETM)  TYPE(*DEC) LEN(6 0)
+             DCL        VAR(&I@RUID)  TYPE(*CHAR) LEN(10)
+             DCL        VAR(&I@AUID)  TYPE(*CHAR) LEN(10)
+             DCL        VAR(&I@ITPC)  TYPE(*CHAR) LEN(5)
+             DCL        VAR(&I@CFL#)  TYPE(*DEC) LEN(5 0)
+             DCL        VAR(&I@CFIC)  TYPE(*CHAR) LEN(12)
+             DCL        VAR(&I@USF1)  TYPE(*CHAR) LEN(10)
+             DCL        VAR(&I@USF2)  TYPE(*CHAR) LEN(25)
+             DCL        VAR(&I@USF3)  TYPE(*DEC) LEN(15 0)
+             DCL        VAR(&I@SHID)  TYPE(*CHAR) LEN(50)
+             DCL        VAR(&I@ERR)   TYPE(*CHAR) LEN(136)
+
+/* ----------------------------------------------------------------- */
+/* Program initialisation                                            */
+/* ----------------------------------------------------------------- */
+
+          /* ------------------------------------------------------- */
+          /* Install the error monitor                               */
+          /* ------------------------------------------------------- */
+             MONMSG     MSGID(CPF0000 MCH0000) EXEC(GOTO CMDLBL(ERROR))
+
+ /* ---------------------------------------------------------------- */
+ /* Call the retrieve API                                            */
+ /* ---------------------------------------------------------------- */
+             CALL       PGM(OMQRTVIN) PARM(&HEDC &INC# &I@CTN# +
+                          &I@AIN# &I@INDT &I@INTM &I@RCDT &I@RCTM +
+                          &I@STRC &I@RES# &I@SUL# &I@STAT &I@SRDT +
+                          &I@SRTM &I@SEV1 &I@SEV2 &I@SEV3 &I@PRI# +
+                          &I@ESC# &I@IEDT &I@IETM &I@RUID &I@AUID +
+                          &I@ITPC &I@CFL# &I@CFIC &I@USF1 &I@USF2 +
+                          &I@USF3 &I@SHID &I@ERR +
+                          '1000000000000000')
+
+/* ----------------------------------------------------------------- */
+/* Fill the output parameters if no error.                           */
+/* ----------------------------------------------------------------- */
+             IF         COND(%SST(&I@ERR 8 1) *NE 'E') THEN(DO)
+
+             CHGVAR     VAR(&CTN#) VALUE(&I@CTN#)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&AIN#) VALUE(&I@AIN#)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&INDT) VALUE(&I@INDT)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&INTM) VALUE(&I@INTM)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&RCDT) VALUE(&I@RCDT)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&RCTM) VALUE(&I@RCTM)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&STRC) VALUE(&I@STRC)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&RES#) VALUE(&I@RES#)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&SUL#) VALUE(&I@SUL#)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&STAT) VALUE(&I@STAT)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&SRDT) VALUE(&I@SRDT)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&SRTM) VALUE(&I@SRTM)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&SEV1) VALUE(&I@SEV1)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&SEV2) VALUE(&I@SEV2)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&SEV3) VALUE(&I@SEV3)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&PRI#) VALUE(&I@PRI#)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&ESC#) VALUE(&I@ESC#)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&IEDT) VALUE(&I@IEDT)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&IETM) VALUE(&I@IETM)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&RUID) VALUE(&I@RUID)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&AUID) VALUE(&I@AUID)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&ITPC) VALUE(&I@ITPC)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&CFL#) VALUE(&I@CFL#)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&CFIC) VALUE(&I@CFIC)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&USF1) VALUE(&I@USF1)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&USF2) VALUE(&I@USF2)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&USF3) VALUE(&I@USF3)
+             MONMSG     MSGID(MCH3601)
+
+             CHGVAR     VAR(&SHID) VALUE(&I@SHID)
+             MONMSG     MSGID(MCH3601)
+
+             ENDDO
+
+/* ----------------------------------------------------------------- */
+/* Handle return messages                                            */
+/* ----------------------------------------------------------------- */
+
+          /* ------------------------------------------------------- */
+          /* Clear this programs message queue                       */
+          /* ------------------------------------------------------- */
+             RMVMSG     CLEAR(*ALL)
+
+          /* ------------------------------------------------------- */
+          /* Error                                                   */
+          /* ------------------------------------------------------- */
+             IF         COND(%SST(&I@ERR 8 1) *EQ 'E') THEN(DO)
+             SNDPGMMSG  MSGID(%SST(&I@ERR 1 7)) MSGF(OMSAPI) +
+                          MSGDTA(%SST(&I@ERR 9 128)) MSGTYPE(*ESCAPE)
+             ENDDO
+
+          /* ------------------------------------------------------- */
+          /* Warning                                                 */
+          /* ------------------------------------------------------- */
+             IF         COND(%SST(&I@ERR 8 1) *EQ 'W') THEN(DO)
+             SNDPGMMSG  MSGID(%SST(&I@ERR 1 7)) MSGF(OMSAPI) +
+                          MSGDTA(%SST(&I@ERR 9 128)) MSGTYPE(*COMP)
+             ENDDO
+
+/* ----------------------------------------------------------------- */
+/* Exit.                                                             */
+/* ----------------------------------------------------------------- */
+             GOTO       CMDLBL(ENDPGM)
+
+/* ----------------------------------------------------------------- */
+/* An error occured                                                  */
+/* ----------------------------------------------------------------- */
+ ERROR:
+             SNDPGMMSG  MSGID(OMQ5012) MSGF(OMSAPI) +
+                          MSGDTA('OMQRTVIN') MSGTYPE(*ESCAPE)
+
+ /* ---------------------------------------------------------------- */
+ /* End of program                                                   */
+ /* ---------------------------------------------------------------- */
+ ENDPGM:
+             RETURN
+             ENDPGM

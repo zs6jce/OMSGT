@@ -1,0 +1,35 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMINC                                         *
+      * Module .....: Incident text headers                         *
+      * Module .....: HelpDesk                                      *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * This file contains the incident text headers                *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMTIHR
+      * ------------------------------------------------------------ *
+                R OMTIHR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  IHHEDC    R               REFFLD(HEDC)
+                  IHINC#    R               REFFLD(INC#)
+                  IHITH#    R               REFFLD(ITH#)
+                  IHITXT    R               REFFLD(ITXT)
+                  IHINDT    R               REFFLD(INDT)
+                  IHINTM    R               REFFLD(INTM)
+                  IHSUL#    R               REFFLD(SUL#)
+                  IHUSID    R               REFFLD(USID)
+                  IHSITD    R               REFFLD(SITD)

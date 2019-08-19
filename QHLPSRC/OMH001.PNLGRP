@@ -1,0 +1,405 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: OMH001                                      :   *.
+.*   : Help for ...: Helpdesk Maintenance                        :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   : This panelgroup contains the U.I.M. help texts for        :   *.
+.*   : Helpdesk Maintenance                                      :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:PNLGRP.
+:IMPORT PNLGRP=OMSREFHD      NAME='*'.
+
+.*   *************************************************************   *.
+.*   * Helpdesk Maintenance                                      *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=STRHDM.Helpdesk Maintenance - Help
+
+:IMHELP NAME=STRHDMGEN.
+
+:P.
+Select one of the following:
+
+:P.
+:LINK PERFORM='DSPHELP OMH00102IX'.
+Display 1 - Work with Helpdesk Definitions
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP OMH00104IX'.
+Display 2 - Maintain Helpdesk Definition
+:ELINK.
+
+:EHELP.
+
+:HELP NAME=OMH00102IX.General Help For Display 1
+:IMHELP NAME=OMH00102.
+:IMHELP NAME='OMH00102/FMPOSI'.
+:IMHELP NAME='OMH00101/FMOPT1'.
+:IMHELP NAME='OMH00102/KEYS'.
+:EHELP.
+
+:HELP NAME=OMH00104IX.General Help For Display 2
+:IMHELP NAME=OMH00104.
+:IMHELP NAME='OMH00104/FMHEDC'.
+:IMHELP NAME='OMH00104/FMHEDD'.
+:IMHELP NAME='OMH00104/FMHDMC'.
+:IMHELP NAME='OMH00104/FMCCTN'.
+:IMHELP NAME='OMH00104/FMICTN'.
+:IMHELP NAME='OMH00104/FMCINC'.
+:IMHELP NAME='OMH00104/FMIINC'.
+:IMHELP NAME='OMH00104/FMISFL'.
+:IMHELP NAME='OMH00104/FMCTFP'.
+:IMHELP NAME='OMH00104/FMCTFL'.
+:IMHELP NAME='OMH00104/FMINFP'.
+:IMHELP NAME='OMH00104/FMINFL'.
+:IMHELP NAME='OMH00104/KEYS'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : General help for Helpdesk Maintenance                     :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=STRHDMGEN.Helpdesk Maintenance - Help
+:XH3.Helpdesk Maintenance
+:ISCH ROOTS='helpdesk maintenance'.
+Helpdesk Maintenance
+
+:P.
+The HelpDesk maintenance function can be used to manage the global
+helpdesk parameters. You can specify the HelpDesk manager and you
+can define some exit programs.
+
+:P.
+Almost all data you specify is in one way or another related to a
+HelpDesk code. Please consult the
+:LINK PERFORM='DSPHELP OMSCONHD OMSCONHD'.
+concepts
+:ELINK.
+For more information.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 1                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH00102.General Help For Display 1
+
+:XH3.Display 1 - Work with Helpdesk Definitions
+
+:P.
+:LINK PERFORM='DSPHELP STRHDM'.
+General Information.
+:ELINK.
+
+:P.
+The :PK.Work with HelpDesk Definitions:EPK. display enables you to
+select a HelpDesk for further processing. The list shows all
+defined HelpDesk codes.
+
+:P.
+Almost all data in the HelpDesk system is related to the HelpDesk
+code.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMPOSI (Position at)                           :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 05 028  05 032                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00102/FMPOSI'.
+:IMHELP NAME='HEDC001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMOPT1 (Option field)                          :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 10 002  20 003                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00101/FMOPT1'.Option field - Help
+
+:XH3.Option field
+:P.
+These are the list options. The options all act on a
+specific HelpDesk code. The following options are available;
+
+:PARML.
+:PT.2=Change
+:PD.
+This option is used to change some of the attributes of the
+HelpDesk.
+:PT.3=Copy
+:PD.
+Use option 3 to copy the HelpDesk definition. Nothing is copied
+except the HelpDesk definition.
+:PT.4=Delete
+:PD.
+Use option 4 to delete the HelpDesk definition.
+:PT.5=Display
+:PD.
+Use option 5 to display the definitions.
+:PT.8=Mail extensions.
+:PD.
+Use option 8 to work with the Mail extensions.
+:PT.12=Work with Employees
+:PD.
+Use option 12 to work with Employees.
+:EPARML.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00102/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F3=Exit
+:PD.
+Press F3 to end the current task and return to the display
+where you began the task. Any options or changes that you
+keyed on input prompts
+:CIT.since the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F5=Refresh
+:PD.
+Press F5 to refresh the display you are currently working
+on with the (new) values from the OMS database. This is
+sometimes necessary if fields have been changed but the
+changes are not directly reflected on the display.
+
+:PT.F6=Add
+:PD.
+Press F6 to create a new HelpDesk.
+
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+
+:PT.F23=More options
+:PD.
+Press F23 to have the remaining options displayed.
+
+:PT.Roll Keys
+:PD.
+Use the rollkeys to display the next or previous page of the display
+you are currently viewing. If more data is available is indicated
+by a :HP2.+:EHP2. charachter or the text :HP2.'More...':EHP2. in the
+bottom rigth corner of the display or list.
+
+:EPARML.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 2                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH00104.General Help For Display 2
+
+:XH3.Display 2 - Maintain Helpdesk Definition
+
+:P.
+:LINK PERFORM='DSPHELP STRHDM'.
+General Information.
+:ELINK.
+
+:P.
+The :PK.Maintain HelpDesk Definition:EPK. display enables you to
+perform the selected action on the HelpDesk. You are able to
+remove the HelpDesk from the list, change attributes of an
+HelpDesk or copy the definitions of one HelpDesk to another.
+
+:P.
+Press Help on an HelpDesk attribute if you require more information.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMHEDC (Helpdesk code)                         :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 06 028  06 032                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00104/FMHEDC'.
+:IMHELP NAME='HEDC001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMHEDD (Description)                           :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 028  07 077                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00104/FMHEDD'.
+:IMHELP NAME='HEDD001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMHDMC (Manager)                               :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 09 028  09 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00104/FMHDMC'.
+:IMHELP NAME='HDMC001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMCCTN (Call track number)                     :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 11 028  11 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00104/FMCCTN'.
+:IMHELP NAME='CTN_001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMICTN (Increment)                             :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 12 028  12 029                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00104/FMICTN'.
+:IMHELP NAME='INCR001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMCINC (Incident number)                       :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 13 028  13 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00104/FMCINC'.
+:IMHELP NAME='INC_001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMIINC (Increment)                             :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 14 028  14 029                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00104/FMIINC'.
+:IMHELP NAME='INCR001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMISFL (Incident spool file library)           :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 16 028  16 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00104/FMISFL'.
+:IMHELP NAME='ISFL001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMCTFP (Call track program)                    :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 17 028  17 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00104/FMCTFP'.
+:IMHELP NAME='CTFP001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMCTFL (Call track library)                    :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 18 028  18 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00104/FMCTFL'.
+:IMHELP NAME='CTFL001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMINFP (Incident program)                      :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 19 028  19 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00104/FMINFP'.
+:IMHELP NAME='INFP001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMINFL (Incident library)                      :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 20 028  20 037                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00104/FMINFL'.
+:IMHELP NAME='INFL001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH00104/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F3=Exit
+:PD.
+Press F3 to end the current task and return to the display
+where you began the task. Any options or changes that you
+keyed on input prompts
+:CIT.since the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F4=Prompt
+:PD.
+Press F4 on a field where you can select from mulitple
+pre defined values. If the F4=Prompt key is active for
+a field is normally shown behind the field in the
+descriptive text. F4=Prompt takes you to another display
+where you can select a value from a list with all the
+available values for the field you have prompted.
+
+:PT.F5=Refresh
+:PD.
+Press F5 to refresh the display you are currently working
+on with the (new) values from the OMS database. This is
+sometimes necessary if fields have been changed but the
+changes are not directly reflected on the display.
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+:EPARML.
+:EHELP.
+:EPNLGRP.

@@ -1,0 +1,162 @@
+ /* ---------------------------------------------------------------- */
+ /* Description                                                      */
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /* Program ....: OMH043C                                            */
+ /* Function ...: Process distribution requests                      */
+ /* Author .....: Remain Software                                    */
+ /* Parameter ..: &HEDC  - Helpdesk                                  */
+ /*               &INC#  - Incident                                  */
+ /*               &EXTI  - External interface ('1'=Notes)            */
+ /*               &MSRV  - Mail server                               */
+ /*                        *DFT - Use the default mail server        */
+ /*               &PORT  - Mail server port                          */
+ /*                        *DFT - Use the default mail server port   */
+ /*               &EMAC  - From e-mail address                       */
+ /*                        *DFT - Use the default addres             */
+ /*               &EEMC  - To E-mail address                         */
+ /*               &BCCE  - Blank carbon copy e-mail address          */
+ /*               &SUBJ  - Subject                                   */
+ /*                      - *INC - Use the incident description       */
+ /*               &MATF  - Mail template file                        */
+ /*               &MATL  - Mail template library                     */
+ /*               &MATM  - Mail template member                      */
+ /*               &SUL#  - Support level                             */
+ /*               &STAT  - Status                                    */
+ /*                                                                  */
+ /* This program sends the incident data via a mail template to a    */
+ /* specific e-mail address. The mail template file location must    */
+ /* be filled. If it is not filled then the values are taken from    */
+ /* the system mail extensions file.                                 */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+
+ /* ---------------------------------------------------------------- */
+ /* Program                                                          */
+ /* ---------------------------------------------------------------- */
+
+             PGM        PARM(&HEDC &INC# &EXTI &MSRV &PORT &EMAC +
+                          &EEMC &BCCE &SUBJ &MATF &MATL &MATM &SUL# +
+                          &STAT)
+
+          /* ------------------------------------------------------ */
+          /* Parameters                                             */
+          /* ------------------------------------------------------ */
+             DCL        VAR(&MSRV) TYPE(*CHAR) LEN(15)
+             DCL        VAR(&PORT) TYPE(*CHAR) LEN(4)
+             DCL        VAR(&HEDC) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&INC#) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&EXTI) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&EMAC) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&EEMC) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&BCCE) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&SUBJ) TYPE(*CHAR) LEN(70)
+             DCL        VAR(&MATF) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&MATL) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&MATM) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&SUL#) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&STAT) TYPE(*CHAR) LEN(5)
+
+          /* ------------------------------------------------------ */
+          /* Variables                                              */
+          /* ------------------------------------------------------ */
+             DCL        VAR(&SHID) TYPE(*CHAR) LEN(80)
+             DCL        VAR(&EMAC) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&SRCQ) TYPE(*CHAR) LEN(20)
+
+          /* ------------------------------------------------------ */
+          /* Install error monitor                                  */
+          /* ------------------------------------------------------ */
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ERROR))
+             CHGVAR     VAR(&STAT) VALUE('*NORM')
+
+ /* ---------------------------------------------------------------- */
+ /* Start of program                                                 */
+ /* ---------------------------------------------------------------- */
+
+          /* ------------------------------------------------------ */
+          /* Create a sourcefile in qtemp                           */
+          /* ------------------------------------------------------ */
+             CLRPFM     FILE(QTEMP/OMMTO)
+             MONMSG     MSGID(CPF0000) EXEC(DO)
+             CPYF       FROMFILE(*LIBL/OMMTO) TOFILE(QTEMP/OMMTO) +
+                          MBROPT(*NONE) CRTFILE(*YES)
+             CLRPFM     FILE(QTEMP/OMMTO)
+             ENDDO
+
+          /* ------------------------------------------------------ */
+          /* Override to the correct output file                    */
+          /* ------------------------------------------------------ */
+             OVRDBF     FILE(OMMTO) TOFILE(QTEMP/OMMTO)
+
+          /* ------------------------------------------------------ */
+          /* Override to the correct template                       */
+          /* ------------------------------------------------------ */
+             IF         COND(&EXTI *EQ '1') THEN(DO)
+             OVRDBF     FILE(OMMTI) TOFILE(*LIBL/OMMTI) MBR(NOTES)
+             ENDDO
+
+             ELSE       CMD(DO)
+
+             CRTSRCPF   FILE(QTEMP/OMMTI) RCDLEN(92) MBR(OMMTI) +
+                          TEXT('OMS - Created by HMS')
+             MONMSG     MSGID(CPF0000)
+
+             CPYF       FROMFILE(&MATL/&MATF) TOFILE(QTEMP/OMMTI) +
+                          FROMMBR(&MATM) TOMBR(OMMTI) +
+                          MBROPT(*REPLACE) CRTFILE(*NO) FMTOPT(*NOCHK)
+
+             OVRDBF     FILE(OMMTI) TOFILE(QTEMP/OMMTI) MBR(OMMTI)
+             ENDDO
+
+          /* ------------------------------------------------------ */
+          /* Process the template                                   */
+          /* ------------------------------------------------------ */
+             CALL       PGM(OMH036) PARM(&HEDC &INC# ' ' &SUL# &STAT)
+             CALL       PGM(OMH036)
+
+          /* ------------------------------------------------------ */
+          /* Retrieve the incident                                  */
+          /* ------------------------------------------------------ */
+             IF         COND(&SUBJ *EQ '*INC') THEN(DO)
+             OMQRTVIN   HEDC(&HEDC) INC(&INC#) SHID(&SHID)
+             CHGVAR     VAR(&SUBJ) VALUE(&SHID)
+             ENDDO
+
+          /* ------------------------------------------------------ */
+          /* Send the mail                                          */
+          /* ------------------------------------------------------ */
+             CHGVAR     VAR(&SRCQ) VALUE('OMMTO     QTEMP     ')
+             CALL       PGM(OMH032C) PARM(&MSRV &PORT &EMAC &EEMC +
+                          &BCCE &SUBJ '*PLAIN' &SRCQ 'OMMTO     ' +
+                          &HEDC &INC#)
+
+ /* ---------------------------------------------------------------- */
+ /* End processing                                                   */
+ /* ---------------------------------------------------------------- */
+
+          /* ------------------------------------------------------ */
+          /* Remove the overrides                                   */
+          /* ------------------------------------------------------ */
+             DLTOVR     FILE(*ALL)
+
+          /* ------------------------------------------------------ */
+          /* Exit                                                   */
+          /* ------------------------------------------------------ */
+             GOTO       CMDLBL(ENDPGM)
+
+ /* ---------------------------------------------------------------- */
+ /* Handle unexpected errors                                         */
+ /* ---------------------------------------------------------------- */
+ ERROR:
+             CHGVAR     VAR(&STAT) VALUE('*TERM')
+             MONMSG     MSGID(CPF0000)
+             RETURN
+
+ /* ---------------------------------------------------------------- */
+ /* Exit program processing                                          */
+ /* ---------------------------------------------------------------- */
+ ENDPGM:     RMVMSG     CLEAR(*ALL)
+             MONMSG     MSGID(CPF0000)
+             ENDPGM
+

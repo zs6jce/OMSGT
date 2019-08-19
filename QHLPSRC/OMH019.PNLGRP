@@ -1,0 +1,276 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: OMH019                                      :   *.
+.*   : Help for ...: Incident type Maintenance                          :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   : This panelgroup contains the U.I.M. help texts for        :   *.
+.*   : Incident type Maintenance                                        :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:PNLGRP.
+:IMPORT PNLGRP=OMSREFHD      NAME='*'.
+
+.*   *************************************************************   *.
+.*   * Incident type Maintenance                                        *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=STRITM.Incident type Maintenance - Help
+
+:IMHELP NAME=STRITMGEN.
+
+:P.
+Select one of the following:
+
+:P.
+:LINK PERFORM='DSPHELP OMH01902IX'.
+Display 1 - Work with Incident types
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP OMH01904IX'.
+Display 2 - Maintain Incident type
+:ELINK.
+
+:EHELP.
+
+:HELP NAME=OMH01902IX.General Help For Display 1
+:IMHELP NAME=OMH01902.
+:IMHELP NAME='HEDCH'.
+:IMHELP NAME='ITPCPTH'.
+:IMHELP NAME='OPTIH'.
+:IMHELP NAME='KEYS1'.
+:EHELP.
+
+:HELP NAME=OMH01904IX.General Help For Display 2
+:IMHELP NAME=OMH01904.
+:IMHELP NAME='ITPCH'.
+:IMHELP NAME='ITPDH'.
+:IMHELP NAME='KEYS2'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : General help for Incident type Maintenance                       :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=STRITMGEN.Incident type Maintenance - Help
+:XH3.Incident type Maintenance
+:ISCH ROOTS='incident type maintenance'.
+Incident type Maintenance
+
+:P.
+The incident type maintenance function enables you to maintain incident
+types. You can create as many incident type codes as you want.
+
+:P.
+Please consult the
+:LINK PERFORM='DSPHELP CONINC OMSCONHD'.
+Incident concepts
+:ELINK.
+for more information about incidents.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 1                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH01902.General Help For Display 1
+
+:XH3.Display 1 - Work with Incident types
+
+:P.
+:LINK PERFORM='DSPHELP STRITM'.
+General Information.
+:ELINK.
+
+:P.
+The :PK.Work with Incident types:EPK. display allows you to change, add or
+delete incident types; you can also, via this screen, go to the incident type
+action maintenance function.
+
+:P.
+Incident types indicate the kind of incident. It is another way of
+defining the incident. This attribute is likeliy to be used to
+apply a broad shift.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMHEDC (HelpDesk code)                         :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 05 028  05 032                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='HEDCH'.
+:IMHELP NAME='HEDC001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMPOS (Incident type)                                 :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 028  07 032                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='ITPCPTH'.
+:IMHELP NAME='ITPC001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMOPTI (Option field)                          :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 12 002  20 003                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OPTIH'.Option - Help
+
+:XH3.Option
+:P.
+These are the list options. The options all act on a
+specific HelpDesk code. The following options are available;
+
+:PARML.
+:PT.2=Change
+:PD.
+Use option 2 to change the description of the incident type.
+:PT.4=Delete
+:PD.
+Use option 4 to delete the incident type.
+:EPARML.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='KEYS1'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F3=Exit
+:PD.
+Press F3 to end the current task and return to the display
+where you began the task. Any options or changes that you
+keyed on input prompts
+:CIT.since the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F4=Prompt
+:PD.
+Press F4 on a field where you can select from mulitple
+pre defined values. If the F4=Prompt key is active for
+a field is normally shown behind the field in the
+descriptive text. F4=Prompt takes you to another display
+where you can select a value from a list with all the
+available values for the field you have prompted.
+
+:PT.F5=Refresh
+:PD.
+Press F5 to refresh the display you are currently working
+on with the (new) values from the OMS database. This is
+sometimes necessary if fields have been changed but the
+changes are not directly reflected on the display.
+
+:PT.F6=Add
+:PD.
+Press F6 to add a new incident type to the list.
+
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+
+:PT.Roll Keys
+:PD.
+Use the rollkeys to display the next or previous page of the display
+you are currently viewing. If more data is available is indicated
+by a :HP2.+:EHP2. charachter or the text :HP2.'More...':EHP2. in the
+bottom rigth corner of the display or list.
+
+:EPARML.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 2                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH01904.General Help For Display 2
+
+:XH3.Display 2 - Maintain Incident type
+
+:P.
+:LINK PERFORM='DSPHELP STRITM'.
+General Information.
+:ELINK.
+
+:P.
+The maintain incident type display enables you to perform the chosen
+action on the incident type. If you enter this display in change mode
+you are able to change the description of the incident type.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMITPD (Incident type description)                    :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 08 028  08 077                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='ITPDH'.
+:IMHELP NAME='ITPD001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2  FMITPC (Incident type)                                :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 028  07 032                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='ITPCH'.
+:IMHELP NAME='ITPC001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 2 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='KEYS2'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F3=Exit
+:PD.
+Press F3 to end the current task and return to the display
+where you began the task. Any options or changes that you
+keyed on input prompts
+:CIT.since the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+:EPARML.
+:EHELP.
+:EPNLGRP.

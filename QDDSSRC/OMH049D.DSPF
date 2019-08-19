@@ -1,0 +1,174 @@
+      *$$\CRTOM CRTDSPF
+      *$$\ENDOM
+     A*%%TS  SD  19990831  094335  JAN         REL-V3R7M0  5716-PW1
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      REF(*LIBL/OMSREFHD)
+     A                                      CHGINPDFT
+     A                                      HLPTITLE('Remain Software')
+     A                                      HLPSCHIDX(*LIBL/REMAINHD)
+     A                                      HELP
+     A                                      PRINT(*LIBL/QSYSPRT)
+     A                                      ALTHELP(CA01)
+     A          R OMH04901
+     A*%%TS  SD  19990831  094335  JAN         REL-V3R7M0  5716-PW1
+     A                                      WINDOW(2 2 17 75)
+     A                                      TEXT('Enter incident text')
+     A                                      CF12
+     A                                      CF05
+     A                                      ROLLUP(25)
+     A                                      ROLLDOWN(26)
+     A                                      CHANGE(40)
+     A N81                                  CF11
+     A                                      INVITE
+     A                                      FRCDTA
+     A                                      OVERLAY
+     A                                      HLPCLR
+     A                                      RMVWDW
+     A                                      USRRSTDSP
+     A          H                           HLPPNLGRP(OMH04901 OMH049)
+     A                                      HLPARA(01 002 01 002)
+     A          H                           HLPPNLGRP('OMH04901/FMITXT' OMH049)
+     A                                      HLPARA(02 022 02 022)
+     A          H                           HLPPNLGRP('OMH04901/FMSULY' OMH049)
+     A                                      HLPARA(03 022 03 022)
+     A          H                           HLPPNLGRP('OMH04901/FMSITD' OMH049)
+     A                                      HLPARA(04 022 04 071)
+     A          H                           HLPPNLGRP('OMH04901/FMOP01' OMH049)
+     A                                      HLPARA(06 001 06 002)
+     A          H                           HLPPNLGRP('OMH04901/FMTX01' OMH049)
+     A                                      HLPARA(06 004 06 073)
+     A          H                           HLPPNLGRP('OMH04901/FMOP02' OMH049)
+     A                                      HLPARA(07 001 07 002)
+     A          H                           HLPPNLGRP('OMH04901/FMTX02' OMH049)
+     A                                      HLPARA(07 004 07 073)
+     A          H                           HLPPNLGRP('OMH04901/FMOP03' OMH049)
+     A                                      HLPARA(08 001 08 002)
+     A          H                           HLPPNLGRP('OMH04901/FMTX03' OMH049)
+     A                                      HLPARA(08 004 08 073)
+     A          H                           HLPPNLGRP('OMH04901/FMOP04' OMH049)
+     A                                      HLPARA(09 001 09 002)
+     A          H                           HLPPNLGRP('OMH04901/FMTX04' OMH049)
+     A                                      HLPARA(09 004 09 073)
+     A          H                           HLPPNLGRP('OMH04901/FMOP05' OMH049)
+     A                                      HLPARA(10 001 10 002)
+     A          H                           HLPPNLGRP('OMH04901/FMTX05' OMH049)
+     A                                      HLPARA(10 004 10 073)
+     A          H                           HLPPNLGRP('OMH04901/FMOP06' OMH049)
+     A                                      HLPARA(11 001 11 002)
+     A          H                           HLPPNLGRP('OMH04901/FMTX06' OMH049)
+     A                                      HLPARA(11 004 11 073)
+     A          H                           HLPPNLGRP('OMH04901/FMOP07' OMH049)
+     A                                      HLPARA(12 001 12 002)
+     A          H                           HLPPNLGRP('OMH04901/FMTX07' OMH049)
+     A                                      HLPARA(12 004 12 073)
+     A          H                           HLPPNLGRP('OMH04901/FMOP08' OMH049)
+     A                                      HLPARA(13 001 13 002)
+     A          H                           HLPPNLGRP('OMH04901/FMTX08' OMH049)
+     A                                      HLPARA(13 004 13 073)
+     A          H                           HLPPNLGRP('OMH04901/KEYS' OMH049)
+     A                                      HLPARA(15 001 15 075)
+     A            COL            3S 0H
+     A            ROW            3S 0H
+     A            MH04903       20A  O  3  1MSGID(MH0 4903 OMHDSP)
+     A            FMITXT    R        B  3 22REFFLD(ITXT)
+     A N81                                  DSPATR(UL)
+     A  78                                  DSPATR(PC)
+     A  78                                  DSPATR(RI)
+     A  81                                  DSPATR(PR)
+     A            TXT0001       40A  O  3 32MSGID(TXT 0001 OMHDSP)
+     A            MH04904       20A  O  4  1MSGID(MH0 4904 OMHDSP)
+     A            FMSUL#    R        B  4 22REFFLD(SUL#)
+     A  79                                  DSPATR(RI)
+     A N81                                  DSPATR(UL)
+     A  79                                  DSPATR(PC)
+     A  81                                  DSPATR(PR)
+     A            MH04902       20A  O  5  1MSGID(MH0 4902 OMHDSP)
+     A            FMSITD    R        B  5 22REFFLD(SITD)
+     A N81                                  DSPATR(UL)
+     A                                      CHECK(LC)
+     A  81                                  DSPATR(PR)
+     A                                      DSPATR(PC)
+     A  80                                  DSPATR(RI)
+     A  11N81     FMOP01         2A  B  7  1DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A            FMTX01    R        B  7  4REFFLD(INCD)
+     A N81                                  DSPATR(UL)
+     A  81                                  DSPATR(PR)
+     A                                      CHECK(LC)
+     A  11N81     FMOP02         2A  B  8  1DSPATR(UL)
+     A  71                                  DSPATR(RI)
+     A  71                                  DSPATR(PC)
+     A            FMTX02    R        B  8  4REFFLD(INCD)
+     A N81                                  DSPATR(UL)
+     A  81                                  DSPATR(PR)
+     A                                      CHECK(LC)
+     A  11N81     FMOP03         2A  B  9  1DSPATR(UL)
+     A  72                                  DSPATR(RI)
+     A  72                                  DSPATR(PC)
+     A            FMTX03    R        B  9  4REFFLD(INCD)
+     A N81                                  DSPATR(UL)
+     A  81                                  DSPATR(PR)
+     A                                      CHECK(LC)
+     A  11N81     FMOP04         2A  B 10  1DSPATR(UL)
+     A  73                                  DSPATR(RI)
+     A  73                                  DSPATR(PC)
+     A            FMTX04    R        B 10  4REFFLD(INCD)
+     A N81                                  DSPATR(UL)
+     A  81                                  DSPATR(PR)
+     A                                      CHECK(LC)
+     A  11N81     FMOP05         2A  B 11  1DSPATR(UL)
+     A  74                                  DSPATR(RI)
+     A  74                                  DSPATR(PC)
+     A            FMTX05    R        B 11  4REFFLD(INCD)
+     A N81                                  DSPATR(UL)
+     A  81                                  DSPATR(PR)
+     A                                      CHECK(LC)
+     A  11N81     FMOP06         2A  B 12  1DSPATR(UL)
+     A  75                                  DSPATR(RI)
+     A  75                                  DSPATR(PC)
+     A            FMTX06    R        B 12  4REFFLD(INCD)
+     A N81                                  DSPATR(UL)
+     A  81                                  DSPATR(PR)
+     A                                      CHECK(LC)
+     A  11N81     FMOP07         2A  B 13  1DSPATR(UL)
+     A  76                                  DSPATR(RI)
+     A  76                                  DSPATR(PC)
+     A            FMTX07    R        B 13  4REFFLD(INCD)
+     A N81                                  DSPATR(UL)
+     A  81                                  DSPATR(PR)
+     A                                      CHECK(LC)
+     A  11N81     FMOP08         2A  B 14  1DSPATR(UL)
+     A  77                                  DSPATR(RI)
+     A  77                                  DSPATR(PC)
+     A            FMTX08    R        B 14  4REFFLD(INCD)
+     A N81                                  DSPATR(UL)
+     A  81                                  DSPATR(PR)
+     A                                      CHECK(LC)
+     A            FMBOOC        15A  O 15 61DSPATR(HI)
+     A            MH04901       75A  O 16  1COLOR(BLU)
+     A N81                                  MSGID(MH0 4901 OMHDSP)
+     A                                      MSGID(MH0 4905 OMHDSP)
+     A            MH04906       20A  O  2  1MSGID(MH0 4906 OMHDSP)
+     A            FMTXID         7A  O  2 22DSPATR(HI)
+     A            TXT008        40   O  4 32MSGID(TXT 0008 OMHDSP)
+     A          R DUMMY
+     A*%%TS  SD  19961206  132526  WIM         REL-V3R1M0  5763-PW1
+     A                                      ASSUME
+     A                                  3  1'hallo'
+     A          R MSGSFL                    SFL
+     A                                      SFLMSGRCD(24)
+     A            MSGKEY                    SFLMSGKEY
+     A            PGMQ                      SFLPGMQ
+     A
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLINZ
+     A                                      SFLSIZ(2)
+     A                                      SFLPAG(1)
+     A                                      SFLDSP
+     A                                      SFLDSPCTL
+     A N91                                  SFLEND
+     A                                      OVERLAY
+     A            PGMQ                      SFLPGMQ
+     A

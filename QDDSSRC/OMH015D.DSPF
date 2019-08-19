@@ -1,0 +1,154 @@
+     A*%%TS  SD  20080203  132256  WIM         REL-V5R3M0  5722-WDS
+     A*$$\CRTOM CRTDSPF
+      *$$ ENHDSP(*YES)
+     A*$$ RSTDSP(*YES)
+     A*$$\ENDOM
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      REF(*LIBL/OMSREFHD)
+     A                                      CHGINPDFT
+     A                                      PRINT(*LIBL/QSYSPRT)
+     A                                      HLPTITLE('Remain Software')
+     A                                      HLPSCHIDX(*LIBL/REMAINHD)
+     A                                      ERRSFL
+     A                                      ALTHELP(CA01)
+     A                                      WDWBORDER((*CHAR ',..:::.:'))
+     A                                      HELP
+     A          R OMH01501
+     A*%%TS  SD  20080203  132256  WIM         REL-V5R3M0  5722-WDS
+     A                                      WINDOW(2 6 19 67)
+     A                                      TEXT('Maintain Application Interfac-
+     A                                      e')
+     A                                      CA03
+     A                                      CA12
+     A N50                                  CA05
+     A N50                                  CF04
+     A N50                                  CF06
+     A                                      CHANGE(40)
+     A                                      KEEP
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A                                      OVERLAY
+     A                                      HLPCLR
+     A                                      USRRSTDSP
+     A          H                           HLPPNLGRP('OMH01501/FMCUSC' OMH015)
+     A                                      HLPARA(*FLD FMCUSC)
+     A          H                           HLPPNLGRP('OMH01501/FMCCTC' OMH015)
+     A                                      HLPARA(*FLD FMCCTC)
+     A          H                           HLPPNLGRP('OMH01501/FMCSRC' OMH015)
+     A                                      HLPARA(*FLD FMCSRC)
+     A          H                           HLPPNLGRP('OMH01501/FMUSF1' OMH015)
+     A                                      HLPARA(*FLD FMUSF1)
+     A          H                           HLPPNLGRP('OMH01501/FMUSF2' OMH015)
+     A                                      HLPARA(*FLD FMUSF2)
+     A          H                           HLPPNLGRP('OMH01501/FMUSF3' OMH015)
+     A                                      HLPARA(*FLD FMUSF3)
+     A          H                           HLPPNLGRP('OMH01501/KEYS' OMH015)
+     A                                      HLPARA(*FLD MH01503)
+     A          H                           HLPPNLGRP(OMH01501 OMH015)
+     A                                      HLPARA(01 001 18 067)
+     A            FMFMTC        10A  H
+     A            FMFLDC        10A  H
+     A                                  1  2'OMH01501'
+     A  50        MH01501       45A  O  1 12TEXT('Show Customer Call')
+     A                                      MSGID(MH0 1501 OMHDSP)
+     A                                      DSPATR(HI)
+     A  60        MH01502       45A  O  1 12TEXT('Add Customer Call')
+     A                                      MSGID(MH0 1502 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 59TIME
+     A            MH015062      20A  O  3  2MSGID(MH0 1506 OMHDSP)
+     A            FMCUSC    R        B  3 23REFFLD(CUSC)
+     A                                      TEXT('Code')
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A N50                                  DSPATR(UL)
+     A  50                                  DSPATR(HI)
+     A  50                                  DSPATR(PR)
+     A            MH01504       20A  O  4  2MSGID(MH0 1504 OMHDSP)
+     A            FMCCTC    R        B  4 23REFFLD(CCTC)
+     A                                      TEXT('Code')
+     A  71                                  DSPATR(RI)
+     A  41
+     AO 71                                  DSPATR(PC)
+     A N50                                  DSPATR(UL)
+     A  50                                  DSPATR(HI)
+     A  50                                  DSPATR(PR)
+     A            MH01515       20A  O  6  2MSGID(MH0 1515 OMHDSP)
+     A            FMCSRC    R        B  6 23REFFLD(CSRC)
+     A  72                                  DSPATR(RI)
+     A  72                                  DSPATR(PC)
+     A N50                                  DSPATR(UL)
+     A  50                                  DSPATR(HI)
+     A  50                                  DSPATR(PR)
+     A            MH01516       40A  O  6 26MSGID(MH0 1516 OMHDSP)
+     A            MH01512       20A  O  9  2MSGID(MH0 1511 OMHDSP)
+     A            FMUSF1    R        B  9 23REFFLD(USF1)
+     A                                      CHECK(LC)
+     A N50                                  DSPATR(UL)
+     A  50                                  DSPATR(HI)
+     A  50                                  DSPATR(PR)
+     A            MH01513       20A  O 10  2MSGID(MH0 1512 OMHDSP)
+     A            FMUSF2    R        B 10 23REFFLD(USF2)
+     A                                      CHECK(LC)
+     A N50                                  DSPATR(UL)
+     A  50                                  DSPATR(HI)
+     A  50                                  DSPATR(PR)
+     A            MH01514       20A  O 11  2MSGID(MH0 1513 OMHDSP)
+     A            FMUSF3    R        B 11 23REFFLD(USF3)
+     A N50                                  DSPATR(UL)
+     A  50                                  DSPATR(HI)
+     A  50                                  DSPATR(PR)
+     A            MH01506       20A  O 13  2MSGID(MH0 1504 OMHDSP)
+     A            FMCUNM    R   40N  O 13 23REFFLD(NAMD)
+     A                                      DSPATR(HI)
+     A                                      TEXT('Company name')
+     A            FMCONM    R   40N  O 14 23REFFLD(NAMD)
+     A                                      DSPATR(HI)
+     A                                      TEXT('Contact name')
+     A            FMTEL#    R        O 15 23REFFLD(TEL#)
+     A                                      DSPATR(HI)
+     A                                      TEXT('Tel.')
+     A            MH01509       20A  O 16  2MSGID(MH0 1509 OMHDSP)
+     A            FMUSID    R     N  O 16 23REFFLD(USID)
+     A                                      DSPATR(HI)
+     A                                      TEXT('Residence')
+     A            MH01507       20A  O  7  2MSGID(MH0 1507 OMHDSP)
+     A            FMINDT    R        B  7 23REFFLD(DAT#)
+     A                                      TEXT('Date')
+     A                                      EDTWRD('  -  -    ')
+     A  73                                  DSPATR(RI)
+     A  73                                  DSPATR(PC)
+     A N50                                  DSPATR(UL)
+     A  50                                  DSPATR(HI)
+     A  50                                  DSPATR(PR)
+     A            FMINTM    R        B  7 35REFFLD(INTM)
+     A                                      TEXT('Time')
+     A                                      EDTWRD('  :  :  ')
+     A  74                                  DSPATR(RI)
+     A  74                                  DSPATR(PC)
+     A N50                                  DSPATR(UL)
+     A  50                                  DSPATR(HI)
+     A  50                                  DSPATR(PR)
+     A  60        MH01503       65A  O 18  2MSGID(MH0 1503 OMHDSP)
+     A                                      COLOR(BLU)
+     A  50        MH01508       65A  O 18  2MSGID(MH0 1508 OMHDSP)
+     A                                      COLOR(BLU)
+     A          R DUMMY
+     A*%%TS  SD  19990316  170425  WIM         REL-V3R7M0  5716-PW1
+     A                                      ASSUME
+     A                                  2  5'X'
+     A          R MSGSFL                    SFL
+     A                                      SFLMSGRCD(24)
+     A            MSGKEY                    SFLMSGKEY
+     A            PGMQ                      SFLPGMQ
+     A
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLINZ
+     A                                      SFLSIZ(2)
+     A                                      SFLPAG(1)
+     A                                      SFLDSP
+     A                                      SFLDSPCTL
+     A N91                                  SFLEND
+     A                                      OVERLAY
+     A            PGMQ                      SFLPGMQ
+     A

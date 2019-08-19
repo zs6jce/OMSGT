@@ -1,0 +1,305 @@
+      *$$\CRTOM CRTDSPF
+      *$$\ENDOM
+     A*%%TS  SD  19981231  134850  THEO        REL-V3R7M0  5716-PW1
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      REF(*LIBL/OMSREFHD)
+     A                                      CHGINPDFT
+     A                                      HLPTITLE('Remain Software')
+     A                                      HLPSCHIDX(*LIBL/REMAINHD)
+     A                                      HELP
+     A                                      PRINT(*LIBL/QSYSPRT)
+     A                                      ALTHELP(CA01)
+     A          R OMH01101                  SFL
+     A*%%TS  SD  19970213  105531  JAN         REL-V3R1M0  5763-PW1
+     A                                      TEXT('Work with customers')
+     A  93                                  SFLNXTCHG
+     A            FMOPT1         2A  B 10  2TEXT('Option field')
+     A                                      DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A            FMCUSC    R        O 10  7REFFLD(CUSC)
+     A                                      TEXT('Code')
+     A            FMNAMS        25A  O 10 20TEXT('Description')
+     A            FMNAMC        17A  O 10 48TEXT('Address')
+     A            FMTEL#        13A  O 10 68TEXT('Address')
+     A          R OMH01102                  SFLCTL(OMH01101)
+     A*%%TS  SD  19981231  134850  THEO        REL-V3R7M0  5716-PW1
+     A                                      SFLSIZ(0012)
+     A                                      SFLPAG(0011)
+     A                                      TEXT('Work with customers')
+     A                                      CA03
+     A                                      CF06
+     A                                      CA12
+     A                                      CA05
+     A                                      CF23(23)
+     A  92                                  ROLLUP(22)
+     A                                      KEEP
+     A                                      OVERLAY
+     A                                      HLPCLR
+     A                                      SFLCSRRRN(&FMRRN)
+     A  90                                  SFLDSP
+     A                                      SFLDSPCTL
+     A  91                                  SFLCLR
+     A N92                                  SFLEND(*MORE)
+     A          H                           HLPPNLGRP(OMH01102 OMH011)
+     A                                      HLPARA(01 002 01 002)
+     A          H                           HLPPNLGRP('OMH01102/FMPOSI' OMH011)
+     A                                      HLPARA(05 028 05 037)
+     A          H                           HLPPNLGRP('OMH01101/FMOPT1' OMH011)
+     A                                      HLPARA(10 002 20 003)
+     A          H                           HLPPNLGRP('OMH01102/KEYS' OMH011)
+     A                                      HLPARA(23 001 23 080)
+     A            CRRN01         4S 0H      SFLRCDNBR(CURSOR)
+     A            FMRRN          5S 0H      TEXT('Subfile record under cursor')
+     A                                  1  2'OMH011  '
+     A            MH01101       50A  O  1 15TEXT('Maintain customers')
+     A                                      MSGID(MH0 1101 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH01101'
+     A            MH01102       50A  O  2 15TEXT('Work with')
+     A                                      MSGID(MH0 1102 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            POS0001       25A  O  5  2TEXT('Position at')
+     A                                      MSGID(POS 0001 OMHDSP)
+     A            FMPOSI    R        B  5 28REFFLD(CUSC)
+     A                                      TEXT('Position at')
+     A                                      DSPATR(UL)
+     A            MH01105       13A  O  5 40TEXT('Customer code')
+     A                                      MSGID(MH0 1105 OMHDSP)
+     A            MH01104       70A  O  7  2TEXT('2=Change  3=Copy   4=Delete')
+     A  83                                  MSGID(MH0 1104 OMHDSP)
+     A                                      MSGID(MH0 1107 OMHDSP)
+     A                                      COLOR(BLU)
+     A            MH01103       79A  O  9  2TEXT('Subfile header')
+     A                                      MSGID(MH0 1103 OMHDSP)
+     A                                      DSPATR(HI)
+     A          R OMH01103
+     A*%%TS  SD  19960828  174925  JAN         REL-V3R1M0  5763-PW1
+     A                                      TEXT('Work with customers')
+     A                                      OVERLAY
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            KEY0073       78   O 23  2TEXT('F3=Exit  F5=Refresh  F6=Add  -
+     A                                      F12=Cancel')
+     A                                      MSGID(KEY 0073 OMHDSP)
+     A                                      COLOR(BLU)
+     A          R OMH01104
+     A*%%TS  SD  19970128  124207  WIM         REL-V3R1M0  5763-PW1
+     A                                      TEXT('Maintain customer')
+     A                                      CA03
+     A                                      CA12
+     A                                      CA05
+     A                                      CHANGE(40)
+     A                                      OVERLAY
+     A                                      KEEP
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A                                      HLPCLR
+     A          H                           HLPARA(01 002 01 002)
+     A                                      HLPPNLGRP('OMH01104' OMH011)
+     A          H                           HLPARA(06 028 06 037)
+     A                                      HLPPNLGRP('OMH01104/FMCUSC' OMH011)
+     A          H                           HLPARA(08 028 08 077)
+     A                                      HLPPNLGRP('OMH01104/FMNAMD' OMH011)
+     A          H                           HLPARA(09 028 09 077)
+     A                                      HLPPNLGRP('OMH01104/FMADST' OMH011)
+     A          H                           HLPARA(10 028 10 052)
+     A                                      HLPPNLGRP('OMH01104/FMZIPC' OMH011)
+     A          H                           HLPARA(11 028 11 077)
+     A                                      HLPPNLGRP('OMH01104/FMADRE' OMH011)
+     A          H                           HLPARA(12 028 12 077)
+     A                                      HLPPNLGRP('OMH01104/FMCOUD' OMH011)
+     A          H                           HLPARA(14 028 14 037)
+     A                                      HLPPNLGRP('OMH01104/FMUSF1' OMH011)
+     A          H                           HLPARA(15 028 15 052)
+     A                                      HLPPNLGRP('OMH01104/FMUSF2' OMH011)
+     A          H                           HLPARA(16 028 16 042)
+     A                                      HLPPNLGRP('OMH01104/FMUSF3' OMH011)
+     A          H                           HLPARA(23 001 23 080)
+     A                                      HLPPNLGRP('OMH01104/KEYS' OMH011)
+     A            FMFMTC        10A  H
+     A            FMFLDC        10A  H
+     A                                  1  2'OMH011  '
+     A            MH01101       50A  O  1 15TEXT('Maintain Library')
+     A                                      MSGID(MH0 1101 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH01104'
+     A            MH01115       50A  O  2 15TEXT('Maintain Customer')
+     A                                      MSGID(MH0 1115 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A N80N81     ACT0001       10A  O  4  2MSGID(ACT 0001 OMHDSP)
+     A                                      DSPATR(RI)
+     A  80N81     ACT0002       10A  O  4  2MSGID(ACT 0002 OMHDSP)
+     A                                      DSPATR(RI)
+     A  80 81N82  ACT0003       10A  O  4  2MSGID(ACT 0003 OMHDSP)
+     A                                      DSPATR(RI)
+     A  80 81 82  ACT0004       10A  O  4  2MSGID(ACT 0004 OMHDSP)
+     A                                      DSPATR(RI)
+     A            CUS0003       25   O  6  2MSGID(CUS 0003 OMHDSP)
+     A            FMCUSC    R        B  6 28REFFLD(CUSC)
+     A                                      TEXT('Code')
+     A  80
+     AO 81                                  DSPATR(HI)
+     A  80
+     AO 81                                  DSPATR(PR)
+     A N80N81N82                            DSPATR(UL)
+     A  72                                  DSPATR(RI)
+     A  72                                  DSPATR(PC)
+     A            NAM0002       25   O  8  2TEXT('Name')
+     A                                      MSGID(NAM 0002 OMHDSP)
+     A            FMNAMD    R        B  8 28REFFLD(NAMD)
+     A  80 81                               DSPATR(HI)
+     A  80 81                               DSPATR(PR)
+     A N81                                  DSPATR(UL)
+     A  73                                  DSPATR(RI)
+     A  73                                  DSPATR(PC)
+     A                                      TEXT('Name')
+     A                                      CHECK(LC)
+     A            STR0002       25   O  9  2TEXT('Street')
+     A                                      MSGID(STR 0002 OMHDSP)
+     A            FMADST    R     N  B  9 28REFFLD(ADST)
+     A  80 81                               DSPATR(HI)
+     A  80 81                               DSPATR(PR)
+     A N81                                  DSPATR(UL)
+     A                                      CHECK(LC)
+     A                                      TEXT('Street')
+     A            POS0005       25   O 10  2MSGID(POS 0005 OMHDSP)
+     A            FMZIPC    R     N  B 10 28REFFLD(ZIPC)
+     A  80 81                               DSPATR(HI)
+     A  80 81                               DSPATR(PR)
+     A N81                                  DSPATR(UL)
+     A                                      TEXT('Zipcode')
+     A            RES0002       25   O 11  2TEXT('Residence')
+     A                                      MSGID(RES 0002 OMHDSP)
+     A            FMADRE    R     N  B 11 28REFFLD(ADRE)
+     A  80 81                               DSPATR(HI)
+     A  80 81                               DSPATR(PR)
+     A N81                                  DSPATR(UL)
+     A                                      CHECK(LC)
+     A                                      TEXT('Residence')
+     A            COU0002       25   O 12  2TEXT('Country')
+     A                                      MSGID(COU 0002 OMHDSP)
+     A            FMCOUD    R     N  B 12 28REFFLD(COUD)
+     A  80 81                               DSPATR(HI)
+     A  80 81                               DSPATR(PR)
+     A N81                                  DSPATR(UL)
+     A                                      CHECK(LC)
+     A                                      TEXT('Country')
+     A            MH01112       25A  O 14  2TEXT('User fld 1')
+     A                                      MSGID(MH0 1112 OMHDSP)
+     A            FMUSF1    R        B 14 28REFFLD(USF1)
+     A  80 81                               DSPATR(HI)
+     A  80 81                               DSPATR(PR)
+     A N81                                  DSPATR(UL)
+     A                                      CHECK(LC)
+     A  74                                  DSPATR(RI)
+     A  74                                  DSPATR(PC)
+     A            MH01113       25A  O 15  2TEXT('User fld 2')
+     A                                      MSGID(MH0 1113 OMHDSP)
+     A            FMUSF2    R        B 15 28REFFLD(USF2)
+     A  80 81                               DSPATR(HI)
+     A  80 81                               DSPATR(PR)
+     A N81                                  DSPATR(UL)
+     A                                      CHECK(LC)
+     A  75                                  DSPATR(RI)
+     A  75                                  DSPATR(PC)
+     A            MH01114       25A  O 16  2TEXT('User fld 3')
+     A                                      MSGID(MH0 1114 OMHDSP)
+     A            FMUSF3    R        B 16 28REFFLD(USF3)
+     A  80 81                               DSPATR(HI)
+     A  80 81                               DSPATR(PR)
+     A N81                                  DSPATR(UL)
+     A  76                                  DSPATR(RI)
+     A  76                                  DSPATR(PC)
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A  80 81     KEY0066       78A  O 23  2TEXT('F3=Exit ...')
+     A                                      MSGID(KEY 0066 OMHDSP)
+     A                                      COLOR(BLU)
+     A N80
+     AON81        KEY0065       78A  O 23  2TEXT('F3=Exit ...')
+     A                                      MSGID(KEY 0065 OMHDSP)
+     A                                      COLOR(BLU)
+     A          R OMH01105
+     A*%%TS  SD  19970128  124207  WIM         REL-V3R1M0  5763-PW1
+     A                                      TEXT('Work with customers -
+     A                                      no records')
+     A                                      CA03
+     A                                      CF06
+     A                                      CA12
+     A                                      CA05
+     A                                      CF23
+     A  92                                  ROLLUP(22)
+     A                                      OVERLAY
+     A                                      KEEP
+     A                                      HLPCLR
+     A          H                           HLPARA(01 002 01 002)
+     A                                      HLPPNLGRP('OMH01105' OMH011)
+     A          H                           HLPARA(05 028 05 037)
+     A                                      HLPPNLGRP('OMH01105/FMPOSI' OMH011)
+     A          H                           HLPARA(23 001 23 080)
+     A                                      HLPPNLGRP('OMH01105/KEYS' OMH011)
+     A                                  1  2'OMH011  '
+     A            MH01101       50A  O  1 16TEXT('Maintain customers')
+     A                                      MSGID(MH0 1101 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH01101'
+     A            MH01102       50A  O  2 16TEXT('Work with')
+     A                                      MSGID(MH0 1102 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            POS0001       25A  O  5  2TEXT('Position at')
+     A                                      MSGID(POS 0001 OMHDSP)
+     A            FMPOSI    R        B  5 28REFFLD(CUSC)
+     A                                      TEXT('Position at')
+     A                                      DSPATR(UL)
+     A            MH01103       79A  O  9  2TEXT('Subfile header')
+     A                                      MSGID(MH0 1103 OMHDSP)
+     A                                      DSPATR(HI)
+     A            MH01104       70A  O  7  2TEXT('2=Change  3=Copy   4=Delete')
+     A  83                                  MSGID(MH0 1104 OMHDSP)
+     A                                      MSGID(MH0 1107 OMHDSP)
+     A                                      COLOR(BLU)
+     A            MH01105       13A  O  5 40TEXT('Customer code')
+     A                                      MSGID(MH0 1105 OMHDSP)
+     A            MH01106       25A  O 11  4TEXT('No customers')
+     A                                      MSGID(MH0 1106 OMHDSP)
+     A          R MSGSFL                    SFL
+     A                                      SFLMSGRCD(24)
+     A            MSGKEY                    SFLMSGKEY
+     A            PGMQ                      SFLPGMQ
+     A
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLINZ
+     A                                      SFLSIZ(2)
+     A                                      SFLPAG(1)
+     A                                      SFLDSP
+     A                                      SFLDSPCTL
+     A N91                                  SFLEND
+     A                                      OVERLAY
+     A            PGMQ                      SFLPGMQ
+     A

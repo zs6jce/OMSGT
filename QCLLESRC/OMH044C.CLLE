@@ -1,0 +1,98 @@
+ /* ---------------------------------------------------------------- */
+ /* Description                                                      */
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /* Program ....: OMH044C                                            */
+ /* Function ...: Data queue processing                              */
+ /* Author .....: Remain Software                                    */
+ /* Parameters .: &DTAQ, Data queue                                  */
+ /*               &DTQL, Data queue library.                         */
+ /*               &OPTI, '1' = Send                                  */
+ /*                      '2' = Receive                               */
+ /*               &DATA, Data to send / Data received                */
+ /*               &LEN,  Length of data to receive/send              */
+ /*               &WAIT, Wait time for data queue                    */
+ /*               &STAT, Status                                      */
+ /*                                                                  */
+ /* This program rebuilds the data queue in the data queue           */
+ /* parameters. If the data queue does not exist it is created. If   */
+ /* it does exist it is removed and then created. The library can    */
+ /* be passed as blanks. If it is, the library of this program is    */
+ /* used.                                                            */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+
+ /* ---------------------------------------------------------------- */
+ /* Initialisation                                                   */
+ /* ---------------------------------------------------------------- */
+             PGM        PARM(&DTAQ &DTQL &OPTI &DATA &LEN &WAIT &STAT)
+
+          /* ------------------------------------------------------- */
+          /* Declare parameters                                      */
+          /* ------------------------------------------------------- */
+             DCL        VAR(&DTAQ)    TYPE(*CHAR) LEN(10)
+             DCL        VAR(&DTQL)    TYPE(*CHAR) LEN(10)
+             DCL        VAR(&OPTI)    TYPE(*CHAR) LEN(1)
+             DCL        VAR(&DATA)    TYPE(*CHAR) LEN(9999)
+             DCL        VAR(&WAIT)    TYPE(*DEC)  LEN(5 0)
+             DCL        VAR(&LEN)     TYPE(*DEC)  LEN(5 0)
+             DCL        VAR(&STAT)    TYPE(*CHAR) LEN(5)
+
+          /* ------------------------------------------------------- */
+          /* Declare variables                                       */
+          /* ------------------------------------------------------- */
+
+          /* ------------------------------------------------------- */
+          /* Install error monitor                                   */
+          /* ------------------------------------------------------- */
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ERROR))
+
+             CHGVAR     VAR(&STAT) VALUE('*NORM')
+
+ /* ---------------------------------------------------------------- */
+ /* Processing.                                                      */
+ /* ---------------------------------------------------------------- */
+
+          /* ------------------------------------------------------- */
+          /* Send the message to the data queue                      */
+          /* ------------------------------------------------------- */
+             IF         COND(&OPTI *EQ '1') THEN(CALL PGM(QSNDDTAQ) +
+                          PARM(&DTAQ &DTQL &LEN &DATA))
+
+          /* ------------------------------------------------------- */
+          /* Retrieve the data from the data queue                   */
+          /* ------------------------------------------------------- */
+             IF         COND(&OPTI *EQ '2') THEN(CALL PGM(QRCVDTAQ) +
+                          PARM(&DTAQ &DTQL &LEN &DATA &WAIT))
+
+          /* ------------------------------------------------------- */
+          /* End of program                                          */
+          /* ------------------------------------------------------- */
+             GOTO       CMDLBL(ENDPGM)
+
+ /* ---------------------------------------------------------------- */
+ /* Handle unexpected messages                                       */
+ /* ---------------------------------------------------------------- */
+ ERROR:
+             CHGVAR     VAR(&STAT) VALUE('*TERM')
+             MONMSG     MSGID(CPF0000)
+
+             CHGVAR     VAR(&LEN) VALUE(0)
+             MONMSG     MSGID(CPF0000)
+
+             DLYJOB     DLY(1)
+             MONMSG     MSGID(CPF0000)
+
+             SNDPGMMSG  MSGID(UNX0001) MSGF(OMHMSG) MSGDTA(OMH044C) +
+                          TOPGMQ(*SAME) MSGTYPE(*DIAG)
+             MONMSG     MSGID(CPF0000)
+
+             RETURN
+
+ /* ---------------------------------------------------------------- */
+ /* Exit                                                             */
+ /* ---------------------------------------------------------------- */
+ ENDPGM:
+             RMVMSG     CLEAR(*ALL)
+
+             ENDPGM

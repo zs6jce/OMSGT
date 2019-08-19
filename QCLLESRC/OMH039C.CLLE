@@ -1,0 +1,135 @@
+ /* ---------------------------------------------------------------- */
+ /* Description                                                      */
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /* Program ....: OMH039C                                            */
+ /* Function ...: Send helpdesk definitions                          */
+ /* Author .....: Remain Software                                    */
+ /* Parameter ..: &HEDC  - Helpdesk                                  */
+ /*               &HOPT  - Helpdesk email address                    */
+ /*               &CUSC  - External interface ('1'=Notes)            */
+ /*               &COPT  - Status                                    */
+ /*               &JBDQ  - Job description qualifier                 */
+ /*               &RANG  - Range of incidents                        */
+ /*                                                                  */
+ /* This program sends the definitions after submitting with the     */
+ /* specified job description.                                       */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+
+ /* ---------------------------------------------------------------- */
+ /* Program                                                          */
+ /* ---------------------------------------------------------------- */
+
+             PGM        PARM(&HEDC &HOPT &CUSC &COPT &EXTI &JBDQ &RANG)
+
+          /* ------------------------------------------------------ */
+          /* Parameters                                             */
+          /* ------------------------------------------------------ */
+             DCL        VAR(&HEDC) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&HOPT) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&CUSC) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&COPT) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&EXTI) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&JBDQ) TYPE(*CHAR) LEN(20)
+             DCL        VAR(&RANG) TYPE(*CHAR) LEN(30)
+
+          /* ------------------------------------------------------ */
+          /* Variables                                              */
+          /* ------------------------------------------------------ */
+             DCL        VAR(&STAT) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&TYPE) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&JBDC) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&JBDL) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&FRIN) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&TOIN) TYPE(*CHAR) LEN(10)
+
+          /* ------------------------------------------------------ */
+          /* Install error monitor                                  */
+          /* ------------------------------------------------------ */
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ERROR))
+
+          /* ------------------------------------------------------ */
+          /* Install error monitor                                  */
+          /* ------------------------------------------------------ */
+             CHGVAR     VAR(&STAT) VALUE('*NORM')
+
+ /* ---------------------------------------------------------------- */
+ /* Start of program                                                 */
+ /* ---------------------------------------------------------------- */
+
+          /* ------------------------------------------------------ */
+          /* Get the from and to incident                           */
+          /* ------------------------------------------------------ */
+             CHGVAR     VAR(&FRIN) VALUE(%SST(&RANG  3 10))
+             CHGVAR     VAR(&TOIN) VALUE(%SST(&RANG 13 10))
+
+             IF         COND(&FRIN *EQ '*FIRST') THEN(CHGVAR +
+                          VAR(&FRIN) VALUE(' '))
+
+             IF         COND(&TOIN *EQ '*LAST') THEN(CHGVAR +
+                          VAR(&TOIN) VALUE('999999999'))
+
+             IF         COND(&TOIN *EQ '*ONLY') THEN(CHGVAR +
+                          VAR(&TOIN) VALUE(&FRIN))
+
+          /* ------------------------------------------------------ */
+          /* Split the job descripion qualifier & submit            */
+          /* ------------------------------------------------------ */
+             IF         COND(&JBDQ *NE '*NONE') THEN(DO)
+
+             RTVJOBA    TYPE(&TYPE)
+             IF         COND(&TYPE *EQ '1') THEN(DO)
+
+             CHGVAR     VAR(&JBDC) VALUE(%SST(&JBDQ 1  10))
+             CHGVAR     VAR(&JBDL) VALUE(%SST(&JBDQ 11 10))
+
+             IF         COND(&JBDC *EQ '*USRPRF') THEN(DO)
+             RTVUSRPRF  JOBD(&JBDC) JOBDLIB(&JBDL)
+             ENDDO
+
+             SBMJOB     CMD(CALL PGM(OMH039C) PARM(&HEDC &HOPT &CUSC +
+                          &COPT &EXTI &JBDQ &RANG)) JOB(SNDHDD) +
+                          JOBD(&JBDL/&JBDC)
+
+             SNDPGMMSG  MSGID(INF0007) MSGF(OMHMSG) TOPGMQ(*PRV) +
+                          MSGTYPE(*COMP)
+
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+             ENDDO
+
+ /* ---------------------------------------------------------------- */
+ /* Call the program                                                 */
+ /* ---------------------------------------------------------------- */
+             CALL       PGM(OMH039) PARM(&HEDC &HOPT &CUSC &COPT +
+                          &EXTI &FRIN &TOIN &STAT)
+
+             IF         COND(&STAT *NE '*NORM') THEN(GOTO +
+                          CMDLBL(ERROR))
+
+ /* ---------------------------------------------------------------- */
+ /* End processing                                                   */
+ /* ---------------------------------------------------------------- */
+
+          /* ------------------------------------------------------ */
+          /* Exit                                                   */
+          /* ------------------------------------------------------ */
+             GOTO       CMDLBL(ENDPGM)
+
+ /* ---------------------------------------------------------------- */
+ /* Handle unexpected errors                                         */
+ /* ---------------------------------------------------------------- */
+ ERROR:
+             SNDPGMMSG  MSGID(OMQ5012) MSGF(OMSAPI) +
+                          MSGDTA('DSTHDD') MSGTYPE(*ESCAPE)
+             MONMSG     MSGID(CPF0000)
+             RETURN
+
+ /* ---------------------------------------------------------------- */
+ /* Exit program processing                                          */
+ /* ---------------------------------------------------------------- */
+ ENDPGM:     RMVMSG     CLEAR(*ALL)
+             MONMSG     MSGID(CPF0000)
+             ENDPGM
+

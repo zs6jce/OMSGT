@@ -1,0 +1,28 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMSAFL1                                       *
+      * Module .....: HelpDesk                                      *
+      * Function ...: Status actions logical                        *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ----------------------------------------------------------- *
+      * Record OMSAFR                                               *
+      * ----------------------------------------------------------- *
+                                            UNIQUE
+                R OMSAFR                    PFILE(OMSAF)
+
+      * ----------------------------------------------------------- *
+      * Access path                                                 *
+      * AFHEDC      - Helpdesk code                                 *
+      * AFSTAT      - Status                                        *
+      * AFEOEI      - Entry or exit indicator                       *
+      * AFASQ#      - Status action sequence                        *
+      * ----------------------------------------------------------- *
+                K AFHEDC
+                K AFSTAT
+                K AFEOEI
+                K AFASQ#

@@ -1,0 +1,132 @@
+      *$$\CRTOM CRTDSPF
+      *$$\ENDOM
+     A*%%TS  SD  20020215  111232  WIM         REL-V4R4M0  5769-PW1
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      REF(*LIBL/OMSREFHD)
+     A                                      CHGINPDFT
+     A                                      HLPTITLE('Remain Software')
+     A                                      HLPSCHIDX(*LIBL/REMAINHD)
+     A                                      HELP
+     A                                      PRINT(*LIBL/QSYSPRT)
+     A                                      ALTHELP(CA01)
+     A          R OMH02401
+     A*%%TS  SD  20020215  111232  WIM         REL-V4R4M0  5769-PW1
+     A                                      WINDOW(2 2 17 75)
+     A                                      TEXT('Show customer info')
+     A                                      CF12
+     A                                      INVITE
+     A                                      FRCDTA
+     A                                      OVERLAY
+     A                                      HLPCLR
+     A                                      RMVWDW
+     A                                      USRRSTDSP
+     A          H                           HLPPNLGRP(OMH02401 OMH024)
+     A                                      HLPARA(01 002 01 002)
+     A          H                           HLPPNLGRP('OMH02401/FMITXT' OMH024)
+     A                                      HLPARA(02 022 02 022)
+     A          H                           HLPPNLGRP('OMH02401/FMSULY' OMH024)
+     A                                      HLPARA(03 022 03 022)
+     A          H                           HLPPNLGRP('OMH02401/FMSITD' OMH024)
+     A                                      HLPARA(04 022 04 071)
+     A          H                           HLPPNLGRP('OMH02401/FMOP01' OMH024)
+     A                                      HLPARA(06 001 06 002)
+     A          H                           HLPPNLGRP('OMH02401/FMTX01' OMH024)
+     A                                      HLPARA(06 004 06 073)
+     A          H                           HLPPNLGRP('OMH02401/FMOP02' OMH024)
+     A                                      HLPARA(07 001 07 002)
+     A          H                           HLPPNLGRP('OMH02401/FMTX02' OMH024)
+     A                                      HLPARA(07 004 07 073)
+     A          H                           HLPPNLGRP('OMH02401/FMOP03' OMH024)
+     A                                      HLPARA(08 001 08 002)
+     A          H                           HLPPNLGRP('OMH02401/FMTX03' OMH024)
+     A                                      HLPARA(08 004 08 073)
+     A          H                           HLPPNLGRP('OMH02401/FMOP04' OMH024)
+     A                                      HLPARA(09 001 09 002)
+     A          H                           HLPPNLGRP('OMH02401/FMTX04' OMH024)
+     A                                      HLPARA(09 004 09 073)
+     A          H                           HLPPNLGRP('OMH02401/FMOP05' OMH024)
+     A                                      HLPARA(10 001 10 002)
+     A          H                           HLPPNLGRP('OMH02401/FMTX05' OMH024)
+     A                                      HLPARA(10 004 10 073)
+     A          H                           HLPPNLGRP('OMH02401/FMOP06' OMH024)
+     A                                      HLPARA(11 001 11 002)
+     A          H                           HLPPNLGRP('OMH02401/FMTX06' OMH024)
+     A                                      HLPARA(11 004 11 073)
+     A          H                           HLPPNLGRP('OMH02401/FMOP07' OMH024)
+     A                                      HLPARA(12 001 12 002)
+     A          H                           HLPPNLGRP('OMH02401/FMTX07' OMH024)
+     A                                      HLPARA(12 004 12 073)
+     A          H                           HLPPNLGRP('OMH02401/FMOP08' OMH024)
+     A                                      HLPARA(13 001 13 002)
+     A          H                           HLPPNLGRP('OMH02401/FMTX08' OMH024)
+     A                                      HLPARA(13 004 13 073)
+     A          H                           HLPPNLGRP('OMH02401/KEYS' OMH024)
+     A                                      HLPARA(15 001 15 075)
+     A            COL            3S 0H
+     A            ROW            3S 0H
+     A            MH02403       20A  O  3  1TEXT('Residence')
+     A                                      MSGID(MH0 2403 OMHDSP)
+     A            FMNAMD    R        O  3 22REFFLD(NAMD)
+     A                                      DSPATR(HI)
+     A            MH02404       20A  O  4  1TEXT('Name')
+     A                                      MSGID(MH0 2404 OMHDSP)
+     A            FMADST    R        O  4 22REFFLD(ADST)
+     A                                      DSPATR(HI)
+     A            MH02405       20A  O  5  1TEXT('Street')
+     A                                      MSGID(MH0 2405 OMHDSP)
+     A            FMADRE    R        O  5 22REFFLD(ADRE)
+     A                                      DSPATR(HI)
+     A            MH02402       20A  O  6  1TEXT('User fields')
+     A                                      MSGID(MH0 2402 OMHDSP)
+     A            FMCUF1        10A  O  6 22DSPATR(HI)
+     A            FMCUF2        25A  O  6 33DSPATR(HI)
+     A            FMCUF3        15Y 0O  6 59EDTCDE(Z)
+     A                                      DSPATR(HI)
+     A            MH02406       20A  O  8  1TEXT('Contact name')
+     A                                      MSGID(MH0 2406 OMHDSP)
+     A            FMCUNM    R        O  8 22REFFLD(NAMD)
+     A                                      TEXT('Customer name')
+     A                                      DSPATR(HI)
+     A            MH02407       20A  O  9  1TEXT('Telephone')
+     A                                      MSGID(MH0 2407 OMHDSP)
+     A            FMTEL#    R        O  9 22REFFLD(TEL#)
+     A                                      DSPATR(HI)
+     A            MH02408       20A  O 10  1TEXT('Tel.')
+     A                                      MSGID(MH0 2408 OMHDSP)
+     A            FMTITL    R        O 10 22REFFLD(TITL)
+     A                                      TEXT('Title')
+     A                                      DSPATR(HI)
+     A            MH02409       20A  O 11  1TEXT('E-mail')
+     A                                      MSGID(MH0 2409 OMHDSP)
+     A            FMEMAC    R        O 11 22REFFLD(EMAC)
+     A                                      TEXT('E-mail')
+     A                                      DSPATR(HI)
+     A            MH0240202     20A  O 12  1TEXT('User fields')
+     A                                      MSGID(MH0 2402 OMHDSP)
+     A            FMCOF1        10A  O 12 22DSPATR(HI)
+     A            FMCOF2        25A  O 12 33DSPATR(HI)
+     A            FMCOF3        15Y 0O 12 59EDTCDE(Z)
+     A                                      DSPATR(HI)
+     A            MH02401       75A  O 16  1COLOR(BLU)
+     A N81                                  MSGID(MH0 2401 OMHDSP)
+     A                                      MSGID(MH0 2405 OMHDSP)
+     A          R DUMMY
+     A*%%TS  SD  19961206  132526  WIM         REL-V3R1M0  5763-PW1
+     A                                      ASSUME
+     A                                  3  1'hallo'
+     A          R MSGSFL                    SFL
+     A                                      SFLMSGRCD(24)
+     A            MSGKEY                    SFLMSGKEY
+     A            PGMQ                      SFLPGMQ
+     A
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLINZ
+     A                                      SFLSIZ(2)
+     A                                      SFLPAG(1)
+     A                                      SFLDSP
+     A                                      SFLDSPCTL
+     A N91                                  SFLEND
+     A                                      OVERLAY
+     A            PGMQ                      SFLPGMQ
+     A

@@ -1,0 +1,236 @@
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /*  Program ....: OMQPRTINCP            5                           */
+ /*  Description : CPP FOR COMMAND OMQPRTIN - Print Incident API     */
+ /*  Author .....: Remain Software                                    */
+ /*  Date .......: 28-11-1996                                        */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+             PGM        PARM(&ACTC &HEDC &INC &CTN &CUSC &CCTC &INDT +
+                          &INTM &RCDT &STRC &SULC &STAT &SEV1 &SEV2 +
+                          &SEV3 &PRIC &RUID &AUID &ITPC &USF1 &USF2 +
+                          &USF3 &ESCD &ESDT &ALSC &QUAN &HIST &PAVE +
+                          &TSTA &IIRI &REQI &FIXI &SOLI &LODI &PITI +
+                          &PIPI &PCPI &PEPI &CLPI &EOPI)
+
+ /* ---------------------------------------------------------------- */
+ /* Declare parameter-variables                                      */
+ /* ---------------------------------------------------------------- */
+             DCL        VAR(&ACTC) TYPE(*CHAR) LEN(2)
+             DCL        VAR(&HEDC) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&INC)  TYPE(*CHAR) LEN(10)
+             DCL        VAR(&CTN) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&CUSC) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&CCTC) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&INDT) TYPE(*CHAR) LEN(16)
+             DCL        VAR(&INTM) TYPE(*CHAR) LEN(14)
+             DCL        VAR(&RCDT) TYPE(*CHAR) LEN(16)
+             DCL        VAR(&STRC) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&SULC) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&STAT) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&SEV1) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&SEV2) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&SEV3) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&PRIC) TYPE(*CHAR) LEN(6)
+             DCL        VAR(&RUID) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&AUID) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&USF1) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&USF2) TYPE(*CHAR) LEN(25)
+             DCL        VAR(&USF3) TYPE(*CHAR) LEN(8)
+             DCL        VAR(&ITPC) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&ESCD) TYPE(*CHAR) LEN(7)
+             DCL        VAR(&ESDT) TYPE(*CHAR) LEN(7)
+             DCL        VAR(&ALSC) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&QUAN) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&HIST) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&PAVE) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&TSTA) TYPE(*CHAR) LEN(32)
+             DCL        VAR(&IIRI) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&REQI) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&FIXI) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&SOLI) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&LODI) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&PIPI) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&PCPI) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&PEPI) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&EOPI) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&CLPI) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&PITI) TYPE(*CHAR) LEN(1)
+
+             DCL        VAR(&INTL) TYPE(*CHAR) LEN(8)
+             DCL        VAR(&ACTC) TYPE(*CHAR) LEN(2)
+             DCL        VAR(&BUF) TYPE(*CHAR) LEN(300) VALUE(' ')
+             DCL        VAR(&PRC) TYPE(*CHAR) LEN(40)
+             DCL        VAR(&ERR) TYPE(*CHAR) LEN(136)
+             DCL        VAR(&FLD) TYPE(*CHAR) LEN(130)
+
+/* ----------------------------------------------------------------- */
+/* Declare program variables                                         */
+/* ----------------------------------------------------------------- */
+             DCL        VAR(&JBDT) TYPE(*CHAR) LEN(6)
+             DCL        VAR(&SYDT) TYPE(*CHAR) LEN(7)
+
+/* ----------------------------------------------------------------- */
+/* Monitor                                                           */
+/* ----------------------------------------------------------------- */
+             MONMSG     MSGID(CPF0000 OMQ0000) EXEC(GOTO CMDLBL(ERROR))
+
+/* ----------------------------------------------------------------- */
+/* Close program when ACTC = 99                                      */
+/* ----------------------------------------------------------------- */
+             IF         COND(&ACTC *EQ '99') THEN(DO)
+             CALL       PGM(OMQPRTIN)
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+/* ----------------------------------------------------------------- */
+/* Initialize buffer                                                 */
+/* ----------------------------------------------------------------- */
+             CHGVAR     VAR(&INTL) VALUE('V1R1M0  ')
+             CHGVAR     VAR(&BUF)  VALUE(' ')
+             CHGVAR     VAR(&PRC)  VALUE(' ')
+             CHGVAR     VAR(&ERR)  VALUE(' ')
+             CHGVAR     VAR(&FLD)  VALUE(' ')
+
+/* ----------------------------------------------------------------- */
+/* Fill Processing indicators                                        */
+/* ----------------------------------------------------------------- */
+             CHGVAR     VAR(%SST(&PRC 1 1))   VALUE(&EOPI)
+             CHGVAR     VAR(%SST(&PRC 2 1))   VALUE(&IIRI)
+             CHGVAR     VAR(%SST(&PRC 3 1))   VALUE(&REQI)
+             CHGVAR     VAR(%SST(&PRC 4 1))   VALUE(&FIXI)
+             CHGVAR     VAR(%SST(&PRC 5 1))   VALUE(&SOLI)
+             CHGVAR     VAR(%SST(&PRC 6 1))   VALUE(&LODI)
+             CHGVAR     VAR(%SST(&PRC 7 1))   VALUE(&PIPI)
+             CHGVAR     VAR(%SST(&PRC 8 1))   VALUE(&PCPI)
+             CHGVAR     VAR(%SST(&PRC 9 1))   VALUE(&PEPI)
+             CHGVAR     VAR(%SST(&PRC 10 1))  VALUE(&QUAN)
+             CHGVAR     VAR(%SST(&PRC 11 1))  VALUE(&PITI)
+             CHGVAR     VAR(%SST(&PRC 12 1))  VALUE(&CLPI)
+             CHGVAR     VAR(%SST(&PRC 13 1))  VALUE(&PAVE)
+             CHGVAR     VAR(%SST(&PRC 14 1))  VALUE(&HIST)
+
+/* ----------------------------------------------------------------- */
+/* Fill Processing indicators                                        */
+/* ----------------------------------------------------------------- */
+             CHGVAR     VAR(%SST(&FLD 1 10)) VALUE('OMQPRTINCP')
+
+/* ----------------------------------------------------------------- */
+/* Get today                                                         */
+/* ----------------------------------------------------------------- */
+             RTVJOBA    DATE(&JBDT)
+             CVTDAT     DATE(&JBDT) TOVAR(&SYDT) TOFMT(*CYMD) +
+                          TOSEP(*NONE)
+
+/* ----------------------------------------------------------------- */
+/* Fill Buffer data                                                  */
+/* ----------------------------------------------------------------- */
+             CHGVAR     VAR(%SST(&BUF   1  5))  VALUE(&HEDC)
+             CHGVAR     VAR(%SST(&BUF   6  10)) VALUE(&INC)
+             CHGVAR     VAR(%SST(&BUF  16  10)) VALUE(&CTN)
+
+             IF         COND((%SST(&INDT 3 7) *NE '0555555') *AND +
+                          (%SST(&INDT 3 7) *NE '5555555')) THEN(DO)
+             CHGVAR     VAR(%SST(&BUF  26   7)) VALUE(%SST(&INDT  3 7))
+             ENDDO
+             ELSE CMD(DO)
+             CHGVAR     VAR(%SST(&BUF  26   7)) VALUE(&SYDT)
+             ENDDO
+
+             IF         COND((%SST(&INDT 10 7) *NE '0555555') *AND +
+                          (%SST(&INDT 10 7) *NE '5555555')) THEN(DO)
+             CHGVAR     VAR(%SST(&BUF  33   7)) VALUE(%SST(&INDT 10 7))
+             ENDDO
+             ELSE CMD(DO)
+             CHGVAR     VAR(%SST(&BUF  33   7)) VALUE(&SYDT)
+             ENDDO
+
+             CHGVAR     VAR(%SST(&BUF  40   6)) VALUE(%SST(&INTM  3 6))
+             CHGVAR     VAR(%SST(&BUF  46   6)) VALUE(%SST(&INTM  9 6))
+
+             IF         COND((%SST(&RCDT 3 7) *NE '0555555') *AND +
+                          (%SST(&RCDT 3 7) *NE '5555555')) THEN(DO)
+             CHGVAR     VAR(%SST(&BUF  52   7)) VALUE(%SST(&RCDT  3 7))
+             ENDDO
+             ELSE CMD(DO)
+             CHGVAR     VAR(%SST(&BUF  52   7)) VALUE(&SYDT)
+             ENDDO
+
+             IF         COND((%SST(&RCDT 10 7) *NE '0555555') *AND +
+                          (%SST(&RCDT 10 7) *NE '5555555')) THEN(DO)
+             CHGVAR     VAR(%SST(&BUF  59   7)) VALUE(%SST(&RCDT 10 7))
+             ENDDO
+             ELSE CMD(DO)
+             CHGVAR     VAR(%SST(&BUF  59   7)) VALUE(&SYDT)
+             ENDDO
+
+             CHGVAR     VAR(%SST(&BUF  66  10)) VALUE(&STRC)
+             CHGVAR     VAR(%SST(&BUF  76   1)) VALUE(&SULC)
+             CHGVAR     VAR(%SST(&BUF  77   5)) VALUE(&SEV1)
+             CHGVAR     VAR(%SST(&BUF  82   5)) VALUE(&SEV2)
+             CHGVAR     VAR(%SST(&BUF  87   5)) VALUE(&SEV3)
+             CHGVAR     VAR(%SST(&BUF  92   2)) VALUE(%SST(&PRIC  3 2))
+             CHGVAR     VAR(%SST(&BUF  94   2)) VALUE(%SST(&PRIC  5 2))
+             CHGVAR     VAR(%SST(&BUF  96  10)) VALUE(&RUID)
+             CHGVAR     VAR(%SST(&BUF 106  10)) VALUE(&AUID)
+             CHGVAR     VAR(%SST(&BUF 116   5)) VALUE(&ITPC)
+             CHGVAR     VAR(%SST(&BUF 121  10)) VALUE(&USF1)
+             CHGVAR     VAR(%SST(&BUF 131  25)) VALUE(&USF2)
+             CHGVAR     VAR(%SST(&BUF 156   8)) VALUE(&USF3)
+             CHGVAR     VAR(%SST(&BUF 164   3)) VALUE(%SST(&ESCD 3 3))
+             CHGVAR     VAR(%SST(&BUF 167   2)) VALUE(%SST(&ESCD 6 2))
+             CHGVAR     VAR(%SST(&BUF 169   7)) VALUE(&ESDT)
+             CHGVAR     VAR(%SST(&BUF 176  10)) VALUE(&ALSC)
+             CHGVAR     VAR(%SST(&BUF 186   5)) VALUE(&STAT)
+             CHGVAR     VAR(%SST(&BUF 191  10)) VALUE(&CUSC)
+             CHGVAR     VAR(%SST(&BUF 201  10)) VALUE(&CCTC)
+             CHGVAR     VAR(%SST(&BUF 211  10)) VALUE(%SST(&TSTA 3 10))
+             CHGVAR     VAR(%SST(&BUF 221   5)) VALUE(%SST(&TSTA 13 5))
+             CHGVAR     VAR(%SST(&BUF 226  10)) VALUE(%SST(&TSTA 18 10))
+             CHGVAR     VAR(%SST(&BUF 236   5)) VALUE(%SST(&TSTA 28 5))
+
+/* ----------------------------------------------------------------- */
+/* Call API OMQPRTIN - Print incident                                */
+/* ----------------------------------------------------------------- */
+             CALL       PGM(OMQPRTIN) PARM(&INTL &ACTC &BUF &PRC +
+                          &ERR &FLD)
+
+/* ----------------------------------------------------------------- */
+/* Send completion message when no errors                            */
+/* ----------------------------------------------------------------- */
+             IF         COND(%SST(&ERR 8 1) *EQ ' ') THEN(DO)
+             SNDPGMMSG  MSGID(OMQA01B) MSGF(OMSAPI) MSGDTA(&HEDC +
+                          *CAT &INC) MSGTYPE(*COMP)
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+/* ----------------------------------------------------------------- */
+/* When messages have been send, send them to the caller             */
+/* ----------------------------------------------------------------- */
+             IF         COND(%SST(&ERR 1 7) *EQ ' ') THEN(DO)
+
+             CALL       PGM(QMHMOVPM) PARM('    ' '*COMP     +
+                          *DIAG     *ESCAPE   *INFO     ' +
+                          X'00000004' 'OMQPRTINCP' X'00000001' +
+                          X'00000000')
+             MONMSG     MSGID(CPF0000)
+
+             ENDDO
+
+/* ----------------------------------------------------------------- */
+/* Send message when error or warning                                */
+/* ----------------------------------------------------------------- */
+ERROR:
+             IF         COND(%SST(&ERR 1 7) *EQ ' ') THEN(DO)
+             CALL       PGM(OMQPRTIN)
+             SNDPGMMSG  MSGID(OMQ5012) MSGF(OMSAPI) MSGTYPE(*ESCAPE)
+             ENDDO
+             ELSE       CMD(SNDPGMMSG MSGID(%SST(&ERR 1 7)) +
+                          MSGF(OMSAPI) MSGDTA(%SST(&ERR 9 128)) +
+                          MSGTYPE(*ESCAPE))
+
+/* ----------------------------------------------------------------- */
+/* End of Program                                                    */
+/* ----------------------------------------------------------------- */
+ ENDPGM:
+             ENDPGM

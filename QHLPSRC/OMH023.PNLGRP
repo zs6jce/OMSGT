@@ -1,0 +1,349 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: OMH023                                      :   *.
+.*   : Help for ...: Enter Incident Text                         :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   : This panelgroup contains the U.I.M. help texts for        :   *.
+.*   : Enter Incident Text                                       :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:PNLGRP.
+:IMPORT PNLGRP=OMSREFHD      NAME='*'.
+
+.*   *************************************************************   *.
+.*   * Enter Incident Text                                       *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH023.Enter Incident Text - Help
+
+:IMHELP NAME=OMH023GEN.
+
+:P.
+Select one of the following:
+
+:P.
+:LINK PERFORM='DSPHELP OMH02301IX'.
+Display 1 - Enter Incident Text
+:ELINK.
+
+:EHELP.
+
+:HELP NAME=OMH02301IX.General Help For Display 1
+:IMHELP NAME=OMH02301.
+:IMHELP NAME='OMH02301/FMITXT'.
+:IMHELP NAME='OMH02301/FMSULY'.
+:IMHELP NAME='OMH02301/FMSITD'.
+:IMHELP NAME='OMH02301/FMOP01'.
+:IMHELP NAME='OMH02301/FMTX01'.
+:IMHELP NAME='OMH02301/KEYS'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : General help for Enter Incident Text                      :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=OMH023GEN.Incident Text - Help
+:XH3.Enter Incident Text
+:ISCH ROOTS='enter incident text'.
+Enter Incident Text
+
+:P.
+The Incident Text function enables you to enter or display text
+associated with the incident. The text you enter here is stored
+in an text block. Each incident can have an unlimited number of
+textblocks.
+
+:P.
+If you want more information
+about a specific attribute, move the cursor to the attribute area
+and press help. If you want more information about customers in
+general, please follow this link to the
+:LINK PERFORM='DSPHELP CONCUSC OMSCONHD'.
+customer concepts.
+:ELINK.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 1                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMH02301.General Help For Display 1
+
+:XH3.Display 1 - Enter Incident Text
+
+:P.
+:LINK PERFORM='DSPHELP OMH023'.
+General Information.
+:ELINK.
+
+:P.
+The Incident Text display enables you to enter or display text
+associated with the incident.
+
+:P.
+If you want more information
+about a specific attribute, move the cursor to the attribute area
+and press help. If you want more information about customers in
+general, please follow this link to the
+:LINK PERFORM='DSPHELP CONCUSC OMSCONHD'.
+customer concepts.
+:ELINK.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMITXT (Incident text type)                    :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 02 022  02 022                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02301/FMITXT'.
+:IMHELP NAME='ITXT001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMSUL# (Support level)                         :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 03 022  03 022                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02301/FMSULY'.
+:IMHELP NAME='SUL_001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMSITD (Short incident text desc.)             :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 04 022  04 071                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02301/FMSITD'.
+:IMHELP NAME='SITD001'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMOP01 (Edit option)                           :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 06 001  06 002                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02301/FMOP01'.Edit option - Help
+
+:XH3.Edit option
+:P.
+The following editting options are allowed.
+:UL.
+:LI.In=Insert n lines
+:LI.Dn=Delete n lines
+:LI.Cn=Copy n lines
+:EUL.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMTX01 (Incident text line)                    :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 06 004  06 073                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02301/FMTX01'.Incident text line - Help
+
+:XH3.Incident text line
+:P.
+The text line used to describe the text block.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMOP02 (FMOP02)                                :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 001  07 002                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02301/FMOP02'.
+:IMHELP NAME='OMH02301/FMOP01'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMTX02 (Incident description)                  :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 07 004  07 073                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02301/FMTX02'.
+:IMHELP NAME='OMH02301/FMTX01'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMOP03 (FMOP03)                                :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 08 001  08 002                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02301/FMOP03'.
+:IMHELP NAME='OMH02301/FMOP01'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMTX03 (Incident description)                  :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 08 004  08 073                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02301/FMTX03'.
+:IMHELP NAME='OMH02301/FMTX01'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMOP04 (FMOP04)                                :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 09 001  09 002                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02301/FMOP04'.
+:IMHELP NAME='OMH02301/FMOP01'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMTX04 (Incident description)                  :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 09 004  09 073                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02301/FMTX04'.
+:IMHELP NAME='OMH02301/FMTX01'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMOP05 (FMOP05)                                :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 10 001  10 002                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02301/FMOP05'.
+:IMHELP NAME='OMH02301/FMOP01'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMTX05 (Incident description)                  :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 10 004  10 073                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02301/FMTX05'.
+:IMHELP NAME='OMH02301/FMTX01'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMOP06 (FMOP06)                                :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 11 001  11 002                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02301/FMOP06'.
+:IMHELP NAME='OMH02301/FMOP01'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMTX06 (Incident description)                  :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 11 004  11 073                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02301/FMTX06'.
+:IMHELP NAME='OMH02301/FMTX01'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMOP07 (FMOP07)                                :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 12 001  12 002                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02301/FMOP07'.
+:IMHELP NAME='OMH02301/FMOP01'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMTX07 (Incident description)                  :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 12 004  12 073                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02301/FMTX07'.
+:IMHELP NAME='OMH02301/FMTX01'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMOP08 (FMOP08)                                :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 13 001  13 002                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02301/FMOP08'.
+:IMHELP NAME='OMH02301/FMOP01'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1  FMTX08 (Incident description)                  :   *.
+.*   :                                                           :   *.
+.*   : Help Area : 13 004  13 073                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02301/FMTX08'.
+:IMHELP NAME='OMH02301/FMTX01'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMH02301/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F5=Refresh
+:PD.
+Press F5 to refresh the display you are currently working
+on with the (new) values from the OMS database. This is
+sometimes necessary if fields have been changed but the
+changes are not directly reflected on the display.
+
+:PT.F11=Edit/type
+:PD.
+Press F11 to view/hide the edit options.
+
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+
+:PT.F18=Select predefined text
+:PD.
+Press F18 to select a text ID that references to a text defined
+previously. Either you fill in the text, either you choose
+a predefined one. The chosen text may be adjusted, once it is added
+to the incident.
+
+:PT.Roll Keys
+:PD.
+Use the rollkeys to display the next or previous page of the display
+you are currently viewing. If more data is available is indicated
+by a :HP2.+:EHP2. charachter or the text :HP2.'More...':EHP2. in the
+bottom rigth corner of the display or list.
+
+:EPARML.
+:EHELP.
+:EPNLGRP.

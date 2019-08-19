@@ -1,0 +1,93 @@
+ /* ---------------------------------------------------------------- */
+ /* Description                                                      */
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /* Program ....: OMH018C                                            */
+ /* Function ...: Incident maintenance                               */
+ /* Author .....: Remain Software                                    */
+ /* Parameters .: &HEDC, HelpDesk code                               */
+ /*               &CTN#, Call number                                 */
+ /*               &CUSC, Customer code                               */
+ /*               &CCTC, Contact code                                */
+ /*               &STAT, Status                                      */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+
+ /* ---------------------------------------------------------------- */
+ /* Init program                                                     */
+ /* ---------------------------------------------------------------- */
+
+             PGM        PARM(&HEDC &CTN# &CUSC &CCTC &STAT)
+
+          /* ------------------------------------------------------- */
+          /* Declare parameter-variables                             */
+          /* ------------------------------------------------------- */
+             DCL        VAR(&HEDC)    TYPE(*CHAR) LEN(5)
+             DCL        VAR(&CTN#)    TYPE(*CHAR) LEN(10)
+             DCL        VAR(&CUSC)    TYPE(*CHAR) LEN(10)
+             DCL        VAR(&CCTC)    TYPE(*CHAR) LEN(10)
+
+          /* ------------------------------------------------------- */
+          /* Declare parameter-variables                             */
+          /* ------------------------------------------------------- */
+             DCL        VAR(&HEDD)    TYPE(*CHAR) LEN(50)
+             DCL        VAR(&S#CTN#)  TYPE(*CHAR) LEN(10)
+             DCL        VAR(&S#CUSC)  TYPE(*CHAR) LEN(10)
+             DCL        VAR(&S#CCTC)  TYPE(*CHAR) LEN(10)
+             DCL        VAR(&S#HEDC)  TYPE(*CHAR) LEN(5)
+             DCL        VAR(&STAT)    TYPE(*CHAR) LEN(5)
+
+          /* ------------------------------------------------------- */
+          /* Monitor for unexpected errors.                          */
+          /* ------------------------------------------------------- */
+             MONMSG     MSGID(CPF0000 OMQ0000) EXEC(GOTO CMDLBL(ERROR))
+
+ /* ---------------------------------------------------------------- */
+ /* Start of program                                                 */
+ /* ---------------------------------------------------------------- */
+
+          /* ------------------------------------------------------- */
+          /* Init                                                    */
+          /* ------------------------------------------------------- */
+ RESTART:
+             CHGVAR     VAR(&STAT) VALUE('*NORM')
+             CHGVAR     VAR(&S#CTN#) VALUE(&CTN#)
+             CHGVAR     VAR(&S#HEDC) VALUE(&HEDC)
+             CHGVAR     VAR(&S#CUSC) VALUE(&CUSC)
+             CHGVAR     VAR(&S#CCTC) VALUE(&CCTC)
+
+          /* ------------------------------------------------------- */
+          /* Call the program.                                       */
+          /* ------------------------------------------------------- */
+             CALL       PGM(OMH018) PARM(&S#HEDC &S#CTN# &S#CUSC +
+                          &S#CCTC &STAT)
+
+             IF         COND(&STAT *EQ '*TERM') THEN(DO)
+             SNDPGMMSG  MSGID(OMQ5012) MSGF(OMSAPI) MSGDTA(STRIM) +
+                          MSGTYPE(*ESCAPE)
+             GOTO       CMDLBL(ERROR)
+             ENDDO
+
+          /* ------------------------------------------------------- */
+          /* If the call number changed and not F3 the reloop        */
+          /* ------------------------------------------------------- */
+             IF         COND((&CTN# *NE &S#CTN#) *AND (&STAT *NE +
+                          '*EXIT')) THEN(GOTO CMDLBL(RESTART))
+
+             GOTO       CMDLBL(ENDPGM)
+
+ /* ---------------------------------------------------------------- */
+ /* Handle unexpected errors                                         */
+ /* ---------------------------------------------------------------- */
+ ERROR:
+             SNDPGMMSG  MSGID(OMQ5012) MSGF(OMSAPI) +
+                          MSGDTA(STRIR) MSGTYPE(*ESCAPE)
+             RETURN
+
+ /* ---------------------------------------------------------------- */
+ /* Exit program processing.                                         */
+ /* ---------------------------------------------------------------- */
+ ENDPGM:
+             RMVMSG     CLEAR(*ALL)
+             RETURN
+             ENDPGM

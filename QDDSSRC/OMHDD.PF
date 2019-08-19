@@ -1,0 +1,38 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMHDD                                         *
+      * Module .....: Request management                            *
+      * Function ...: Helpdesk file                                 *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * This file contains the helpdesk definitions.                *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMHDDR
+      * ------------------------------------------------------------ *
+                R OMHDDR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  DDHEDC    R               REFFLD(HEDC)
+                  DDHEDD    R               REFFLD(HEDD)
+                  DDHDMC    R               REFFLD(HDMC)
+                  DDCCTN    R               REFFLD(CTN#)
+                  DDICTN    R               REFFLD(INCR)
+                  DDCINC    R               REFFLD(INC#)
+                  DDIINC    R               REFFLD(INCR)
+                  DDISFL    R               REFFLD(ISFL)
+                  DDCTFP    R               REFFLD(CTFP)
+                  DDCTFL    R               REFFLD(CTFL)
+                  DDINFP    R               REFFLD(INFP)
+                  DDINFL    R               REFFLD(INFL)

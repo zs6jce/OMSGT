@@ -1,0 +1,28 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMRCF                                         *
+      * Function ...: Route change file                             *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+                R OMRCFR
+                  RCHEDC    R               REFFLD(HEDC)
+                  RCSTRC    R               REFFLD(STRC)
+                  RCSTAC    R               REFFLD(STAT)
+                  RCUSER    R               REFFLD(USID)
+                  RCACTC    R               REFFLD(EOEI)
+                  RCEXTI    R               REFFLD(EXTI)
+                  RCEEMC    R               REFFLD(EEMC)
+                  RCBCCE    R               REFFLD(BCCE)
+                  RCMATF    R               REFFLD(MATF)
+                  RCMATL    R               REFFLD(MATL)
+                  RCMATM    R               REFFLD(MATM)
+                  RCSUL#    R               REFFLD(SUL#)
+                  RCSTAT    R               REFFLD(ACTI)

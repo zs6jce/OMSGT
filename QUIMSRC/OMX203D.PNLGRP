@@ -1,0 +1,1269 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: OMX203D                                     :   *.
+.*   : Function ...: User option maintenance                     :   *.
+.*   : Module .....: HelpDesk                                    :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:PNLGRP   SCHIDX=REMAIN
+          DFTMSGF=OMHMSG
+          SUBMSGF=OMHDSP.
+
+
+.*   -------------------------------------------------------------
+.*   Import definitions
+.*   -------------------------------------------------------------
+
+.*        --------------------------------------------------
+.*        Help for this panelgroup.
+.*        --------------------------------------------------
+:IMPORT   NAME='*'
+          PNLGRP=OMX203.
+
+.*   -------------------------------------------------------------
+.*   Class definitions
+.*   -------------------------------------------------------------
+
+.*        --------------------------------------------------
+.*        Date
+.*        --------------------------------------------------
+:CLASS    NAME=DATE
+          BASETYPE='DATE'.
+:TL.
+:TI       VALUE='"0000000"'.&MSG(UNK0001).
+:ETL.
+:ECLASS.
+
+.*        --------------------------------------------------
+.*        Time
+.*        --------------------------------------------------
+:CLASS    NAME=TIME
+          BASETYPE='TIME'.
+:TL.
+:TI       VALUE='"000000"'.&MSG(UNK0001).
+:ETL.
+:ECLASS.
+
+.*        --------------------------------------------------
+.*        Dialog
+.*        --------------------------------------------------
+:CLASS    NAME=DIALOG
+          BASETYPE='BIN 15'.
+:ECLASS.
+
+.*        --------------------------------------------------
+.*        Indicator
+.*        --------------------------------------------------
+:CLASS    NAME=INDI
+          CASE=UPPER
+          WIDTH=4
+          BASETYPE='CHAR 1'.
+:TL.
+:TI       VALUE='"0"'.*NO
+:TI       VALUE='"1"'.*YES
+:TI       VALUE='" "'.*YES
+:ETL.
+:ECLASS.
+
+.*        --------------------------------------------------
+.*        Program description
+.*        --------------------------------------------------
+:CLASS    NAME=PGMD
+          BASETYPE='CHAR 30'.
+:ECLASS.
+
+.*        --------------------------------------------------
+.*        Format code
+.*        --------------------------------------------------
+:CLASS    NAME=FMTC
+          BASETYPE='OBJNAME 10'.
+:ECLASS.
+
+.*        --------------------------------------------------
+.*        User option
+.*        --------------------------------------------------
+:CLASS    NAME=UOPC
+          BASETYPE='CHAR 2'
+          BLANKS=IGNORE
+          CASE=UPPER.
+:ECLASS.
+
+.*        --------------------------------------------------
+.*        User option description
+.*        --------------------------------------------------
+:CLASS    NAME=UOPD
+          BASETYPE='CHAR 30'.
+:ECLASS.
+
+.*        --------------------------------------------------
+.*        Support level
+.*        --------------------------------------------------
+:CLASS    NAME=SULN
+          BASETYPE='CHAR 1'.
+:ECLASS.
+
+.*        --------------------------------------------------
+.*        Program name
+.*        --------------------------------------------------
+:CLASS    NAME=PGMN
+          BASETYPE='OBJNAME 10'.
+:ECLASS.
+
+.*        --------------------------------------------------
+.*        Program library
+.*        --------------------------------------------------
+:CLASS    NAME=PGML
+          BASETYPE='OBJNAME 10'.
+:TL.
+:TI       VALUE='"*LIBL     "'.*LIBL
+:ETL.
+:ECLASS.
+
+.*        --------------------------------------------------
+.*        Pass parameter indicator
+.*        --------------------------------------------------
+:CLASS    NAME=PRMI
+          WIDTH=1
+          BASETYPE='CHAR 1'.
+:ECLASS.
+
+.*        --------------------------------------------------
+.*        Interface level.
+.*        --------------------------------------------------
+:CLASS    NAME=INTL
+          BASETYPE='CHAR 8'
+          CASE=UPPER.
+:ECLASS.
+
+.*        --------------------------------------------------
+.*        Position to.
+.*        --------------------------------------------------
+:CLASS    NAME=POSS
+          BASETYPE='CHAR 2'
+          CASE=UPPER.
+:ECLASS.
+
+.*        --------------------------------------------------
+.*        Subfile option
+.*        --------------------------------------------------
+:CLASS    NAME=OPTI
+          WIDTH=1
+          BASETYPE=ACTION.
+:ECLASS.
+
+.*        --------------------------------------------------
+.*        Exit program for incomplete list
+.*        --------------------------------------------------
+:CLASS    NAME=XPGM
+          BASETYPE='CHAR 20'.
+:ECLASS.
+
+.*   -------------------------------------------------------------
+.*   Variable definitions
+.*   -------------------------------------------------------------
+
+.*        --------------------------------------------------
+.*        User option code
+.*        --------------------------------------------------
+:VAR      NAME=FMUOPC
+          ERRVAR=FMUOPCE
+          CLASS=UOPC.
+
+.*        --------------------------------------------------
+.*        User option description
+.*        --------------------------------------------------
+:VAR      NAME=FMUOPD
+          ERRVAR=FMUOPDE
+          CLASS=UOPD.
+
+.*        --------------------------------------------------
+.*        Support level
+.*        --------------------------------------------------
+:VAR      NAME=FMSULN
+          ERRVAR=FMSULNE
+          CLASS=SULN.
+
+.*        --------------------------------------------------
+.*        Support level of the current user
+.*        --------------------------------------------------
+:VAR      NAME=FMCSUL
+          CLASS=SULN.
+
+.*        --------------------------------------------------
+.*        Program name
+.*        --------------------------------------------------
+:VAR      NAME=FMPGMN
+          ERRVAR=FMPGMNE
+          CLASS=PGMN.
+
+.*        --------------------------------------------------
+.*        Program library
+.*        --------------------------------------------------
+:VAR      NAME=FMPGML
+          ERRVAR=FMPGMLE
+          CLASS=PGML.
+
+.*        --------------------------------------------------
+.*        Pass parameters indicator
+.*        --------------------------------------------------
+:VAR      NAME=FMPRMI
+          ERRVAR=FMPRMIE
+          CLASS=PRMI.
+
+.*        --------------------------------------------------
+.*        Interface level
+.*        --------------------------------------------------
+:VAR      NAME=FMINTL
+          ERRVAR=FMINTLE
+          CLASS=INTL.
+
+.*        --------------------------------------------------
+.*        Position to
+.*        --------------------------------------------------
+:VAR      NAME=FMPOSS
+          CLASS=POSS.
+
+.*        --------------------------------------------------
+.*        Option
+.*        --------------------------------------------------
+:VAR      NAME=FMOPTI
+          ERRVAR=FMOPTIE
+          CLASS=OPTI.
+
+.*        ··················································
+.*        Current action.
+.*        ··················································
+:VAR      NAME=FMIADD
+          CLASS=INDI.
+
+:VAR      NAME=FMIDSP
+          CLASS=INDI.
+
+:VAR      NAME=FMICHG
+          CLASS=INDI.
+
+.*        --------------------------------------------------
+.*        View number
+.*        --------------------------------------------------
+:VAR      NAME=FMVIEW
+          CLASS=DIALOG.
+
+.*        ---------------------------------------------------
+.*        Variable for exit program.
+.*        ---------------------------------------------------
+:VAR      NAME=FMXPGM
+          CLASS=XPGM.
+
+.*        --------------------------------------------------
+.*        Panel code
+.*        --------------------------------------------------
+:VAR      NAME=FMPA1C
+          CLASS=FMTC.
+
+.*        --------------------------------------------------
+.*        Sub title
+.*        ----------------------------------------------------
+:VAR      NAME=FMPG1D
+          CLASS=PGMD.
+
+.*        --------------------------------------------------
+.*        Todays time
+.*        --------------------------------------------------
+:VAR      NAME=FMTIME
+          CLASS=TIME.
+
+.*        --------------------------------------------------
+.*        Todays date
+.*        --------------------------------------------------
+:VAR      NAME=FMDATE
+          CLASS=DATE.
+
+.*        --------------------------------------------------
+.*        Date or time code (0=Display time 1=Display date)
+.*        --------------------------------------------------
+:VAR      NAME=FMDOTC
+          CLASS=INDI.
+
+
+.*   -------------------------------------------------------------
+.*   Variable records
+.*   -------------------------------------------------------------
+
+.*        --------------------------------------------------
+.*        Global program data
+.*        --------------------------------------------------
+:VARRCD   NAME=VR0001
+          VARS='FMPA1C FMPG1D FMXPGM FMCSUL'.
+
+.*        --------------------------------------------------
+.*        Date and time data.
+.*        --------------------------------------------------
+:VARRCD   NAME=VR0002
+          VARS='FMDATE FMTIME FMDOTC'.
+
+.*        --------------------------------------------------
+.*        The data record
+.*        --------------------------------------------------
+:VARRCD   NAME=VR0101
+          VARS='FMIADD   FMICHG   FMIDSP                           '
+          VARS='FMUOPC   FMUOPCE  FMUOPD   FMUOPDE  FMSULN  FMSULNE'
+          VARS='FMPGMN   FMPGMNE  FMPGML   FMPGMLE  FMPRMI  FMPRMIE'
+          VARS='FMINTL   FMINTLE  FMPOSS   FMOPTI   FMOPTIE FMVIEW'.
+
+.*        --------------------------------------------------
+.*        Data record to build the list.
+.*        --------------------------------------------------
+:VARRCD   NAME=VR0103
+          VARS='FMUOPC FMUOPD FMSULN FMPGMN FMPGML FMPRMI FMINTL'
+          VARS='FMOPTI'.
+
+.*   -------------------------------------------------------------
+.*   List definitions
+.*   -------------------------------------------------------------
+
+.*        --------------------------------------------------
+.*        The list with options.
+.*        --------------------------------------------------
+:LISTDEF  NAME=OMX203L1
+          VARS='FMOPTI FMUOPC FMUOPD FMSULN FMPGMN FMPGML FMPRMI'
+          VARS='FMINTL'.
+
+.*        --------------------------------------------------
+.*        The delete confirmation list.
+.*        --------------------------------------------------
+:LISTDEF  NAME=OMX203L2
+          VARS='FMOPTI FMUOPC FMUOPD FMSULN FMPGMN FMPGML FMPRMI'
+          VARS='FMINTL'.
+
+
+.*   -------------------------------------------------------------
+.*   Conditions
+.*   -------------------------------------------------------------
+
+.*        --------------------------------------------------
+.*        Condition for add/change/display
+.*        --------------------------------------------------
+:COND     NAME=CODSP
+          EXPR='FMIDSP  = "1"'
+          EVAL=ALWAYS.
+
+:COND     NAME=CONODSP
+          EXPR='FMIDSP ¬= "1"'
+          EVAL=ALWAYS.
+
+:COND     NAME=COADD
+          EXPR='FMIADD  = "1"'
+          EVAL=ALWAYS.
+
+:COND     NAME=CONOADD
+          EXPR='FMIADD ¬= "1"'
+          EVAL=ALWAYS.
+
+.*        --------------------------------------------------
+.*        Condition for F11=View
+.*        --------------------------------------------------
+:COND     NAME=COF11V1
+          EXPR='FMVIEW=2'
+          EXPR='*AND'
+          EXPR='FMCSUL="9"'
+          EVAL=ALWAYS.
+
+:COND     NAME=COF11V2
+          EXPR='FMVIEW=0'
+          EXPR='*AND'
+          EXPR='FMCSUL="9"'
+          EVAL=ALWAYS.
+
+:COND     NAME=COF11V3
+          EXPR='FMVIEW=1'
+          EXPR='*AND'
+          EXPR='FMCSUL="9"'
+          EVAL=ALWAYS.
+
+.*        --------------------------------------------------
+.*        Condition for F10=View
+.*        --------------------------------------------------
+:COND     NAME=COF10V1
+          EXPR='FMVIEW ¬= 3'
+          EVAL=ALWAYS.
+
+:COND     NAME=COF10V2
+          EXPR='FMVIEW  = 3'
+          EVAL=ALWAYS.
+
+.*        --------------------------------------------------
+.*        Condition the OMS manager.
+.*        --------------------------------------------------
+:COND     NAME=COMANAGER
+          EXPR='FMCSUL="9"'
+          EVAL=ALWAYS.
+
+.*        ···················································
+.*        Condition for date or time display
+.*        ···················································
+:COND     NAME=CODATE
+          EXPR='FMDOTC="1"'
+          EVAL=ALWAYS.
+
+:COND     NAME=COTIME
+          EXPR='FMDOTC="0"'
+          EVAL=ALWAYS.
+
+
+.*   -------------------------------------------------------------
+.*   Truth tables for the compiler
+.*   -------------------------------------------------------------
+
+.*        ---------------------------------------------------
+.*        Date and time are mutually exclusive, so are the views and
+.*        the add/change/display options.
+.*        ---------------------------------------------------
+:TT       CONDS='CODATE COTIME COF11V1 COF11V2 COF11V3 COF10V1 COF10V2'
+          CONDS='CODSP  CONODSP CONOADD CONOADD'
+          NAME=TT001.
+
+:TTROW    VALUES='0 0 0 0 0 0 0 0 0 0 0'.
+
+:ETT.
+
+
+.*   -------------------------------------------------------------
+.*   Keylists
+.*   -------------------------------------------------------------
+
+.*        --------------------------------------------------
+.*        Display 1 keylist
+.*        --------------------------------------------------
+:KEYL     NAME=KL0101
+          HELP='KL0101/'.
+
+:KEYI     KEY=F1
+          HELP='KL0101/F1'
+          VARUPD=NO
+          ACTION='HELP'.
+
+:KEYI     KEY=F5
+          HELP='KL0101/F5'
+          VARUPD=NO
+          ACTION='RETURN 05'
+          .&MSG(KEYF501).
+
+:KEYI     KEY=F6
+          HELP='KL0101/F6'
+          VARUPD=YES
+          COND=COMANAGER
+          ACTION='RETURN 06'
+          .&MSG(KEYF601,OMHDSP).
+
+
+:KEYI     KEY=F10
+          HELP='KL0101/F10'
+          VARUPD=YES
+          ACTION='RETURN 10'
+          COND=COF10V1
+          .&MSG(KEYF104).
+
+:KEYI     KEY=F10
+          HELP='KL0101/F1001'
+          VARUPD=YES
+          ACTION='RETURN 10'
+          COND=COF10V2
+          .&MSG(KEYF105).
+
+:KEYI     KEY=F11
+          HELP='KL0101/F11'
+          VARUPD=YES
+          ACTION='RETURN 11'
+          COND=COF11V1
+          .&MSG(KEYF118).
+
+:KEYI     KEY=F11
+          HELP='KL0101/F1101'
+          VARUPD=YES
+          ACTION='RETURN 11'
+          COND=COF11V2
+          .&MSG(KEYF119).
+
+:KEYI     KEY=F11
+          HELP='KL0101/F1102'
+          VARUPD=YES
+          ACTION='RETURN 11'
+          COND=COF11V3
+          .&MSG(KEYF11A).
+
+:KEYI     KEY=F12
+          HELP='KL0101/F12'
+          VARUPD=NO
+          ACTION='RETURN 12'
+          .&MSG(KEYF121).
+
+:KEYI     KEY=ENTER
+          HELP='KL0101/ENTER'
+          VARUPD=YES
+          ACTION='ENTER'.
+
+:KEYI     KEY=HELP
+          HELP='KL0101/HELP'
+          ACTION='HELP'.
+
+:KEYI     KEY=PAGEUP
+          HELP='KL0101/PAGEUP'
+          ACTION='PAGEUP'.
+
+:KEYI     KEY=PAGEDOWN
+          HELP='KL0101/PAGEDOWN'
+          ACTION='PAGEDOWN'.
+
+:KEYI     KEY=PRINT
+          HELP='KL0101/PRINT'
+          ACTION='PRINT'.
+:EKEYL.
+
+.*        --------------------------------------------------
+.*        Display 2 keylist
+.*        --------------------------------------------------
+:KEYL     NAME=KL0201
+          HELP='KL0201/'.
+
+:KEYI     KEY=F1
+          HELP='KL0201/F1'
+          VARUPD=NO
+          ACTION='HELP'.
+
+:KEYI     KEY=F12
+          HELP='KL0201/F12'
+          VARUPD=NO
+          ACTION='RETURN 12'
+          .&MSG(KEYF121).
+
+:KEYI     KEY=ENTER
+          HELP='KL0201/ENTER'
+          VARUPD=YES
+          ACTION='ENTER'.
+
+:KEYI     KEY=HELP
+          HELP='KL0201/HELP'
+          ACTION='HELP'.
+
+:KEYI     KEY=PAGEUP
+          HELP='KL0201/PAGEUP'
+          ACTION='PAGEUP'.
+
+:KEYI     KEY=PAGEDOWN
+          HELP='KL0201/PAGEDOWN'
+          ACTION='PAGEDOWN'.
+
+:KEYI     KEY=PRINT
+          HELP='KL0201/PRINT'
+          ACTION='PRINT'.
+:EKEYL.
+
+.*        --------------------------------------------------
+.*        Display 2 keylist
+.*        --------------------------------------------------
+:KEYL     NAME=KL0301
+          HELP='KL0301/'.
+
+:KEYI     KEY=F1
+          HELP='KL0301/F1'
+          VARUPD=NO
+          ACTION='HELP'.
+
+:KEYI     KEY=F5
+          HELP='KL0301/F5'
+          VARUPD=NO
+          ACTION='RETURN 05'
+          .&MSG(KEYF501).
+
+:KEYI     KEY=F12
+          HELP='KL0301/F12'
+          VARUPD=NO
+          ACTION='RETURN 12'
+          .&MSG(KEYF121).
+
+:KEYI     KEY=ENTER
+          HELP='KL0301/ENTER'
+          VARUPD=YES
+          ACTION='ENTER'.
+
+:KEYI     KEY=HELP
+          HELP='KL0301/HELP'
+          ACTION='HELP'.
+
+:KEYI     KEY=PAGEUP
+          HELP='KL0301/PAGEUP'
+          ACTION='PAGEUP'.
+
+:KEYI     KEY=PAGEDOWN
+          HELP='KL0301/PAGEDOWN'
+          ACTION='PAGEDOWN'.
+
+:KEYI     KEY=PRINT
+          HELP='KL0301/PRINT'
+          ACTION='PRINT'.
+:EKEYL.
+
+
+.*   -------------------------------------------------------------
+.*
+.*   Panel ........: OMX20301
+.*   Function .....: Work with User Options (CSUL  = 9)
+.*                   Select user option     (CSUL ¬= 9)
+.*
+.*
+.*   -------------------------------------------------------------
+
+
+:PANEL    NAME=OMX20301
+          HELP=OMX20301H
+          DEPTH=21
+          WIDTH=60
+          KEYL=KL0101
+          TT=TT001
+          ENTER='RETURN'
+          TOPSEP=NONE
+          .&MSG(MX20300).
+
+.*   -------------------------------------------------------------
+.*   Second display line and third line is inderlined
+.*   -------------------------------------------------------------
+:DATA     DEPTH=2
+          BOTSEP=RULE
+          BODYSEP=SPACE
+          MAXHEAD=0
+          LAYOUT=HORIZ.
+
+.*        ---------------------------------------------------
+.*        Panel code
+.*        ---------------------------------------------------
+:DATAI    USAGE=OUT
+          HELP='OMX20301/FMPA1C'
+          VAR=FMPA1C
+          .
+
+.*        ---------------------------------------------------
+.*        Program subtitle
+.*        ---------------------------------------------------
+:DATAI    USAGE=OUT
+          HELP='OMX20301/FMPG1D'
+          VAR=FMPG1D
+          .
+
+.*        ---------------------------------------------------
+.*        Time.
+.*        ---------------------------------------------------
+:DATAI    USAGE=OUT
+          HELP='OMX20301/FMTIME'
+          COND=COTIME
+          VAR=FMTIME
+          .
+
+.*        ---------------------------------------------------
+.*        date
+.*        ---------------------------------------------------
+:DATAI    USAGE=OUT
+          HELP='OMX20301/FMDATE'
+          COND=CODATE
+          VAR=FMDATE
+          .
+:EDATA.
+
+.*   -------------------------------------------------------------
+.*   Line four is blanks.
+.*   -------------------------------------------------------------
+:DATA     DEPTH=1  BOTSEP=NONE  BODYSEP=SPACE MAXHEAD=0  LAYOUT=HORIZ.
+:EDATA.
+
+.*   -------------------------------------------------------------
+.*   Data panel with the positions to
+.*   -------------------------------------------------------------
+:DATA     DEPTH=2
+          COMPACT
+          BOTSEP=SPACE
+          BODYSEP=NONE.
+
+.*        ---------------------------------------------------
+.*        Data columns
+.*        ---------------------------------------------------
+:DATACOL  WIDTH=20.
+:DATACOL  WIDTH=10.
+:DATACOL  WIDTH='*'.
+
+.*        ---------------------------------------------------
+.*        Position to
+.*        ---------------------------------------------------
+:DATAI    USAGE=INOUT
+          HELP='OMX20301/FMPOSS'
+          CSRLOC=NO
+          VAR=FMPOSS
+          .&MSG(POS0004).
+
+:EDATA.
+
+.*   -------------------------------------------------------------
+.*   List with user options.
+.*   -------------------------------------------------------------
+:LIST     DEPTH='*'
+          BOTSEP=RULE
+          BODYSEP=NONE
+          LISTDEF=OMX203L1
+          SCROLL=YES
+          ACTOR=CALLER
+          VIEW=FMVIEW
+          MAXHEAD=1.
+
+.*   -------------------------------------------------------------
+.*   List actions
+.*   -------------------------------------------------------------
+
+.*        --------------------------------------------------
+.*        1=Select
+.*        --------------------------------------------------
+:LISTACT  HELP='OMX20301/1H'
+          OPTION=1.&MSG(OPT0012).
+
+.*        --------------------------------------------------
+.*        2=Change
+.*        --------------------------------------------------
+:LISTACT  HELP='OMX20301/2H'
+          COND=COMANAGER
+          OPTION=2.&MSG(OPT0042).
+
+.*        --------------------------------------------------
+.*        3=Copy
+.*        --------------------------------------------------
+:LISTACT  HELP='OMX20301/3H'
+          COND=COMANAGER
+          OPTION=3.&MSG(OPT0011).
+
+.*        --------------------------------------------------
+.*        4=Delete
+.*        --------------------------------------------------
+:LISTACT  HELP='OMX20301/4H'
+          COND=COMANAGER
+          OPTION=4.&MSG(OPT0038).
+
+.*        --------------------------------------------------
+.*        5=Display
+.*        --------------------------------------------------
+:LISTACT  HELP='OMX20301/5H'
+          COND=COMANAGER
+          OPTION=5.&MSG(OPT0008).
+
+.*   -------------------------------------------------------------
+.*   List columns
+.*   -------------------------------------------------------------
+
+.*        --------------------------------------------------
+.*        Opt (COL0001)
+.*        --------------------------------------------------
+:LISTCOL  VAR=FMOPTI
+          USAGE=INOUT
+          MAXWIDTH=3
+          HELP='OMX20301/FMOPTI'.&MSG(COL0001).
+
+.*        --------------------------------------------------
+.*        User option
+.*        --------------------------------------------------
+:LISTCOL  VAR=FMUOPC
+          USAGE=OUT
+          MAXWIDTH=10
+          HELP='OMX20301/FMUOPC'.'&MSG(OPT0000).'
+
+.*        --------------------------------------------------
+.*        Description
+.*        --------------------------------------------------
+:LISTCOL  VAR=FMUOPD
+          USAGE=OUT
+          MAXWIDTH=30
+          HELP='OMX20301/FMUOPD'.&MSG(DSC0001).
+
+.*        --------------------------------------------------
+.*        Support level
+.*        --------------------------------------------------
+:LISTCOL  VAR=FMSULN
+          USAGE=OUT
+          MAXWIDTH=5
+          HELP='OMX20301/FMSULN'.&MSG(SUP0004).
+
+.*        --------------------------------------------------
+.*        Program
+.*        --------------------------------------------------
+:LISTCOL  VAR=FMPGMN
+          USAGE=OUT
+          MAXWIDTH=10
+          HELP='OMX20301/FMPGMN'.&MSG(PGM0005).
+
+.*        --------------------------------------------------
+.*        Program library
+.*        --------------------------------------------------
+:LISTCOL  VAR=FMPGML
+          USAGE=OUT
+          MAXWIDTH=10
+          HELP='OMX20301/FMPGML'.&MSG(LIB0013).
+
+.*        --------------------------------------------------
+.*        Pass parameters
+.*        --------------------------------------------------
+:LISTCOL  VAR=FMPRMI
+          USAGE=OUT
+          MAXWIDTH=5
+          HELP='OMX20301/FMPRMI'.&MSG(PRM0001).
+
+.*        --------------------------------------------------
+.*        Interface level
+.*        --------------------------------------------------
+:LISTCOL  VAR=FMINTL
+          USAGE=OUT
+          MAXWIDTH=10
+          HELP='OMX20301/FMINTL'.&MSG(LEV0003).
+
+
+.*   -------------------------------------------------------------
+.*   List views
+.*   -------------------------------------------------------------
+:LISTVIEW  LAYOUT=1
+           COLS='FMOPTI FMUOPC FMUOPD'.
+
+:LISTVIEW  LAYOUT=1
+           COLS='FMOPTI FMUOPC FMPGMN FMPGML'.
+
+:LISTVIEW  LAYOUT=1
+           COLS='FMOPTI FMUOPC FMSULN FMPRMI FMINTL'.
+
+:LISTVIEW  LAYOUT=4
+           COLS='FMOPTI FMUOPC'.
+
+:ELIST.
+:EPANEL.
+
+.*   -------------------------------------------------------------
+.*
+.*   Panel ........: OMX20302
+.*   Function .....: Delete confirmation list.
+.*
+.*   -------------------------------------------------------------
+
+:PANEL    NAME=OMX20302
+          HELP=OMX20302H
+          DEPTH=21
+          WIDTH=60
+          KEYL=KL0201
+          TT=TT001
+          ENTER='RETURN 100'
+          TOPSEP=NONE
+          .&MSG(MX20300).
+
+.*   -------------------------------------------------------------
+.*   Second display line and third line is inderlined
+.*   -------------------------------------------------------------
+:DATA     DEPTH=2
+          BOTSEP=RULE
+          BODYSEP=SPACE
+          MAXHEAD=0
+          LAYOUT=HORIZ.
+
+.*        ---------------------------------------------------
+.*        Panel code
+.*        ---------------------------------------------------
+:DATAI    USAGE=OUT
+          HELP='OMX20302/FMPA1C'
+          VAR=FMPA1C
+          .
+
+.*        ---------------------------------------------------
+.*        Program subtitle
+.*        ---------------------------------------------------
+:DATAI    USAGE=OUT
+          HELP='OMX20302/FMPG1D'
+          VAR=FMPG1D
+          .
+
+.*        ---------------------------------------------------
+.*        Time.
+.*        ---------------------------------------------------
+:DATAI    USAGE=OUT
+          HELP='OMX20302/FMTIME'
+          COND=COTIME
+          VAR=FMTIME
+          .
+
+.*        ---------------------------------------------------
+.*        date
+.*        ---------------------------------------------------
+:DATAI    USAGE=OUT
+          HELP='OMX20302/FMDATE'
+          COND=CODATE
+          VAR=FMDATE
+          .
+:EDATA.
+
+.*   -------------------------------------------------------------
+.*   Line four is blanks.
+.*   -------------------------------------------------------------
+:DATA     DEPTH=1  BOTSEP=NONE  BODYSEP=SPACE MAXHEAD=0  LAYOUT=HORIZ.
+:EDATA.
+
+.*   -------------------------------------------------------------
+.*   Delete confirmation list.
+.*   -------------------------------------------------------------
+:LIST     DEPTH='*'
+          BOTSEP=RULE
+          BODYSEP=NONE
+          LISTDEF=OMX203L2
+          SCROLL=YES
+          MAXHEAD=1.
+
+.*        ···················································
+.*        Top instruction
+.*        ···················································
+:TOPINST.&MSG(TIN0003,OMHDSP).
+:TOPINST.&MSG(TIN0004,OMHDSP).
+
+.*   -------------------------------------------------------------
+.*   List columns
+.*   -------------------------------------------------------------
+
+.*        --------------------------------------------------
+.*        Opt (COL0001)
+.*        --------------------------------------------------
+:LISTCOL  VAR=FMOPTI
+          USAGE=OUT
+          MAXWIDTH=3
+          HELP='OMX20302/FMOPTI'.&MSG(COL0001).
+
+.*        --------------------------------------------------
+.*        User option
+.*        --------------------------------------------------
+:LISTCOL  VAR=FMUOPC
+          USAGE=OUT
+          MAXWIDTH=10
+          HELP='OMX20302/FMUOPC'.'&MSG(OPT0000).'
+
+.*        --------------------------------------------------
+.*        Description
+.*        --------------------------------------------------
+:LISTCOL  VAR=FMUOPD
+          USAGE=OUT
+          MAXWIDTH=30
+          HELP='OMX20302/FMUOPD'.&MSG(DSC0001).
+
+.*        --------------------------------------------------
+.*        Support level
+.*        --------------------------------------------------
+:LISTCOL  VAR=FMSULN
+          USAGE=OUT
+          MAXWIDTH=5
+          HELP='OMX20302/FMSULN'.&MSG(SUP0004).
+
+.*        --------------------------------------------------
+.*        Program
+.*        --------------------------------------------------
+:LISTCOL  VAR=FMPGMN
+          USAGE=OUT
+          MAXWIDTH=10
+          HELP='OMX20302/FMPGMN'.&MSG(PGM0005).
+
+.*        --------------------------------------------------
+.*        Program library
+.*        --------------------------------------------------
+:LISTCOL  VAR=FMPGML
+          USAGE=OUT
+          MAXWIDTH=10
+          HELP='OMX20302/FMPGML'.&MSG(LIB0013).
+
+.*        --------------------------------------------------
+.*        Pass parameters
+.*        --------------------------------------------------
+:LISTCOL  VAR=FMPRMI
+          USAGE=OUT
+          MAXWIDTH=5
+          HELP='OMX20302/FMPRMI'.&MSG(PRM0001).
+
+.*        --------------------------------------------------
+.*        Interface level
+.*        --------------------------------------------------
+:LISTCOL  VAR=FMINTL
+          USAGE=OUT
+          MAXWIDTH=10
+          HELP='OMX20302/FMINTL'.&MSG(LEV0003).
+
+
+.*   -------------------------------------------------------------
+.*   List views
+.*   -------------------------------------------------------------
+:LISTVIEW  LAYOUT=1
+           COLS='FMOPTI FMUOPC FMUOPD'.
+
+:ELIST.
+:EPANEL.
+
+.*   -------------------------------------------------------------
+.*
+.*   Panel ........: OMX20303
+.*   Function .....: Maintain user option   (CSUL  = 9)
+.*                   Display user option    (CSUL ¬= 9)
+.*
+.*
+.*   -------------------------------------------------------------
+
+
+:PANEL    NAME=OMX20303
+          HELP=OMX20303H
+          DEPTH=21
+          WIDTH=60
+          KEYL=KL0301
+          TT=TT001
+          ENTER='RETURN'
+          TOPSEP=NONE
+          .&MSG(MX20300).
+
+.*   -------------------------------------------------------------
+.*   Second display line and third line is inderlined
+.*   -------------------------------------------------------------
+:DATA     DEPTH=2
+          BOTSEP=RULE
+          BODYSEP=SPACE
+          MAXHEAD=0
+          LAYOUT=HORIZ.
+
+.*        ---------------------------------------------------
+.*        Panel code
+.*        ---------------------------------------------------
+:DATAI    USAGE=OUT
+          HELP='OMX20303/FMPA1C'
+          VAR=FMPA1C
+          .
+
+.*        ---------------------------------------------------
+.*        Program subtitle
+.*        ---------------------------------------------------
+:DATAI    USAGE=OUT
+          HELP='OMX20303/FMPG1D'
+          VAR=FMPG1D
+          .
+
+.*        ---------------------------------------------------
+.*        Time.
+.*        ---------------------------------------------------
+:DATAI    USAGE=OUT
+          HELP='OMX20303/FMTIME'
+          COND=COTIME
+          VAR=FMTIME
+          .
+
+.*        ---------------------------------------------------
+.*        date
+.*        ---------------------------------------------------
+:DATAI    USAGE=OUT
+          HELP='OMX20303/FMDATE'
+          COND=CODATE
+          VAR=FMDATE
+          .
+:EDATA.
+
+.*   -------------------------------------------------------------
+.*   Line four is blanks.
+.*   -------------------------------------------------------------
+:DATA     DEPTH=1  BOTSEP=NONE  BODYSEP=SPACE MAXHEAD=0  LAYOUT=HORIZ.
+:EDATA.
+
+.*   ·····························································
+.*   Datarecord with the input fields.
+.*
+.*   This record contains the fields for the user option maintenance
+.*   program. It can appear in 3 modes: Add and copy, where all fields
+.*   can be entered. Display, where no fields can be entered
+.*   and change where non keyfields can be entered.
+.*
+.*   ·····························································
+:DATA     DEPTH='*'
+          SCROLL=NO
+          BOTSEP=RULE
+          LAYOUT=1.
+
+.*        ···················································
+.*        Data columns
+.*        ···················································
+:DATACOL  WIDTH=25.
+:DATACOL  WIDTH=10.
+:DATACOL  WIDTH='*'.
+
+.*        ···················································
+.*        FMUOPC - User option
+.*        FMUOPD - User option description
+.*        FMPDLC - Environment
+.*        FMPDLD - Environment description
+.*        ···················································
+:DATAGRP  COMPACT
+          GRPSEP=NONE.
+
+.*        ···················································
+.*        User option               ADD/COPY
+.*        ···················································
+:DATAI    USAGE=INOUT
+          HELP='OMX20303/FMUOPC'
+          VAR=FMUOPC
+          COND=COADD
+          .&MSG(OPT0000).
+
+.*                  ···················································
+.*                  User option               DISPLAY/CHANGE/DELETE
+.*                  ···················································
+:DATAI              USAGE=OUT
+                    HELP='OMX20303/FMUOPC'
+                    VAR=FMUOPC
+                    COND=CONOADD
+                    .&MSG(OPT0000).
+
+.*        ···················································
+.*        User option description    ADD/CHANGE
+.*        ···················································
+:DATAI    USAGE=INOUT
+          HELP='OMX20303/FMUOPD'
+          VAR=FMUOPD
+          COND=CONODSP
+          .&MSG(DSC0001).
+
+.*                  ···················································
+.*                  User option description    DISPLAY
+.*                  ···················································
+:DATAI              USAGE=OUT
+                    HELP='OMX20303/FMUOPD'
+                    VAR=FMUOPD
+                    COND=CODSP
+                    .&MSG(DSC0001).
+:EDATAGRP.
+
+.*        ···················································
+.*        Program data group.
+.*        FMPGMN - Program name
+.*        FMPGML - Program library
+.*        ···················································
+:DATAGRP  COMPACT
+          GRPSEP=NONE.
+
+.*        ···················································
+.*        Program name               ADD/CHANGE
+.*        ···················································
+:DATAI    USAGE=INOUT
+          HELP='OMX20303/FMPGMN'
+          VAR=FMPGMN
+          COND=CONODSP
+          .&MSG(PGM0005).
+
+.*                  ···················································
+.*                  Program name               DISPLAY
+.*                  ···················································
+:DATAI              USAGE=OUT
+                    HELP='OMX20303/FMPGMN'
+                    VAR=FMPGMN
+                    COND=CODSP
+                    .&MSG(PGM0005).
+
+.*        ···················································
+.*        Program library            ADD/CHANGE
+.*        ···················································
+:DATAI    USAGE=INOUT
+          HELP='OMX20303/FMPGML'
+          VAR=FMPGML
+          COND=CONODSP
+          .&MSG(LIB0013).
+
+:DATAC    .&MSG(CHO0042).
+
+.*                  ···················································
+.*                  Program library            DISPLAY
+.*                  ···················································
+:DATAI              USAGE=OUT
+                    HELP='OMX20303/FMPGML'
+                    VAR=FMPGML
+                    COND=CODSP
+                    .&MSG(LIB0013).
+
+:EDATAGRP.
+
+.*        ···················································
+.*        Other attributes data group.
+.*        FMSULN - Support level
+.*        FMPRMI - Pass parameters indicator
+.*        FMINTL - OMS interface level
+.*        ···················································
+:DATAGRP  COMPACT
+          GRPSEP=NONE.
+
+.*        ···················································
+.*        Support level         ADD/CHANGE
+.*        ···················································
+:DATAI    USAGE=INOUT
+          HELP='OMX20303/FMSULN'
+          VAR=FMSULN
+          COND=CONODSP
+          .&MSG(SUP0003).
+
+:DATAC    .&MSG(MX20308).
+
+
+.*                  ···················································
+.*                  Support level         DISPLAY
+.*                  ···················································
+:DATAI              USAGE=OUT
+                    HELP='OMX20303/FMSULN'
+                    VAR=FMSULN
+                    COND=CODSP
+                    .&MSG(SUP0003).
+
+:DATAC             .&MSG(MX20308).
+
+.*        ···················································
+.*        Pass parameters            ADD/CHANGE
+.*        ···················································
+:DATAI    USAGE=INOUT
+          HELP='OMX20303/FMPRMI'
+          VAR=FMPRMI
+          COND=CONODSP
+          .&MSG(PRM0002).
+
+:DATAC   .&MSG(CHO0024).
+
+.*                  ···················································
+.*                  Pass parameters            DISPLAY
+.*                  ···················································
+:DATAI              USAGE=OUT
+                    HELP='OMX20303/FMPRMI'
+                    VAR=FMPRMI
+                    COND=CODSP
+                    .&MSG(PRM0002).
+
+:DATAC             .&MSG(CHO0024).
+
+.*        ···················································
+.*        Interface level            ADD/CHANGE
+.*        ···················································
+:DATAI    USAGE=INOUT
+          HELP='OMX20303/FMINTL'
+          VAR=FMINTL
+          COND=CONODSP
+          .&MSG(LEV0009).
+
+:DATAC   .&MSG(VRS0011).
+
+.*                  ···················································
+.*                  Interface level            DISPLAY
+.*                  ···················································
+:DATAI              USAGE=OUT
+                    HELP='OMX20303/FMINTL'
+                    VAR=FMINTL
+                    COND=CODSP
+                    .&MSG(LEV0009).
+
+:EDATAGRP.
+:EDATA.
+
+:EPANEL.
+:EPNLGRP.

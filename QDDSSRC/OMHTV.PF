@@ -1,0 +1,36 @@
+      *$$\CRTOM CRTPF
+      *$$\ENDOM
+
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMHTV                                         *
+      * Function ...: Selections and default subsets.               *
+      * Author .....: W.S. Jongman.                                 *
+      * Startdate ..: 21-01-1993.                                   *
+      *                                                             *
+      * If a selection can be made on a screen, then the selection  *
+      * is stored in this file. For subsets screens is the default  *
+      * subset stored.                                              *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREF
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMRTVR
+      * ------------------------------------------------------------ *
+                R OMHTVR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  TVHEDC    R               REFFLD(HEDC)
+                  TVUSID    R               REFFLD(USID)
+                  TVFMTC    R               REFFLD(FMTC)
+                  TVRTV#    R               REFFLD(SEQ#)
+                  TVSDTA    R               REFFLD(SDTA)

@@ -1,0 +1,224 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: OMHAPI                                      :   *.
+.*   : Function ...: Helpdesk API menu                           :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+.*   ·····························································
+.*   Panel group
+.*   ·····························································
+
+:PNLGRP   SCHIDX=REMAINHD
+          DFTMSGF=OMHDSP
+          SUBMSGF=OMHDSP.
+
+.*        ··················································
+.*        Copyright Remain
+.*        ··················································
+:COPYR.&MSG(CPY0008,OMHMSG).
+
+.*   ·····························································
+.*   Import definitions
+.*   ·····························································
+
+.*        ··················································
+.*        Help for this panelgroup.
+.*        ··················································
+:IMPORT   NAME='*'
+          PNLGRP=OMHAPI.
+
+.*   ·····························································
+.*   Variables
+.*   ·····························································
+
+.*        ··················································
+.*        ZMENU
+.*        ··················································
+:VAR      NAME=ZMENU.
+
+.*   ·····························································
+.*   Conditions
+.*   ·····························································
+
+.*   ·····························································
+.*   Function keys
+.*   ·····························································
+:KEYL     NAME=KL0101
+          HELP=KL0101H.
+
+:KEYI     KEY=F1
+          HELP=F1H
+          ACTION=HELP.
+
+:KEYI     KEY=F3
+          HELP=F3H
+          ACTION='EXIT SET'
+          VARUPD=NO.&MSG(KEYF301).
+
+:KEYI     KEY=F4
+          HELP=F4H
+          ACTION='PROMPT'
+          VARUPD=NO.&MSG(KEYF401).
+
+:KEYI     KEY=F9
+          HELP=F9H
+          ACTION=RETRIEVE.&MSG(KEYF901).
+
+:KEYI     KEY=F12
+          HELP=F12H
+          ACTION='CANCEL SET'
+          VARUPD=NO.&MSG(KEYF121).
+
+:KEYI     KEY=F13
+          HELP=F13H
+          ACTION='MENU SUPPORT'.&MSG(KEYF131).
+
+:KEYI     KEY=F24
+          HELP=F24H
+          ACTION=MOREKEYS.&MSG(KEYF241).
+
+:KEYI     KEY=PAGEUP
+          HELP=PAGEH
+          ACTION='PAGEUP'.
+
+:KEYI     KEY=PAGEDOWN
+          HELP=PAGEH
+          ACTION='PAGEDOWN'.
+
+:KEYI     KEY=ENTER
+          HELP=ENTERH
+          ACTION=ENTER.
+
+:KEYI     KEY=HOME
+          HELP=HOMEH
+          ACTION=HOME.
+
+:KEYI     KEY=HELP
+          HELP=HELPH
+          ACTION=HELP.
+
+:KEYI     KEY=PRINT
+          HELP=PRINTH
+          ACTION=PRINT.
+:EKEYL.
+
+.*   ·····························································
+.*   Panel 1
+.*   ·····························································
+:PANEL    NAME=PA01
+          KEYL=KL0101
+          HELP=OMHAPIH
+          ENTER='MSG CPD9817 QCPFMSG'
+          PANELID=ZMENU
+          TOPSEP=SYSNAM.&MSG(MNU1600).
+
+
+.*        ··················································
+.*        Menu area
+.*        ··················································
+:MENU     DEPTH='*'
+          SCROLL=YES
+          BOTSEP=NONE.
+
+.*        ··················································
+.*        Top instructions
+.*        ··················································
+:TOPINST.&MSG(TIN0006).
+
+.*        ··················································
+.*        Menu options incident
+.*        ··················································
+:MENUGRP.&MSG(INC0003).
+:MENUI    OPTION=1
+          HELP='OMHAPI/OPT1H'
+          ACTION='CMD ? OMQUSIIN'.&MSG(MNU1601).
+
+:MENUI    OPTION=2
+          HELP='OMHAPI/OPT2H'
+          ACTION='CMD ? OMQCHGIN'.&MSG(MNU1602).
+
+:MENUI    OPTION=3
+          HELP='OMHAPI/OPT3H'
+          ACTION='CMD ? OMQPRTIN'.&MSG(MNU1603).
+
+:MENUI    OPTION=4
+          HELP='OMHAPI/OPT4H'
+          ACTION='CMD ? OMQRTVIN'.&MSG(MNU1604).
+:EMENUGRP.
+
+.*        ··················································
+.*        Menu options helpdesk
+.*        ··················································
+:MENUGRP.&MSG(HLP0001).
+:MENUI    OPTION=6
+          HELP='OMHAPI/OPT6H'
+          ACTION='CMD ? OMQRTVHD'.&MSG(MNU1606).
+:EMENUGRP.
+
+.*        ··················································
+.*        Menu options customer call
+.*        ··················································
+:MENUGRP.&MSG(CCA0001).
+
+:MENUI    OPTION=11
+          HELP='OMHAPI/OPT11H'
+          ACTION='CMD ? OMQRTVCC'.&MSG(MNU1607).
+
+:MENUI    OPTION=12
+          HELP='OMHAPI/OPT12H'
+          ACTION='CMD ? OMQCHGCC'.&MSG(MNU1610).
+:EMENUGRP.
+
+.*        ··················································
+.*        Menu options customer
+.*        ··················································
+:MENUGRP.&MSG(CUS0001).
+
+:MENUI    OPTION=16
+          HELP='OMHAPI/OPT16H'
+          ACTION='CMD ? OMQCHGCU'
+          .Customer Change API                         (OMQCHGCU)
+
+:MENUI    OPTION=17
+          HELP='OMHAPI/OPT17H'
+          ACTION='CMD ? OMQRTVCU'.&MSG(MNU1608).
+:EMENUGRP.
+
+.*        ··················································
+.*        Menu options contact
+.*        ··················································
+:MENUGRP.&MSG(CNT0001).
+
+:MENUI    OPTION=21
+          HELP='OMHAPI/OPT21H'
+          ACTION='CMD ? OMQCHGCO'
+          .Customer Contact Change API                 (OMQCHGCU)
+
+:MENUI    OPTION=22
+          HELP='OMHAPI/OPT22H'
+          ACTION='CMD ? OMQRTVCO'.&MSG(MNU1609).
+:EMENUGRP.
+
+.*        ··················································
+.*        Menu options item
+.*        ··················································
+:MENUGRP.&MSG(ITM0001).
+:MENUI    OPTION=26
+          HELP='OMHAPI/OPT26H'
+          ACTION='CMD ? OMQCHGCI'.&MSG(MNU1626).
+:EMENUGRP.
+
+:EMENU.
+
+.*        ··················································
+.*        Command line
+.*        ··················································
+:CMDLINE  SIZE=LONG.&MSG(CMD0003).
+
+:EPANEL.
+:EPNLGRP.

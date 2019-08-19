@@ -1,0 +1,145 @@
+ /* ---------------------------------------------------------------- */
+ /* Description                                                      */
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /* Program ....: OMH039C                                            */
+ /* Function ...: Send helpdesk definitions                          */
+ /* Author .....: Remain Software                                    */
+ /* Parameter ..: &HEDC  - Helpdesk                                  */
+ /*               &EEMC  - Helpdesk email address                    */
+ /*               &EXTI  - External interface ('1'=Notes)            */
+ /*               &STAT  - Status                                    */
+ /*                                                                  */
+ /* This program sends the definition data via a mail template to a  */
+ /* specific e-mail address. The mail template file location must    */
+ /* be filled. If it is not filled then the values are taken from    */
+ /* the system mail extensions file.                                 */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+
+ /* ---------------------------------------------------------------- */
+ /* Program                                                          */
+ /* ---------------------------------------------------------------- */
+
+             PGM        PARM(&HEDC &EEMC &EXTI &STAT)
+
+          /* ------------------------------------------------------ */
+          /* Parameters                                             */
+          /* ------------------------------------------------------ */
+             DCL        VAR(&HEDC) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&EEMC) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&EXTI) TYPE(*CHAR) LEN(1)
+             DCL        VAR(&STAT) TYPE(*CHAR) LEN(5)
+
+          /* ------------------------------------------------------ */
+          /* Variables                                              */
+          /* ------------------------------------------------------ */
+             DCL        VAR(&SHID) TYPE(*CHAR) LEN(80)
+             DCL        VAR(&EMAC) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&BCCE) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&SRCQ) TYPE(*CHAR) LEN(20)
+
+          /* ------------------------------------------------------ */
+          /* Install error monitor                                  */
+          /* ------------------------------------------------------ */
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ERROR))
+
+ /* ---------------------------------------------------------------- */
+ /* Start of program                                                 */
+ /* ---------------------------------------------------------------- */
+
+          /* ------------------------------------------------------ */
+          /* Create a sourcefile in qtemp                           */
+          /* ------------------------------------------------------ */
+             CLRPFM     FILE(QTEMP/OMMTO)
+             MONMSG     MSGID(CPF0000) EXEC(DO)
+             CPYF       FROMFILE(*LIBL/OMMTO) TOFILE(QTEMP/OMMTO) +
+                          MBROPT(*NONE) CRTFILE(*YES)
+             CLRPFM     FILE(QTEMP/OMMTO)
+             ENDDO
+
+          /* ------------------------------------------------------ */
+          /* Override to the correct output file                    */
+          /* ------------------------------------------------------ */
+             OVRDBF     FILE(OMMTO) TOFILE(QTEMP/OMMTO)
+
+ /* ---------------------------------------------------------------- */
+ /* Lotus notes                                                      */
+ /* ---------------------------------------------------------------- */
+             IF         COND(&EXTI *EQ '1') THEN(DO)
+
+ /* ---------------------------------------------------------------- */
+ /* Send the status database                                         */
+ /* ---------------------------------------------------------------- */
+             OVRDBF     FILE(OMMTI) TOFILE(*LIBL/OMMTI) MBR(NOTES_STR)
+             CLRPFM     FILE(QTEMP/OMMTO)
+
+          /* ------------------------------------------------------ */
+          /* Process the template                                   */
+          /* ------------------------------------------------------ */
+             CALL       PGM(OMH036) PARM(&HEDC ' ' ' ' '9' &STAT)
+             CALL       PGM(OMH036)
+
+          /* ------------------------------------------------------ */
+          /* Send the mail                                          */
+          /* ------------------------------------------------------ */
+             CHGVAR     VAR(&SRCQ) VALUE('OMMTO     QTEMP     ')
+             CHGVAR     VAR(&EMAC) VALUE('*DFT')
+             CHGVAR     VAR(&SHID) VALUE('OMH039C2')
+             CALL       PGM(OMH032C) PARM('*DFT' '*DFT' &EMAC +
+              &EEMC &BCCE &SHID '*PLAIN' &SRCQ 'OMMTO     ' &HEDC ' ')
+
+ /* ---------------------------------------------------------------- */
+ /* Send the question and answer database                            */
+ /* ---------------------------------------------------------------- */
+
+             DLTOVR     FILE(OMMTI)
+             OVRDBF     FILE(OMMTI) TOFILE(*LIBL/OMMTI) MBR(NOTES_QLS)
+             CLRPFM     FILE(QTEMP/OMMTO)
+
+          /* ------------------------------------------------------ */
+          /* Process the template                                   */
+          /* ------------------------------------------------------ */
+             CALL       PGM(OMH036) PARM(&HEDC ' ' ' ' '9' &STAT)
+             CALL       PGM(OMH036)
+
+          /* ------------------------------------------------------ */
+          /* Send the mail                                          */
+          /* ------------------------------------------------------ */
+             CHGVAR     VAR(&SRCQ) VALUE('OMMTO     QTEMP     ')
+             CHGVAR     VAR(&EMAC) VALUE('*DFT')
+             CHGVAR     VAR(&SHID) VALUE('OMH039C2')
+             CALL       PGM(OMH032C) PARM('*DFT' '*DFT' &EMAC &EEMC +
+                          &BCCE &SHID '*PLAIN' &SRCQ 'OMMTO     ' +
+                          &HEDC ' ')
+             ENDDO
+
+ /* ---------------------------------------------------------------- */
+ /* End processing                                                   */
+ /* ---------------------------------------------------------------- */
+
+          /* ------------------------------------------------------ */
+          /* Remove the overrides                                   */
+          /* ------------------------------------------------------ */
+             DLTOVR     FILE(*ALL)
+
+          /* ------------------------------------------------------ */
+          /* Exit                                                   */
+          /* ------------------------------------------------------ */
+             GOTO       CMDLBL(ENDPGM)
+
+ /* ---------------------------------------------------------------- */
+ /* Handle unexpected errors                                         */
+ /* ---------------------------------------------------------------- */
+ ERROR:
+             CHGVAR     VAR(&STAT) VALUE('*TERM')
+             MONMSG     MSGID(CPF0000)
+             RETURN
+
+ /* ---------------------------------------------------------------- */
+ /* Exit program processing                                          */
+ /* ---------------------------------------------------------------- */
+ ENDPGM:     RMVMSG     CLEAR(*ALL)
+             MONMSG     MSGID(CPF0000)
+             ENDPGM
+

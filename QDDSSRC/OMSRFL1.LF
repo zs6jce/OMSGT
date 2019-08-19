@@ -1,0 +1,28 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMSRFL1                                       *
+      * Module .....: HelpDesk                                      *
+      * Function ...: Status route actions logical                  *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ----------------------------------------------------------- *
+      * Record OMSRFR                                               *
+      * ----------------------------------------------------------- *
+                                            UNIQUE
+                R OMSRFR                    PFILE(OMSRF)
+
+      * ----------------------------------------------------------- *
+      * Access path                                                 *
+      * RFHEDC      - Helpdesk code                                 *
+      * RFSTAT      - Status Route                                  *
+      * RFEOEI      - Entry or exit indicator                       *
+      * RFASQ#      - Status action sequence                        *
+      * ----------------------------------------------------------- *
+                K RFHEDC
+                K RFSTAT
+                K RFEOEI
+                K RFASQ#

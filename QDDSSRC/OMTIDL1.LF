@@ -1,0 +1,30 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMTIDL1                                       *
+      * Module .....: Incident text detail description              *
+      * Function ...: Incident logical                              *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * Incident logical                                            *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ----------------------------------------------------------- *
+      * Record OMINCR                                               *
+      * ----------------------------------------------------------- *
+                                            UNIQUE
+                R OMTIDR                    PFILE(OMTID)
+
+      * ----------------------------------------------------------- *
+      * Access path                                                 *
+      * IDHEDC      - Helpdesk code                                 *
+      * IDINC#      - Incident number                               *
+      * IDITH#      - Incident text header sequence                 *
+      * IDSEQ#      - Sequence number                               *
+      * ----------------------------------------------------------- *
+                K IDHEDC
+                K IDINC#
+                K IDITH#
+                K IDSEQ#

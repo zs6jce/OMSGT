@@ -1,0 +1,109 @@
+      *$$\CRTOM CRTDSPF
+      *$$\ENDOM
+     A                                      HLPTITLE('Jan de Zeeuw')
+     A                                      HLPSCHIDX(REMAINHD)
+     A                                      HELP
+     A*%%TS  SD  19971003  124158  WIM         REL-V3R1M0  5763-PW1
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      REF(*LIBL/OMSREFHD)
+     A                                      CHGINPDFT
+     A                                      PRINT(*LIBL/QSYSPRT)
+     A                                      ALTHELP(CA01)
+     A          R OMH04104
+     A*%%TS  SD  19971003  124158  WIM         REL-V3R1M0  5763-PW1
+     A                                      TEXT('Maintain Helpdesk Definition')
+     A                                      CA03(03)
+     A  80N81                               CF23(23)
+     A                                      CA12(12)
+     A                                      CA05(05)
+     A                                      CHANGE(40)
+     A  80                                  ROLLUP(25)
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A                                      OVERLAY
+     A                                      HLPCLR
+     A          H                           HLPARA(01 002 01 002)
+     A                                      HLPPNLGRP('OMH04104' OMH041)
+     A          H                           HLPARA(08 028 08 028)
+     A                                      HLPPNLGRP('OMH04104/FMEXTI' OMH041)
+     A          H                           HLPARA(09 028 09 077)
+     A                                      HLPPNLGRP('OMH04104/FMEEMC' OMH041)
+     A          H                           HLPARA(23 001 23 080)
+     A                                      HLPPNLGRP('OMH04104/KEYS' OMH041)
+     A            FMCUSC    R        O  6 28REFFLD(CUSC)
+     A                                      TEXT('Customer code')
+     A                                      DSPATR(HI)
+     A            FMNAMD        40A  O  6 40TEXT('Customer name')
+     A                                      DSPATR(HI)
+     A                                  1  2'OMH041  '
+     A            MH01101       50A  O  1 17MSGID(MH0 1101 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH04101'
+     A            MS00105       50A  O  2 17TEXT('Maintain definition')
+     A                                      MSGID(MH0 4001 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A N80N81     ACT0001       10A  O  4  2MSGID(ACT 0001 OMHDSP)
+     A                                      DSPATR(RI)
+     A  80N81     ACT0002       10A  O  4  2MSGID(ACT 0002 OMHDSP)
+     A                                      DSPATR(RI)
+     A  80 81     ACT0003       10A  O  4  2MSGID(ACT 0003 OMHDSP)
+     A                                      DSPATR(RI)
+     A            HLP004A       25A  O  8  2MSGID(EXT 0001 OMHDSP)
+     A            FMEXTI    R     N  B  8 28REFFLD(EXTI)
+     A                                      TEXT('External interface indicator')
+     A N81                                  DSPATR(UL)
+     A  23
+     AO 76                                  DSPATR(RI)
+     A  76                                  DSPATR(PC)
+     A                                      CHECK(RB)
+     A  80 81                               DSPATR(HI)
+     A  80 81                               DSPATR(PR)
+     A            MH04003       41A  O  8 40MSGID(MH0 4003 OMHDSP)
+     A            FMEEMC    R        B  9 28REFFLD(EEMC)
+     A  80 81                               DSPATR(HI)
+     A  80 81                               DSPATR(PR)
+     A N81                                  DSPATR(UL)
+     A  23
+     AO 77                                  DSPATR(RI)
+     A  77                                  DSPATR(PC)
+     A                                      CHECK(LC)
+     A            FMFMTC        10A  H
+     A            FMFLDC        10A  H
+     A            MOR001        15A  O 21 65MSGID(MOR 0001 OMHDSP)
+     A                                      DSPATR(HI)
+     A N80                                  DSPATR(ND)
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A N80N81
+     AO 80 81     KEY0065       78A  O 23  2TEXT('F3=Exit ...')
+     A                                      MSGID(KEY 0065 OMHDSP)
+     A                                      COLOR(BLU)
+     A  80        KEY0072       78A  O 23  2TEXT('F3=Exit ...')
+     A                                      MSGID(KEY 0072 OMHDSP)
+     A                                      COLOR(BLU)
+     A            HLP0012       25A  O  6  2MSGID(CUS 0005 OMHDSP)
+     A            EXT0002       25   O  9  2MSGID(EXT 0002 OMHDSP)
+     A          R MSGSFL                    SFL
+     A                                      SFLMSGRCD(24)
+     A            MSGKEY                    SFLMSGKEY
+     A            PGMQ                      SFLPGMQ
+     A
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A                                      SFLINZ
+     A                                      SFLSIZ(2)
+     A                                      SFLPAG(1)
+     A                                      SFLDSP
+     A                                      SFLDSPCTL
+     A N91                                  SFLEND
+     A                                      OVERLAY
+     A            PGMQ                      SFLPGMQ
+     A

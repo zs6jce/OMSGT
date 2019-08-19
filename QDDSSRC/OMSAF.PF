@@ -1,0 +1,33 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMSAF                                         *
+      * Module .....: HelpDesk                                      *
+      * Function ...: Status actions                                *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * This file contains the HelpDesk status                      *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ------------------------------------------------------------ *
+      * Reference file OMSREFHD
+      * ------------------------------------------------------------ *
+                                            REF(OMSREFHD)
+
+      * ------------------------------------------------------------ *
+      * Record OMSAFR
+      * ------------------------------------------------------------ *
+                R OMSAFR
+
+      * ------------------------------------------------------------ *
+      * Field descriptions
+      * ------------------------------------------------------------ *
+                  AFHEDC    R               REFFLD(HEDC)
+                  AFSTAT    R               REFFLD(STAT)
+                  AFASQ#    R               REFFLD(ASQ#)
+                  AFEOEI    R               REFFLD(EOEI)
+                  AFSEPG    R               REFFLD(SEPG)
+                  AFSEPL    R               REFFLD(SEPL)
+                  AFINTL    R               REFFLD(INTL)

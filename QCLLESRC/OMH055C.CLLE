@@ -1,0 +1,47 @@
+             PGM        PARM(&LIB &FIL &MBR &ERR &ERRDTA &ERRCHK)
+
+             DCL        VAR(&LIB) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&FIL) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&MBR) TYPE(*CHAR) LEN(10)
+             DCL        VAR(&ERR) TYPE(*CHAR) LEN(7)
+             DCL        VAR(&ERRDTA) TYPE(*CHAR) LEN(255)
+             DCL        VAR(&MSGID) TYPE(*CHAR) LEN(7)
+             DCL        VAR(&MSGDTA) TYPE(*CHAR) LEN(255)
+             DCL        VAR(&ERRCHK) TYPE(*CHAR) LEN(4)
+
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ERROR))
+
+             CHKOBJ     OBJ(&LIB) OBJTYPE(*LIB)
+             MONMSG     MSGID(CPF9801) EXEC(DO)
+             RCVMSG     MSGDTA(&MSGDTA)
+             CHGVAR     VAR(&ERR) VALUE('CPF9810')
+             CHGVAR     VAR(&ERRDTA) VALUE(&LIB)
+             CHGVAR     VAR(&ERRCHK) VALUE('*LIB')
+             GOTO       CMDLBL(EINDE)
+             ENDDO
+
+             CHKOBJ     OBJ(&LIB/&FIL) OBJTYPE(*FILE)
+             MONMSG     MSGID(CPF9801) EXEC(DO)
+             RCVMSG     MSGDTA(&MSGDTA) MSGID(&MSGID)
+             CHGVAR     VAR(&ERR) VALUE(&MSGID)
+             CHGVAR     VAR(&ERRDTA) VALUE(&MSGDTA)
+             CHGVAR     VAR(&ERRCHK) VALUE('*FIL')
+             GOTO       CMDLBL(EINDE)
+             ENDDO
+
+             CHKOBJ     OBJ(&LIB/&FIL) OBJTYPE(*FILE) MBR(&MBR)
+             MONMSG     MSGID(CPF9815) EXEC(DO)
+             RCVMSG     MSGDTA(&MSGDTA) MSGID(&MSGID)
+             CHGVAR     VAR(&ERR) VALUE(&MSGID)
+             CHGVAR     VAR(&ERRDTA) VALUE(&MSGDTA)
+             CHGVAR     VAR(&ERRCHK) VALUE('*MBR')
+             GOTO       CMDLBL(EINDE)
+             ENDDO
+
+             GOTO       CMDLBL(EINDE)
+
+ ERROR:      RCVMSG     MSGDTA(&MSGDTA) MSGID(&MSGID)
+             CHGVAR     VAR(&ERR) VALUE(&MSGID)
+             CHGVAR     VAR(&ERRDTA) VALUE(&MSGDTA)
+
+ EINDE:      ENDPGM

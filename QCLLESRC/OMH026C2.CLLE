@@ -1,0 +1,93 @@
+ /* ---------------------------------------------------------------- */
+ /* Description                                                      */
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /* Program ....: OMH026C2                                           */
+ /* Function ...: Escalation start                                   */
+ /* Author .....: Remain Software                                    */
+ /* Parameters .: none                                               */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+
+ /* ---------------------------------------------------------------- */
+ /* Init program                                                     */
+ /* ---------------------------------------------------------------- */
+
+             PGM        PARM(&HEDC)
+
+          /* ------------------------------------------------------- */
+          /* Declare parameter-variables                             */
+          /* ------------------------------------------------------- */
+             DCL        VAR(&STAT) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&HEDC) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&HEDD) TYPE(*CHAR) LEN(50)
+             DCL        VAR(&ESF#) TYPE(*CHAR) LEN(6)
+             DCLF       FILE(OMEPR)
+
+          /* ------------------------------------------------------- */
+          /* Monitor for unexpected errors.                          */
+          /* ------------------------------------------------------- */
+             MONMSG     MSGID(CPF0000 OMQ0000) EXEC(GOTO CMDLBL(ERROR))
+
+ /* ---------------------------------------------------------------- */
+ /* Start of program                                                 */
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+
+          /* ------------------------------------------------------- */
+          /* Retrieve current HelpDesk when needed                   */
+          /* ------------------------------------------------------- */
+             IF         COND(&HEDC *EQ ' ') THEN(DO)
+             CHGVAR     VAR(&STAT) VALUE('*NORM')
+             ENDDO
+             ELSE       CMD(DO)
+             CALL       PGM(OMX130) PARM(&HEDC &HEDD &STAT)
+             ENDDO
+
+          /* ------------------------------------------------------- */
+          /* Normal program ending                                   */
+          /* ------------------------------------------------------- */
+
+             IF         COND(&STAT *EQ '*NORM') THEN(DO)
+
+          /* ------------------------------------------------------- */
+          /* Get escalation properties                               */
+          /* ------------------------------------------------------- */
+             CHGVAR     VAR(&STAT) VALUE('*TERM')
+ READN:      RCVF
+             MONMSG     MSGID(CPF0864) EXEC(GOTO CMDLBL(EOF))
+             IF         COND(&PRHEDC *EQ &HEDC) THEN(DO)
+
+          /* ------------------------------------------------------- */
+          /* If found: submit escalation job with definition         */
+          /* ------------------------------------------------------- */
+          /*                                                         */
+             CHGVAR     VAR(&STAT) VALUE('*NORM')
+             CHGVAR     VAR(&ESF#) VALUE(&PRESF#)
+          /* SBMJOB     CMD(CALL PGM(OMH026C) PARM(&HEDC &PRSAMI +   */
+          /*              &ESF#)) JOBD(&PRJDLB/&PRJOBD)              */
+             CALL       PGM(OMH026C) PARM(&HEDC &PRSAMI &ESF#)
+             ENDDO
+
+          /* ------------------------------------------------------- */
+          /* If not found: try next record                           */
+          /* ------------------------------------------------------- */
+             ELSE       CMD(GOTO CMDLBL(READN))
+
+ EOF:        GOTO       CMDLBL(ENDPGM)
+             ENDDO
+
+ /* ---------------------------------------------------------------- */
+ /* Handle unexpected errors                                         */
+ /* ---------------------------------------------------------------- */
+ ERROR:
+             SNDPGMMSG  MSGID(OMQ5012) MSGF(OMSAPI) +
+                          MSGDTA(STRESCOMS) MSGTYPE(*ESCAPE)
+
+ /* ---------------------------------------------------------------- */
+ /* Exit program processing.                                         */
+ /* ---------------------------------------------------------------- */
+ ENDPGM:
+             RMVMSG     CLEAR(*ALL)
+             RETURN
+             ENDPGM

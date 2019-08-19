@@ -1,0 +1,28 @@
+      * ----------------------------------------------------------- *
+      * Description                                                 *
+      * ----------------------------------------------------------- *
+      *                                                             *
+      * File .......: OMTIHL1                                       *
+      * Module .....: Helpdesk                                      *
+      * Function ...: Incident text header logical                  *
+      * Author .....: Remain Software                               *
+      *                                                             *
+      * Incident logical                                            *
+      *                                                             *
+      * ----------------------------------------------------------- *
+
+      * ----------------------------------------------------------- *
+      * Record OMTIHR                                               *
+      * ----------------------------------------------------------- *
+                                            UNIQUE
+                R OMTIHR                    PFILE(OMTIH)
+
+      * ----------------------------------------------------------- *
+      * Access path                                                 *
+      * IHHEDC      - Helpdesk code                                 *
+      * IHINC#      - Incident number                               *
+      * IHITH#      - Incident text header sequence                 *
+      * ----------------------------------------------------------- *
+                K IHHEDC
+                K IHINC#
+                K IHITH#

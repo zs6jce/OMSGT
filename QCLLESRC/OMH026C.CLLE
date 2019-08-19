@@ -1,0 +1,133 @@
+ /* ---------------------------------------------------------------- */
+ /* Description                                                      */
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /* Program ....: OMH026C                                            */
+ /* Function ...: Escalation end                                     */
+ /* Author .....: Remain Software                                    */
+ /* Parameters .: HelpDesk Code                                      */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+
+ /* ---------------------------------------------------------------- */
+ /* Init program                                                     */
+ /* ---------------------------------------------------------------- */
+
+             PGM        PARM(&HEDC)
+
+          /* ------------------------------------------------------- */
+          /* Declare parameter-variables                             */
+          /* ------------------------------------------------------- */
+             DCL        VAR(&STAT) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&HEDC) TYPE(*CHAR) LEN(5)
+             DCL        VAR(&JOB#) TYPE(*CHAR) LEN(6)
+             DCL        VAR(&TEL#) TYPE(*DEC) LEN(2 0) VALUE(0)
+             DCL        VAR(&TELA) TYPE(*CHAR) LEN(2)
+             DCL        VAR(&TEL1) TYPE(*CHAR) LEN(1)
+             DCLF       FILE(OMEPR)
+
+          /* ------------------------------------------------------- */
+          /* Monitor for unexpected errors.                          */
+          /* ------------------------------------------------------- */
+             MONMSG     MSGID(CPF0000 OMQ0000) EXEC(GOTO CMDLBL(ERROR))
+
+ /* ---------------------------------------------------------------- */
+ /* Start of program                                                 */
+ /* ---------------------------------------------------------------- */
+
+          /* ------------------------------------------------------- */
+          /* First control if not *ALL                               */
+          /* ------------------------------------------------------- */
+             IF         COND(&HEDC *NE '*ALL ') THEN(DO)
+ READN1:     RCVF
+
+          /* ------------------------------------------------------- */
+          /* Tell the user that the mentioned HelpDesk does not exist    */
+          /* ------------------------------------------------------- */
+             MONMSG     MSGID(CPF0864) EXEC(DO)
+             SNDPGMMSG  MSGID(END0002) MSGF(OMHMSG) MSGDTA(&HEDC) +
+                          TOPGMQ(*PRV) MSGTYPE(*COMP)
+             GOTO       CMDLBL(ENDPGM)
+             ENDDO
+             IF         COND(&PRHEDC *EQ &HEDC) THEN(DO)
+
+          /* ------------------------------------------------------- */
+          /* Try to end a job                                            */
+          /* ------------------------------------------------------- */
+             IF         COND(&PRJOB# *NE 0) THEN(DO)
+             CHGVAR     VAR(&JOB#) VALUE(&PRJOB#)
+             ENDJOB     JOB(&JOB#/&PRUSID/&PRJOBN) DELAY(120)
+
+          /* ------------------------------------------------------- */
+          /* Ignore almost all messages on the ENDJOB command        */
+          /* ------------------------------------------------------- */
+             MONMSG     MSGID(CPF1317 CPF1321 CPF1344 CPF1351 +
+                          CPF1352 CPF1360 CPF1361 CPF1362 CPF1363) +
+                          EXEC(GOTO CMDLBL(EOF))
+             CHGVAR     VAR(&TEL#) VALUE(&TEL# + 1)
+             ENDDO
+             GOTO       CMDLBL(EOF)
+             ENDDO
+             GOTO       CMDLBL(READN1)
+             ENDDO
+             ELSE       CMD(DO)
+
+          /* ------------------------------------------------------- */
+          /* Get escalation properties for *ALL                      */
+          /* ------------------------------------------------------- */
+ READN2:     RCVF
+             MONMSG     MSGID(CPF0864) EXEC(GOTO CMDLBL(EOF))
+
+          /* ------------------------------------------------------- */
+          /* If found: end job if active                             */
+          /* ------------------------------------------------------- */
+             IF         COND(&PRJOB# *NE 0) THEN(DO)
+             CHGVAR     VAR(&JOB#) VALUE(&PRJOB#)
+             ENDJOB     JOB(&JOB#/&PRUSID/&PRJOBN) DELAY(120)
+
+          /* ------------------------------------------------------- */
+          /* Ignore almost all messages on the ENDJOB command        */
+          /* ------------------------------------------------------- */
+             MONMSG     MSGID(CPF1317 CPF1321 CPF1344 CPF1351 +
+                          CPF1352 CPF1360 CPF1361 CPF1362 CPF1363) +
+                          EXEC(GOTO CMDLBL(READN2))
+             CHGVAR     VAR(&TEL#) VALUE(&TEL# + 1)
+             ENDDO
+
+          /* ------------------------------------------------------- */
+          /* Next record                                             */
+          /* ------------------------------------------------------- */
+             GOTO       CMDLBL(READN2)
+             ENDDO
+
+          /* ------------------------------------------------------- */
+          /* Tell how many jobs will end controlled                  */
+          /* ------------------------------------------------------- */
+EOF:         CHGVAR     VAR(&TELA) VALUE(&TEL#)
+             CHGVAR     VAR(&TEL1) VALUE(%SST(&TELA 1 1))
+             IF         COND(&TEL1 *EQ '0') THEN(CHGVAR VAR(&TEL1) +
+                          VALUE(' '))
+             CHGVAR     VAR(%SST(&TELA 1 1)) VALUE(&TEL1)
+             SNDPGMMSG  MSGID(END0001) MSGF(OMHMSG) MSGDTA(&TELA) +
+                          TOPGMQ(*PRV) MSGTYPE(*COMP)
+
+          /* ------------------------------------------------------- */
+          /* Normal job ending                                       */
+          /* ------------------------------------------------------- */
+             GOTO       CMDLBL(ENDPGM)
+
+ /* ---------------------------------------------------------------- */
+ /* Handle unexpected errors                                         */
+ /* ---------------------------------------------------------------- */
+ ERROR:
+             CHGVAR     VAR(&STAT) VALUE('*TERM')
+             SNDPGMMSG  MSGID(OMQ5012) MSGF(OMSAPI) +
+                          MSGDTA(ENDESC) MSGTYPE(*ESCAPE)
+
+ /* ---------------------------------------------------------------- */
+ /* Exit program processing.                                         */
+ /* ---------------------------------------------------------------- */
+ ENDPGM:
+             RMVMSG     CLEAR(*ALL)
+             RETURN
+             ENDPGM

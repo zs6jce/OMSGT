@@ -1,0 +1,63 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: ENDESC                                      :   *.
+.*   : Help for ...: End escalation                              :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   : This panelgroup contains the U.I.M. help texts for        :   *.
+.*   : End Escalation                                            :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:PNLGRP.
+:IMPORT PNLGRP=OMSREFHD      NAME='*'.
+
+.*   *************************************************************   *.
+.*   * End escalation                                            *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=ENDESC.Escalation end - Help
+
+:IMHELP NAME=ENDESCGEN.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   : General help for Escalation end                           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=ENDESCGEN.Escalation end - Help
+:XH3.Escalation end
+:ISCH ROOTS='Escalation end'.
+Escalation end
+
+:P.
+The End Escalation Command is used to end the escalation. This process
+is described below.
+
+:P.
+You can stop the escalation jobs by using the option 2 of the
+HelpDesk Escalation Menu, by using the ENDESC (End Escalation)
+command, or by one of the following commands: ENDJOB, ENDSBS,
+ENDSYS or PWRDWNSYS, in all cases with the *CNTRLD option and a
+delay time of at least 30 seconds. The batchjob that activates
+the escalation jobs checks every 15 seconds whether an end request
+has been made, also during processing, and, if so, the escalation
+jobs are ending in a controlled way.
+
+:P.
+If you want to use the escalation function of the HelpDesk, it is
+recommended to schedule the batchjob as well as the ENDESC function
+in your systems starting and closing procedures.
+
+:P.
+If you want more information about escalation in
+general, please follow this link to the
+:LINK PERFORM='DSPHELP CONESC OMSCONHD'.
+escalation concepts.
+:ELINK.
+:EHELP.
+
+:EPNLGRP.

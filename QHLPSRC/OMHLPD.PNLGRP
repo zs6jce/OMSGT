@@ -1,0 +1,228 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: OMHLPD                                      :   *.
+.*   : Function ...: HD Main menu help                           :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+.*   ·····························································
+.*   Panel group
+.*   ·····························································
+:PNLGRP   SCHIDX=REMAINHD.
+:IMPORT PNLGRP=OMSCMDHD NAME='*'.
+
+.*   ·····························································
+.*   Help
+.*   ·····························································
+
+.*   ·····························································
+.*   General help for the menu
+.*   ·····························································
+:HELP NAME=OMHLPD.HelpDesk Main Menu - Help
+:XH3.HelpDesk Main menu
+:ISCH ROOTS='Main menu'.
+HelpDesk Main Menu
+:P.
+Use this menu start the three main HelpDesk functions, and to acquire
+access to menu's for all the other functions and definitions.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 1
+.*        ···················································
+:HELP NAME='OMHLPD/OPT1H'.Customer call registration
+:P.
+:IMHELP NAME='STRCCRIX'.
+:PC.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 2
+.*        ···················································
+:HELP NAME='OMHLPD/OPT2H'.Incident maintenance
+:P.
+:IMHELP NAME='STRIMIX'.
+:PC.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 3
+.*        ···················································
+:HELP NAME='OMHLPD/OPT3H'.Search and find
+:P.
+:IMHELP NAME='STRSAFIX'.
+:PC.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 11, Definitions menu
+.*        ···················································
+:HELP NAME='OMHLPD/OPT11H'.Definitions menu
+:XH3.Definitions menu
+:P.
+This menu contains all the functions concerning the settings of
+your HelpDesk module at company level.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 12, Reports menu
+.*        ···················································
+:HELP NAME='OMHLPD/OPT12H'.Reports menu
+:XH3.Reports menu
+:P.
+This menu contains the printing functions of this module. You will
+find many preselections.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 13, API menu
+.*        ···················································
+:HELP NAME='OMHLPD/OPT13H'.API menu
+:XH3.API menu
+:P.
+On this menu you will find all the application program interfaces
+(API's) shipped with the HelpDesk module.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 14, Escalation menu
+.*        ···················································
+:HELP NAME='OMHLPD/OPT14H'.Escalation menu
+:XH3.Escalation menu
+:P.
+This menu contains all the functions concerning escalation.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 15, Interfaces menu
+.*        ···················································
+:HELP NAME='OMHLPD/OPT15H'.Interfaces menu
+:XH3.Interfaces menu
+:P.
+This menu contains all the menus belonging to the interfaces build
+for HMS, like for instance OMS or Pager/400.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 21, Menu internals
+.*        ···················································
+:HELP NAME='OMHLPD/OPT21H'.Internals menu
+:XH3.Internals menu
+:P.
+Functions concerning product information, licence codes and
+authorization can you find at this menu.
+:EHELP.
+
+.*        ···················································
+.*        Help for display 1 function keys
+.*        ···················································
+:HELP NAME='KL0101H'.Function keys
+:XH3.Function keys
+
+:P.
+This display supports a set of function keys which allows you to
+perform specific tasks. The keys are listed at the bottom
+of the display.
+:EHELP.
+
+:HELP NAME='F1H'.
+:PARML.
+:PT.F1=Help
+:PD.
+Provides additional information about using the display or a
+specific field on the display.
+:EPARML.
+:EHELP.
+
+:HELP NAME='F3H'.
+:PARML.
+:PT.F3=Exit
+:PD.
+Ends the current task and returns to the display from which the
+task was started.
+:EPARML.
+:EHELP.
+
+:HELP NAME='F4H'.
+:PARML.
+:PT.F4=Prompt
+:PD.
+Provides assistance in entering or selecting a command.
+:EPARML.
+:EHELP.
+
+:HELP NAME='F5H'.
+:PARML.
+:PT.F5=Refresh
+:PD.
+Initializes the display from the database.
+:EPARML.
+:EHELP.
+
+:HELP NAME='F9H'.
+:PARML.
+:PT.F9=Retrieve
+:PD.
+Displays the last command you entered on the command line and any
+parameters you included.  Pressing this key once shows the last
+command you ran.  Pressing this key twice shows the command you
+ran before that and so on.
+:EPARML.
+:EHELP.
+
+:HELP NAME='F12H'.
+:PARML.
+:PT.F12=Cancel
+:PD.
+Returns to the previous menu or display.
+:EPARML.
+:EHELP.
+
+:HELP NAME='F13H'.
+:PARML.
+:PT.F13=User support
+:PD.
+Shows a menu with several types of assistance available.  Select
+this option to access on-line education, Q & A database, search
+index, and additional help topics.
+:EPARML.
+:EHELP.
+
+:HELP NAME='ENTERH'.
+:PARML.
+:PT.Enter
+:PD.
+Submits information on the display for processing.
+:EPARML.
+:EHELP.
+
+:HELP NAME='HELPH'.
+:PARML.
+:PT.Help
+:PD.
+Provides additional information about using the display.
+:EPARML.
+:EHELP.
+
+:HELP NAME='HOMEH'.
+:PARML.
+:PT.Home
+:PD.
+Goes to the menu which was shown after you signed on to the system.
+This menu is either the initial menu defined in your user profile
+or the menu you requested from the Sign-On display.
+:EPARML.
+:EHELP.
+
+:HELP NAME='PRINTH'.
+:PARML.
+:PT.Print
+:PD.
+Prints the current contents of the display to an output queue.
+:EPARML.
+:EHELP.
+:EPNLGRP.

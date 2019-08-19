@@ -1,0 +1,329 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: OMHAPI                                      :   *.
+.*   : Function ...: HD API Menu Help                            :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+.*   ·····························································
+.*   Panel group
+.*   ·····························································
+:PNLGRP   SCHIDX=REMAINHD.
+:IMPORT PNLGRP=OMSCMDHD NAME='*'.
+
+.*   ·····························································
+.*   Help
+.*   ·····························································
+
+.*   ·····························································
+.*   General help for the menu
+.*   ·····························································
+:HELP NAME=OMHAPIH.HelpDesk API menu - Help
+:XH3.HelpDesk API Menu
+:ISCH ROOTS='Menu API'.
+HelpDesk API Menu
+:P.
+Use this menu to prompt any of the available OMS API's. You may find
+out that not all the API's can run in this environment, mainly the
+retrieve API's. API commands are grouped by entity.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 1
+.*        ···················································
+:HELP NAME='OMHAPI/OPT1H'.Incident User Interface API
+:XH3.Incident User Interface API OMQUSIIN
+:P.
+Each user interface API enables you to start maintenance
+functions for a specific entity in an interactive way. Error
+and warning messages are sent to the display.
+:P.
+The User Interface API is available for Incident (OMQUSIIN).
+This API has functions like Add, Change, Delete and Display.
+:P.
+One additional feature of a User Interface API is that you
+can select the standard HelpDesk function keys or define your
+own function keys. The HelpDesk will in both cases return the used
+function key to the calling program. The calling program
+can start another function depending on the returned
+function key.
+:P.
+Another feature of a User Interface API is that you
+can prefill the display fields
+with some specific values to optimize the number
+of necessary key strokes for the end user.
+:P.
+The performance of the processing can be improved by
+not closing the API, so consecutive processing of that
+API will diminish the initialization activities. APIs which
+remain active have to be closed when all processing
+has been completed.
+:IMHELP NAME='OMQUSIINIX'.
+:PC.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 2, Incident change API
+.*        ···················································
+:HELP NAME='OMHAPI/OPT2H'.Incident Change API
+:XH3.Incident Change API
+:P.
+Each change API enables you to process a maintenance
+function for a specific entity without the use of a display
+panel. This API can be used interactively and in the
+batch environment. Error
+and warning messages are sent to the calling program.
+:IMHELP NAME='OMQCHGINIX'.
+:PC.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 3, Incident print API
+.*        ···················································
+:HELP NAME='OMHAPI/OPT3H'.Incident Print API
+:XH3.Incident Print API
+:P.
+Each print API enables you to print the entity, an incident in
+this case, in whatever way you like: almost every selection is
+possible, you can have the information printed in detail or per
+line, you can ask for additional information like question & answer
+history, and some choises in layout are possible as well.
+:IMHELP NAME='OMQPRTINIX'.
+:PC.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 4, Incident retrieve API
+.*        ···················································
+:HELP NAME='OMHAPI/OPT4H'.Incident retrieve API
+:XH3.Incident retrieve API
+:P.
+Most of the stored attributes in the HelpDesk database can be retrieved
+into a variable by using these retrieve APIs. Note that
+these APIs can only be used in a CL program.
+:IMHELP NAME='OMQRTVINIX'.
+:PC.
+:EHELP.
+.*        ···················································
+.*        Help for option 6, HelpDesk retrieve API
+.*        ···················································
+:HELP NAME='OMHAPI/OPT6H'.HelpDesk retrieve API
+:XH3.HelpDesk retrieve API
+:P.
+Most of the stored attributes in the HelpDesk database can be retrieved
+into a variable by using these retrieve APIs. Note that
+these APIs can only be used in a CL program.
+:IMHELP NAME='OMQRTVHDIX'.
+:PC.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 11, Customer Call retrieve API
+.*        ···················································
+:HELP NAME='OMHAPI/OPT11H'.Customer Call retrieve API
+:XH3.Customer Call retrieve API
+:P.
+Most of the stored attributes in the HelpDesk database can be retrieved
+into a variable by using these retrieve APIs. Note that
+these APIs can only be used in a CL program.
+:IMHELP NAME='OMQRTVCCIX'.
+:PC.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 12, Customer Call change API
+.*        ···················································
+:HELP NAME='OMHAPI/OPT12H'.Customer Call change API
+:XH3.Customer Call change API
+:P.
+Each change API enables you to process a maintenance
+function for a specific entity without the use of a display
+panel. This API can be used interactively and in the
+batch environment. Error
+and warning messages are sent to the calling program.
+:IMHELP NAME='OMQCHGCCIX'.
+:PC.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 16, Customer change API
+.*        ···················································
+:HELP NAME='OMHAPI/OPT16H'.Customer Change API
+:XH3.Customer Change API
+:P.
+Use this API to change a customer from within your own programs.
+:IMHELP NAME='OMQCHGCUIX'.
+:PC.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 17, Customer retrieve API
+.*        ···················································
+:HELP NAME='OMHAPI/OPT17H'.Customer retrieve API
+:XH3.Customer Retrieve API
+:P.
+Most of the stored attributes in the HelpDesk database can be retrieved
+into a variable by using these retrieve APIs. Note that
+these APIs can only be used in a CL program.
+:IMHELP NAME='OMQRTVCUIX'.
+:PC.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 21, Contact change API
+.*        ···················································
+:HELP NAME='OMHAPI/OPT21H'.Customer Contact Change API
+:XH3.Customer Contact Change API
+:P.
+Use this API to change a customer contact from within your own programs
+:IMHELP NAME='OMQCHGCOIX'.
+:PC.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 22, Customer Call retrieve API
+.*        ···················································
+:HELP NAME='OMHAPI/OPT22H'.Customer Contact retrieve API
+:XH3.Customer Contact Retrieve API
+:P.
+Most of the stored attributes in the HelpDesk database can be retrieved
+into a variable by using these retrieve APIs. Note that
+these APIs can only be used in a CL program.
+:IMHELP NAME='OMQRTVCOIX'.
+:PC.
+:EHELP.
+
+.*        ···················································
+.*        Help for option 26, Change Configuration Item
+.*        ···················································
+:HELP NAME='OMHAPI/OPT26H'.Change Configuration Item API
+:XH3.Change Configuration Item API
+:P.
+Use this API to add, change or delete a configuration item. Connect
+or disconnect a configuration item to a fix or to bind or unbind
+a configuration item to a configuration list.
+:EHELP.
+
+
+.*        ···················································
+.*        Help for display 1 function keys
+.*        ···················································
+:HELP NAME='KL0101H'.Function keys
+:XH3.Function keys
+
+:P.
+This display supports a set of function keys which allows you to
+perform specific tasks. The keys are listed at the bottom
+of the display.
+:EHELP.
+
+:HELP NAME='F1H'.
+:PARML.
+:PT.F1=Help
+:PD.
+Provides additional information about using the display or a
+specific field on the display.
+:EPARML.
+:EHELP.
+
+:HELP NAME='F3H'.
+:PARML.
+:PT.F3=Exit
+:PD.
+Ends the current task and returns to the display from which the
+task was started.
+:EPARML.
+:EHELP.
+
+:HELP NAME='F4H'.
+:PARML.
+:PT.F4=Prompt
+:PD.
+Provides assistance in entering or selecting a command.
+:EPARML.
+:EHELP.
+
+:HELP NAME='F5H'.
+:PARML.
+:PT.F5=Refresh
+:PD.
+Initializes the display from the database.
+:EPARML.
+:EHELP.
+
+:HELP NAME='F9H'.
+:PARML.
+:PT.F9=Retrieve
+:PD.
+Displays the last command you entered on the command line and any
+parameters you included.  Pressing this key once shows the last
+command you ran.  Pressing this key twice shows the command you
+ran before that and so on.
+:EPARML.
+:EHELP.
+
+:HELP NAME='F12H'.
+:PARML.
+:PT.F12=Cancel
+:PD.
+Returns to the previous menu or display.
+:EPARML.
+:EHELP.
+
+:HELP NAME='F13H'.
+:PARML.
+:PT.F13=User support
+:PD.
+Shows a menu with several types of assistance available.  Select
+this option to access on-line education, Q & A database, search
+index, and additional help topics.
+:EPARML.
+:EHELP.
+
+:HELP NAME='ENTERH'.
+:PARML.
+:PT.Enter
+:PD.
+Submits information on the display for processing.
+:EPARML.
+:EHELP.
+
+:HELP NAME='HELPH'.
+:PARML.
+:PT.Help
+:PD.
+Provides additional information about using the display.
+:EPARML.
+:EHELP.
+
+:HELP NAME='HOMEH'.
+:PARML.
+:PT.Home
+:PD.
+Goes to the menu which was shown after you signed on to the system.
+This menu is either the initial menu defined in your user profile
+or the menu you requested from the Sign-On display.
+:EPARML.
+:EHELP.
+
+:HELP NAME='PAGEH'.
+:PARML.
+:PT.Roll Keys
+:PD.
+Moves to the indicated direction to show additional information for
+this display.
+:EPARML.
+:EHELP.
+
+:HELP NAME='PRINTH'.
+:PARML.
+:PT.Print
+:PD.
+Prints the current contents of the display to an output queue.
+:EPARML.
+:EHELP.
+:EPNLGRP.

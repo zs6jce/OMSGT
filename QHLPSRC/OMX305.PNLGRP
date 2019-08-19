@@ -1,0 +1,125 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: OMX305                                      :   *.
+.*   : Help for ...: Display Question And/Or Answer              :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   : This panelgroup contains the U.I.M. help texts for        :   *.
+.*   : Display Question And/Or Answer                            :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:PNLGRP.
+:IMPORT PNLGRP=OMSREFHD      NAME='*'.
+
+.*   *************************************************************   *.
+.*   * Display Question And/Or Answer                            *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMX305.Display Question And/Or Answer - Help
+
+:IMHELP NAME=OMX305GEN.
+
+:P.
+Select one of the following:
+
+:P.
+:LINK PERFORM='DSPHELP OMX30501IX'.
+Display 1 - Display Question And/Or Answer
+:ELINK.
+
+:EHELP.
+
+:HELP NAME=OMX30501IX.General Help For Display 1
+:IMHELP NAME=OMX30501.
+:IMHELP NAME='OMX30501/KEYS'.
+:EHELP.
+
+.*   :...........................................................:   *.
+.*   : General help for Display Question And/Or Answer           :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=OMX305GEN.Display Question And/Or Answer - Help
+:XH3.Display Question And/Or Answer
+:ISCH ROOTS='display question and/or answer'.
+Display Question And/Or Answer
+
+:P.
+The display Q&A function shows the question, the answer or both. The
+complete 256 positions are shown if they are used. This function
+is used in functions where only a part of the question or answer
+is displayed.
+
+:P.
+If you want more information
+about a specific attribute, move the cursor to the attribute area
+and press help. If you want more information about answers in
+general, please follow this link to the
+:LINK PERFORM='DSPHELP OMH00602IX'.
+Q&A concepts
+:ELINK.
+for more information about answers.
+:EHELP.
+
+.*   *************************************************************   *.
+.*   * General Help For Display 1                                *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=OMX30501.General Help For Display 1
+
+:XH3.Display 1 - Display Question And/Or Answer
+
+:P.
+:LINK PERFORM='DSPHELP OMX305'.
+General Information.
+:ELINK.
+
+:P.
+The display Q&A function shows the question, the answer or both. The
+complete 256 positions are shown if they are used.
+
+:P.
+If you want more information
+about a specific attribute, move the cursor to the attribute area
+and press help. If you want more information about Q&A in
+general, please follow this link to the
+:LINK PERFORM='DSPHELP CONQUES OMSCONHD'.
+Q&A concepts.
+:ELINK.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Display 1 Function keys.                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME='OMX30501/KEYS'.Function Keys - Help
+:XH3.Function Keys
+
+:P.
+:PARML.
+
+:PT.F1=Help
+:PD.
+Use F1 to see the help panels like the ones you are
+viewing now. You can use F1=Help on any display that
+supports help.
+
+:PT.F3=Exit
+:PD.
+Press F3 to end the current task and return to the display
+where you began the task. Any options or changes that you
+keyed on input prompts
+:CIT.since the last use of the Enter key:ECIT.
+will not be processed.
+
+:PT.F12=Cancel
+:PD.
+Press F12 to cancel processing of any options or changes
+that you have made to the current display
+:CIT.since the last use of the Enter key:ECIT.
+and go back to the previous display.
+:EPARML.
+:EHELP.
+:EPNLGRP.

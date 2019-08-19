@@ -1,0 +1,272 @@
+      * ------------------------------------------------------------ *
+      * Description                                                  *
+      * ------------------------------------------------------------ *
+      *                                                              *
+      * File .......: OMSREFHD                                       *
+      * Function ...: Reference file for HelpDesk                    *
+      * Author .....: Remain Software                                *
+      *                                                              *
+      * This is the field reference file for the HelpDesk module     *
+      *                                                              *
+      * ------------------------------------------------------------ *
+
+      * ------------------------------------------------------------ *
+      * Record OMSREFHDR
+      * ------------------------------------------------------------ *
+
+                R OMSREFHDR
+
+      * ------------------------------------------------------------ *
+      * Reference field descriptions
+      * ------------------------------------------------------------ *
+
+
+      * ------------------------------------------------------------ *
+      * AAAA
+      * ------------------------------------------------------------ *
+                  ALSC          10A         TEXT('Answer list code            ')
+                  ALSD          50A         TEXT('Answer list description     ')
+                  ACTC           2A         TEXT('Action code                 ')
+                  APII           1A         TEXT('Autoprocess Incidents       ')
+                  ACTN           5A         TEXT('Action mnenomic             ')
+                  ADST          50A         TEXT('Address street              ')
+                  ADRE          50A         TEXT('Address residence           ')
+                  AIN#          10A         TEXT('Accumulated incident number ')
+                  AUID          10A         TEXT('Allocated by user          ')
+                  AUTH          10A         TEXT('Authorisation code OS/400   ')
+                  ANS#           3P 0       TEXT('Answer sequence            ')
+                  ASQ#           3P 0       TEXT('Status action sequence     ')
+                  ANSC         256A         TEXT('Answer                     ')
+                  ALOC           1A         TEXT('Allow Allocation           ')
+                  ADDR           8A         TEXT('Address SNADS              ')
+                  ACTI           1A         TEXT('Enabled/Disabled           ')
+
+      * ------------------------------------------------------------ *
+      * BBBB
+      * ------------------------------------------------------------ *
+                  BCCE          50A         TEXT('BCC Email address           ')
+
+      * ------------------------------------------------------------ *
+      * CCCC
+      * ------------------------------------------------------------ *
+                  CCTC          10A         TEXT('Customer contact code       ')
+                  CNTI           1A         TEXT('Default contact indication  ')
+                  CN5#           5S 0       TEXT('Counter lenght 5            ')
+                  COUD          50A         TEXT('Country                     ')
+                  CUSC          10A         TEXT('Customer code               ')
+                  CTN#          10A         TEXT('Call track number           ')
+                  CTFP          10A         TEXT('Call track free field pgm.  ')
+                  CTFL          10A         TEXT('Call track free field lib.  ')
+                  CFL#           5P 0       TEXT('Configuration list number   ')
+                  CFIC          12A         TEXT('Configuration item          ')
+                  CSRC           1A         TEXT('Call source code            ')
+
+
+      * ------------------------------------------------------------ *
+      * DDDD
+      * ------------------------------------------------------------ *
+                  DOWA           7A         TEXT('Day of week array           ')
+                  DESC          50A         TEXT('Description                 ')
+                  DSID          20A         TEXT('Distribution ID             ')
+                  DFTI           1A         TEXT('Default inidicator          ')
+                  DYS#           3P 0       TEXT('Number of days              ')
+                  DDTA         500A         TEXT('Distribution Data           ')
+                  DOMC          50A         TEXT('Mail Domain                 ')
+                  DATE           7S 0       TEXT('Date CYYMMDD                ')
+                  DAT#           8S 0       TEXT('Date for display            ')
+
+      * ------------------------------------------------------------ *
+      * EEEE
+      * ------------------------------------------------------------ *
+                  EMAC          50A         TEXT('E-mail account              ')
+                  EEMC          50A         TEXT('External email address      ')
+                  EOEI           1A         TEXT('Entry or exit indicator     ')
+                  EXTI           1A         TEXT('External interface          ')
+                  EPTM           6S 0       TEXT('Time processing ended       ')
+                  ESC#           3P 0       TEXT('Escalation counter          ')
+                  ESF#           3P 0       TEXT('Escalation frequency (hours)')
+                  ESTS           5A         TEXT('External status             ')
+                  ESCI          10A         TEXT('Escallation ID              ')
+
+      * ------------------------------------------------------------ *
+      * FFFF
+      * ------------------------------------------------------------ *
+                  FMTC          10A         TEXT('Screen format code          ')
+
+      * ------------------------------------------------------------ *
+      * GGGG
+      * ------------------------------------------------------------ *
+                  GQS#           3P 0       TEXT('Goto question sequence      ')
+                  GLS#           5P 0       TEXT('Goto list                   ')
+
+      * ------------------------------------------------------------ *
+      * HHHH
+      * ------------------------------------------------------------ *
+                  HEDC           5A         TEXT('Helpdesk code               ')
+                  HEDD          50A         TEXT('Helpdesk description        ')
+                  HDMC          10A         TEXT('Helpdesk manager            ')
+                  HRS#           5P 2       TEXT('Number of hours             ')
+                  HUID           8A         TEXT('Helpdesk User ID            ')
+                  HADR           8A         TEXT('Helpdesk User Address       ')
+
+      * ------------------------------------------------------------ *
+      * IIII
+      * ------------------------------------------------------------ *
+                  INDI           1A         TEXT('General purpose indicator   ')
+                  INDT           7S 0       TEXT('Income date                 ')
+                  INTM           6S 0       TEXT('Income time                 ')
+                  INCR           2S 0       TEXT('Increment                   ')
+                  ITPC           5A         TEXT('Incident type code          ')
+                  ITPD          30A         TEXT('Incident type description   ')
+                  INC#          10A         TEXT('Incident number             ')
+                  INTL           8A         TEXT('Interface level             ')
+                  ISFL          10A         TEXT('Incident spool file library ')
+                  INFP          10A         TEXT('Incident free field program ')
+                  INFL          10A         TEXT('Incident free field library ')
+                  ITH#           3P 0       TEXT('Incident text header seq.   ')
+                  INCD          70A         TEXT('Incident description        ')
+                  ITXT           1A         TEXT('Incident text type          ')
+                  IRTP           1A         TEXT('Incident relation type      ')
+                  IRAH           5A         TEXT('Incident relation appl/helpd')
+                  IRIT          12A         TEXT('Incident relation item      ')
+                  IEDT           7S 0       TEXT('Incident escalation date    ')
+                  IETM           6S 0       TEXT('Incident escalation time    ')
+                  IPAD          15A         TEXT('IP Addres                   ')
+
+      * ------------------------------------------------------------ *
+      * JJJJ
+      * ------------------------------------------------------------ *
+                  JOB#           6P 0       TEXT('Job number                  ')
+                  JOBN          10A         TEXT('Job name                    ')
+                  JBD           10A         TEXT('Job description             ')
+                  JBDL          10A         TEXT('Job description library     ')
+
+      * ------------------------------------------------------------ *
+      * LLLL
+      * ------------------------------------------------------------ *
+                  LIBC          10          TEXT('Library                     ')
+
+      * ------------------------------------------------------------ *
+      * MMMM
+      * ------------------------------------------------------------ *
+                  MSGD          80A         TEXT('Message data                ')
+                  MSGF          10A         TEXT('Message file                ')
+                  MATF          10A         TEXT('Mail template file          ')
+                  MATL          10A         TEXT('Mail template library       ')
+                  MATM          10A         TEXT('Mail template member        ')
+                  MSID           7A         TEXT('Message number              ')
+                  MSGN           7A         TEXT('Message number              ')
+                  MPT#           3P 0       TEXT('New Mail Polling time (min.)')
+                  MTDI           1A         TEXT('Default Mail Template       ')
+
+      * ------------------------------------------------------------ *
+      * NNNN
+      * ------------------------------------------------------------ *
+                  NAMD          50A         TEXT('Name                        ')
+
+      * ------------------------------------------------------------ *
+      * OOOO
+      * ------------------------------------------------------------ *
+                  OQL#           5P 0       TEXT('Originating question list   ')
+                  OBJC          10A         TEXT('Object code                 ')
+                  OBJT          10A         TEXT('Object type                 ')
+                  OBJL          10A         TEXT('Object library              ')
+                  OBJD          50A         TEXT('Object description          ')
+
+      * ------------------------------------------------------------ *
+      * PPPP
+      * ------------------------------------------------------------ *
+                  PGML          10A         TEXT('Program library             ')
+                  PGMN          10A         TEXT('Program name                ')
+                  PIN#           3P 0       TEXT('Priority increment          ')
+                  PRI#           3P 0       TEXT('Priority                    ')
+                  PRH#      R               REFFLD(PRI# *SRC)
+                                            TEXT('Priority range high         ')
+                  PRL#      R               REFFLD(PRI# *SRC)
+                                            TEXT('Priority range low          ')
+                  PRMI           1A         TEXT('Pass parameters indicator   ')
+                  PORT           4A         TEXT('Port                        ')
+
+      * ------------------------------------------------------------ *
+      * QQQQ
+      * ------------------------------------------------------------ *
+                  QUES         256A         TEXT('Question                    ')
+                  QLS#           5P 0       TEXT('Question list number        ')
+                  QUEI           1A         TEXT('Question indicator          ')
+                  QUE#           5P 0       TEXT('Question number             ')
+                  QSQ#           3P 0       TEXT('Question sequence in Q.list ')
+                  QGRC          10A         TEXT('Question group code         ')
+
+      * ------------------------------------------------------------ *
+      * RRRR
+      * ------------------------------------------------------------ *
+                  RCDT           7S 0       TEXT('Realized completion date    ')
+                  RCTM           6S 0       TEXT('Realized completion time    ')
+                  RUID          10A         TEXT('Registered by user          ')
+                  RES#           3P 0       TEXT('Route entry sequence        ')
+                  RTV#           5P 0       TEXT('Sequence Number             ')
+                  SDTA         200A         TEXT('Selection data              ')
+                  RCVI          10A         TEXT('Receiver ID                 ')
+
+      * ------------------------------------------------------------ *
+      * SSSS
+      * ------------------------------------------------------------ *
+                  SAMI      R               REFFLD(INDI *SRC)
+                                            TEXT('Submit monitor              ')
+                  SEPG          10A         TEXT('Status exit program         ')
+                  SEPL          10A         TEXT('Status exit program library ')
+                  SPTM           6S 0       TEXT('Time processing started     ')
+                  SEQ#           5P 0       TEXT('Sequence number             ')
+                  SHID          50A         TEXT('Short incident descript.    ')
+                  STAT           5A         TEXT('Status                      ')
+                  STAD          50A         TEXT('Status description          ')
+                  SEW#           3P 0       TEXT('Severity weigth             ')
+                  SEVC           5A         TEXT('Severity code               ')
+                  SEV1      R               REFFLD(SEVC *SRC)
+                                            TEXT('Severity 1                  ')
+                  SEV2      R               REFFLD(SEVC *SRC)
+                                            TEXT('Severity 2                  ')
+                  SEV3      R               REFFLD(SEVC *SRC)
+                                            TEXT('Severity 3                  ')
+                  STRC          10A         TEXT('Status route code           ')
+                  STRI           1A         TEXT('Route indicator             ')
+                  STRD          50A         TEXT('Route description           ')
+                  SRDT           7S 0       TEXT('Status date                 ')
+                  SRTM           6S 0       TEXT('Status time                 ')
+                  SUL#           1A         TEXT('Support level               ')
+                  SWTU          10A         TEXT('Send warning to user        ')
+                  SRCF          10A         TEXT('Source File                 ')
+                  SRCM          10A         TEXT('Source Member               ')
+                  SRCL          10A         TEXT('Source Library              ')
+                  SITD          50A         TEXT('Short incident text desc.   ')
+                  SUBJ          80A         TEXT('Subject                     ')
+
+      * ------------------------------------------------------------ *
+      * TTTT
+      * ------------------------------------------------------------ *
+                  TABC           2A         TEXT('Table code                  ')
+                  TITL          30A         TEXT('Title                       ')
+                  TEL#          15A         TEXT('Telephone number            ')
+                  TIME           6S 0       TEXT('Time HHMMSS                 ')
+
+      * ------------------------------------------------------------ *
+      * UUUU
+      * ------------------------------------------------------------ *
+                  USDC          50A         TEXT('User description           ')
+                  USID          10A         TEXT('User i.d., or user class   ')
+                  USRI           8A         TEXT('User SNADS                 ')
+                  UOPC           2A         TEXT('User option                ')
+                  UOPD          30A         TEXT('User option description    ')
+                  USF1          10A         TEXT('User field 1                ')
+                  USF2          25A         TEXT('User field 2                ')
+                  USF3          15P 0       TEXT('User field 3                ')
+
+      * ------------------------------------------------------------ *
+      * VVVV
+      * ------------------------------------------------------------ *
+                  VIEI           1A         TEXT('View on                    ')
+
+      * ------------------------------------------------------------ *
+      * ZZZZ
+      * ------------------------------------------------------------ *
+                  ZIPC          25A         TEXT('Zip code                    ')

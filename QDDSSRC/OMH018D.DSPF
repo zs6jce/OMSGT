@@ -1,0 +1,1123 @@
+     A*%%TS  DD  20031126  135529  botee       REL-V5.0.1  WDSc
+     A*$$\CRTOM CRTDSPF
+     A*$$\ENDOM
+     A*%%FD OMS - Incident maintenance
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      REF(*LIBL/OMSREFHD)
+     A                                      CHGINPDFT
+     A                                      HLPTITLE('Remain Software')
+     A                                      HLPSCHIDX(*LIBL/REMAINHD)
+     A                                      HELP
+     A                                      PRINT(*LIBL/QSYSPRT)
+     A                                      ALTHELP(CA01)
+     A          R OMH01801                  TEXT('Work with Incidents (subfile -
+     A                                      view 1')
+     A*%%TS  SD  19970204  143712  EWOUT       REL-V3R1M0  5763-PW1
+     A                                      SFL
+     A  93                                  SFLNXTCHG
+     A            FMOPTI         2A  B 12  2TEXT('Option field')
+     A                                      DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A            FMHEDC    R        O 12  7TEXT('HelpDesk code')
+     A                                      REFFLD(HEDC)
+     A            FMINC#    R        O 12 19TEXT('Incident number')
+     A                                      REFFLD(INC#)
+     A            FMCTN#    R        O 12 31TEXT('Call track number')
+     A                                      REFFLD(CTN#)
+     A            FMSUL#    R        O 12 44TEXT('Support level')
+     A                                      REFFLD(SUL#)
+     A            FMSTAT    R        O 12 48TEXT('Status')
+     A                                      REFFLD(STAT)
+     A            FMPRI#    R        O 12 14TEXT('Priority')
+     A                                      REFFLD(PRI#)
+     A            FMSTRC    R        O 12 56TEXT('Status route code')
+     A                                      REFFLD(STRC)
+     A            FMCUSC    R        O 12 68TEXT('Customer')
+     A                                      REFFLD(CUSC)
+     A*%%GP SCREEN1    01
+     A          R OMH01802                  TEXT('Work with Incidents')
+     A*%%TS  SD  19970204  143712  EWOUT       REL-V3R1M0  5763-PW1
+     A                                      SFLCTL(OMH01801)
+     A                                      SFLSIZ(10)
+     A                                      SFLPAG(9)
+     A                                      CF03
+     A                                      CF05
+     A  60                                  CF06
+     A N60                                  CF18
+     A                                      CF11
+     A                                      CF12
+     A                                      CF17
+     A                                      CF23
+     A                                      CF24
+     A  92                                  PAGEDOWN(22)
+     A                                      KEEP
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A N90                                  CSRLOC(LIN COL)
+     A                                      SFLCSRRRN(&CCRRN)
+     A                                      OVERLAY
+     A                                      ERASE(OMH01801)
+     A  90                                  SFLDSP
+     A                                      SFLDSPCTL
+     A  91                                  SFLCLR
+     A N92                                  SFLEND(*MORE)
+     A                                      HLPCLR
+     A          H                           HLPARA(1 2 1 2)
+     A                                      HLPPNLGRP('OMH01802' OMH018)
+     A          H                           HLPARA(7 28 7 32)
+     A N40                                  HLPPNLGRP('OMH01802/FMPS1A' OMH018)
+     A          H                           HLPARA(7 34 7 36)
+     A N40                                  HLPPNLGRP('OMH01802/FMPS1B' OMH018)
+     A          H                           HLPARA(7 28 7 32)
+     A  40                                  HLPPNLGRP('OMH01802/FMPS2A' OMH018)
+     A          H                           HLPARA(7 34 7 43)
+     A  40                                  HLPPNLGRP('OMH01802/FMPS2B' OMH018)
+     A          H                           HLPARA(7 74 7 74)
+     A                                      HLPPNLGRP('OMH01802/FMVIEI' OMH018)
+     A          H                           HLPARA(12 2 20 3)
+     A                                      HLPPNLGRP('OMH01801/FMOPTI' OMH018)
+     A          H                           HLPARA(23 1 23 80)
+     A                                      HLPPNLGRP('OMH01802/KEYS' OMH018)
+     A            FMFLDC        10A  H
+     A            FMFMTC        10A  H
+     A            CRRN01         4S 0H      SFLRCDNBR(CURSOR)
+     A            CCRRN          5S 0H
+     A                                  1  2'OMH018  '
+     A            MH01800       50A  O  1 16TEXT('Incident Maintenance')
+     A                                      MSGID(MH0 1800 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH01801-1'
+     A            MH01801       50A  O  2 16TEXT('Work with Incidents')
+     A                                      MSGID(MH0 1801 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            HED0001       25A  O  5  2TEXT('HelpDesk code')
+     A                                      MSGID(HED 0001 OMHDSP)
+     A            P#HEDC    R        O  5 28TEXT('HelpDesk code')
+     A                                      REFFLD(HEDC)
+     A                                      DSPATR(HI)
+     A            FMHEDD    R   40   O  5 35TEXT('HelpDesk Description')
+     A                                      REFFLD(HEDD)
+     A                                      DSPATR(HI)
+     A            POS0001       25A  O  7  2TEXT('Position at')
+     A                                      MSGID(POS 0001 OMHDSP)
+     A N40        FMPS1A    R        B  7 28REFFLD(HEDC)
+     A                                      DSPATR(UL)
+     A N40        FMPS1B    R     Y  B  7 34REFFLD(PRI#)
+     A                                      DSPATR(UL)
+     A                                      EDTCDE(Z)
+     A  40        FMPS2A    R        B  7 28REFFLD(HEDC)
+     A                                      DSPATR(UL)
+     A  40        FMPS2B    R        B  7 34REFFLD(INC#)
+     A                                      DSPATR(UL)
+     A            VIE0001       25A  O  7 48TEXT('View on')
+     A                                      MSGID(VIE 0001 OMHDSP)
+     A            FMVIEI    R        B  7 74TEXT('View on')
+     A                                      REFFLD(VIEI)
+     A                                      DSPATR(UL)
+     A  71                                  DSPATR(RI)
+     A  71                                  DSPATR(PC)
+     A            MH01804       78A  O  9  2TEXT('Options')
+     A N36 37                               MSGID(MH0 1806 OMHDSP)
+     A  36 37                               MSGID(MH0 1827 OMHDSP)
+     A                                      MSGID(MH0 1804 OMHDSP)
+     A                                      COLOR(BLU)
+     A            MH01802       78A  O 11  2TEXT('Subfile header view 1')
+     A                                      MSGID(MH0 1802 OMHDSP)
+     A                                      DSPATR(HI)
+     A            LIN            3S 0H
+     A            COL            3S 0H
+     A*%%GP SCREEN1    02
+     A          R OMH01803                  TEXT('Work with Incidents (footer)')
+     A*%%TS  SD  19961031  153813  EWOUT       REL-V3R1M0  5763-PW1
+     A                                      CF03
+     A                                      CF05
+     A  60                                  CF06
+     A N60                                  CF18
+     A                                      CF11
+     A                                      CF12
+     A                                      CF17
+     A                                      CF23
+     A                                      CF24
+     A  92                                  PAGEDOWN(22)
+     A                                      OVERLAY
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            MH01803       78A  O 23  2TEXT('Command keys')
+     A N38 60                               MSGID(MH0 1803 OMHDSP)
+     A N38N60                               MSGID(MH0 1811 OMHDSP)
+     A                                      MSGID(MH0 1809 OMHDSP)
+     A                                      COLOR(BLU)
+     A*%%GP SCREEN1    03
+     A*%%GP SCREEN2    01
+     A          R OMH01804                  TEXT('Work with Incidents (subfile -
+     A                                      view 2')
+     A*%%TS  SD  19961120  143447  EWOUT       REL-V3R1M0  5763-PW1
+     A                                      SFL
+     A  93                                  SFLNXTCHG
+     A            FMOPTI         2A  B 12  2TEXT('Option field')
+     A                                      DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A            FMHEDC    R        O 12  7TEXT('HelpDesk code')
+     A                                      REFFLD(HEDC)
+     A            FMPRI#    R        O 12 14TEXT('Priority')
+     A                                      REFFLD(PRI#)
+     A            FMINC#    R        O 12 19TEXT('Incident number')
+     A                                      REFFLD(INC#)
+     A            FMRUID    R        O 12 31TEXT('Registered by user')
+     A                                      REFFLD(RUID)
+     A            FMAUID    R        O 12 43TEXT('Allocated by user')
+     A                                      REFFLD(AUID)
+     A            FMITPC    R        O 12 55TEXT('Incident type code')
+     A                                      REFFLD(ITPC)
+     A            FMIND$    R   -1   O 12 62TEXT('Income date')
+     A                                      REFFLD(INDT)
+     A                                      EDTCDE(Y)
+     A            FMINTM    R        O 12 72TEXT('Income time')
+     A                                      REFFLD(INTM)
+     A                                      EDTWRD('  :  :  ')
+     A            FMINDT    R   -1   H      TEXT('Income date')
+     A                                      REFFLD(INDT)
+     A*%%GP SCREEN2    02
+     A          R OMH01805                  TEXT('Work with Incidents')
+     A*%%TS  SD  19970129  181906  WIM         REL-V3R1M0  5763-PW1
+     A                                      SFLCTL(OMH01804)
+     A                                      SFLSIZ(10)
+     A                                      SFLPAG(9)
+     A                                      CF03
+     A                                      CF05
+     A  60                                  CF06
+     A N60                                  CF18
+     A                                      CF11
+     A                                      CF12
+     A                                      CF17
+     A                                      CF23
+     A                                      CF24
+     A  92                                  PAGEDOWN(22)
+     A                                      KEEP
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A N90                                  CSRLOC(LIN COL)
+     A                                      SFLCSRRRN(&CCRRN)
+     A                                      OVERLAY
+     A                                      ERASE(OMH01804)
+     A  90                                  SFLDSP
+     A                                      SFLDSPCTL
+     A  91                                  SFLCLR
+     A N92                                  SFLEND(*MORE)
+     A                                      HLPCLR
+     A          H                           HLPARA(1 2 1 2)
+     A                                      HLPPNLGRP('OMH01805' OMH018)
+     A          H                           HLPARA(7 28 7 32)
+     A N40                                  HLPPNLGRP('OMH01805/FMPS1A' OMH018)
+     A          H                           HLPARA(7 34 7 36)
+     A N40                                  HLPPNLGRP('OMH01805/FMPS1B' OMH018)
+     A          H                           HLPARA(7 28 7 32)
+     A  40                                  HLPPNLGRP('OMH01805/FMPS2A' OMH018)
+     A          H                           HLPARA(7 34 7 43)
+     A  40                                  HLPPNLGRP('OMH01805/FMPS2B' OMH018)
+     A          H                           HLPARA(7 74 7 74)
+     A                                      HLPPNLGRP('OMH01805/FMVIEI' OMH018)
+     A          H                           HLPARA(12 2 20 3)
+     A                                      HLPPNLGRP('OMH01804/FMOPTI' OMH018)
+     A          H                           HLPARA(23 1 23 80)
+     A                                      HLPPNLGRP('OMH01805/KEYS' OMH018)
+     A            FMFLDC        10A  H
+     A            FMFMTC        10A  H
+     A            CRRN01         4S 0H      SFLRCDNBR(CURSOR)
+     A            CCRRN          5S 0H
+     A                                  1  2'OMH018  '
+     A            MH01800       50A  O  1 16TEXT('Incident Maintenance')
+     A                                      MSGID(MH0 1800 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH01801-2'
+     A            MH01801       50A  O  2 16TEXT('Work with Incidents')
+     A                                      MSGID(MH0 1801 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            HED0001       25A  O  5  2TEXT('HelpDesk code')
+     A                                      MSGID(HED 0001 OMHDSP)
+     A            P#HEDC    R        O  5 28TEXT('HelpDesk code')
+     A                                      REFFLD(HEDC)
+     A                                      DSPATR(HI)
+     A            FMHEDD    R   40A  O  5 35TEXT('HelpDesk Description')
+     A                                      REFFLD(HEDD)
+     A                                      DSPATR(HI)
+     A            POS0001       25A  O  7  2TEXT('Position at')
+     A                                      MSGID(POS 0001 OMHDSP)
+     A N40        FMPS1A    R        B  7 28REFFLD(HEDC)
+     A                                      DSPATR(UL)
+     A N40        FMPS1B    R     Y  B  7 34REFFLD(PRI#)
+     A                                      DSPATR(UL)
+     A                                      EDTCDE(Z)
+     A  40        FMPS2A    R        B  7 28REFFLD(HEDC)
+     A                                      DSPATR(UL)
+     A  40        FMPS2B    R        B  7 34REFFLD(INC#)
+     A                                      DSPATR(UL)
+     A            VIE0001       25A  O  7 48TEXT('View on')
+     A                                      MSGID(VIE 0001 OMHDSP)
+     A            FMVIEI    R        B  7 74TEXT('View on')
+     A                                      REFFLD(VIEI)
+     A                                      DSPATR(UL)
+     A  71                                  DSPATR(RI)
+     A  71                                  DSPATR(PC)
+     A            MH01804       78A  O  9  2TEXT('Options')
+     A N36 37                               MSGID(MH0 1806 OMHDSP)
+     A  36 37                               MSGID(MH0 1827 OMHDSP)
+     A                                      MSGID(MH0 1804 OMHDSP)
+     A                                      COLOR(BLU)
+     A            MH01805       78A  O 11  2TEXT('Subfile header view 2')
+     A                                      MSGID(MH0 1805 OMHDSP)
+     A                                      DSPATR(HI)
+     A            LIN            3S 0H
+     A            COL            3S 0H
+     A*%%GP SCREEN2    03
+     A          R OMH01806                  TEXT('Incident maintenance selectio-
+     A                                      n screen')
+     A*%%TS  DD  20031126  135529  botee       REL-V5.0.1  WDSc
+     A                                      CF04
+     A                                      CF05
+     A                                      CF09
+     A                                      CF12
+     A                                      CF14
+     A                                      PAGEDOWN(25)
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A                                      RTNCSRLOC(*WINDOW &FMROW# &FMCOL#)
+     A                                      CSRLOC(FMROW# FMCOL#)
+     A                                      OVERLAY
+     A                                      HLPCLR
+     A          H                           HLPPNLGRP(OMH01806 OMH018)
+     A                                      HLPARA(1 2 1 2)
+     A          H                           HLPPNLGRP('OMH01806/FFHEDC' OMH018)
+     A                                      HLPARA(*FLD FFHEDC)
+     A          H                           HLPPNLGRP('OMH01806/FFINCY' OMH018)
+     A                                      HLPARA(*FLD FFINC#)
+     A          H                           HLPPNLGRP('OMH01806/FTINCY' OMH018)
+     A                                      HLPARA(*FLD FTINC#)
+     A                                      HLPEXCLD
+     A          H                           HLPPNLGRP('OMH01806/FFCTNY' OMH018)
+     A                                      HLPARA(*FLD FFCTN#)
+     A          H                           HLPPNLGRP('OMH01806/FTCTNY' OMH018)
+     A                                      HLPARA(*FLD FTCTN#)
+     A                                      HLPEXCLD
+     A          H                           HLPPNLGRP('OMH01806/FFPRIY' OMH018)
+     A                                      HLPARA(*FLD FFPRI#)
+     A          H                           HLPPNLGRP('OMH01806/FTPRIY' OMH018)
+     A                                      HLPARA(*FLD FTPRI#)
+     A                                      HLPEXCLD
+     A          H                           HLPPNLGRP('OMH01806/FFCUSC' OMH018)
+     A                                      HLPARA(*FLD FFCUSC)
+     A          H                           HLPPNLGRP('OMH01806/FFCCTC' OMH018)
+     A                                      HLPARA(*FLD FFCCTC)
+     A          H                           HLPPNLGRP('OMH01806/FFSTAT' OMH018)
+     A                                      HLPARA(*FLD FFSTA1)
+     A          H                           HLPPNLGRP('OMH01806/FFSTAT' OMH018)
+     A                                      HLPARA(*FLD FFSTA2)
+     A                                      HLPEXCLD
+     A          H                           HLPPNLGRP('OMH01806/FFSTAT' OMH018)
+     A                                      HLPARA(*FLD FFSTA3)
+     A                                      HLPEXCLD
+     A          H                           HLPPNLGRP('OMH01806/FFSTRC' OMH018)
+     A                                      HLPARA(*FLD FFSTRC)
+     A          H                           HLPPNLGRP('OMH01806/FFITPC' OMH018)
+     A                                      HLPARA(*FLD FFITPC)
+     A          H                           HLPPNLGRP('OMH01806/FMDEFI' OMH018)
+     A                                      HLPARA(*FLD FMDEFI)
+     A          H                           HLPPNLGRP('OMH01806/KEYS' OMH018)
+     A                                      HLPARA(23 1 23 80)
+     A            FMCOL#         3S 0H
+     A            FMROW#         3S 0H
+     A            FMFLDC        10A  H
+     A            FMFMTC        10A  H
+     A                                  1  2'OMH018  '
+     A            MH01800       50A  O  1 16TEXT('Incident maintenance')
+     A                                      MSGID(MH0 1800 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH01802'
+     A            MH01807       50A  O  2 16TEXT('Subset')
+     A                                      MSGID(MH0 1807 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            HED0001       25A  O  5  2TEXT('HelpDesk code')
+     A                                      MSGID(HED 0001 OMHDSP)
+     A            P#HEDC    R        O  5 28TEXT('HelpDesk code')
+     A                                      REFFLD(HEDC)
+     A                                      DSPATR(HI)
+     A            FMHEDD    R   40   O  5 35TEXT('HelpDesk description')
+     A                                      REFFLD(HEDD)
+     A                                      DSPATR(HI)
+     A            HED00012      25A  O  6  2TEXT('HelpDesk code')
+     A                                      MSGID(HED 0001 OMHDSP)
+     A            FFHEDC    R        B  6 28TEXT('HelpDesk code from')
+     A                                      REFFLD(HEDC)
+     A                                      DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A            INC0006       25A  O  8  2TEXT('Incident number')
+     A                                      MSGID(INC 0006 OMHDSP)
+     A            FFINC#    R        B  8 28TEXT('Incident number from')
+     A                                      REFFLD(INC#)
+     A                                      DSPATR(UL)
+     A  71                                  DSPATR(RI)
+     A  71                                  DSPATR(PC)
+     A                                  8 45'-'
+     A            FTINC#    R        B  8 47TEXT('Incident number to')
+     A                                      REFFLD(INC#)
+     A                                      DSPATR(UL)
+     A  81                                  DSPATR(RI)
+     A  81                                  DSPATR(PC)
+     A            CTN0001       25A  O  9  2TEXT('Call track number')
+     A                                      MSGID(CTN 0001 OMHDSP)
+     A            FFCTN#    R        B  9 28TEXT('Call track number from')
+     A                                      REFFLD(CTN#)
+     A N60                                  DSPATR(UL)
+     A  60                                  DSPATR(PR)
+     A  72                                  DSPATR(RI)
+     A  72                                  DSPATR(PC)
+     A                                  9 45'-'
+     A            FTCTN#    R        B  9 47TEXT('Call track number to')
+     A                                      REFFLD(CTN#)
+     A N60                                  DSPATR(UL)
+     A  60                                  DSPATR(PR)
+     A  82                                  DSPATR(RI)
+     A  82                                  DSPATR(PC)
+     A            PRI0001       25A  O 10  2TEXT('Priority')
+     A                                      MSGID(PRI 0001 OMHDSP)
+     A            FFPRI#    R     Y  B 10 28TEXT('Priority from')
+     A                                      REFFLD(PRI#)
+     A                                      EDTCDE(Z)
+     A                                      DSPATR(UL)
+     A  73                                  DSPATR(RI)
+     A  73                                  DSPATR(PC)
+     A                                      CHECK(RB)
+     A                                 10 45'-'
+     A            FTPRI#    R     Y  B 10 47TEXT('Priority to')
+     A                                      REFFLD(PRI#)
+     A                                      EDTCDE(Z)
+     A                                      DSPATR(UL)
+     A  83                                  DSPATR(RI)
+     A  83                                  DSPATR(PC)
+     A                                      CHECK(RB)
+     A            CUS0003       25A  O 12  2TEXT('Customer')
+     A                                      MSGID(CUS 0003 OMHDSP)
+     A            FFCUSC    R        B 12 28TEXT('Customer from')
+     A                                      REFFLD(CUSC)
+     A N60N61N62                            DSPATR(UL)
+     A  61                                  DSPATR(PR)
+     A            KEY0103A      25A  O 12 47TEXT('Code, F4 for list')
+     A                                      MSGID(KEY 0103 OMHDSP)
+     A  61                                  DSPATR(ND)
+     A            CUS0004       25A  O 13  2TEXT('Customer contact')
+     A                                      MSGID(CUS 0004 OMHDSP)
+     A            FFCCTC    R        B 13 28TEXT('Contact from')
+     A                                      REFFLD(CCTC)
+     A N60N61N62                            DSPATR(UL)
+     A  62                                  DSPATR(PR)
+     A            KEY0103G      25A  O 13 47TEXT('Code, F4 for list')
+     A                                      MSGID(KEY 0103 OMHDSP)
+     A  62                                  DSPATR(ND)
+     A            STA0001       25A  O 14  2TEXT('Status')
+     A                                      MSGID(STA 0001 OMHDSP)
+     A            FFSTA1    R        B 14 28TEXT('Status from')
+     A                                      REFFLD(STAT)
+     A                                      DSPATR(UL)
+     A  74                                  DSPATR(RI)
+     A  74                                  DSPATR(PC)
+     A            FFSTA2    R        B 15 28TEXT('Status from')
+     A                                      REFFLD(STAT)
+     A                                      DSPATR(UL)
+     A  77                                  DSPATR(RI)
+     A  77                                  DSPATR(PC)
+     A            FFSTA3    R        B 16 28TEXT('Status from')
+     A                                      REFFLD(STAT)
+     A                                      DSPATR(UL)
+     A  78                                  DSPATR(RI)
+     A  78                                  DSPATR(PC)
+     A            KEY0106       30A  O 14 47TEXT('Code, *CMP, *OPEN, *ALL, F4 f-
+     A                                      or list')
+     A                                      MSGID(KEY 0106 OMHDSP)
+     A            STA0004       25A  O 18  2TEXT('Status route')
+     A                                      MSGID(STA 0004 OMHDSP)
+     A            FFSTRC    R     A  B 18 28TEXT('Status route from')
+     A                                      REFFLD(STRC)
+     A                                      DSPATR(UL)
+     A  77                                  DSPATR(RI)
+     A  77                                  DSPATR(PC)
+     A            KEY0103C      30A  O 18 47TEXT('Code, F4 for list')
+     A                                      MSGID(KEY 0105 OMHDSP)
+     A            INC0005       25A  O 19  2TEXT('Incident type')
+     A                                      MSGID(INC 0005 OMHDSP)
+     A            FFITPC    R        B 19 28TEXT('Incident type code from')
+     A                                      REFFLD(ITPC)
+     A                                      DSPATR(UL)
+     A            KEY0103D      25A  O 19 47TEXT('Code, F4 for list')
+     A                                      MSGID(KEY 0103 OMHDSP)
+     A            DEF0001       25A  O 21  2TEXT('Save as defaults')
+     A                                      MSGID(DEF 0001 OMHDSP)
+     A            FMDEFI    R        B 21 28TEXT('Save as default subset')
+     A                                      REFFLD(INDI)
+     A N60N61N62                            DSPATR(UL)
+     A  75                                  DSPATR(RI)
+     A  75                                  DSPATR(PC)
+     A  60
+     AO 61
+     AO 62                                  DSPATR(PR)
+     A            CHO0024       25A  O 21 35TEXT('0=No, 1=Yes')
+     A                                      MSGID(CHO 0024 OMHDSP)
+     A            MOR0001       15A  O 21 65TEXT('More ...')
+     A                                      DSPATR(HI)
+     A                                      MSGID(MOR 0001 OMHDSP)
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            MH01808       78A  O 23  2TEXT('Command keys')
+     A                                      MSGID(MH0 1808 OMHDSP)
+     A                                      COLOR(BLU)
+     A          R OMH01807                  TEXT('Work with Incidents (subfile -
+     A                                      view 3')
+     A*%%TS  SD  19961120  143447  EWOUT       REL-V3R1M0  5763-PW1
+     A                                      SFL
+     A  93                                  SFLNXTCHG
+     A            FMOPTI         2A  B 12  2TEXT('Option field')
+     A                                      DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A            FMHEDC    R        O 12  7TEXT('HelpDesk code')
+     A                                      REFFLD(HEDC)
+     A            FMINC#    R        O 12 19TEXT('Incident number')
+     A                                      REFFLD(INC#)
+     A            FMPRI#    R        O 12 14TEXT('Priority')
+     A                                      REFFLD(PRI#)
+     A            FMSHID    R        O 12 31TEXT('Short incident description')
+     A                                      REFFLD(SHID)
+     A          R OMH01808                  TEXT('Work with Incidents')
+     A*%%TS  SD  19970129  181906  WIM         REL-V3R1M0  5763-PW1
+     A                                      SFLCTL(OMH01807)
+     A                                      SFLSIZ(10)
+     A                                      SFLPAG(9)
+     A                                      CF03
+     A                                      CF05
+     A  60                                  CF06
+     A N60                                  CF18
+     A                                      CF11
+     A                                      CF12
+     A                                      CF17
+     A                                      CF23
+     A                                      CF24
+     A  92                                  PAGEDOWN(22)
+     A                                      KEEP
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A N90                                  CSRLOC(LIN COL)
+     A                                      SFLCSRRRN(&CCRRN)
+     A                                      OVERLAY
+     A                                      ERASE(OMH01807)
+     A  90                                  SFLDSP
+     A                                      SFLDSPCTL
+     A  91                                  SFLCLR
+     A N92                                  SFLEND(*MORE)
+     A                                      HLPCLR
+     A          H                           HLPARA(1 2 1 2)
+     A                                      HLPPNLGRP('OMH01808' OMH018)
+     A          H                           HLPARA(7 28 7 32)
+     A N40                                  HLPPNLGRP('OMH01808/FMPS1A' OMH018)
+     A          H                           HLPARA(7 34 7 36)
+     A N40                                  HLPPNLGRP('OMH01808/FMPS1B' OMH018)
+     A          H                           HLPARA(7 28 7 32)
+     A  40                                  HLPPNLGRP('OMH01808/FMPS2A' OMH018)
+     A          H                           HLPARA(7 34 7 43)
+     A  40                                  HLPPNLGRP('OMH01808/FMPS2B' OMH018)
+     A          H                           HLPARA(7 74 7 74)
+     A                                      HLPPNLGRP('OMH01808/FMVIEI' OMH018)
+     A          H                           HLPARA(12 2 20 3)
+     A                                      HLPPNLGRP('OMH01807/FMOPTI' OMH018)
+     A          H                           HLPARA(23 1 23 80)
+     A                                      HLPPNLGRP('OMH01808/KEYS' OMH018)
+     A            FMFLDC        10A  H
+     A            FMFMTC        10A  H
+     A            CRRN01         4S 0H      SFLRCDNBR(CURSOR)
+     A            CCRRN          5S 0H
+     A                                  1  2'OMH018  '
+     A            MH01800       50A  O  1 16TEXT('Incident Maintenance')
+     A                                      MSGID(MH0 1800 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH01801-3'
+     A            MH01801       50A  O  2 16TEXT('Work with Incidents')
+     A                                      MSGID(MH0 1801 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            HED0001       25A  O  5  2TEXT('HelpDesk code')
+     A                                      MSGID(HED 0001 OMHDSP)
+     A            P#HEDC    R        O  5 28TEXT('HelpDesk code')
+     A                                      REFFLD(HEDC)
+     A                                      DSPATR(HI)
+     A            FMHEDD    R   40   O  5 35TEXT('HelpDesk Description')
+     A                                      REFFLD(HEDD)
+     A                                      DSPATR(HI)
+     A            POS0001       25A  O  7  2TEXT('Position at')
+     A                                      MSGID(POS 0001 OMHDSP)
+     A N40        FMPS1A    R        B  7 28REFFLD(HEDC)
+     A                                      DSPATR(UL)
+     A N40        FMPS1B    R     Y  B  7 34REFFLD(PRI#)
+     A                                      DSPATR(UL)
+     A                                      EDTCDE(Z)
+     A  40        FMPS2A    R        B  7 28REFFLD(HEDC)
+     A                                      DSPATR(UL)
+     A  40        FMPS2B    R        B  7 34REFFLD(INC#)
+     A                                      DSPATR(UL)
+     A            VIE0001       25A  O  7 48TEXT('View on')
+     A                                      MSGID(VIE 0001 OMHDSP)
+     A            FMVIEI    R        B  7 74TEXT('View on')
+     A                                      REFFLD(VIEI)
+     A                                      DSPATR(UL)
+     A  71                                  DSPATR(RI)
+     A  71                                  DSPATR(PC)
+     A            MH01804       78A  O  9  2TEXT('Options')
+     A N36 37                               MSGID(MH0 1806 OMHDSP)
+     A  36 37                               MSGID(MH0 1827 OMHDSP)
+     A                                      MSGID(MH0 1804 OMHDSP)
+     A                                      COLOR(BLU)
+     A            MH01810       78A  O 11  2TEXT('Subfile header view 3')
+     A                                      MSGID(MH0 1810 OMHDSP)
+     A                                      DSPATR(HI)
+     A            LIN            3S 0H
+     A            COL            3S 0H
+     A          R OMH01809                  TEXT('Work with Incidents Relations+
+     A                                      ')
+     A*%%TS  SD  19970220  113551  EWOUT       REL-V3R1M0  5763-PW1
+     A                                      SFL
+     A  93                                  SFLNXTCHG
+     A            FMOPTI         2A  B 12  2TEXT('Option field')
+     A                                      DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A            FMRELC         1   O 12  8
+     A            FMIRTP    R   10   O 12 12TEXT('Incident relation type')
+     A                                      REFFLD(IRTP)
+     A            FMIRAH    R        O 12 24TEXT('Incident relation appl/helpd')
+     A                                      REFFLD(IRAH)
+     A            FMIRIT    R        O 12 32TEXT('Incident relation item')
+     A                                      REFFLD(IRIT)
+     A            FMDESC    R   33A  O 12 46TEXT('Description')
+     A                                      REFFLD(DESC)
+     A          R OMH01810                  TEXT('Work with Incidents Relations+
+     A                                      ')
+     A*%%TS  SD  19970220  113551  EWOUT       REL-V3R1M0  5763-PW1
+     A                                      SFLCTL(OMH01809)
+     A                                      SFLSIZ(10)
+     A                                      SFLPAG(9)
+     A                                      CF03
+     A                                      CF05
+     A                                      CF12
+     A                                      CF08
+     A                                      KEEP
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A N90                                  CSRLOC(LIN COL)
+     A                                      OVERLAY
+     A                                      ERASE(OMH01809)
+     A  90                                  SFLDSP
+     A                                      SFLDSPCTL
+     A  91                                  SFLCLR
+     A N92                                  SFLEND(*MORE)
+     A                                      HLPCLR
+     A          H                           HLPARA(1 2 1 2)
+     A                                      HLPPNLGRP('OMH01810' OMH018)
+     A          H                           HLPARA(12 2 20 3)
+     A                                      HLPPNLGRP('OMH01809/FMOPTI' OMH018)
+     A          H                           HLPARA(23 1 23 80)
+     A                                      HLPPNLGRP('OMH01810/KEYS' OMH018)
+     A            FMFLDC        10A  H
+     A            FMFMTC        10A  H
+     A            CRRN03         4S 0H      SFLRCDNBR(CURSOR)
+     A                                  1  2'OMH018  '
+     A            MH01800       50A  O  1 16TEXT('Incident Maintenance')
+     A                                      MSGID(MH0 1800 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH01803'
+     A            MH01812       50A  O  2 16TEXT('Work with Incident Relations')
+     A                                      MSGID(MH0 1812 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            HED0001       25A  O  5  2TEXT('HelpDesk code')
+     A                                      MSGID(HED 0001 OMHDSP)
+     A            P#HEDC    R        O  5 28TEXT('HelpDesk code')
+     A                                      REFFLD(HEDC)
+     A                                      DSPATR(HI)
+     A            FMHEDD    R   40   O  5 35TEXT('HelpDesk Description')
+     A                                      REFFLD(HEDD)
+     A                                      DSPATR(HI)
+     A            INC0006       25A  O  7  2TEXT('Incident number')
+     A                                      MSGID(INC 0006 OMHDSP)
+     A            MH01813       78A  O  9  2TEXT('Options')
+     A                                      MSGID(MH0 1813 OMHDSP)
+     A                                      COLOR(BLU)
+     A            MH01814       78A  O 11  2TEXT('Subfile header incident relat-
+     A                                      ions')
+     A                                      MSGID(MH0 1814 OMHDSP)
+     A                                      DSPATR(HI)
+     A            FMINC#    R        O  7 28TEXT('Incident number')
+     A                                      REFFLD(INC#)
+     A                                      DSPATR(HI)
+     A            LIN            3S 0H
+     A            COL            3S 0H
+     A          R OMH01811                  TEXT('Work with Incidents (footer)')
+     A*%%TS  SD  19970216  130120  WIM         REL-V3R1M0  5763-PW1
+     A                                      CF03
+     A                                      CF05
+     A                                      CF12
+     A                                      OVERLAY
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            MH01815       78   O 23  2TEXT('Command keys')
+     A                                      COLOR(BLU)
+     A                                      MSGID(MH0 1815 OMHDSP)
+     A          R OMH01812                  TEXT('Work with Q & A History')
+     A*%%TS  SD  19970117  105157  EWOUT       REL-V3R1M0  5763-PW1
+     A                                      SFL
+     A  93                                  SFLNXTCHG
+     A            FMOPTS         1A  B 12  3TEXT('Option field')
+     A                                      DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A            FMQUE1    R   73A  O 12  7TEXT('Question short')
+     A                                      REFFLD(QUES)
+     A            FMANS1    R   73A  O 13  7TEXT('Answer short')
+     A                                      REFFLD(ANSC)
+     A            FMQUES    R        H      TEXT('Question')
+     A                                      REFFLD(QUES)
+     A            FMANSC    R        H      TEXT('Answer')
+     A                                      REFFLD(ANSC)
+     A          R OMH01813                  TEXT('Work with Q & A history')
+     A*%%TS  SD  19970129  181906  WIM         REL-V3R1M0  5763-PW1
+     A                                      SFLCTL(OMH01812)
+     A                                      SFLSIZ(5)
+     A                                      SFLPAG(4)
+     A                                      CF03
+     A                                      CF05
+     A                                      CF12
+     A                                      OVERLAY
+     A                                      ERASE(OMH01812)
+     A N90                                  CSRLOC(LIN COL)
+     A  90                                  SFLDSP
+     A                                      SFLDSPCTL
+     A  91                                  SFLCLR
+     A N92                                  SFLEND(*MORE)
+     A                                      HLPCLR
+     A          H                           HLPARA(1 2 1 2)
+     A                                      HLPPNLGRP('OMH01813' OMH018)
+     A          H                           HLPARA(12 3 15 3)
+     A                                      HLPPNLGRP('OMH01812/FMOPTS' OMH018)
+     A          H                           HLPARA(23 1 23 80)
+     A                                      HLPPNLGRP('OMH01813/KEYS' OMH018)
+     A            CRRN04         4S 0H      SFLRCDNBR(CURSOR)
+     A                                  1  2'OMH018  '
+     A            MH01800       50A  O  1 16TEXT('Incident Maintenance')
+     A                                      MSGID(MH0 1800 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH01804'
+     A            MH01816       50A  O  2 16TEXT('Work with Q & A history')
+     A                                      MSGID(MH0 1816 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            HED0001       25A  O  5  2TEXT('HelpDesk code')
+     A                                      MSGID(HED 0001 OMHDSP)
+     A            P#HEDC    R        O  5 28TEXT('HelpDesk code')
+     A                                      REFFLD(HEDC)
+     A                                      DSPATR(HI)
+     A            FMHEDD    R   40   O  5 35TEXT('HelpDesk Description')
+     A                                      REFFLD(HEDD)
+     A                                      DSPATR(HI)
+     A            INC0006       25A  O  7  2TEXT('Incident number')
+     A                                      MSGID(INC 0006 OMHDSP)
+     A            FMINC#    R        O  7 28TEXT('Incident number')
+     A                                      REFFLD(INC#)
+     A                                      DSPATR(HI)
+     A            MH01817       78A  O  9  2TEXT('Options')
+     A                                      MSGID(MH0 1817 OMHDSP)
+     A                                      COLOR(BLU)
+     A            MH01818       78A  O 11  2TEXT('Subfile header Q & A history')
+     A                                      MSGID(MH0 1818 OMHDSP)
+     A                                      DSPATR(HI)
+     A            LIN            3S 0H
+     A            COL            3S 0H
+     A          R OMH01814                  TEXT('Work with Q & A history (foot-
+     A                                      er)')
+     A*%%TS  SD  19970117  105157  EWOUT       REL-V3R1M0  5763-PW1
+     A                                      CF03
+     A                                      CF05
+     A                                      CF12
+     A                                      OVERLAY
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            MH01819       78A  O 23  2TEXT('Command keys')
+     A                                      COLOR(BLU)
+     A                                      MSGID(MH0 1819 OMHDSP)
+     A          R OMH01816                  TEXT('Incident maintenance selectio-
+     A                                      n screen')
+     A*%%TS  DD  20031126  081530  botee       REL-V5.0.1  WDSc
+     A                                      CF04
+     A                                      CF05
+     A                                      CF09
+     A                                      CF12
+     A                                      CF14
+     A                                      PAGEUP(26)
+     A                                      OVERLAY
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A                                      RTNCSRLOC(*WINDOW &FMROW# &FMCOL#)
+     A                                      CSRLOC(FMROW# FMCOL#)
+     A                                      HLPCLR
+     A          H                           HLPPNLGRP(OMH01816 OMH018)
+     A                                      HLPARA(1 2 1 2)
+     A          H                           HLPPNLGRP('OMH01816/FFRUID' OMH018)
+     A                                      HLPARA(*FLD FFRUID)
+     A          H                           HLPPNLGRP('OMH01816/FFAUID' OMH018)
+     A                                      HLPARA(*FLD FFAUID)
+     A          H                           HLPPNLGRP('OMH01816/FFALSC' OMH018)
+     A                                      HLPARA(10 28 10 37)
+     A          H                           HLPPNLGRP('OMH01816/FFACIN' OMH018)
+     A                                      HLPARA(11 28 11 28)
+     A          H                           HLPPNLGRP('OMH01816/FFUSF1' OMH018)
+     A                                      HLPARA(13 28 13 37)
+     A          H                           HLPPNLGRP('OMH01816/FFUSF2' OMH018)
+     A                                      HLPARA(14 28 14 52)
+     A          H                           HLPPNLGRP('OMH01816/FFUSF3' OMH018)
+     A                                      HLPARA(15 28 15 42)
+     A          H                           HLPPNLGRP('OMH01816/FFVIEI' OMH018)
+     A                                      HLPARA(17 28 17 28)
+     A          H                           HLPPNLGRP('OMH01816/FMDEFI' OMH018)
+     A                                      HLPARA(21 28 21 28)
+     A          H                           HLPPNLGRP('OMH01816/KEYS' OMH018)
+     A                                      HLPARA(23 1 23 80)
+     A            FMCOL#         3S 0H
+     A            FMROW#         3S 0H
+     A            FMFLDC        10A  H
+     A            FMFMTC        10A  H
+     A                                  1  2'OMH018  '
+     A            MH01800       50A  O  1 16TEXT('Incident maintenance')
+     A                                      MSGID(MH0 1800 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH01802'
+     A            MH01807       50A  O  2 16TEXT('Subset')
+     A                                      MSGID(MH0 1807 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            HED0001       25A  O  5  2TEXT('HelpDesk code')
+     A                                      MSGID(HED 0001 OMHDSP)
+     A            P#HEDC    R        O  5 28TEXT('HelpDesk code')
+     A                                      REFFLD(HEDC)
+     A                                      DSPATR(HI)
+     A            FMHEDD    R   40   O  5 35TEXT('HelpDesk description')
+     A                                      REFFLD(HEDD)
+     A                                      DSPATR(HI)
+     A            DEF0001       25A  O 21  2TEXT('Save as defaults')
+     A                                      MSGID(DEF 0001 OMHDSP)
+     A            FMDEFI    R        B 21 28TEXT('Save as default subset')
+     A                                      REFFLD(INDI)
+     A N60N61N62                            DSPATR(UL)
+     A  75                                  DSPATR(RI)
+     A  75                                  DSPATR(PC)
+     A  60
+     AO 61
+     AO 62                                  DSPATR(PR)
+     A            CHO0024B      25A  O 21 35TEXT('0=No, 1=Yes')
+     A                                      MSGID(CHO 0024 OMHDSP)
+     A            REG0001       25A  O  7  2TEXT('Registered by')
+     A                                      MSGID(REG 0001 OMHDSP)
+     A            FFRUID    R        B  7 28TEXT('Registered by from')
+     A                                      REFFLD(RUID)
+     A                                      DSPATR(UL)
+     A            KEY0101       25A  O  7 47TEXT('Name, F4 for list')
+     A                                      MSGID(KEY 0101 OMHDSP)
+     A            ALC0001       25A  O  8  2TEXT('Allocated by')
+     A                                      MSGID(ALC 0001 OMHDSP)
+     A            FFAUID    R        B  8 28TEXT('Allocated by from')
+     A                                      REFFLD(AUID)
+     A                                      DSPATR(UL)
+     A            KEY0108       25A  O  8 47TEXT('Name, *NONE, F4 for list')
+     A                                      MSGID(KEY 0108 OMHDSP)
+     A            ANS0003       25A  O 10  2TEXT('Answer list')
+     A                                      MSGID(ANS 0003 OMHDSP)
+     A            FFALSC    R        B 10 28TEXT('Answer list code')
+     A                                      REFFLD(ALSC)
+     A                                      DSPATR(UL)
+     A            KEY0103       25A  O 10 47TEXT('Code, F4 for List')
+     A                                      MSGID(KEY 0103 OMHDSP)
+     A            ACC0006       25A  O 11  2TEXT('Accumulated inc. only')
+     A                                      MSGID(ACC 0006 OMHDSP)
+     A            FFACIN    R        B 11 28REFFLD(INDI)
+     A                                      DSPATR(UL)
+     A  76                                  DSPATR(PC)
+     A  76                                  DSPATR(RI)
+     A            CHO0024A      25A  O 11 47TEXT('0=No, 1=Yes')
+     A                                      MSGID(CHO 0024 OMHDSP)
+     A            USR9021       25A  O 13  2TEXT('Incident free field 1')
+     A                                      MSGID(USR 9021 OMHDSP)
+     A            FFUSF1    R        B 13 28TEXT('Incident free field 1')
+     A                                      REFFLD(USF1)
+     A                                      DSPATR(UL)
+     A            USR9022       25A  O 14  2TEXT('Incident free field 2')
+     A                                      MSGID(USR 9022 OMHDSP)
+     A            FFUSF2    R        B 14 28TEXT('Incident free field 2')
+     A                                      REFFLD(USF2)
+     A                                      DSPATR(UL)
+     A            USR9023       25A  O 15  2TEXT('Incident free field 3')
+     A                                      MSGID(USR 9023 OMHDSP)
+     A            FFUSF3    R        B 15 28TEXT('Incident free field 3')
+     A                                      REFFLD(USF3)
+     A                                      DSPATR(UL)
+     A                                      EDTCDE(Z)
+     A                                      CHECK(RB)
+     A            VIE0001       25A  O 17  2TEXT('View on')
+     A                                      MSGID(VIE 0001 OMHDSP)
+     A            FFVIEI    R        B 17 28TEXT('View on')
+     A                                      REFFLD(OMSREFHDR/INDI)
+     A N60N61N62                            DSPATR(UL)
+     A  87                                  DSPATR(RI)
+     A  87                                  DSPATR(PC)
+     A  60
+     AO 61
+     AO 62                                  DSPATR(PR)
+     A            MH01833       30A  O 17 47TEXT('0=Priority, 1=Incident nbr')
+     A                                      MSGID(MH0 1833 OMHDSP)
+     A            BOT0001       15A  O 21 65TEXT('Bottom')
+     A                                      DSPATR(HI)
+     A                                      MSGID(BOT 0001 OMHDSP)
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            MH01808       78A  O 23  2TEXT('Command keys')
+     A                                      MSGID(MH0 1808 OMHDSP)
+     A                                      COLOR(BLU)
+     A*%%GP UNTITLED   01
+     A          R OMH01817                  TEXT('Enter incident number')
+     A*%%TS  SD  19970227  130634  EWOUT       REL-V3R1M0  5763-PW1
+     A                                      WINDOW(5 15 7 50)
+     A                                      CF05
+     A                                      CF12
+     A                                      OVERLAY
+     A                                      WDWBORDER((*CHAR '...:::.:'))
+     A                                      USRRSTDSP
+     A                                      HLPCLR
+     A          H                           HLPARA(1 2 1 2)
+     A                                      HLPPNLGRP('OMH01817' OMH018)
+     A          H                           HLPARA(3 27 3 36)
+     A                                      HLPPNLGRP('OMH01817/FMLNIN' OMH018)
+     A          H                           HLPARA(4 27 4 27)
+     A                                      HLPPNLGRP('OMH01817/FMLNAC' OMH018)
+     A          H                           HLPARA(6 1 6 50)
+     A                                      HLPPNLGRP('OMH01817/KEYS' OMH018)
+     A            MH01828       40A  O  1  6TEXT('Enter incident number')
+     A                                      MSGID(MH0 1828 OMHDSP)
+     A                                      DSPATR(HI)
+     A            MH01830       25A  O  3  1TEXT('Enter incident number')
+     A                                      MSGID(MH0 1830 OMHDSP)
+     A            FMLNIN    R     A  B  3 27REFFLD(INC#)
+     A                                      DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A            MH01831       25A  O  4  1TEXT('Link or allocate')
+     A                                      MSGID(MH0 1831 OMHDSP)
+     A            FMLNAC    R     A  B  4 27REFFLD(INDI)
+     A                                      DSPATR(UL)
+     A  71                                  DSPATR(RI)
+     A  71                                  DSPATR(PC)
+     A            MH01829       50A  O  6  1TEXT('F5=Refresh  F12=Cancel')
+     A                                      MSGID(MH0 1829 OMHDSP)
+     A                                      COLOR(BLU)
+     A            LNK0001       20   O  4 30TEXT('0=Link, 1=Accumulate')
+     A                                      MSGID(LNK 0001 OMHDSP)
+     A            NBR0001       10   O  3 39TEXT('Number')
+     A                                      MSGID(NBR 0001 OMHDSP)
+     A          R OMH01818                  TEXT('Work with Incidents (subfile -
+     A                                      view 4')
+     A*%%TS  SD  20000925  122025  WIM         REL-V3R7M0  5716-PW1
+     A                                      SFL
+     A  93                                  SFLNXTCHG
+     A            FMOPTI         2A  B 12  2TEXT('Option field')
+     A                                      DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A            FMHEDC    R        O 12  7TEXT('HelpDesk code')
+     A                                      REFFLD(HEDC)
+     A            FMPRI#    R        O 12 14TEXT('Priority')
+     A                                      REFFLD(PRI#)
+     A            FMINC#    R        O 12 19TEXT('Incident number')
+     A                                      REFFLD(INC#)
+     A            FMCUSC    R        O 12 30REFFLD(CUSC)
+     A            FMCCTC    R        O 12 41REFFLD(CCTC)
+     A            FMTEL#    R        O 12 52REFFLD(TEL#)
+     A            FMNAMD        12   O 12 68TEXT('Name')
+     A          R OMH01819                  TEXT('Work with Incidents')
+     A*%%TS  SD  20000925  114318  WIM         REL-V3R7M0  5716-PW1
+     A                                      SFLCTL(OMH01818)
+     A                                      SFLSIZ(10)
+     A                                      SFLPAG(9)
+     A                                      CF03
+     A                                      CF05
+     A  60                                  CF06
+     A N60                                  CF18
+     A                                      CF11
+     A                                      CF12
+     A                                      CF17
+     A                                      CF23
+     A                                      CF24
+     A  92                                  PAGEDOWN(22)
+     A                                      KEEP
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A N90                                  CSRLOC(LIN COL)
+     A                                      SFLCSRRRN(&CCRRN)
+     A                                      OVERLAY
+     A                                      ERASE(OMH01807)
+     A  90                                  SFLDSP
+     A                                      SFLDSPCTL
+     A  91                                  SFLCLR
+     A N92                                  SFLEND(*MORE)
+     A                                      HLPCLR
+     A          H                           HLPPNLGRP(OMH01808 OMH018)
+     A                                      HLPARA(1 2 1 2)
+     A          H
+     A N40                                  HLPPNLGRP('OMH01808/FMPS1A' OMH018)
+     A                                      HLPARA(7 28 7 32)
+     A          H
+     A N40                                  HLPPNLGRP('OMH01808/FMPS1B' OMH018)
+     A                                      HLPARA(7 34 7 36)
+     A          H
+     A  40                                  HLPPNLGRP('OMH01808/FMPS2A' OMH018)
+     A                                      HLPARA(7 28 7 32)
+     A          H
+     A  40                                  HLPPNLGRP('OMH01808/FMPS2B' OMH018)
+     A                                      HLPARA(7 34 7 43)
+     A          H                           HLPPNLGRP('OMH01808/FMVIEI' OMH018)
+     A                                      HLPARA(7 74 7 74)
+     A          H                           HLPPNLGRP('OMH01807/FMOPTI' OMH018)
+     A                                      HLPARA(12 2 20 3)
+     A          H                           HLPPNLGRP('OMH01808/KEYS' OMH018)
+     A                                      HLPARA(23 1 23 80)
+     A            FMFLDC        10A  H
+     A            FMFMTC        10A  H
+     A            CRRN01         4S 0H      SFLRCDNBR(CURSOR)
+     A            CCRRN          5S 0H
+     A                                  1  2'OMH018  '
+     A            MH01800       50A  O  1 16TEXT('Incident Maintenance')
+     A                                      MSGID(MH0 1800 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMH01801-4'
+     A            MH01801       50A  O  2 16TEXT('Work with Incidents')
+     A                                      MSGID(MH0 1801 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            HED0001       25A  O  5  2TEXT('HelpDesk code')
+     A                                      MSGID(HED 0001 OMHDSP)
+     A            P#HEDC    R        O  5 28TEXT('HelpDesk code')
+     A                                      REFFLD(HEDC)
+     A                                      DSPATR(HI)
+     A            FMHEDD    R   40   O  5 35TEXT('HelpDesk Description')
+     A                                      REFFLD(HEDD)
+     A                                      DSPATR(HI)
+     A            POS0001       25A  O  7  2TEXT('Position at')
+     A                                      MSGID(POS 0001 OMHDSP)
+     A N40        FMPS1A    R        B  7 28REFFLD(HEDC)
+     A                                      DSPATR(UL)
+     A N40        FMPS1B    R     Y  B  7 34REFFLD(PRI#)
+     A                                      DSPATR(UL)
+     A                                      EDTCDE(Z)
+     A  40        FMPS2A    R        B  7 28REFFLD(HEDC)
+     A                                      DSPATR(UL)
+     A  40        FMPS2B    R        B  7 34REFFLD(INC#)
+     A                                      DSPATR(UL)
+     A            VIE0001       25A  O  7 48TEXT('View on')
+     A                                      MSGID(VIE 0001 OMHDSP)
+     A            FMVIEI    R        B  7 74TEXT('View on')
+     A                                      REFFLD(VIEI)
+     A                                      DSPATR(UL)
+     A  71                                  DSPATR(RI)
+     A  71                                  DSPATR(PC)
+     A            MH01804       78A  O  9  2TEXT('Options')
+     A N36 37                               MSGID(MH0 1806 OMHDSP)
+     A  36 37                               MSGID(MH0 1827 OMHDSP)
+     A                                      MSGID(MH0 1804 OMHDSP)
+     A                                      COLOR(BLU)
+     A            MH01832       78   O 11  2TEXT('Subfile header view 4')
+     A                                      MSGID(MH0 1832 OMHDSP)
+     A                                      DSPATR(HI)
+     A            LIN            3S 0H
+     A            COL            3S 0H
+     A          R OMH018CL
+     A*%%TS  DD  20031126  074441  botee       REL-V5.0.1  WDSc
+     A                                      SLNO(12)
+     A                                      CLRL(*END)
+     A                                      OVERLAY
+     A                                  2  5'(No details to display)'
+     A          R MSGSFL
+     A*%%TS  DD  20031126  074441  botee       REL-V5.0.1  WDSc
+     A                                      SFL
+     A                                      SFLMSGRCD(24)
+     A            MSGKEY                    SFLMSGKEY
+     A            PGMQ                      SFLPGMQ
+     A          R MSGCTL
+     A*%%TS  DD  20031126  074441  botee       REL-V5.0.1  WDSc
+     A                                      SFLCTL(MSGSFL)
+     A                                      SFLINZ
+     A                                      SFLSIZ(2)
+     A                                      SFLPAG(1)
+     A                                      SFLDSP
+     A                                      SFLDSPCTL
+     A N91                                  SFLEND
+     A                                      OVERLAY
+     A            PGMQ                      SFLPGMQ

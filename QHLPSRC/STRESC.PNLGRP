@@ -1,0 +1,58 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: STRESC                                      :   *.
+.*   : Help for ...: Start escalation                            :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   : This panelgroup contains the U.I.M. help texts for        :   *.
+.*   : Start Escalation                                          :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+:PNLGRP.
+:IMPORT PNLGRP=OMSREFHD      NAME='*'.
+
+.*   *************************************************************   *.
+.*   * Start escalation                                          *   *.
+.*   *************************************************************   *.
+
+:HELP NAME=STRESC.Escalation start - Help
+
+:IMHELP NAME=STRESCGEN.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   : General help for Escalation start                         :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=STRESCGEN.Escalation start - Help
+:XH3.Escalation start
+:ISCH ROOTS='Escalation start'.
+Escalation start
+
+:P.
+The Start Escalation Command is used to start the escalation.
+This process is described below.
+
+:P.
+The starting of the escalation job is done by a batchjob, that can
+be started from the HelpDesk Escalation Menu, option 1, or in your
+own application by using the STRESC (Start Escalation) command. The
+behaviour of this batchjob is defined in the escalation property
+of this HelpDesk. Only one such a batchjob can be active for one
+helpdesk at the same time; this control is executed when you try
+to start the job.
+
+
+:P.
+If you want more information about escalation in
+general, please follow this link to the
+:LINK PERFORM='DSPHELP CONESC OMSCONHD'.
+escalation concepts.
+:ELINK.
+:EHELP.
+
+:EPNLGRP.

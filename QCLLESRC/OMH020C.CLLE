@@ -1,0 +1,41 @@
+ /* ---------------------------------------------------------------- */
+ /* Description                                                      */
+ /* ---------------------------------------------------------------- */
+ /*                                                                  */
+ /* Program ....: OMH020C                                            */
+ /* Function ...: Work with incident spoolfiles                      */
+ /* Author .....: Remain Software                                    */
+ /* Parameters .: &LIB      - Library                                */
+ /*               &OUTQ     - Output queue                           */
+ /*               &RSTS     - Return status                          */
+ /*                                                                  */
+ /* This progam executes the WRKOUTQ command for the output queue    */
+ /* specified in the parameters. The name of the output queue corre- */
+ /* sponds to the incident number.                                   */
+ /*                                                                  */
+ /* ---------------------------------------------------------------- */
+
+             PGM        PARM(&LIB &OUTQ &RSTS)
+
+ /* ---------------------------------------------------------------- */
+ /* Declare parameter-variables                                      */
+ /* ---------------------------------------------------------------- */
+             DCL        VAR(&LIB)     TYPE(*CHAR) LEN(10)
+             DCL        VAR(&OUTQ)    TYPE(*CHAR) LEN(10)
+             DCL        VAR(&RSTS)    TYPE(*CHAR) LEN(5)
+
+ /* ---------------------------------------------------------------- */
+ /* Install global error monitor                                     */
+ /* ---------------------------------------------------------------- */
+             MONMSG     MSGID(CPF0000) EXEC(GOTO CMDLBL(ENDPGM))
+
+ /* ---------------------------------------------------------------- */
+ /* Execute the WRKOUTQ command                                      */
+ /* ---------------------------------------------------------------- */
+             WRKOUTQ    OUTQ(&LIB/&OUTQ)
+
+ /* ---------------------------------------------------------------- */
+ /* Exit program processing.                                         */
+ /* ---------------------------------------------------------------- */
+ ENDPGM:     RETURN
+             ENDPGM

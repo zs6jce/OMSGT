@@ -1,0 +1,89 @@
+      *$$\CRTOM CRTDSPF
+      *$$\ENDOM
+     A*%%TS  SD  20000707  164100  WIM         REL-V3R7M0  5716-PW1
+     A*    sasd
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      REF(*LIBL/OMSREFHD)
+     A                                      CHGINPDFT
+     A                                      PRINT(*LIBL/QSYSPRT)
+     A                                      ALTHELP(CA01)
+     A                                      HELP
+     A          R OMH04701
+     A*%%TS  SD  20000707  163958  WIM         REL-V3R7M0  5716-PW1
+     A                                      CHANGE(40)
+     A                                      CF05
+     A                                      CF03
+     A                                      CF12
+     A                                      OVERLAY
+     A                                      WINDOW(5 1 14 76 *NOMSGLIN *NORSTCS-
+     A                                      R)
+     A                                      USRRSTDSP
+     A            MH01101       50A  O  1 14TEXT('Maintain Library')
+     A                                      MSGID(MH0 1101 OMHDSP)
+     A                                      DSPATR(HI)
+     A            MH04701       50A  O  2 14TEXT('Rename Customer')
+     A                                      MSGID(MH0 4701 OMHDSP)
+     A                                      DSPATR(HI)
+     A            CUS0005       25A  O  5  1TEXT('Customer code')
+     A                                      MSGID(CUS 0005 OMHDSP)
+     A            NAM0002       25A  O  6  1TEXT('Name')
+     A                                      MSGID(NAM 0002 OMHDSP)
+     A            CUS0006       25A  O  8  1TEXT('New Customer Code')
+     A                                      MSGID(CUS 0006 OMHDSP)
+     A            NAM0004       25A  O  9  1TEXT('New Name')
+     A                                      MSGID(NAM 0004 OMHDSP)
+     A                                  1  1'OMH047'
+     A                                  1 68DATE
+     A                                      EDTCDE(Y)
+     A                                  2  1'OMH04701'
+     A                                  2 68TIME
+     A                                  3  1'                                  -
+     A                                                                         -
+     A                                            '
+     A                                      DSPATR(UL)
+     A                                      COLOR(BLU)
+     A                                 11  1'                                  -
+     A                                                                         -
+     A                                            '
+     A                                      DSPATR(UL)
+     A                                      COLOR(BLU)
+     A            FMCUSC    R        O  5 27REFFLD(CUSC)
+     A                                      DSPATR(HI)
+     A            FMNAMD    R        O  6 27REFFLD(NAMD)
+     A                                      DSPATR(HI)
+     A            FMNCUS    R     A  B  8 27REFFLD(CUSC)
+     A N43                                  DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A  43                                  DSPATR(PR)
+     A            FMNNAM    R     A  B  9 27REFFLD(NAMD)
+     A N43                                  DSPATR(UL)
+     A  71                                  DSPATR(RI)
+     A  71                                  DSPATR(PC)
+     A                                      CHECK(LC)
+     A  42                                  DSPATR(MDT)
+     A  43                                  DSPATR(PR)
+     A            KEY0066       75A  O 12  1TEXT('F3=Exit ...')
+     A                                      MSGID(KEY 0066 OMHDSP)
+     A                                      COLOR(BLU)
+     A          R DUMMY
+     A                                      ASSUME
+     A                                  3  1'hallo'
+     A          R MSGSFL                    SFL
+     A*%%TS  SD  20000707  164100  WIM         REL-V3R7M0  5716-PW1
+     A                                      SFLMSGRCD(24)
+     A            MSGKEY                    SFLMSGKEY
+     A            PGMQ                      SFLPGMQ(10)
+     A          R MSGCTL                    SFLCTL(MSGSFL)
+     A*%%TS  SD  20000707  164100  WIM         REL-V3R7M0  5716-PW1
+     A                                      ROLLUP
+     A                                      ROLLDOWN
+     A                                      OVERLAY
+     A                                      SFLDSP
+     A                                      SFLDSPCTL
+     A                                      SFLINZ
+     A N91                                  SFLEND
+     A                                      SFLSIZ(0002)
+     A                                      SFLPAG(0001)
+     A            PGMQ                      SFLPGMQ(10)

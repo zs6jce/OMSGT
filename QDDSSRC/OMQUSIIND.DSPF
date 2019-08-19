@@ -1,0 +1,505 @@
+      *$$\CRTOM CRTDSPF
+      *$$\ENDOM
+     A*%%TS  SD  20000519  194735  WIM         REL-V3R7M0  5716-PW1
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      REF(*LIBL/OMSREFHD)
+     A                                      CHGINPDFT
+     A                                      HLPTITLE('Remain Software')
+     A                                      HLPSCHIDX(*LIBL/REMAINHD)
+     A                                      HELP
+     A                                      PRINT(*LIBL/QSYSPRT)
+     A                                      ALTHELP(CA01)
+     A          R QUSIIN01                  SFL
+     A*%%TS  SD  20000519  194735  WIM         REL-V3R7M0  5716-PW1
+     A                                      TEXT('Work with Text Entries (subfi-
+     A                                      le)')
+     A  93                                  SFLNXTCHG
+     A            F2ITH#    R        H      REFFLD(ITH#)
+     A            FMOPTI         1A  B 16  3TEXT('Option field')
+     A                                      DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A            F2SUL#    R        O 16  8REFFLD(SUL#)
+     A                                      TEXT('Support level')
+     A            F2USID    R        O 16 12REFFLD(USID)
+     A                                      TEXT('Entered by user')
+     A            F2ITXT    R        O 16 24REFFLD(ITXT)
+     A                                      TEXT('Text type')
+     A            F2INDT    R    6Y  O 16 27REFFLD(INDT)
+     A                                      TEXT('Text entered on date')
+     A                                      EDTCDE(Y)
+     A            F2SITD        43A  O 16 37TEXT('Short text description')
+     A          R QUSIIN02                  SFLCTL(QUSIIN01)
+     A*%%TS  SD  20000519  194735  WIM         REL-V3R7M0  5716-PW1
+     A                                      TEXT('Incident Interface')
+     A                                      CF02(02)
+     A                                      CF03(03)
+     A                                      CF04(04)
+     A                                      CF05(05)
+     A                                      CF06(06)
+     A                                      CF07(07)
+     A                                      CF08(08)
+     A                                      CF09(09)
+     A                                      CF10(10)
+     A                                      CF11(11)
+     A                                      CF12(12)
+     A                                      CF13(13)
+     A                                      CF14(14)
+     A                                      CF15(15)
+     A                                      CF16(16)
+     A                                      CF17(17)
+     A                                      CF18(18)
+     A                                      CF19(19)
+     A                                      CF20(20)
+     A                                      CF21(21)
+     A                                      CF22(22)
+     A                                      CF23(23)
+     A                                      CF24(24)
+     A                                      ROLLUP(25)
+     A                                      ROLLDOWN(26)
+     A                                      CHANGE(27)
+     A                                      KEEP
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A                                      OVERLAY
+     A                                      ERASE(QUSIIN01 QUSIIN03)
+     A                                      HLPCLR
+     A                                      SFLCSRRRN(&FMCR01)
+     A  90                                  SFLDSP
+     A                                      SFLDSPCTL
+     A  91                                  SFLCLR
+     A N92                                  SFLEND(*MORE)
+     A                                      SFLSIZ(0006)
+     A                                      SFLPAG(0005)
+     A          H                           HLPPNLGRP(QUSIIN02 OMQUSIIN)
+     A                                      HLPARA(01 002 01 002)
+     A          H                           HLPPNLGRP('QUSIIN02/FMHEDC' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(07 028 07 032)
+     A          H                           HLPPNLGRP('QUSIIN02/FMINCY' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(08 028 08 037)
+     A          H
+     A N32                                  HLPPNLGRP('QUSIIN02/FMSTRC' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(09 028 09 037)
+     A          H
+     A  32                                  HLPPNLGRP('QUSIIN02/FMUSF1' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(09 028 09 037)
+     A          H
+     A N32                                  HLPPNLGRP('QUSIIN02/FMITPC' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(10 028 10 032)
+     A          H
+     A  32                                  HLPPNLGRP('QUSIIN02/FMUSF2' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(10 028 10 052)
+     A          H
+     A N32                                  HLPPNLGRP('QUSIIN02/FMSEV1' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(11 028 11 032)
+     A          H
+     A  32                                  HLPPNLGRP('QUSIIN02/FMUSF3' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(11 028 11 042)
+     A          H
+     A N32                                  HLPPNLGRP('QUSIIN02/FMSEV2' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(11 034 11 038)
+     A          H
+     A N32                                  HLPPNLGRP('QUSIIN02/FMSEV3' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(11 040 11 044)
+     A          H
+     A N32                                  HLPPNLGRP('QUSIIN02/FMSHID' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(12 028 12 077)
+     A          H                           HLPPNLGRP('QUSIIN01/FMOPTI' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(16 003 20 003)
+     A          H                           HLPPNLGRP('QUSIIN02/KEYS' OMQUSIIN)
+     A                                      HLPARA(23 001 23 080)
+     A            FMCR01         5S 0H
+     A            FMFLDC        10A  H
+     A            FMFMTC        10A  H
+     A            CRRN01         4S 0H      SFLRCDNBR(CURSOR)
+     A                                  1  2'OMQUSIIN  '
+     A            IIN0000       50A  O  1 16TEXT('Incident Management')
+     A                                      MSGID(IIN 0000 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMQUSIIN01'
+     A            FMPG1D        50A  O  2 16DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            CUS0002       25A  O  5  2TEXT('Customer & Contact code')
+     A                                      MSGID(CUS 0002 OMHDSP)
+     A            FMCUSC    R        O  5 28REFFLD(CUSC)
+     A            FMCCTC    R        O  5 39REFFLD(CCTC)
+     A            FMTEL#    R        O  5 50REFFLD(TEL#)
+     A            FMEMAI         9A  O  5 72TEXT('E-mail indication')
+     A            CTN0001       25A  O  6  2TEXT('Call track number')
+     A                                      MSGID(CTN 0001 OMHDSP)
+     A            FMCTN#    R        O  6 28REFFLD(CTN#)
+     A  31        ACC0007       25A  O  6 46MSGID(ACC 0007 OMHDSP)
+     A  31        FMAIN2    R    9   O  6 72REFFLD(AIN#)
+     A            HED0001       25A  O  7  2TEXT('HelpDesk code')
+     A                                      MSGID(HED 0001 OMHDSP)
+     A            FMHEDC    R        B  7 28REFFLD(HEDC)
+     A  67                                  DSPATR(RI)
+     A N47                                  DSPATR(UL)
+     A  67                                  DSPATR(PC)
+     A  47                                  DSPATR(PR)
+     A  31        USR0002       25A  O  7 46MSGID(USR 0003 OMHDSP)
+     A  31        FMRUI2    R    9   O  7 72REFFLD(RUID)
+     A            INC0006       25A  O  8  2TEXT('Incident')
+     A                                      MSGID(INC 0006 OMHDSP)
+     A            FMINC#    R        B  8 28REFFLD(INC#)
+     A  60                                  DSPATR(RI)
+     A N40                                  DSPATR(UL)
+     A  60                                  DSPATR(PC)
+     A  40                                  DSPATR(PR)
+     A  31        DAT0001       25A  O  8 46TEXT('Income date')
+     A                                      MSGID(DAT 0001 OMHDSP)
+     A  31        FMINDT    R    6   O  8 72REFFLD(INDT)
+     A                                      EDTCDE(Y)
+     A  31        ROU0002       25A  O  9  2TEXT('Route code')
+     A                                      MSGID(ROU 0002 OMHDSP)
+     A  32        USR9021       25A  O  9  2TEXT('Incident free field 1')
+     A                                      MSGID(USR 9021 OMHDSP)
+     A  31        FMSTRC    R        B  9 28REFFLD(STRC)
+     A  61                                  DSPATR(RI)
+     A N41                                  DSPATR(UL)
+     A  61                                  DSPATR(PC)
+     A  41                                  DSPATR(PR)
+     A  32        FMUSF1    R        B  9 28REFFLD(USF1)
+     A N48                                  DSPATR(UL)
+     A  68                                  DSPATR(RI)
+     A  68                                  DSPATR(PC)
+     A  48                                  DSPATR(PR)
+     A  31        STA0001       25A  O  9 46TEXT('Priority')
+     A                                      MSGID(STA 0001 OMHDSP)
+     A  31        FMSTAT         5A  O  9 72
+     A  31        INC0005       25A  O 10  2TEXT('Incident type')
+     A                                      MSGID(INC 0005 OMHDSP)
+     A  32        USR9022       25A  O 10  2TEXT('Incident free field 2')
+     A                                      MSGID(USR 9022 OMHDSP)
+     A  31        FMITPC    R     A  B 10 28REFFLD(ITPC)
+     A  62                                  DSPATR(RI)
+     A N42                                  DSPATR(UL)
+     A  62                                  DSPATR(PC)
+     A  42                                  DSPATR(PR)
+     A  32        FMUSF2    R        B 10 28REFFLD(USF2)
+     A N49                                  DSPATR(UL)
+     A  69                                  DSPATR(RI)
+     A  69                                  DSPATR(PC)
+     A  49                                  DSPATR(PR)
+     A  31        SUP0002       25A  O 10 46TEXT('Supprt level')
+     A                                      MSGID(SUP 0002 OMHDSP)
+     A  31        FMSUL#    R        O 10 72REFFLD(SUL#)
+     A  31        SEV0006       25A  O 11  2TEXT('Severities (C/T/M)')
+     A                                      MSGID(SEV 0006 OMHDSP)
+     A  32        USR9023       25A  O 11  2TEXT('Incident free field 3')
+     A                                      MSGID(USR 9023 OMHDSP)
+     A  31        FMSEV1    R        B 11 28REFFLD(SEVC)
+     A  63                                  DSPATR(RI)
+     A N43                                  DSPATR(UL)
+     A  63                                  DSPATR(PC)
+     A  43                                  DSPATR(PR)
+     A  32        FMUSF3    R        B 11 28REFFLD(USF3)
+     A N50                                  DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A  50                                  DSPATR(PR)
+     A                                      EDTCDE(3)
+     A  31        FMSEV2    R        B 11 34REFFLD(SEVC)
+     A  64                                  DSPATR(RI)
+     A N44                                  DSPATR(UL)
+     A  64                                  DSPATR(PC)
+     A  44                                  DSPATR(PR)
+     A  31        FMSEV3    R        B 11 40REFFLD(SEVC)
+     A  65                                  DSPATR(RI)
+     A N45                                  DSPATR(UL)
+     A  65                                  DSPATR(PC)
+     A  45                                  DSPATR(PR)
+     A  31        PRI0001       25A  O 11 46TEXT('Priority')
+     A                                      MSGID(PRI 0001 OMHDSP)
+     A  31        FMPRI#    R     Y  O 11 72REFFLD(PRI#)
+     A                                      EDTCDE(3)
+     A  31        DSC0005       25A  O 12  2TEXT('Short incident description')
+     A                                      MSGID(DSC 0005 OMHDSP)
+     A  31        FMSHID    R        B 12 28REFFLD(SHID)
+     A  76                                  DSPATR(RI)
+     A N46                                  DSPATR(UL)
+     A  76                                  DSPATR(PC)
+     A  46                                  DSPATR(PR)
+     A                                      CHECK(LC)
+     A            MOR0001       15A  O 13 65DSPATR(HI)
+     A  32                                  MSGID(BOT 0001 OMHDSP)
+     A                                      MSGID(MOR 0001 OMHDSP)
+     A            OPT0075       50A  O 14  2TEXT('2=Change 5=Display')
+     A                                      COLOR(BLU)
+     A                                      MSGID(OPT 0075 OMHDSP)
+     A            MQU0001       78A  O 15  2TEXT('Subfile header')
+     A                                      DSPATR(HI)
+     A                                      MSGID(MQU 0001 OMHDSP)
+     A          R QUSIIN03                  SFL
+     A*%%TS  SD  20000519  194735  WIM         REL-V3R7M0  5716-PW1
+     A                                      TEXT('Work with Text Entries (subfi-
+     A                                      le)')
+     A  93                                  SFLNXTCHG
+     A            F2OSEQ    R        H      REFFLD(ITH#)
+     A            FMOPTI         1A  B 16  3TEXT('Option field')
+     A                                      DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A            FMOTID        10A  O 16  6
+     A            FMOCID        10A  O 16 17
+     A            FMSNBR        30A  O 16 28
+     A            FMDESC        20A  O 16 59
+     A          R QUSIIN04                  SFLCTL(QUSIIN03)
+     A*%%TS  SD  20000519  194735  WIM         REL-V3R7M0  5716-PW1
+     A                                      TEXT('Incident Interface')
+     A                                      CF02(02)
+     A                                      CF03(03)
+     A                                      CF04(04)
+     A                                      CF05(05)
+     A                                      CF06(06)
+     A                                      CF07(07)
+     A                                      CF08(08)
+     A                                      CF09(09)
+     A                                      CF10(10)
+     A                                      CF11(11)
+     A                                      CF12(12)
+     A                                      CF13(13)
+     A                                      CF14(14)
+     A                                      CF15(15)
+     A                                      CF16(16)
+     A                                      CF17(17)
+     A                                      CF18(18)
+     A                                      CF19(19)
+     A                                      CF20(20)
+     A                                      CF21(21)
+     A                                      CF22(22)
+     A                                      CF23(23)
+     A                                      CF24(24)
+     A                                      ROLLUP(25)
+     A                                      ROLLDOWN(26)
+     A                                      CHANGE(27)
+     A                                      KEEP
+     A                                      RTNCSRLOC(&FMFMTC &FMFLDC)
+     A                                      OVERLAY
+     A                                      ERASE(QUSIIN01 QUSIIN03)
+     A                                      HLPCLR
+     A                                      SFLCSRRRN(&FMCR02)
+     A  90                                  SFLDSP
+     A                                      SFLDSPCTL
+     A  91                                  SFLCLR
+     A N92                                  SFLEND(*MORE)
+     A                                      SFLSIZ(0006)
+     A                                      SFLPAG(0005)
+     A          H                           HLPPNLGRP(QUSIIN02 OMQUSIIN)
+     A                                      HLPARA(01 002 01 002)
+     A          H                           HLPPNLGRP('QUSIIN02/FMHEDC' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(07 028 07 032)
+     A          H                           HLPPNLGRP('QUSIIN02/FMINCY' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(08 028 08 037)
+     A          H
+     A N32                                  HLPPNLGRP('QUSIIN02/FMSTRC' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(09 028 09 037)
+     A          H
+     A  32                                  HLPPNLGRP('QUSIIN02/FMUSF1' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(09 028 09 037)
+     A          H
+     A N32                                  HLPPNLGRP('QUSIIN02/FMITPC' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(10 028 10 032)
+     A          H
+     A  32                                  HLPPNLGRP('QUSIIN02/FMUSF2' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(10 028 10 052)
+     A          H
+     A N32                                  HLPPNLGRP('QUSIIN02/FMSEV1' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(11 028 11 032)
+     A          H
+     A  32                                  HLPPNLGRP('QUSIIN02/FMUSF3' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(11 028 11 042)
+     A          H
+     A N32                                  HLPPNLGRP('QUSIIN02/FMSEV2' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(11 034 11 038)
+     A          H
+     A N32                                  HLPPNLGRP('QUSIIN02/FMSEV3' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(11 040 11 044)
+     A          H
+     A N32                                  HLPPNLGRP('QUSIIN02/FMSHID' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(12 028 12 077)
+     A          H                           HLPPNLGRP('QUSIIN01/FMOPTI' OMQUSII-
+     A                                      N)
+     A                                      HLPARA(16 003 20 003)
+     A          H                           HLPPNLGRP('QUSIIN02/KEYS' OMQUSIIN)
+     A                                      HLPARA(23 001 23 080)
+     A            FMCR02         5S 0H
+     A            FMFLDC        10A  H
+     A            FMFMTC        10A  H
+     A            CRRN02         4S 0H      SFLRCDNBR(CURSOR)
+     A                                  1  2'OMQUSIIN  '
+     A            IIN0000       50A  O  1 16TEXT('Incident Management')
+     A                                      MSGID(IIN 0000 OMHDSP)
+     A                                      DSPATR(HI)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2  2'OMQUSIIN01'
+     A            FMPG1D        50A  O  2 16DSPATR(HI)
+     A                                  2 72TIME
+     A                                  3  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            CUS0002       25A  O  5  2TEXT('Customer & Contact code')
+     A                                      MSGID(CUS 0002 OMHDSP)
+     A            FMCUSC    R        O  5 28REFFLD(CUSC)
+     A            FMCCTC    R        O  5 39REFFLD(CCTC)
+     A            FMTEL#    R        O  5 50REFFLD(TEL#)
+     A            FMEMAI         9A  O  5 72TEXT('E-mail indication')
+     A            CTN0001       25A  O  6  2TEXT('Call track number')
+     A                                      MSGID(CTN 0001 OMHDSP)
+     A            FMCTN#    R        O  6 28REFFLD(CTN#)
+     A  31        ACC0007       25A  O  6 46MSGID(ACC 0007 OMHDSP)
+     A  31        FMAIN2    R    9   O  6 72REFFLD(AIN#)
+     A            HED0001       25A  O  7  2TEXT('HelpDesk code')
+     A                                      MSGID(HED 0001 OMHDSP)
+     A            FMHEDC    R        B  7 28REFFLD(HEDC)
+     A  67                                  DSPATR(RI)
+     A N47                                  DSPATR(UL)
+     A  67                                  DSPATR(PC)
+     A  47                                  DSPATR(PR)
+     A  31        USR0002       25A  O  7 46MSGID(USR 0003 OMHDSP)
+     A  31        FMRUI2    R    9   O  7 72REFFLD(RUID)
+     A            INC0006       25A  O  8  2TEXT('Incident')
+     A                                      MSGID(INC 0006 OMHDSP)
+     A            FMINC#    R        B  8 28REFFLD(INC#)
+     A  60                                  DSPATR(RI)
+     A N40                                  DSPATR(UL)
+     A  60                                  DSPATR(PC)
+     A  40                                  DSPATR(PR)
+     A  31        DAT0001       25A  O  8 46TEXT('Income date')
+     A                                      MSGID(DAT 0001 OMHDSP)
+     A  31        FMINDT    R    6   O  8 72REFFLD(INDT)
+     A                                      EDTCDE(Y)
+     A  31        ROU0002       25A  O  9  2TEXT('Route code')
+     A                                      MSGID(ROU 0002 OMHDSP)
+     A  32        USR9021       25A  O  9  2TEXT('Incident free field 1')
+     A                                      MSGID(USR 9021 OMHDSP)
+     A  31        FMSTRC    R        B  9 28REFFLD(STRC)
+     A  61                                  DSPATR(RI)
+     A N41                                  DSPATR(UL)
+     A  61                                  DSPATR(PC)
+     A  41                                  DSPATR(PR)
+     A  32        FMUSF1    R        B  9 28REFFLD(USF1)
+     A N48                                  DSPATR(UL)
+     A  68                                  DSPATR(RI)
+     A  68                                  DSPATR(PC)
+     A  48                                  DSPATR(PR)
+     A  31        STA0001       25A  O  9 46TEXT('Priority')
+     A                                      MSGID(STA 0001 OMHDSP)
+     A  31        FMSTAT         5A  O  9 72
+     A  31        INC0005       25A  O 10  2TEXT('Incident type')
+     A                                      MSGID(INC 0005 OMHDSP)
+     A  32        USR9022       25A  O 10  2TEXT('Incident free field 2')
+     A                                      MSGID(USR 9022 OMHDSP)
+     A  31        FMITPC    R     A  B 10 28REFFLD(ITPC)
+     A  62                                  DSPATR(RI)
+     A N42                                  DSPATR(UL)
+     A  62                                  DSPATR(PC)
+     A  42                                  DSPATR(PR)
+     A  32        FMUSF2    R        B 10 28REFFLD(USF2)
+     A N49                                  DSPATR(UL)
+     A  69                                  DSPATR(RI)
+     A  69                                  DSPATR(PC)
+     A  49                                  DSPATR(PR)
+     A  31        SUP0002       25A  O 10 46TEXT('Supprt level')
+     A                                      MSGID(SUP 0002 OMHDSP)
+     A  31        FMSUL#    R        O 10 72REFFLD(SUL#)
+     A  31        SEV0006       25A  O 11  2TEXT('Severities (C/T/M)')
+     A                                      MSGID(SEV 0006 OMHDSP)
+     A  32        USR9023       25A  O 11  2TEXT('Incident free field 3')
+     A                                      MSGID(USR 9023 OMHDSP)
+     A  31        FMSEV1    R        B 11 28REFFLD(SEVC)
+     A  63                                  DSPATR(RI)
+     A N43                                  DSPATR(UL)
+     A  63                                  DSPATR(PC)
+     A  43                                  DSPATR(PR)
+     A  32        FMUSF3    R        B 11 28REFFLD(USF3)
+     A N50                                  DSPATR(UL)
+     A  70                                  DSPATR(RI)
+     A  70                                  DSPATR(PC)
+     A  50                                  DSPATR(PR)
+     A                                      EDTCDE(3)
+     A  31        FMSEV2    R        B 11 34REFFLD(SEVC)
+     A  64                                  DSPATR(RI)
+     A N44                                  DSPATR(UL)
+     A  64                                  DSPATR(PC)
+     A  44                                  DSPATR(PR)
+     A  31        FMSEV3    R        B 11 40REFFLD(SEVC)
+     A  65                                  DSPATR(RI)
+     A N45                                  DSPATR(UL)
+     A  65                                  DSPATR(PC)
+     A  45                                  DSPATR(PR)
+     A  31        PRI0001       25A  O 11 46TEXT('Priority')
+     A                                      MSGID(PRI 0001 OMHDSP)
+     A  31        FMPRI#    R     Y  O 11 72REFFLD(PRI#)
+     A                                      EDTCDE(3)
+     A  31        DSC0005       25A  O 12  2TEXT('Short incident description')
+     A                                      MSGID(DSC 0005 OMHDSP)
+     A  31        FMSHID    R        B 12 28REFFLD(SHID)
+     A  76                                  DSPATR(RI)
+     A N46                                  DSPATR(UL)
+     A  76                                  DSPATR(PC)
+     A  46                                  DSPATR(PR)
+     A                                      CHECK(LC)
+     A            MOR0001       15A  O 13 65DSPATR(HI)
+     A  32                                  MSGID(BOT 0001 OMHDSP)
+     A                                      MSGID(MOR 0001 OMHDSP)
+     A            OPT0502       50A  O 14  2TEXT('5=Display')
+     A                                      COLOR(BLU)
+     A                                      MSGID(OPT 0502 OMHDSP)
+     A            MQU0002       78A  O 15  2TEXT('Subfile header')
+     A                                      DSPATR(HI)
+     A                                      MSGID(MQU 0002 OMHDSP)
+     A          R QUSIIN05
+     A*%%TS  SD  19961115  180846  WIM         REL-V3R1M0  5763-PW1
+     A                                      TEXT('Incident Interface (footer)')
+     A                                      OVERLAY
+     A                                 22  2'                                  -
+     A                                                                         -
+     A                                               '
+     A                                      DSPATR(UL)
+     A            FMFUND        78   O 23  2COLOR(BLU)
+     A          R MSGSFL                    SFL
+     A                                      SFLMSGRCD(24)
+     A            MSGKEY                    SFLMSGKEY
+     A            PGMQ                      SFLPGMQ
+     A          R MSGCTL
+     A                                      SFLCTL(MSGSFL)
+     A                                      SFLINZ
+     A                                      SFLSIZ(2)
+     A                                      SFLPAG(1)
+     A                                      SFLDSP
+     A                                      SFLDSPCTL
+     A N91                                  SFLEND
+     A                                      OVERLAY
+     A            PGMQ                      SFLPGMQ

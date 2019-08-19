@@ -1,0 +1,2110 @@
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Panelgroup .: OMSCONHD                                    :   *.
+.*   : Help for ...: Concepts                                    :   *.
+.*   : Author .....: Remain Software                             :   *.
+.*   :                                                           :   *.
+.*   : This panelgroup contains the U.I.M. help texts for        :   *.
+.*   : the OMS concepts.                                         :   *.
+.*   :                                                           :   *.
+.*   : Modification: Remain Software                             :   *.
+.*   : Date .......: 24-4-1997                                   :   *.
+.*   : Purposes ...: Panelgroup provided with texts              :   *.
+.*   :...........................................................:   *.
+
+:PNLGRP.
+:IMPORT PNLGRP=OMSREFHD        NAME='*'.
+
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Section ....: INDEX                                       :   *.
+.*   :                                                           :   *.
+.*   : This section contains the index to the concepts           :   *.
+.*   : panelgroup.                                               :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+.*   .............................................................   *.
+.*   : Concepts index                                            :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=OMSCONHD.Concepts Index
+:XH3.Concepts Index
+
+:P.
+Welcome to the index of the HelpDesk concepts guide. The concepts guide
+contains a more thorough discussion about the entities found in the
+HelpDesk.
+Please select one of the following topics:
+
+:P.
+:LINK PERFORM='DSPHELP CONCUSC'.
+Customer Concepts
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONHEDC'.
+HelpDesk Concepts
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONEMPC'.
+Employee Concepts
+:ELINK.
+
+:P.
+:LINK PERFORM='DSPHELP CONQUES'.
+Question & Answer Concepts
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONSTAT'.
+Status Concepts
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONCALL'.
+Customer Call Concepts
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONINC'.
+Incident Concepts
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONESC'.
+Escalation Concepts
+:ELINK.
+
+:P.
+:LINK PERFORM='DSPHELP CONREG'.
+Registration Concepts
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONPRO'.
+Processing Concepts
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONANA'.
+Analysis Concepts
+:ELINK.
+
+:P.
+:LINK PERFORM='DSPHELP CONNET'.
+Networking concepts
+:ELINK.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Section ....: CONCUSC                                     :   *.
+.*   : Description : Customer concepts                           :   *.
+.*   :                                                           :   *.
+.*   : This section contains the customer concepts.              :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+.*   .............................................................   *.
+.*   : Customer concepts total view                              :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=CONCUSC.Customer Concepts
+:XH3.Customer Concepts
+
+:P.
+This section contains the following information. You can either
+select a topic directly or read through the complete concepts by
+using the page keys.
+
+:P.
+:LINK PERFORM='DSPHELP OMSCONHD'.
+Back to the Concepts Main Index
+:ELINK.
+
+:P.
+:LINK PERFORM='DSPHELP CONCUSC/CUSC'.
+What is a Customer
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONCUSC/CONTACT'.
+What is a Customer Contact
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONCUSC/CONV'.
+Can I convert from an older database
+:ELINK.
+
+.*   .............................................................   *.
+.*   : Link all sections from the customer concepts              :   *.
+.*   :...........................................................:   *.
+:IMHELP NAME='CONCUSC/CUSC'.
+:IMHELP NAME='CONCUSC/CONTACT'.
+:IMHELP NAME='CONCUSC/CONV'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Customer concepts                       :   *.
+.*   : Subsection .....: What is a Customer                      :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONCUSC/CUSC'.What is a Customer
+:XH3.What is a Customer?
+:P.
+For a helpdesk employee, a customer is an organization that needs
+assistance and therefore adresses to the helpdesk. A customer can
+be a company, a settlement, a department, an account, something like
+that.
+
+:P.
+This notion means that you can use this HelpDesk module for both
+internal and external customers.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Customer concepts                       :   *.
+.*   : Subsection .....: What is a Customer Contact?             :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONCUSC/CONTACT'.What is a Customer Contact?
+:XH3.What is a Customer Contact?
+:P.
+A customer contact is the person who speaks to you on behalf of the
+customer, when that customer adresses to the helpdesk. In almost
+all cases it is very useful to have his or her name fixed when adding
+a call track, together with such basics as a (phone)number.
+
+:P.
+The HelpDesk distinguishes between a default contact and other contacts.
+The default contact is automatically added to a new call track, and
+the customers phonenumber that is displayed at the Maintain Customers
+screen is derived from the default contact.
+
+:P.
+Apart from the usual maintenance function, a customer contact can also
+be added during
+:LINK PERFORM='DSPHELP CONCALL/CALL'.
+call track
+:ELINK.
+entry; this makes it possible to add the person you're speaking to
+immediately.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Customer concepts                       :   *.
+.*   : Subsection .....: Can I convert from an older database?   :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONCUSC/CONV'.Can I convert from an older database?
+:XH3.Can I convert from an older database?
+:P.
+As converting databases differs from company to company, there is
+no standard facility provided. Nearly all companies and organizations,
+nowadays, have got there own way of storing their customers.
+
+:P.
+However, at implementation time, in most cases, data will be distracted
+from an existing data collection and placed in the
+HelpDesk customer file.
+:EHELP.
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Section ....: CONHEDC                                     :   *.
+.*   : Description : HelpDesk concepts                           :   *.
+.*   :                                                           :   *.
+.*   : This section contains the helpdesk concepts.              :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+.*   .............................................................   *.
+.*   : HelpDesk concepts total view                              :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=CONHEDC.HelpDesk Concepts
+:XH3.HelpDesk Concepts
+
+:P.
+This section contains the following information. You can either
+select a topic directly or read through the complete concepts by
+using the page keys.
+
+:P.
+:LINK PERFORM='DSPHELP OMSCONHD'.
+Back to the Concepts Main Index
+:ELINK.
+
+:P.
+:LINK PERFORM='DSPHELP CONHEDC/HEDC'.
+What is a HelpDesk
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONHEDC/HOWMANY'.
+How many HelpDesk's do I need.
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONHEDC/STORED'.
+What is stored in a HelpDesk
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONHEDC/SECUR'.
+How is HelpDesk security organized
+:ELINK.
+
+.*   .............................................................   *.
+.*   : Link all sections from the HelpDesk concepts              :   *.
+.*   :...........................................................:   *.
+:IMHELP NAME='CONHEDC/HEDC'.
+:IMHELP NAME='CONHEDC/HOWMANY'.
+:IMHELP NAME='CONHEDC/STORED'.
+:IMHELP NAME='CONHEDC/SECUR'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: HelpDesk Concepts                       :   *.
+.*   : Subsection .....: What is a HelpDesk?                     :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONHEDC/HEDC'.What is a Helpdesk?
+:XH3.What is a Helpdesk?
+:P.
+A HelpDesk, from our point of view, is a software application that
+enables people who work at a helpdesk or a helpdesk-like environment
+to log their activities. The purpose of such a helpdesk is twofold:
+First of all, it helps the customer. This is achieved by fixed procedures,
+by grouping problems, by asking predefined questions, by searching
+for known solutions, etc., etc. The second main target of a HelpDesk
+module is to provide a tool for analyzing company processes, like
+recognizing bottle-necks, telephone handling, noticing shortcomings
+in certain products or services.
+
+:P.
+In this software module, that we have referred to as "HelpDesk", a
+number of helpdesks can be defined. Such a helpdesk is the main entity
+of the application. At helpdesk level you define the data belonging
+to the activities within the company that serve to solve a related
+group of problems of different customers. These data deal with
+:LINK PERFORM='DSPHELP CONCALL/CALL'.
+call tracks
+:ELINK.
+and with
+:LINK PERFORM='DSPHELP CONINC/INC'.
+incidents.
+:ELINK.
+
+:P.
+A :PK.call track:EPK. is the fixation of a request for assistance or
+information of a customer; such a call-track can consist of one ore more
+:PK.incidents:EPK., in which an item concerning the request of the
+customer is isolated and described.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: HelpDesk Concepts                       :   *.
+.*   : Subsection .....: How many HeldDesk do I need?            :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONHEDC/HOWMANY'.How many HelpDesks do I need?
+:XH3.How many HelpDesks do I need?
+:P.
+In many cases, the definition of just one helpdesk will be sufficient.
+It is thinkable that within your organization two or more helpdesks
+are operational that work completely separated from each other, or
+that it may seem wise to distinguish between internal and external
+customers, or that the nature of incoming questions can be grouped
+in highly different categories. In such cases the definition of two
+or more helpdesks should be considered.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: HelpDesk Concepts                       :   *.
+.*   : Subsection .....: What is stored in a HelpDesk?           :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONHEDC/STORED'.What is stored in a Helpdesk?
+:XH3.What is stored in a Helpdesk?
+:P.
+In a helpdesk information concerning call tracks and incidents is
+stored: data on automatic number generation and, optional, the names
+of exit-programs, one for an incident and one for a call-track.
+For the incident the name of a library can additional be filled in. In
+that library the outqueue will be searched for if you at incident
+level your spoolfile want to direct to that queue.
+
+:P.
+Further information that will be stored at helpdesk level: a description and
+the name of the manager.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: HelpDesk Concepts                       :   *.
+.*   : Subsection .....: How is HelpDesk security organized?     :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONHEDC/SECUR'.How is HelpDesk security organized?
+:XH3.How is HelpDesk security organized?
+:P.
+To be able to use functions within an helpdesk, one should be enrolled.
+The helpdesk manager or QSECOFR are allowed to do so. The helpdesk-employee
+will have a support level assigned, that sychronizes with the support
+levels assigned to the incidents. With an equal or higher support level
+the user can change the incident and read the text entries belonging to
+that incident.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Section ....: CONEMPC                                     :   *.
+.*   : Description : Employee concepts                           :   *.
+.*   :                                                           :   *.
+.*   : This section contains the employee concepts.              :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+.*   .............................................................   *.
+.*   : Employee concepts total view                              :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=CONEMPC.Employee Concepts
+:XH3.Employee Concepts
+
+:P.
+This section contains the following information. You can either
+select a topic directly or read through the complete concepts by
+using the page keys.
+
+:P.
+:LINK PERFORM='DSPHELP OMSCONHD'.
+Back to the Concepts Main Index
+:ELINK.
+
+:P.
+:LINK PERFORM='DSPHELP CONEMPC/EMPC'.
+What is a Employee
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONEMPC/SUPLEV'.
+What is the support level
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONEMPC/SECUR'.
+How is Employee security organized
+:ELINK.
+
+.*   .............................................................   *.
+.*   : Link all sections from the Employee concepts              :   *.
+.*   :...........................................................:   *.
+:IMHELP NAME='CONEMPC/EMPC'.
+:IMHELP NAME='CONEMPC/SUPLEV'.
+:IMHELP NAME='CONEMPC/SECUR'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Employee Concepts                       :   *.
+.*   : Subsection .....: What is an Employee?                    :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONEMPC/EMPC'.What is an Employee?
+:XH3.What is an Employee?
+:P.
+An employee is a person who works, at any level, at the helpdesk or
+at one of the helpdesks of your company. He or she should be defined
+once for every helpdesk, and must have a user identity at the AS/400.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Employee Concepts                       :   *.
+.*   : Subsection .....: What is the support level?              :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONEMPC/SUPLEV'.What is the support level?
+:XH3.What is the support level?
+:P.
+The support level is used to indicate both the authority and the skills
+of the helpdesk employee. In most cases, the lowest level of support
+('0', whereas the highest, used for the helpdesk manager, is '9')
+will be given to the first line
+employee, and, subsequently, a higher level will be assigned to the
+more specialized problem-solver.
+
+:P.
+As for the authorisation, if an employee wants to view the
+:LINK PERFORM='DSPHELP CONINC/TEXT'.
+text
+:ELINK.
+of an
+:LINK PERFORM='DSPHELP CONINC/INC'.
+incident
+:ELINK.
+she or he may only do so if the support level of the employee is
+at least as high as that of the incident.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Employee Concepts                       :   *.
+.*   : Subsection .....: How is Employee security organized?     :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONEMPC/SECUR'.How is Employee security organized?
+:XH3.How is Employee security organized?
+:P.
+If a person is not enlisted as a helpdesk employee, access is denied
+to the HelpDesk definition functions.
+
+:P.
+If a HelpDesk employee is defined with a support level lower than
+that of the incident she or he is not allowed to view the textblocks
+of that incident.
+
+:EHELP.
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Section ....: CONQUES                                     :   *.
+.*   : Description : Question & answer concepts                  :   *.
+.*   :                                                           :   *.
+.*   : This section contains the Question concepts.              :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+.*   .............................................................   *.
+.*   : Question concepts total view                              :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=CONQUES.Question & Answer Concepts
+:XH3.Question & Answer Concepts
+
+:P.
+This section contains the following information. You can either
+select a topic directly or read through the complete concepts by
+using the page keys.
+
+:P.
+:LINK PERFORM='DSPHELP OMSCONHD'.
+Back to the Concepts Main Index
+:ELINK.
+
+:P.
+:LINK PERFORM='DSPHELP CONQUES/QUES'.
+What is a Question
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONQUES/QLIST'.
+What is a Question List
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONQUES/ALIST'.
+What is an Answer List
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONQUES/QLCON'.
+What is a Question List Context
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONQUES/MORE'.
+Why would I use more then one Question List
+:ELINK.
+
+.*   .............................................................   *.
+.*   : Link all sections from the Question concepts              :   *.
+.*   :...........................................................:   *.
+:IMHELP NAME='CONQUES/QUES'.
+:IMHELP NAME='CONQUES/QLIST'.
+:IMHELP NAME='CONQUES/ALIST'.
+:IMHELP NAME='CONQUES/QLCON'.
+:IMHELP NAME='CONQUES/MORE'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Q & A Concepts                          :   *.
+.*   : Subsection .....: What is a Question?                     :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONQUES/QUES'.What is a Question?
+:XH3.What is a Question?
+:P.
+A question, in this context, is asked by the HelpDesk to the employee.
+This can happen at several instances, initially, when an
+:LINK PERFORM='DSPHELP CONINC/INC'.
+incident
+:ELINK.
+is added, and also later, when, for instance, new information has become
+available so that more questions can be answered. At every question
+the helpdesk gives a list of answers, and one of these will have to
+be chosen. According to this choise, the helpdesk closes the question
+and answer stage, or shows up with another question. As more questions
+are answered, attributes of the incident can be assigned in a more
+detailed way.
+
+:P.
+Questions, as well as answers, are stored in 256 positions long text
+fields, so in this way there are few limitations. On the normal
+screens, however, question text is displayed on one line only. To
+display more, option '5' usually gives the formatted full text.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Q & A Concepts                          :   *.
+.*   : Subsection .....: What is a Question List?                :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONQUES/QLIST'.What is a Question List?
+:XH3.What is a Question List?
+:P.
+A question list is a predefined sequence of questions. During the
+question and answer stage can be jumped from one question list to
+another. Entering a new question list will result in the first
+question of that list, i.e. the one with the lowest number.
+
+:P.
+A question can only once be started for an incident.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Q & A Concepts                          :   *.
+.*   : Subsection .....: What is an Answer List?                 :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONQUES/ALIST'.What is an Answer List?
+:XH3.What is an Answer List?
+:P.
+An answer list is a sequence of answers given to questions, and
+has as starting point a question from a so called originating
+question list. An answer list is used allocate an incident to a
+former, similar incident, thus handling similar incidents in the
+same way.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Q & A Concepts                          :   *.
+.*   : Subsection .....: What is a Question List Context?        :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONQUES/QLCON'.What is a Question List Context?
+:XH3.What is a Question List Context?
+:P.
+A question list context is the context in which a question is started.
+This can be, for example, the list that is used at the entry of an
+incident, or the list that is used to evaluate the satisfaction of
+the customer.
+
+:P.
+The whole concept of question lists could be valuable for a lot of
+different applications. One can think of it as a tool to collect
+marketing or other information in a very elaborated way.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Q & A Concepts                          :   *.
+.*   : Subsection .....: Why would I use more than one Question List?*.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONQUES/MORE'.Why would I use more than one Question List?
+:XH3.Why would I use more than one Question List?
+:P.
+In the whole question list concept is included the idea of using more
+than one question list, as is explained in the above sections. Using
+only one question list confines us in our possibility to set the
+attributes of an incident in a smooth and detailed way.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Section ....: CONSTAT                                     :   *.
+.*   : Description : Status concepts                             :   *.
+.*   :                                                           :   *.
+.*   : This section contains the status concepts                 :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+.*   .............................................................   *.
+.*   : Status concepts total view                                :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=CONSTAT.Status Concepts
+:XH3.Status Concepts
+
+:P.
+This section contains the following information. You can either
+select a topic directly or read through the complete concepts by
+using the page keys.
+
+:P.
+:LINK PERFORM='DSPHELP OMSCONHD'.
+Back to the Concepts Main Index
+:ELINK.
+
+:P.
+:LINK PERFORM='DSPHELP CONSTAT/STAT'.
+What is a Status
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONSTAT/STACT'.
+What is a Status Action
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONSTAT/SROUT'.
+What is a Status Route
+:ELINK.
+
+.*   .............................................................   *.
+.*   : Link all sections from the Status concepts                :   *.
+.*   :...........................................................:   *.
+:IMHELP NAME='CONSTAT/STAT'.
+:IMHELP NAME='CONSTAT/STACT'.
+:IMHELP NAME='CONSTAT/SROUT'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Status concepts                         :   *.
+.*   : Subsection .....: What is a Status                        :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONSTAT/STAT'.What is a Status?
+:XH3.What is a Status?
+:P.
+If a customer rings in order to complain about something, or with a
+request, an
+:LINK PERFORM='DSPHELP CONINC/INC'.
+incident
+:ELINK.
+is made. If the reason to complain has been taken
+away, or the request is met, we could say that the status of the
+incident mentioned is: "completed", or, coded in the table that is
+provided with the HelpDesk, for instance "*CMP". Before we are at
+that pleasant state, the incident can have gone through the fingers
+of a lot of people, having had as many statusses.
+:P.
+If statusses are defined in a meaningful way, everybody can see
+immediately what is going on when somebody wants an update about the
+incident: the manager, or the customer.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Status concepts                         :   *.
+.*   : Subsection .....: What is a Status action?                :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONSTAT/STACT'.What is a Status Action?
+:XH3.What is a Status Action
+:P.
+A Status Action is a program that can be connected to a Status. You    ent
+decide when the program must be executed; when the incident receives
+the status or when it is leaving it. The actions are defined using
+the Status Maintenance function and you can define as many as you
+like.
+:P.
+:NT.Status Actions are executed by
+:LINK PERFORM='DSPHELP CONNET/TIM'.
+The Incident Monitor.
+:ELINK.
+:ENT.
+
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Status concepts                         :   *.
+.*   : Subsection .....: What is a Status Route?                 :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONSTAT/SROUT'.What is a Status Route?
+:XH3.What is a Status Route?
+:P.
+A status route is the stage of subsequent statusses. Generally spoken
+the the way of leaving a status route is via status *CMP, though other
+options might be thinkable. It is possible to jump from one status
+route to another route, if halfway has become obvious that initially
+the wrong route was chosen.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Section ....: CONCALL                                     :   *.
+.*   : Description : Call concepts                               :   *.
+.*   :                                                           :   *.
+.*   : This section contains the call concpets                   :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+.*   .............................................................   *.
+.*   : Call concepts total view                                  :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=CONCALL.Customer Call Concepts
+:XH3.Customer Call Concepts
+
+:P.
+This section contains the following information. You can either
+select a topic directly or read through the complete concepts by
+using the page keys.
+
+:P.
+:LINK PERFORM='DSPHELP OMSCONHD'.
+Back to the Concepts Main Index
+:ELINK.
+
+:P.
+:LINK PERFORM='DSPHELP CONCALL/CALL'.
+What is a Customer Call
+:ELINK.
+
+.*   .............................................................   *.
+.*   : Link all sections from the Cus.Call concepts              :   *.
+.*   :...........................................................:   *.
+:IMHELP NAME='CONCALL/CALL'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Customer call concepts                  :   *.
+.*   : Subsection .....: What is a customer call?                :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONCALL/CALL'.What is a Customer Call?
+:XH3.What is a Customer Call?
+:P.
+A customer call is an incoming message of a customer, meant for the    ent
+HelpDesk, in which the customer does not refer to the a problem or
+question already mentioned. Usually, such a message is coming in
+by telephone, but other media are well imaginable.
+:P.
+When a message comes in, it is registrated in the HelpDesk and gets
+a so called :PK.call track number:EPK. The coded name of the customer
+as well as the contact person are logged, in a fast and user-friendly
+way. The call track number could be returned to the customer to be
+referred to at later occasions.
+:P.
+Each customer call contains one or more
+:LINK PERFORM='DSPHELP CONINC/INC'.
+incidents.
+:ELINK.
+The incidents will
+be added fluently after the input of call track data, by answering
+the initial question list.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Section ....: CONINC                                      :   *.
+.*   : Description : Incident concepts                           :   *.
+.*   :                                                           :   *.
+.*   : This section contains the Incident concepts.              :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+.*   .............................................................   *.
+.*   : Incident concepts total view                              :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=CONINC.Incident Concepts
+:XH3.Incident Concepts
+
+:P.
+This section contains the following information. You can either
+select a topic directly or read through the complete concepts by
+using the page keys.
+
+:P.
+:LINK PERFORM='DSPHELP OMSCONHD'.
+Back to the Concepts Main Index
+:ELINK.
+
+:P.
+:LINK PERFORM='DSPHELP CONINC/INC'.
+What is an Incident
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONINC/HOW'.
+How can I enter incidents.
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONINC/SUPLEV'.
+What is the support level
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONINC/TEXT'.
+What is Incident Text.
+:ELINK.
+
+.*   .............................................................   *.
+.*   : Link all sections from the Incident concepts              :   *.
+.*   :...........................................................:   *.
+:IMHELP NAME='CONINC/INC'.
+:IMHELP NAME='CONINC/HOW'.
+:IMHELP NAME='CONINC/SUPLEV'.
+:IMHELP NAME='CONINC/TEXT'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Incident concepts                       :   *.
+.*   : Subsection .....: What is an Incident?                    :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONINC/INC'.What is an Incident?
+:XH3.What is an Incident?
+:P.
+An incident is helpdesk entity of a problem or a request done by the
+customer. Everything concerning the problem (request, etc.) is, so
+to speak, isolated in the incident. One or more incidents belong
+to a customer call.
+:P.
+An incident can be :PK.linked:EPK. to another incident. This means
+that the incoming incident requires the same treatment as an earlier
+incident has got, because it is identical or rather similar. This
+can be discovered by using the search function.
+:P.
+To an incident belong the attrubutes of een incident, and the
+:LINK PERFORM='DSPHELP CONINC/TEXT'.
+text blocks.
+:ELINK.
+The attributes of the incident are:
+
+:UL.
+:LI.:HP2.Incident type:EHP2.
+:PC.
+You can define types for incidents: is it a wish, a bug, etc. This
+attribute is not influenced by the question and answer strage.
+
+:LI.:HP2.Severities:EHP2.
+:PC.
+Depending on the result of the questions and answers of the initial
+:LINK PERFORM='DSPHELP CONQUES/QLIST'.
+question list
+:ELINK.
+three severities are set, who together define the starting priority
+of the incident. These three are a technical, a commercial and a
+marketing severity.
+
+:LI.:HP2.Status:EHP2.
+:PC.
+Every incident gets a
+:LINK PERFORM='DSPHELP CONSTAT/STAT'.
+status
+:ELINK.
+, whether caused by the question and answer stage, or given in
+manually. The last status, usually, will be "*CMP", that indicates
+completion.
+
+:LI.:HP2.Status route:EHP2.
+:PC.
+Every incident is placed in a
+:LINK PERFORM='DSPHELP CONSTAT/STAT'.
+status route
+:ELINK.
+, in which it is supposed to be to another status. A transfer to
+another status route is also one of the possibilities.
+
+:LI.:HP2.Priority:EHP2.
+:PC.
+Every incident obtains a priority, which indicates its urgency.
+This priority is within the range 1 (unimportant) to 999 (important)
+Priority is set amongst others, due to the respective severities.
+See also the information about
+:LINK PERFORM='DSPHELP CONESC/ESC'.
+escalation
+:ELINK.
+for more information.
+
+:LI.:HP2.Support level:EHP2.
+:PC.
+Another attribute of the incident is the
+:LINK PERFORM='DSPHELP CONINC/SUPLEV'.
+support level
+:ELINK.
+, that is the level of which the incident is treated. One can say,
+generally spoken, that an incident with a high support level contains
+a complicated problem, whereas an incident with a low support level
+will be a new or a simple one
+
+:EUL.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Incident concepts                       :   *.
+.*   : Subsection .....: How can I enter an Incident?            :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONINC/HOW'.How can I enter an Incident?
+:XH3.How can I enter an Incident?
+:P.
+You can enter an incident while working in a customer calls session.
+You cannot enter an incident during a incident maintenance session.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Incident concepts                       :   *.
+.*   : Subsection .....: What is the support level?              :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONINC/SUPLEV'.What is the support level
+:XH3.What is the support level?
+:P.
+The support level indicates the skills of the department, the group of persons o
+the person working at the incident. Also at employee level this
+:LINK PERFORM='DSPHELP CONEMPC/SUPLEV'.
+support level
+:ELINK.
+is assigned, where it is used to for an authority check.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Incident concepts                       :   *.
+.*   : Subsection .....: What is Incident Text?                  :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONINC/TEXT'.What is Incident Text?
+:XH3.What is Incident Text?
+:P.
+Incident text is the description of the incident, as well as the
+descriptions of activities towards the incident. These texts are
+an integral part of the incident.
+
+:P.
+Incident text can contain the text that describes the symptom, the
+cause or the solution of a problem. Also it's category can be coded
+as "other". This is practical when the search function is executed:
+you may choose in the indicated category, or in all.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Section ....: CONESC                                      :   *.
+.*   : Description : Escalation concepts                         :     *.
+.*   :                                                           :   *.
+.*   : This section contains the Escalation concepts.            :     *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+.*   .............................................................   *.
+.*   : Escalation   Concepts Total view                          :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=CONESC.Escalation Concepts
+:XH3.Escalation Concepts
+
+:P.
+This section contains the following information. You can either
+select a topic directly or read through the complete concepts by
+using the page keys.
+
+:P.
+:LINK PERFORM='DSPHELP OMSCONHD'.
+Back to the Concepts Main Index
+:ELINK.
+
+:P.
+:LINK PERFORM='DSPHELP CONESC/ESC'.
+What is Escalation
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONESC/PROP'.
+What are Escalation properties
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONESC/SPECIF'.
+How do I specify the Escalation
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONESC/HOW'.
+How does Escalation work
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONESC/START'.
+How can I start the Escalation jobs
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONESC/STOP'.
+How can I stop the Escalation jobs
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONESC/GAP'.
+What is an Escalation Gap
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONESC/PGM'.
+How can I activate programs at escalation time
+:ELINK.
+
+.*   .............................................................   *.
+.*   : Link all sections from the Escalat. concepts              :   *.
+.*   :...........................................................:   *.
+:IMHELP NAME='CONESC/ESC'.
+:IMHELP NAME='CONESC/PROP'.
+:IMHELP NAME='CONESC/SPECIF'.
+:IMHELP NAME='CONESC/HOW'.
+:IMHELP NAME='CONESC/START'.
+:IMHELP NAME='CONESC/STOP'.
+:IMHELP NAME='CONESC/GAP'.
+:IMHELP NAME='CONESC/PGM'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Escalation concepts                     :   *.
+.*   : Subsection .....: What is escalation                      :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONESC/ESC'.What is Escalation
+:XH3.What is Escalation?
+:P.
+Escalation, here, means an automatic increase of the priority of an
+incident. This is done by a batchjob that can be controlled completely
+by your HelpDesk manager.
+
+:P.
+:PK.Priority:EPK. indicates, on a scale of 1 to 999, how urgently an
+:LINK PERFORM='DSPHELP CONINC/INC'.
+incident
+:ELINK.
+should be handled. This depends initially on a number of
+factors, such as the several severities and the
+:LINK PERFORM='DSPHELP CONSTAT/STAT'.
+status
+:ELINK.
+of the incident.
+To prevent an incident from being forgotten, an escalation job can be
+activated, that causes a regular increase of an incidents priority
+if the status is still the same.
+
+:P.
+The process of escalation is triggered by so called escalations and
+their properties. An escalation is determined by the support level,
+the status and a priority range. It indicates the increase of the
+priority, and the span of time since the the last escalation.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Escalation concepts                     :   *.
+.*   : Subsection .....: What are escalation properties?         :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONESC/PROP'.What are escalation properties?
+:XH3.What are Escalation Properties?
+:P.
+An escalation property indicates per
+:LINK PERFORM='DSPHELP CONHEDC/HEDC'.
+helpdesk
+:ELINK.
+whether the batch job
+that controls the escalation is active, and if so, the name of the job
+in order to prevent the escalation job from running more than once.
+It also indicates when escalation check should be performed by the
+escalation job: only at times in which the company is not asleep.
+Subsequently, the escalation property can be used to define the
+escalation job: should it be performed once or more, in the latter case:
+what is the frequency in hours; what will be the job description
+of the job.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Escalation concepts                     :   *.
+.*   : Subsection .....: How do I specify the Escalation?        :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONESC/SPECIF'.How do I specify the escalation?
+:XH3.How do I specify the Escalation?
+:P.
+To specify the escalation, either use the Start Escalation Maintenance
+command (STRESM) or use the appropriate menu option (option 11 on the
+HelpDesk Defintion Menu or option 4 on the HelpDesk Escalation Menu).
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Escalation concepts                     :   *.
+.*   : Subsection .....: How does Escalation work?               :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONESC/HOW'.How does Escalation work?
+:XH3.How does Escalation work?
+:P.
+Escalation works when the batch job that activates the escalation job
+runs. This batchjob runs according to the settings of the escalation property.
+The ecalation job selects
+:LINK PERFORM='DSPHELP CONINC/INC'.
+incidents
+:ELINK.
+for escalation, and increases the priority
+of the selected incidents. The process of selecting and modifying will
+be described below.
+
+:P.
+If an incident is not completed yet, and its priority is below 999,
+a date check is performed: status date and last escalation date may
+not be empty both, if the last escalation date is not empty that
+date is taken to be compared, otherwise the status date. Here it is
+important to know that at each change of incident status, a reset
+of the last escalation date is taking place.
+
+:P.
+Now that we have a date and a time, we can count whether the time gap
+between now and the last time an action is undertaken to the incident is
+big enough to justify an escalation. If a valid escalation record is met
+(only the first valid record is taken into account), recalculation
+of the time gap in hours is done, in which only valid hours are
+counted (i.e. hours at which the company is active), and recalculation
+of the escalation time in hours is done. If the amount of time gap
+hours is bigger than the amount of escalation hours, escalation is
+done, the time gap is recalculated by subtracting the number of
+escalation hours, and the whole procedure is repeated.
+
+:P.
+One of the consequences of what is stated in the previous paragraph
+is that escalation can be done more often than once; this will be
+the case when the batch job that periodically activates the escalation
+job has not run for quite a while.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Escalation concepts                     :   *.
+.*   : Subsection .....: How can I start the Escalation jobs?    :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONESC/START'.How can I start the Escalation jobs?
+:XH3.How can I start the Escalation jobs?
+:P.
+The starting of the escalation job is done by a batchjob, that can
+be started from the HelpDesk Escalation Menu, option 1, or in your
+own application by using the STRESC (Start Escalation) command. The
+behaviour of this batchjob is defined in the escalation property
+of this HelpDesk. Only one such a batchjob can be active for one
+helpdesk at the same time; this control is executed when you try
+to start the job.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Escalation concepts                     :   *.
+.*   : Subsection .....: How can I stop the Escalation jobs?     :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONESC/STOP'.How can I stop the Escalation jobs?
+:XH3.How can I stop the Escalation jobs?
+:P.
+You can stop the escalation jobs by using the option 2 of the
+HelpDesk Escalation Menu, by using the ENDESC (End Escalation)
+command, or by one of the following commands: ENDJOB, ENDSBS,
+ENDSYS or PWRDWNSYS, in all cases with the *CNTRLD option and a
+delay time of at least 30 seconds. The batchjob that activates
+the escalation jobs checks every 15 seconds whether an end request
+has been made, also during processing, and, if so, the escalation
+jobs are ending in a controlled way.
+
+:P.
+If you want to use the escalation function of the HelpDesk, it is
+recommended to schedule the batchjob as well as the ENDESC function
+in your systems starting and closing procedures.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Escalation concepts                     :   *.
+.*   : Subsection .....: What is an Escalation Gap?              :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONESC/GAP'.What is an escalation gap?
+:XH3.What is an Escalation Gap?
+:P.
+An escalation gap is a gap in the priority ranges that cannot be
+jumped over, and thus an example of bad defined sequence of escalations.
+For instance, if escation record is defined for a priority range of
+100-200, and the nearest range is 300-500, then the gap of 99 is
+called escalation gap if an incidents priority can be evalueted
+somewhere between 101 and 199.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Escalation concepts                     :   *.
+.*   : Subsection .....: How can activate programs at escalation :   *.
+.*   :                   time                                    :
+.*   :...........................................................:   *.
+:HELP NAME='CONESC/PGM'.How can I activate programs?
+:XH3.How can I activate programs at activation time?
+:P.
+At the Escalation Maintenance screen, which can be activated by option
+4 of the Escalation Menu or option 11 of the definitions menu, you may
+notice that it possible to define a program and a library at each
+priority range. The programs you can optionally define here are user-
+defined programs that are activated when an escalation takes place.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Section ....: CONREG                                      :   *.
+.*   : Description : Registration concepts                       :   *.
+.*   :                                                           :   *.
+.*   : This section contains the Registration concepts.          :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+.*   .............................................................   *.
+.*   : Registration Concepts Total view                          :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=CONREG.Registration Concepts
+:XH3.Processing Concepts
+
+:P.
+This section contains the following information. You can either
+select a topic directly or read through the complete concepts by
+using the page keys.
+
+:P.
+:LINK PERFORM='DSPHELP OMSCONHD'.
+Back to the Concepts Main Index
+:ELINK.
+
+:P.
+:LINK PERFORM='DSPHELP CONREG/REG'.
+What is Registration
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONREG/WHAT'.
+What Is Registered in the HelpDesk Database
+:ELINK.
+
+.*   .............................................................   *.
+.*   : Link all sections from the Incident concepts              :   *.
+.*   :...........................................................:   *.
+:IMHELP NAME='CONREG/REG'.
+:IMHELP NAME='CONREG/WHAT'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Registration concepts                   :   *.
+.*   : Subsection .....: What is a registration?                 :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONREG/REG'.What is a Registration?
+:XH3.What is a Registration?
+:P.
+A registration, actually, is the logging of the data that belong to an
+:LINK PERFORM='DSPHELP CONINC/INC'.
+incident.
+:ELINK.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Registration concepts                   :   *.
+.*   : Subsection .....: What is a registration?                 :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONREG/WHAT'.What is registered?
+:XH3.What is a registered?
+:P.
+Registered are: the customer data, the question and answer sequence,
+the attributes set according to that, the texts added by the employee,
+the categories of that text, the name of the employee, the status, and
+the employee who has allocated the incident.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Section ....: CONPRO                                      :   *.
+.*   : Description : Processing concepts                         :   *.
+.*   :                                                           :   *.
+.*   : This section contains the Processing concepts.            :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+.*   .............................................................   *.
+.*   : Processing Concepts Total view                            :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=CONPRO.Processing Concepts
+:XH3.Processing Concepts
+
+:P.
+This section contains the following information. You can either
+select a topic directly or read through the complete concepts by
+using the page keys.
+
+:P.
+:LINK PERFORM='DSPHELP OMSCONHD'.
+Back to the Concepts Main Index
+:ELINK.
+
+:P.
+:LINK PERFORM='DSPHELP CONPRO/PRO'.
+What is Processing
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONPRO/HOW'.
+How does the HelpDesk support the Processing of incidents
+:ELINK.
+
+.*   .............................................................   *.
+.*   : Link all sections from the Incident concepts              :   *.
+.*   :...........................................................:   *.
+:IMHELP NAME='CONPRO/PRO'.
+:IMHELP NAME='CONPRO/HOW'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Processing concepts                     :   *.
+.*   : Subsection .....: What is processing?                     :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONPRO/PRO'.What is processing?
+:XH3.What is processing?
+:P.
+Processing of an incident means bringing the problems of which the
+incident is the result to a solution, and to store all the relevant
+data of this process in well organized way.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Processing concepts                     :   *.
+.*   : Subsection .....: How does the HelpDesk supports the processing?
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONPRO/HOW'.How does the HelpDesk supports the processing?
+:XH3.How does the HelpDesk supports the processing of Incidents?
+:P.
+It is done, mainly, by the question and answer stage, which causes
+the placing of the incident a good way in its right status route,
+thus precipitating the final solution.
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Section ....: CONANA                                      :   *.
+.*   : Description : Analysis concepts                           :   *.
+.*   :                                                           :   *.
+.*   : This section contains the Analysis concepts.              :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+.*   .............................................................   *.
+.*   : Analysis Concepts Total view                              :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=CONANA.Analysis Concepts
+:XH3.Analysis Concepts
+
+:P.
+This section contains the following information. You can either
+select a topic directly or read through the complete concepts by
+using the page keys.
+
+:P.
+:LINK PERFORM='DSPHELP OMSCONHD'.
+Back to the Concepts Main Index
+:ELINK.
+
+:P.
+:LINK PERFORM='DSPHELP CONANA/ANA'.
+What is Incident Analysis
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONANA/HOW'.
+How does the HelpDesk support the Analysis of incidents
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONANA/TOOL'.
+Which management tools are available
+:ELINK.
+
+.*   .............................................................   *.
+.*   : Link all sections from the Incident concepts              :   *.
+.*   :...........................................................:   *.
+:IMHELP NAME='CONANA/ANA'.
+:IMHELP NAME='CONANA/HOW'.
+:IMHELP NAME='CONANA/TOOL'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Analysis concepts                       :   *.
+.*   : Subsection .....: What is Incident analysing?             :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONANA/ANA'.What is Incident analysing?
+:XH3.What is Incident analysing?
+:P.
+Incident data are stored to met a major target of the HelpDesk:
+analysis of the whole process of problem solving. We consider the
+following aspects, either analysis itself, either the results of it:
+
+:UL.
+:LI.:HP2.What are the desires of my customers?:EHP2.
+:PC.
+Whether internal or external customers, an enhanced knowledge of
+their desires is better for: your peoples motivation, your customers
+satisfaction. Not seldom the two goes hand in hand.
+
+:LI.:HP2.What are their problems?:EHP2.
+:PC.
+Or, better formulated: what are their :PK.real:EPK. problems. Analysing
+HelpDesk data will enable you, in many cases, to distinguish between
+symptoms and hang-ups.
+
+:LI.:HP2.How have they been helped in the past?:EHP2.
+:PC.
+Ask this question in order to be able to draw some conclusions: from
+"it wasn't all that bad" to "it's a miracle they're still there". It
+will give you an idea about your own position.
+
+:LI.:HP2.What are their problems caused by?:EHP2.
+:PC.
+If that is known, there's at least a chance to have categories of
+problems, to eliminated at a next stage.
+
+:LI.:HP2.How can we prevent some of their problems in the future?:EHP2.
+:PC.
+We can do so by using our knowledge derived from the incident analysis.
+This can go as far as to a complete reorganization of the company.
+
+:LI.:HP2.What kind of new technology would be helpful to prevent current
+         obstacles?:EHP2.
+:PC.
+Using the HelpDesk module may set your mind in a different way. If, till
+now, only the telephone and the personal talks after a walk-in have
+been the main ways of communication, you'll find out that the HelpDesks
+external couplings enable you to integrate fax, e-mail, scheduled
+action, network messages and so on into your HelpDesk handling.
+
+:LI.:HP2.What improvements in procedures of assistance can be made?:EHP2.
+:PC.
+Once you'll find yourself forced to define "common problems", in
+order to promote a smooth way of working with the HelpDesk, you'll
+discover how easy it works to share this knowledge within the
+HelpDesk team.
+
+:LI.:HP2.How can we support the marketing department?:EHP2.
+:PC.
+Especially the marketing department employees should be aware of
+the desires of your customers, in order to anticipate in their
+attutude towards existing customers and prospects.
+:PC.
+Another application one can think of is to use the
+:LINK PERFORM='DSPHELP CONQUES'.
+question & answer concept
+:ELINK.
+, one of the HelpDesk functions, to assist your marketing colleagues;
+gathering information, done by (telefonic) interview, could be
+acquired faster and more effective, and be of bigger intrinsique
+value, when a well designed question list is used. This information
+istelf, of course, can be analized later on.
+
+:LI.:HP2.How can the marketing department support us?:EHP2.
+:PC.
+The expertise of the marketing employees, their data, after being
+questioned by us, can turn our analysis more sophisticated.
+
+:EUL.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Analysis concepts                       :   *.
+.*   : Subsection .....: How does the HelpDesk support the Analysis? *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONANA/HOW'.How does the HelpDesk support the Analysis?
+:XH3.How does the HelpDesk support the Analysis of an Incident?
+:P.
+At the moment by offering you a well designed database and by providing
+you with a powerful print API.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Analysis concepts                       :   *.
+.*   : Subsection .....: Which management tools are available?   :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONANA/TOOL'.Which management tools are available?
+:XH3.Which management tools are available?
+:P.
+Management tools in the close meaning of the word are not available
+yet
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   : Description                                               :   *.
+.*   :...........................................................:   *.
+.*   :                                                           :   *.
+.*   : Section ....: CONNET                                      :   *.
+.*   : Description : Networking concepts                         :   *.
+.*   :                                                           :   *.
+.*   : This section contains the Networking concepts             :   *.
+.*   :                                                           :   *.
+.*   :...........................................................:   *.
+
+.*   .............................................................   *.
+.*   : Networking concepts total view                            :   *.
+.*   :...........................................................:   *.
+
+:HELP NAME=CONNET.Networking Concepts
+:XH3.Networking Concepts
+
+:P.
+This section contains the following information. You can either
+select a topic directly or read through the complete concepts by
+using the page keys.
+
+:P.
+:LINK PERFORM='DSPHELP OMSCONHD'.
+Back to the Concepts Main Index
+:ELINK.
+
+:P.
+:LINK PERFORM='DSPHELP CONNET/WHY'.
+Why the networking options
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONNET/TIM'.
+The Incident Monitor
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONNET/SMTP'.
+Simple Mail Transport Protocol. What to do.
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONNET/TEM'.
+What are mail templates
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONNET/WWW'.
+The World Wide Web Interface
+:ELINK.
+
+:PC.
+:LINK PERFORM='DSPHELP CONANA/LOT'.
+The Lotus Notes Interface
+:ELINK.
+
+.*   .............................................................   *.
+.*   : Link all sections from the Incident concepts              :   *.
+.*   :...........................................................:   *.
+:IMHELP NAME='CONNET/WHY'.
+:IMHELP NAME='CONNET/TIM'.
+:IMHELP NAME='CONNET/SMTP'.
+:IMHELP NAME='CONNET/TEM'.
+:IMHELP NAME='CONNET/WWW'.
+:IMHELP NAME='CONNET/LOT'.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Networking concepts                     :   *.
+.*   : Subsection .....: Why the networking options?             :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONNET/WHY'.Why the networking options?
+:XH3.Why the networking options?
+
+:P.
+The Helpdesk networking options are designed to allow your Helpdesk
+system to communicate with other computers in your network. In this
+way you are able to leave the "Centralized" nature of an Helpdesk.
+You are able to collect incidents from the network
+instead of by phone only. You can use e-mail forms, Web pages and
+Lotus Notes databases to report incidents.
+
+:P.
+The networking options are using the
+:LINK PERFORM='DSPHELP CONNET/SMTP'.
+SMTP
+:ELINK.
+application which is
+almost always installed when you have installed the TCP/IP
+networking protocol. The use of SMTP (Simple Mail Transfer Protocol)
+is chosen because almost every computer with TCP/IP is equipped
+with either an SMTP server, an SMTP client or both.
+
+:P.
+The networking options enable you to receive incidents via the
+World Wide Web. WWW Pages can be automatically created from your
+current Helpdesk definitions and placed on the internet or on your
+intranet. End-users can use the Web to report incidents which are
+automatically loaded into your AS/400 database. The generated
+Web page can be changed to meet the standards in your company.
+
+:P.
+The networking options also enable you to use another graphical
+front end: Lotus Notes (tm). If you run the SMTP_MTA on your Lotus
+Notes server, you can use our HMS database template to receive and
+send incidents which are located in your AS/400 database. Users and
+Helpdesk Employees can also process the incidents by adding texts
+or changing the status of the incident.
+:P.
+The Lotus Notes interface enables you distribute incidents across
+your enterprise and share the information located in your AS/400
+database with users anywhere on the world. With Lotus Notes, you
+are able to publish a Q&A database in real time (well, almost.)
+
+:P.
+Your Helpdesk system can also be configured to
+electronically notify your end-users whenever a
+certain action occurs on an incident. If an incident is completed
+by your Helpdesk staff, you maybe want to inform your end-users.
+You can do this by using customized e-mail templates. These templates
+allow you to mix normal (readable text) with data derived from your
+Helpdesk system. The endusers are able to receive understandable
+e-mail regarding the cause and solutions of the reported incidents.
+Lotus Notes users are able to browse in the supplied database in
+order to check the incidents they have reported and the current
+status of these incidents.
+
+:P.
+The networking options extend the power and robustness of the
+AS/400 database with the flexibility and ease-of-use of platforms
+like Lotus Notes and the internet.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Networking concepts                     :   *.
+.*   : Subsection .....: The incident monitor                    :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONNET/TIM'.The Incident Monitor
+:XH3.The Incident Monitor
+
+:P.
+The Incident Monitor (TIM) plays a very important role in the
+networking functions of the Helpdesk. TIM is notified every time
+an action is performed on an incident. TIM then checks if the action
+requires execution of
+:LINK PERFORM='DSPHELP CONSTAT/STACT'.
+Status Actions.
+:ELINK.
+If this is true, the Action is executed. After this is done, TIM
+determines if the Action must also result in the distribution
+of the incident to the
+:LINK PERFORM='DSPHELP CONCUSC/CONTACT'.
+Customer Contact.
+:ELINK.
+If this is the case, TIM uses the specified
+:LINK PERFORM='DSPHELP CONNET/TEM'.
+mail template
+:ELINK.
+to distribute the incident to the specified person.
+
+:P.
+After this is done, TIM then distributes the incident to the
+external helpdesk database and to the external customer database
+if they are specified. Finally, TIM checks if new distributions
+have arrived from the network and tries to register the incidents
+if this is the case. If the incidents could not be registered because
+of errors in the distribution, then the responsible person is
+notified and the distribution is save stored. The distributed incident
+is also save stored if you do not allow automatic updates from
+the network into you AS/400 database.
+
+:P.
+TIM waits for a user to change an incident. When an incident is
+changed, TIM checks if there are actions to perform;
+
+:UL.
+:LI.Execute Status Action programs
+:LP.Status Action programs are executed if required. These
+programs run in the same job as TIM.
+:LI.Send mail to Customer Contacts
+:LP.If a mail template is specified for this Customer Contact,
+it is used to send the e-mail.
+:LI.Update remote databases
+:LP.The incident is distributed to any remote database specified
+for the Helpdesk or the Customer.
+:LI.Check for incoming incidents
+:LP.Incoming incidents are checked for each Helpdesk. After the
+incidents have arrived, they are either loaded into the incident
+database or save stored. If errors are detected during the
+parsing of the incoming incident, the responsible person is notified.
+:EUL.
+
+
+:P.
+TIM is executed by using the command STRTIM. TIM must be started
+in order for the Helpdesk to function correctly. If TIM is not
+started, then the Status Action Programs are not executed and no
+distribution is received or sent. If TIM is not started then you
+are not able to execute helpdesk functions.
+
+:P.
+:XH3.Setup of the incident monitor
+:PC.
+TIM should either be activated from a job scheduler or from
+a prestart job. Create a job description for TIM and add the
+libraries QTEMP, QGPL, the HMS library and the OMS library.
+The latter can be skipped
+if you do not use OMS. The job should run under a generic user
+profile. We suggest that you use the user profile OMS. Please note
+that either program OMH043 must be given additional authorities, or
+the user under which the job is running should have enough
+authority to run the Status Action Programs. If the user to which
+you send mail (e.g. helpdesk@company.com) is not the user under
+which the job is running (e.g. OMS), then you must grant user OMS the
+right to send and receive mail on behalf of the user to which the
+rest of the world sends mail. This can be achieved by using the
+GRTUSRPMN command. How to setup TCP/IP and mail addresses is
+beyond the scope of this document, but you can always try to
+call the OMS helpdesk for additional information.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Networking concepts                     :   *.
+.*   : Subsection .....: SMTP, What to do?                       :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONNET/SMTP'.Simple Mail Transfer Protocol, What to do?
+:XH3.Simple Mail Transfer Protocol. What to do?
+
+:P.
+In order to allow your AS/400 database to receive incidents from
+the network you must configure your AS/400 to receive distributed
+documents. The following steps must be followed.
+
+:P.
+:UL.
+:LI.In order to allow your AS/400 to send incidents to other databases
+and/or customers, you must configure the TCP/IP protocols and
+the SMTP application. Your AS/400 must be able to communicate
+with another SMTP server or must act as the main SMTP server in
+your LAN.
+
+:LI.
+You must create a user to which the rest of the world can send
+incidents and assign a SMTP name to this user. The last mail server
+must send the incidents to this user.
+
+:LI.
+If you run The Incident Monitor
+under a different user than the user receiving the mail, then you
+must use the GRTUSRPMN (Grant User Permission) command to allow
+The Incident Monitor user to read mail on behalf of of the
+mail user. E.g., if user HELPDESK is receiving mail, and user OMS
+is used to run The Incident Monitor, then you must grant user OMS
+the rights to process the mail of user HELPDESK. For each helpdesk
+you define within HMS you must define one user profile to receive
+mail for this helpdesk.
+
+:LI.
+Adjust the SMTP attributes by using the CHGSMTPA command. If you
+are using a PC in your LAN which acts as a mail server, then you
+must specify the route to this mail server.
+
+:LI.
+Go to the Helpdesk networking menu and specify the system mail
+extensions. You must specify the IP address and the port to
+use of the remote mail server. If you want to use the AS/400 SMTP
+server then you can use the address "127.0.0.1". This address
+always points to this machine. The default SMTP port is 25.
+You must also specify the domain in which the helpdesk is located.
+Finally, you should enter the template locations and the mail
+polling interval. If no action is detected The Incident Monitor
+checks for new mail every nn minutes.
+
+:LI.
+Go to the Helpdesk networking menu and specify the helpdesk mail
+extensions. You must specify the AS/400 user id and the e-mail
+address which is used as the sender for e-mail messages. You are
+able to override the system location of the mail templates.
+:EUL.
+
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Networking concepts                     :   *.
+.*   : Subsection .....: What are mail templates                 :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONNET/TEM'.What are mail templates
+:XH3.What are mail templates.
+
+:P.
+Mail Templates are documents in a sourcefile which can be used to
+shape data in the Helpdesk database in any form you want. You are able
+to reach the people in your contact database by e-mail.
+
+:NT.
+The TCP/IP protocols and the SMTP application must be setup correctly
+before the mail templates are of any use. See the
+:LINK PERFORM='DSPHELP CONNET/SMTP'.
+SMTP concepts
+:ELINK. for details.
+:ENT.
+
+:P.
+A mail template could look like this.
+:XMP.
+
+Dear &COCONM,
+
+Thank you for using the helpdesk. You have reported an incident
+with number &ININCN.
+
+Best Regards,
+The Helpdesk
+:EXMP.
+
+:P.
+When you use this template, the field &COCONM is replaced by the
+name of the customer contact. The field &ININCN is replaced by
+the incident number. There are a lot of fields you can use. Please
+take a look at the example source member QINCTMPL in the QUSRSRC
+file in the helpdesk library.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Networking concepts                     :   *.
+.*   : Subsection .....: The world wide web interface            :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONNET/WWW'.The World Wide Web interface
+:XH3.The World Wide Web interface
+
+:P.
+
+If you have setup TCP/IP and
+:LINK PERFORM='DSPHELP CONNET/SMTP'.
+SMTP
+:ELINK.
+to run on your AS/400, you are also
+able to allow users to enter incidents by using the WWW interface. In
+order to do so, you must create a web page from the helpdesk
+definitions. This is possible by using the 'Create HTML' option from
+within the Helpdesk Management function.
+
+:P.
+The result of this action is a basic HTML page which you can
+use as a template for your final HTML page. You may want to
+alter the customer and contact drop down lists, or add some custom
+HTML code and graphics
+to the page. You could, for instance, integrate the
+page into your company website in order to make it consistent to
+your current site layout.
+
+:NT.
+It is important that you do not alter the names of the fields or
+the values that are placed into the fields. If you do, the Helpdesk
+monitor may not be able to interpret the resulting distribution.
+:ENT.
+
+:P.
+We also recommend that you test the page before you put it into
+production. Please note that the customer list, the contact list
+and the questions are static. If you add new customers, or if you
+change the initial question list, you have to generate the page
+again.
+
+:P.
+:XH3.How does the page work
+:PC.
+When the page is presented, you must select a customer from the
+drop down list. You must then select a contact from the contact
+drop down list. The incident can not be created if the contact
+does not belong to the customer or if no customer is specified.
+:P.
+After this is done, you must select how the incident was reported by
+chosing one of the five options given. Finally, you must answer
+the question list by choosing the correct answer button. After this
+is done, you must click on the link on the right side of this
+answer. This will lead you to the next question. When the last
+question is answered, you will be
+presented a text area which you can use to type your comments.
+
+:P.
+Finally, you can click on the submit button to send this incident
+to the helpdesk.
+:EHELP.
+
+.*   .............................................................   *.
+.*   :                                                           :
+.*   : Section ........: Networking concepts                     :   *.
+.*   : Subsection .....: The lotus notes interface               :   *.
+.*   :                                                           :
+.*   :...........................................................:   *.
+:HELP NAME='CONNET/LOT'.The Lotus Notes Interface
+:XH3.The Lotus Notes interface
+
+:P.
+If you have purchased the Lotus Notes HMS template, you are able to
+send the incidents per helpdesk or per customer to the Notes database.
+The difference between the customer & helpdesk database is that the
+helpdesk database receives all incidents for this helpdesk and the
+customer database receives all incidents reported by a specific
+customer. You able to report or process incidents from the
+Helpdesk notes database but not from the Customer database since this
+contains incidents from all defined Helpdesks.
+
+:P.
+:XH3.How to create a HMS Database
+:P.
+First load the HMS database template on your Lotus Notes server. Then
+go to a Notes workstation and select :PK.FILE/DATABASE/NEW:EPK..
+This will prompt you with a window. Select the server which should
+contain the database and enter a title and an filename. Check
+the "Create full text index for searching" option if you want
+to create a text index for speed searching.
+
+:P.
+Select the server on which you have loaded the template and check
+the "Show advanced templates" check box. Search the template from
+the list and check the "Inherit future design changes" box. Then
+click the OK button.
+
+:XH3.How to set up a HMS Database
+:P.
+Open the database, click the settings button in the lower left corner
+of the navigator and fill in the e-mail address of the helpdesk. This
+is the address of the user associated with the helpdesk as
+described in the
+:LINK PERFORM='DSPHELP CONNET/SMTP'.
+SMTP
+:ELINK. section of this document.
+
+:P.
+Now select which server the HMS agent will run and click the
+"enable agent" button. The agent is now waiting for incoming mail.
+Please note that the agent will need more time to run than the
+designated 10 minutes if it must handle a lot of incidents. Adjust
+the agent section of the server document to allow more concurrent
+agents to run and/or assign more time to the runtime of an agent.
+
+:P.
+Return to the main navigator and Enter one or more Helpdesk users.
+Assign the correct support level and determine if they must receive
+Notes mail if a new incident is assigned to them.
+
+:P.
+The last thing you need to do is assign an e-mail addres to the
+database. To do this, go to the public name and address book of
+the server and select the "mail-in databases and Resources" view
+of the server view. If you click the "Add mail-in database button"
+a new document will be created. Enter the mail-in name of the
+database. This should be a single name like "hms" the full e-mail
+address wil then be "hms@your.domain". Enter the description,
+the Notes domain, the Notes server name and the name of the file
+you created earlier.
+
+:XH3.Testing the configuration
+:P.
+Go to the "Helpdesk Maintenance" function and use option 8 to
+select the Mail Extensions and fill them out. Select '1' for the
+external interface and enter the e-mail address of the Lotus Notes
+database. Exit by pressing F3 and enter the command DSTHDD which
+enables you to distribute the Helpdesk definitions. Select the
+Helpdesk code and press Enter. This will submit a job which sends
+the Helpdesk definitions to your Notes database. You must use this
+command each time you change the definitions of the helpdesk.
+:EHELP.
+:EPNLGRP.
